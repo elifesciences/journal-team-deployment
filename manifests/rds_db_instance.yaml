@@ -25,5 +25,5 @@ spec:
   description: database subnet group
   name: helloworld
   subnetIDs:
-  - subnet-0c60bc3cb24a2816b
-  - subnet-009a04cbefc8e3661
+  - subnet-8eea67d7
+  - subnet-dbc471f0
