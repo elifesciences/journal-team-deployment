@@ -7,7 +7,6 @@ spec:
   allocatedStorage: 20
   dbInstanceClass: db.t4g.micro
   dbInstanceIdentifier: helloworld
-  dbSubnetGroupName: elife-db-subnet
   engine: postgres
   engineVersion: "14"
   masterUsername: "postgres"
@@ -15,28 +14,3 @@ spec:
     namespace: journal
     name: "helloworld-password"
     key: password
----
-apiVersion: rds.services.k8s.aws/v1alpha1
-kind: DBSubnetGroup
-metadata:
-  name: helloworld
-  namespace: journal
-spec:
-  description: database subnet group
-  name: helloworld
-  subnetIDs:
-  - subnet-8eea67d7
-  - subnet-dbc471f0
-
----
-apiVersion: rds.services.k8s.aws/v1alpha1
-kind: DBSubnetGroup
-metadata:
-  name: elife-db-subnet
-  namespace: journal
-spec:
-  description: database subnet group
-  name: elife-db-subnet
-  subnetIDs:
-  - subnet-8eea67d7
-  - subnet-dbc471f0
