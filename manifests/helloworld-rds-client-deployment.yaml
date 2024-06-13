@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-rds-client
+  namespace: journal
+  labels:
+    app: helloworld-rds-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helloworld-rds-client
+  template:
+    metadata:
+      labels:
+        app: helloworld-rds-client
+    spec:
+      containers:
+      - image: postgres:14
+        name: myapp
+        command:
+            - psql
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: PGHOST
+            valueFrom:
+              configMapKeyRef:
+                name: helloworld-connection
+                key: "journal.helloworld-host"
+          - name: PGPORT
+            valueFrom:
+              configMapKeyRef:
+                name: helloworld-connection
+                key: "journal.helloworld-port"
+          - name: PGUSER
+            valueFrom:
+              configMapKeyRef:
+                name: helloworld-connection
+                key: "journal.helloworld-user"
+          - name: PGPASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: "helloworld-password"
+                key: password
