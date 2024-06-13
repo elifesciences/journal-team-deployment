@@ -15,4 +15,5 @@ spec:
     name: "helloworld-password"
     key: password
   vpcSecurityGroupIDs:
-    - sg-0bfce818ba2209341
+    - sg-0a04b1c8433227e63
+  dbSubnetGroupName: elife-flux-prod-ack-rds-controller-all-dbs
