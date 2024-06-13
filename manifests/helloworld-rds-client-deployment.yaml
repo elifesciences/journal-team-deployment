@@ -19,7 +19,10 @@ spec:
       - image: postgres:14
         name: myapp
         command:
-            - psql
+          - psql
+        args:
+          - '-c'
+          - '\l'
         imagePullPolicy: IfNotPresent
         env:
           - name: PGHOST
