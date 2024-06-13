@@ -14,6 +14,5 @@ spec:
     namespace: journal
     name: "helloworld-password"
     key: password
-  vpcSecurityGroupRefs:
-    - from:
-        name: elife-flux-test-ack-rds-controller-allow-traffic-from-eks-cluster
+  vpcSecurityGroupIDs:
+    - sg-0bfce818ba2209341
