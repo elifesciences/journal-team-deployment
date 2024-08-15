@@ -19,3 +19,14 @@ spec:
           periodSeconds: 5
           failureThreshold: 10
           timeoutSeconds: 10
+        volumeMounts:
+        - name: config-volume
+          mountPath: /app/config.php
+          subPath: config.php
+      volumes:
+      - name: config-volume
+        configMap:
+          name: search-config
+          items:
+          - key: config.php
+            path: config.php

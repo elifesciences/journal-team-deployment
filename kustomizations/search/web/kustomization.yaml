@@ -8,3 +8,8 @@ labels:
   pairs:
     app.kubernetes.io/component: web
     app.kubernetes.io/name: web
+
+configMapGenerator:
+- name: search-config
+  files:
+  - config/config.php
