@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: search
+  namespace: journal
+spec:
+  template:
+    spec:
+      containers:
+      - name: search
+        image: ghcr.io/elifesciences/search:latest
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 10
+          timeoutSeconds: 10

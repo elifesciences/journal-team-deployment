@@ -1,0 +1,20 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: search
+  namespace: journal--test
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/search
+  prune: true
+  targetNamespace: journal--test
+  images:
+    - name: ghcr.io/elifesciences/search
+      newTag: remove-gearman-dockerise-9fb4ef11-20240815.1610
+  postBuild:
+    substitute:
+      env: test
