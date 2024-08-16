@@ -1,0 +1,37 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: opensearch-monitor
+  namespace: journal
+spec:
+  endpoints:
+  - basicAuth:
+      password:
+        key: password
+        name: opensearch-admin-password
+      username:
+        key: username
+        name: opensearch-admin-password
+    bearerTokenSecret:
+      key: ""
+    interval: 30s
+    path: /_prometheus/metrics
+    port: "http"
+    scheme: "https"
+    tlsConfig:
+      insecureSkipVerify: true
+  jobLabel: opensearch-monitor
+  namespaceSelector:
+    matchNames:
+    - data-hub
+  podTargetLabels:
+  - opster.io/opensearch-cluster
+  selector:
+    matchLabels:
+      opster.io/opensearch-cluster: opensearch
+    matchExpressions:
+    - key: opster.io/opensearch-nodepool
+      operator: Exists
+  targetLabels:
+  - opster.io/opensearch-cluster

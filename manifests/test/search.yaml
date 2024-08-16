@@ -17,4 +17,10 @@ spec:
       newTag: remove-gearman-dockerise-34c8151e-20240816.0732
   postBuild:
     substitute:
+      # opensearch backup vars
+      aws_region: ${aws_region}
+      aws_backup_s3_bucket: ${aws_backup_s3_bucket}
+      aws_backup_service_account_role_arn: ${aws_backup_service_account_role_arn}
+
+      # deployment vars
       env: test

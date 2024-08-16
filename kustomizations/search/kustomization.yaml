@@ -4,6 +4,7 @@ namespace: journal
 
 resources:
 - web
+- opensearch
 
 labels:
 - includeSelectors: true
