@@ -3,7 +3,7 @@ return [
     'debug' => false,
     'validate' => false,
     'ttl' => 300,
-    'elastic_servers' => ['http://opensearch:9200'],
+    'elastic_servers' => ['https://opensearch:9200'],
     'elastic_logging' => false,
     'elastic_force_sync' => false,
     'api_url' => 'https://prod--gateway.elifesciences.org',
