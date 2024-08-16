@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--test
   images:
     - name: ghcr.io/elifesciences/search
-      newTag: remove-gearman-dockerise-9fb4ef11-20240815.1610
+      newTag: remove-gearman-dockerise-34c8151e-20240816.0732
   postBuild:
     substitute:
       env: test
