@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--test
   images:
     - name: ghcr.io/elifesciences/search
-      newTag: remove-gearman-dockerise-34c8151e-20240816.0732
+      newTag: remove-gearman-dockerise-5178b49c-20240816.1022
   postBuild:
     substitute:
       # opensearch backup vars
