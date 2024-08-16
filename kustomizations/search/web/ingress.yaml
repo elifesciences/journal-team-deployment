@@ -13,4 +13,4 @@ spec:
           service:
             name: search-web
             port:
-              number: 8984
+              number: 80
