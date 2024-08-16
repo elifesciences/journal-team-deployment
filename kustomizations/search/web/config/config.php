@@ -7,7 +7,7 @@ return [
     'elastic_username' => 'admin',
     'elastic_password' => 'admin',
     'elastic_ssl_verification' => false,
-    'elastic_logging' => false,
+    'elastic_logging' => true,
     'elastic_force_sync' => false,
     'api_url' => 'https://prod--gateway.elifesciences.org',
     'api_requests_batch' => 20,
