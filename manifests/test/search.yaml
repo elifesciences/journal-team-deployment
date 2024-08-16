@@ -24,3 +24,4 @@ spec:
 
       # deployment vars
       env: test
+      hostname: test--search.elifesciences.org

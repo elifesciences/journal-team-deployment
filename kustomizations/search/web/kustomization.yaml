@@ -3,6 +3,9 @@ kind: Kustomization
 namespace: journal
 resources:
 - deployment.yaml
+- service.yaml
+- ingress.yaml
+
 labels:
 - includeSelectors: true
   pairs:
