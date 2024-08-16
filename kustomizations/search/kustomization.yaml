@@ -3,11 +3,18 @@ kind: Kustomization
 namespace: journal
 
 resources:
-- web
 - opensearch
+- web
+- sqs
+- queue-watcher
 
 labels:
 - includeSelectors: true
   pairs:
     app.kubernetes.io/part-of: search
     app.kubernetes.io/instance: search-${env}
+
+configMapGenerator:
+- name: search-config
+  files:
+  - config/config.php

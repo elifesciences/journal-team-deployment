@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: search-queue-watcher
+  namespace: journal
+spec:
+  template:
+    spec:
+      serviceAccount: search-queue-watcher
+      containers:
+      - name: search
+        image: ghcr.io/elifesciences/search:latest
+        command: bin/console queue:watch
+        volumeMounts:
+        - name: config-volume
+          mountPath: /app/config.php
+          subPath: config.php
+      volumes:
+      - name: config-volume
+        configMap:
+          name: search-config
+          items:
+          - key: config.php
+            path: config.php

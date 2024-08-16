@@ -1,0 +1,9 @@
+apiVersion: sqs.services.k8s.aws/v1alpha1
+kind: Queue
+metadata:
+  name: search-queue
+  namespace: journal
+spec:
+  queueName: search--test
+  tags:
+    Project: journal
