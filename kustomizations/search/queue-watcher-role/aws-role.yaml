@@ -6,7 +6,8 @@ metadata:
 spec:
   name: search--${env}-queue-watcher
   tags:
-    Project: journal
+  - key: Project
+    value: journal
   assumeRolePolicyDocument: |
     {
       "Version": "2012-10-17",
