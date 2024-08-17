@@ -18,7 +18,7 @@ spec:
     substituteFrom:
     # search_queue_arn and search_queue_name are retrieved from the configmap
     - kind: ConfigMap
-      name: search-queue-details
+      name: search-queue-config
     substitute:
       # deployment vars
       env: test
