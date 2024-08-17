@@ -35,6 +35,6 @@ spec:
         "Statement": [{
             "Effect": "Allow",
             "Action": "*",
-            "Resource": "${aws_sqs_queue_arn}"
+            "Resource": "${search_queue_arn}"
         }]
       }
