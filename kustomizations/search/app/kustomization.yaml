@@ -5,7 +5,6 @@ namespace: journal
 resources:
 - opensearch
 - web
-- sqs
 - queue-watcher
 
 labels:

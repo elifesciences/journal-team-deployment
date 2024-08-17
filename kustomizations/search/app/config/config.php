@@ -14,9 +14,9 @@ return [
     'rate_limit_minimum_page' => 21,
     'logger.level' => 'debug',
     'aws' => [
-        'queue_name' => 'search--test',
-        'credential_file' => true,
-        'region' => 'us-east-1',
+        'queue_name' => '${search_queue_name}',
+        'credential_file' => false,
+        'region' => '${aws_region}',
     ],
     'rds_articles' => [
         '30274' => [
