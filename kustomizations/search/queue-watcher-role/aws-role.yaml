@@ -27,12 +27,13 @@ spec:
         }
       ]
     }
-  inlinePolicies: |
-    {
-      "Version": "2012-10-17",
-      "Statement": [{
-          "Effect": "Allow",
-          "Action": "*",
-          "Resource": "${aws_sqs_queue_arn}"
-      }]
-    }
+  inlinePolicies:
+    all-sqs-permissions-to-queue: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [{
+            "Effect": "Allow",
+            "Action": "*",
+            "Resource": "${aws_sqs_queue_arn}"
+        }]
+      }
