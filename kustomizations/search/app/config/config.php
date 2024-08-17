@@ -15,7 +15,7 @@ return [
     'logger.level' => 'debug',
     'aws' => [
         'queue_name' => '${search_queue_name}',
-        'credential_file' => false,
+        'credential_file' => true,
         'region' => '${aws_region}',
     ],
     'rds_articles' => [
