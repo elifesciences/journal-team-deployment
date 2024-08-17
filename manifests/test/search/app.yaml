@@ -15,7 +15,17 @@ spec:
   images:
     - name: ghcr.io/elifesciences/search
       newTag: remove-gearman-dockerise-a78d0edc-20240816.1045
+  dependsOn:
+  - name: search-queue
+  - name: search-queue-watcher-role
   postBuild:
+    substituteFrom:
+    # search_queue_arn and search_queue_name are retrieved from the configmap
+    - kind: ConfigMap
+      name: search-queue-config
+    # search_queue_watcher_role_arn are retrieved from the configmap
+    - kind: ConfigMap
+      name: search-queue-watcher-role
     substitute:
       # opensearch backup vars
       aws_region: ${aws_region}
