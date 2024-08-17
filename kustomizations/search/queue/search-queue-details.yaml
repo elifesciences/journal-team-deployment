@@ -5,7 +5,7 @@ metadata:
   name: search-queue-arn
 spec:
   to:
-    name: search-queue
+    name: search-queue-config
     kind: configmap
     key: search_queue_arn
   from:
@@ -21,7 +21,7 @@ metadata:
   name: search-queue-name
 spec:
   to:
-    name: search-queue
+    name: search-queue-config
     kind: configmap
     key: search_queue_name
   from:
