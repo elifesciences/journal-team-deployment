@@ -13,7 +13,7 @@ spec:
   prune: true
   targetNamespace: journal--test
   dependsOn:
-  - name: queue
+  - name: search-queue
   postBuild:
     substituteFrom:
     # search_queue_arn and search_queue_name are retrieved from the configmap
