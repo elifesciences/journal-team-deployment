@@ -1,0 +1,32 @@
+---
+apiVersion: services.k8s.aws/v1alpha1
+kind: FieldExport
+metadata:
+  name: search-queue-arn
+spec:
+  to:
+    name: search-queue
+    kind: configmap
+    key: search_queue_arn
+  from:
+    path: ".status.queueARN"
+    resource:
+      group: sqs.services.k8s.aws
+      kind: Queue
+      name: search-queue
+---
+apiVersion: services.k8s.aws/v1alpha1
+kind: FieldExport
+metadata:
+  name: search-queue-name
+spec:
+  to:
+    name: search-queue
+    kind: configmap
+    key: search_queue_name
+  from:
+    path: ".spec.queueName"
+    resource:
+      group: sqs.services.k8s.aws
+      kind: Queue
+      name: search-queue
