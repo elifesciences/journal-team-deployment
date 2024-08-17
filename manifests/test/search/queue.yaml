@@ -11,6 +11,7 @@ spec:
     namespace: flux-system
   path: ./kustomizations/search/queue
   prune: true
+  targetNamespace: journal--test
   postBuild:
     substitute:
       # deployment vars
