@@ -9,7 +9,7 @@ spec:
     kind: configmap
     key: search_queue_arn
   from:
-    path: ".status.queueARN"
+    path: ".status.ackResourceMetadata.arn"
     resource:
       group: sqs.services.k8s.aws
       kind: Queue
