@@ -29,6 +29,12 @@ spec:
     version: 2.11.0
     enable: true
     replicas: 1
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "210m"
+      limits:
+        memory: "256Mi"
   nodePools:
   - component: managers
     replicas: 3
@@ -37,10 +43,10 @@ spec:
       s3.client.default.identity_token_file: /usr/share/opensearch/config/aws-iam-token/token
     resources:
       requests:
-        memory: "6Gi"
-        cpu: "1400m"
+        memory: "3840Mi"
+        cpu: "100m"
       limits:
-        memory: "6Gi"
+        memory: "3840Mi"
     roles:
     - "cluster_manager"
     diskSize: 5Gi
@@ -67,10 +73,10 @@ spec:
       s3.client.default.identity_token_file: /usr/share/opensearch/config/aws-iam-token/token
     resources:
       requests:
-        memory: "6Gi"
-        cpu: "1400m"
+        memory: "4Gi"
+        cpu: "100m"
       limits:
-        memory: "6Gi"
+        memory: "4Gi"
     roles:
     - "data"
     diskSize: 30Gi
