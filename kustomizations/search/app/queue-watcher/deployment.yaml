@@ -13,10 +13,10 @@ spec:
         command: ["bin/console", "queue:watch"]
         resources:
           requests:
-            memory: "2Gi"
+            memory: "3Gi"
             cpu: "20m"
           limits:
-            memory: "2Gi"
+            memory: "3Gi"
         volumeMounts:
         - name: config-volume
           mountPath: /app/config.php
