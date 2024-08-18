@@ -11,6 +11,12 @@ spec:
       - name: search
         image: ghcr.io/elifesciences/search:latest
         command: ["bin/console", "queue:watch"]
+        resources:
+          requests:
+            memory: "1.5Gi"
+            cpu: "20m"
+          limits:
+            memory: "1.5Gi"
         volumeMounts:
         - name: config-volume
           mountPath: /app/config.php

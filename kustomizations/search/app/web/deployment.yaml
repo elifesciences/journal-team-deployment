@@ -19,6 +19,12 @@ spec:
           periodSeconds: 5
           failureThreshold: 10
           timeoutSeconds: 10
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "20m"
+          limits:
+            memory: "128Mi"
         volumeMounts:
         - name: config-volume
           mountPath: /app/config.php
