@@ -1,0 +1,35 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: search-queue-watcher
+  namespace: journal
+spec:
+  suspend: true
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          serviceAccount: search-queue-watcher
+          containers:
+          - name: search
+            image: ghcr.io/elifesciences/search:latest
+            command: ["bin/console", "queue:import", "all"]
+            resources:
+              requests:
+                memory: "4Gi"
+                cpu: "600m"
+              limits:
+                memory: "4Gi"
+            volumeMounts:
+            - name: config-volume
+              mountPath: /app/config.php
+              subPath: config.php
+          volumes:
+          - name: config-volume
+            configMap:
+              name: search-config
+              items:
+              - key: config.php
+                path: config.php

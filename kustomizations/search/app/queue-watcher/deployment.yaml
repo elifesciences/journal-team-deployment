@@ -4,6 +4,7 @@ metadata:
   name: search-queue-watcher
   namespace: journal
 spec:
+  replicas: 10
   template:
     spec:
       serviceAccount: search-queue-watcher
@@ -13,10 +14,10 @@ spec:
         command: ["bin/console", "queue:watch"]
         resources:
           requests:
-            memory: "3Gi"
-            cpu: "20m"
+            memory: "250Mi"
+            cpu: "150m"
           limits:
-            memory: "3Gi"
+            memory: "250Mi"
         volumeMounts:
         - name: config-volume
           mountPath: /app/config.php
