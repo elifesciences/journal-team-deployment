@@ -4,7 +4,6 @@ metadata:
   name: search-queue-watcher
   namespace: journal
 spec:
-  replicas: 10
   template:
     spec:
       serviceAccount: search-queue-watcher
