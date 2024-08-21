@@ -9,6 +9,8 @@ spec:
       maxUnavailable: ${maxUnavailable:=1}
   template:
     spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
         - name: basex-validator
           image: docker.io/elifesciences/basex-validator:latest
