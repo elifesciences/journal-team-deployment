@@ -5,6 +5,7 @@ resources:
 - serviceaccount.yaml
 - deployment.yaml
 - import-job.yaml
+- scaledobject.yaml
 
 labels:
 - includeSelectors: true

@@ -1,0 +1,17 @@
+
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: search-queue-watcher-scaledobject
+  namespace: journal
+spec:
+  maxReplicaCount: 30
+  scaleTargetRef:
+    name: search-queue-watcher
+  triggers:
+  - type: aws-sqs-queue
+    metadata:
+      awsRegion: "${aws_region}"
+      queueURL: "${search_queue_name}"
+      queueLength: "10"
