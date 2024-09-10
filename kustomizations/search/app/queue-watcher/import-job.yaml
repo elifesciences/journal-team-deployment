@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: search-queue-watcher
+  name: search-queue-import-all
   namespace: journal
 spec:
   suspend: true
