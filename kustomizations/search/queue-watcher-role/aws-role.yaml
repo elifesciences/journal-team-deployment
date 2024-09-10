@@ -25,20 +25,6 @@ spec:
               ]
             }
           }
-        },
-        {
-          "Effect": "Allow",
-          "Principal": {
-            "Federated": "${aws_oidc_arn}"
-          },
-          "Action": "sts:AssumeRoleWithWebIdentity",
-          "Condition": {
-            "ForAnyValue:StringEquals": {
-              "${aws_oidc_url}:sub": [
-                "system:serviceaccount:${keda_namespace}:${keda_service_account_name}"
-              ]
-            }
-          }
         }
       ]
     }

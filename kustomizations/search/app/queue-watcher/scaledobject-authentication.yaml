@@ -1,9 +1,0 @@
-apiVersion: keda.sh/v1alpha1
-kind: TriggerAuthentication
-metadata:
-  name: search-queue-watcher-scaledobject
-  namespace: journal
-spec:
-  podIdentity:
-    provider: aws
-    roleArn: "${search_queue_watcher_role_arn}"
