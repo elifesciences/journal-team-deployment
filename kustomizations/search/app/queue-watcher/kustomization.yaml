@@ -6,7 +6,6 @@ resources:
 - deployment.yaml
 - import-job.yaml
 - scaledobject.yaml
-- scaledobject-authentication.yaml
 
 labels:
 - includeSelectors: true
