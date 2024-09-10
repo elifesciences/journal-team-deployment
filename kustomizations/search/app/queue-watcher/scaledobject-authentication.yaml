@@ -5,4 +5,4 @@ metadata:
   namespace: journal
 spec:
   podIdentity:
-    provider: aws-eks
+    provider: aws
