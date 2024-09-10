@@ -6,4 +6,4 @@ metadata:
 spec:
   podIdentity:
     provider: aws
-    identityOwner: workload
+    roleArn: "${search_queue_watcher_role_arn}"
