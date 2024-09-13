@@ -4,8 +4,6 @@ kind: Ingress
 metadata:
   name: api-gateway
   namespace: journal--test
-  annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS" #important
 spec:
   rules:
   - host: test--gateway.elifesciences.org
