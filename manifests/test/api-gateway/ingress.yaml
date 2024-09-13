@@ -4,6 +4,8 @@ kind: Ingress
 metadata:
   name: api-gateway
   namespace: journal--test
+  annotations:
+    nginx.ingress.kubernetes.io/upstream-vhost: continuumtest--gateway.elife.internal
 spec:
   rules:
   - host: test--gateway.elifesciences.org
