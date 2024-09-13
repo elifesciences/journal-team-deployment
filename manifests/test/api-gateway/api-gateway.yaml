@@ -6,3 +6,19 @@ metadata:
 spec:
   type: ExternalName
   externalName: continuumtest--gateway.elife.internal
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: api-gateway-upstream
+  labels:
+    kubernetes.io/service-name: api-gateway
+addressType: FQDN
+ports:
+  - name: http
+    appProtocol: http
+    protocol: TCP
+    port: 80
+endpoints:
+  - addresses:
+      - continuumtest--gateway.elife.internal
