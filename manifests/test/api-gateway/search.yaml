@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: search-web
+  name: api-gateway-search
   namespace: journal--test
 spec:
   rules:
