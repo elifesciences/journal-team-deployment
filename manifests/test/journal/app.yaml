@@ -15,3 +15,8 @@ spec:
   images:
     - name: elifesciences/journal
       newTag: approved
+  postBuild:
+    substitute:
+      # deployment vars
+      env: test
+      hostname: journal.test.elifesciences.org
