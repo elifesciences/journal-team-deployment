@@ -15,4 +15,3 @@ spec:
   images:
     - name: elifesciences/journal
       newTag: approved
-  postBuild:
