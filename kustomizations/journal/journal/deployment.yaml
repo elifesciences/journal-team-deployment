@@ -62,7 +62,7 @@ spec:
             path: parameters.yaml
       - name: secret-parameters
         secret:
-          name: secret-parameters
+          name: journal-secret-parameters
           items:
           - key: secret_parameters.yaml
             path: secret_parameters.yaml
