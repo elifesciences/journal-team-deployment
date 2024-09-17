@@ -4,6 +4,7 @@ namespace: journal
 
 resources:
 - deployment.yaml
+- journal-secrets.yaml
 
 configMapGenerator:
 - name: journal-parameters
