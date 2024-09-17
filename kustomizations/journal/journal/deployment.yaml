@@ -68,6 +68,8 @@ spec:
             path: parameters.yaml
           - key: era_articles.yaml
             path: era_articles.yaml
+          - key: config_test.yaml
+            path: config_test.yaml
       - name: secret-parameters
         secret:
           secretName: journal-secret-parameters
