@@ -10,6 +10,7 @@ parameters:
     oauth2_client_id: journal--${env}
     trusted_hosts:
     - infra-ingress-nginx-controller.infra
+    - localhost
     cache_control: private, no-cache, no-store, must-revalidate
 
     mailer_transport: smtp
