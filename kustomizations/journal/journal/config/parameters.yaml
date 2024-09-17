@@ -5,6 +5,7 @@ parameters:
     redis_sessions: "redis://valkey-sessions-master:6379"
     dismissible_info_bars: {}
 
+    session_name: journal
     trusted_hosts:
     - infra-ingress-nginx-controller.infra
 
