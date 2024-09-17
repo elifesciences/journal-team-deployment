@@ -6,6 +6,7 @@ parameters:
     dismissible_info_bars: {}
 
     session_name: journal
+    oauth2_client_id: journal--${env}
     trusted_hosts:
     - infra-ingress-nginx-controller.infra
 
