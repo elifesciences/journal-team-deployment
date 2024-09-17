@@ -35,6 +35,9 @@ spec:
         - name: config-volume
           mountPath: /srv/journal/app/config/era_articles.yml
           subPath: era_articles.yaml
+        - name: config-volume
+          mountPath: /srv/journal/app/config/config_test.yml
+          subPath: config_test.yaml
         - name: secret-parameters
           mountPath: /srv/journal/app/config/secret_parameters.yml
           subPath: secret_parameters.yaml
