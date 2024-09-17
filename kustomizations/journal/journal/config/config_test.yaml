@@ -3,8 +3,8 @@ imports:
 
 parameters:
     api_connect_timeout: 1
-    api_timeout: 5
+    api_timeout: 10
     api_connect_timeout_slow: 1
-    api_timeout_slow: 10
+    api_timeout_slow: 20
 swiftmailer:
     disable_delivery: true
