@@ -10,6 +10,7 @@ configMapGenerator:
 - name: journal-parameters
   files:
   - config/parameters.yaml
+  - config/era_articles.yaml
 - name: nginx-journal-site-conf
   files:
   - config/nginx-site.conf
