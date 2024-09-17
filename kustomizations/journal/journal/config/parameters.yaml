@@ -7,11 +7,6 @@ parameters:
     - infra-ingress-nginx-controller.infra
 
     mailer_transport: smtp
-    mailer_host: '%env(MAILER_HOST)%'
-    mailer_port: '%env(MAILER_PORT)%'
-    mailer_username: '%env(MAILER_USERNAME)%'
-    mailer_password: '%env(MAILER_PASSWORD)%'
-    mailer_encryption: '%env(MAILER_ENCRYPTION)%'
 
     crm_url: https://crm.elifesciences.org/crm/civicrm/
     crm_api_url: https://crm.elifesciences.org/crm/sites/all/modules/civicrm/extern/rest.php
