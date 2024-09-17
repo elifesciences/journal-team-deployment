@@ -25,6 +25,7 @@ parameters:
 
     cb_id: 0a5c50d8-fcf9-47b1-8f4f-1eaadb13941b
 
+    feature_xpub: true
     xpub_client_id: journal--${env}
 
     hypothesis_api: https://hypothes.is/api/
