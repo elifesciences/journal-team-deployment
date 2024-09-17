@@ -16,6 +16,7 @@ parameters:
     crm_url: https://crm.elifesciences.org/crm/civicrm/
     crm_api_url: https://crm.elifesciences.org/crm/sites/all/modules/civicrm/extern/rest.php
 
+    api_url: test--gateway.elifesciences.org
 
     google_api_client.config:
         client_id: '%env(GOOGLE_API_CLIENT_CLIENT_ID)'
