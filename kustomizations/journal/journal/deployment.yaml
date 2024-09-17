@@ -30,7 +30,7 @@ spec:
           timeoutSeconds: 10
         volumeMounts:
         - name: config-volume
-          mountPath: /srv/journal/app/config/parameters.yaml
+          mountPath: /srv/journal/app/config/parameters.yml
           subPath: parameters.yaml
       - name: nginx
         image: nginx:latest
