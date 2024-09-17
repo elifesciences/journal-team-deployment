@@ -27,6 +27,7 @@ parameters:
 
     hypothesis_api: https://hypothes.is/api/
     hypothesis_authority: elifesciences.org
+    hypothesis_client_id: a22cf324-9145-11e6-8cb6-27d92694374e
 
     google_api_client.config:
         client_id: '%env(GOOGLE_API_CLIENT_CLIENT_ID)'
