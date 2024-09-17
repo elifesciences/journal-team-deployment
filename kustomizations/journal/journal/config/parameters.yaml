@@ -18,8 +18,8 @@ parameters:
     crm_url: https://crm.elifesciences.org/crm/civicrm/
     crm_api_url: https://crm.elifesciences.org/crm/sites/all/modules/civicrm/extern/rest.php
 
-    api_url: test--gateway.elifesciences.org
-    api_url_public: test--gateway.elifesciences.org
+    api_url: https://api.elifesciences.org
+    api_url_public: https://api.elifesciences.org
 
     gtm_id: GTM-NJBS9X
     google_optimize_id: OPT-MK8W6WS
