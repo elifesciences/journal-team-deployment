@@ -11,7 +11,7 @@ spec:
     namespace: flux-system
   update:
     strategy: Setters
-    path: ./manifests/basex-validator--prod.yaml
+    path: ./manifests/prod/basex-validator/app.yaml
   git:
     commit:
       author:
