@@ -14,6 +14,7 @@ spec:
   targetNamespace: journal--test
   postBuild:
     substitute:
+      env: test
       hostname: api.test.elifesciences.org
       cert_manager_issuer: "letsencrypt-prod"
       search_service_name: search-web
