@@ -46,3 +46,4 @@ parameters:
     router.request_context.scheme: https
 
     subject_rewrites: []
+    calls_to_action: []
