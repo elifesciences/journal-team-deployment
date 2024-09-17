@@ -12,6 +12,6 @@ spec:
         pathType: ImplementationSpecific
         backend:
           service:
-            name: search-web
+            name: ${search_service_name}
             port:
               number: 80
