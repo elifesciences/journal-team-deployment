@@ -9,3 +9,6 @@ configMapGenerator:
 - name: journal-parameters
   files:
   - config/parameters.yaml
+- name: nginx-journal-site-conf
+  files:
+  - config/nginx-site.conf

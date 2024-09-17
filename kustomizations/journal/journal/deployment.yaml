@@ -45,7 +45,10 @@ spec:
           failureThreshold: 10
           timeoutSeconds: 10
         volumeMounts:
-        - name: asset-volume
+        - name: nginx-config-volume
+          mountPath: /etc/nginx/conf.d/default.conf
+          subPath: nginx-site.conf
+        - name: assets-volume
           mountPath: /srv/journal/web
       volumes:
       - name: config-volume
@@ -54,6 +57,13 @@ spec:
           items:
           - key: parameters.yaml
             path: parameters.yaml
+      - name: nginx-config-volume
+        configMap:
+          name: nginx-journal-site-conf
+          items:
+          - key: nginx-site.conf
+            path: nginx-site.conf
+
       - name: assets-volume
         emptyDir:
           sizeLimit: 500Mi
