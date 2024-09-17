@@ -18,6 +18,9 @@ parameters:
     api_url: test--gateway.elifesciences.org
     api_url_public: test--gateway.elifesciences.org
 
+    gtm_id: GTM-NJBS9X
+    google_optimize_id: OPT-MK8W6WS
+
     google_api_client.config:
         client_id: '%env(GOOGLE_API_CLIENT_CLIENT_ID)'
         client_secret: '%env(GOOGLE_API_CLIENT_CLIENT_SECRET)'
