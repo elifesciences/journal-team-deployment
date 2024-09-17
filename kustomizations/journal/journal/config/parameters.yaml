@@ -21,6 +21,8 @@ parameters:
     gtm_id: GTM-NJBS9X
     google_optimize_id: OPT-MK8W6WS
 
+    cb_id: 0a5c50d8-fcf9-47b1-8f4f-1eaadb13941b
+
     google_api_client.config:
         client_id: '%env(GOOGLE_API_CLIENT_CLIENT_ID)'
         client_secret: '%env(GOOGLE_API_CLIENT_CLIENT_SECRET)'
