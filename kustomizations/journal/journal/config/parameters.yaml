@@ -1,0 +1,30 @@
+parameters:
+    redis_cache: "redis://valkey-cache-master:6379"
+    redis_sessions: "redis://valkey-sessions-master:6379"
+    dismissible_info_bars: {}
+
+    trusted_hosts:
+    - infra-ingress-nginx-controller.infra
+
+    mailer_transport: smtp
+    mailer_host: '%env(MAILER_HOST)%'
+    mailer_port: '%env(MAILER_PORT)%'
+    mailer_username: '%env(MAILER_USERNAME)%'
+    mailer_password: '%env(MAILER_PASSWORD)%'
+    mailer_encryption: '%env(MAILER_ENCRYPTION)%'
+
+    crm_url: https://crm.elifesciences.org/crm/civicrm/
+    crm_api_url: https://crm.elifesciences.org/crm/sites/all/modules/civicrm/extern/rest.php
+
+
+    google_api_client.config:
+        client_id: '%env(GOOGLE_API_CLIENT_CLIENT_ID)'
+        client_secret: '%env(GOOGLE_API_CLIENT_CLIENT_SECRET)'
+    google_api_client.refresh_token: '%env(GOOGLE_API_CLIENT_REFRESH_TOKEN)'
+    google_api_client.optout_unsubscribe_spreadsheet_id: '%env(GOOGLE_API_CLIENT_OPTOUT_UNSUBSCRIBE_SPREADSHEET_ID)'
+
+    # defaults for URL generation - host
+    router.request_context.host: ${hostname}
+
+    # defaults for URL generation - scheme
+    router.request_context.scheme: https

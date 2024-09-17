@@ -4,6 +4,7 @@ namespace: journal
 
 resources:
 - valkey
+- journal
 
 labels:
 - includeSelectors: true
