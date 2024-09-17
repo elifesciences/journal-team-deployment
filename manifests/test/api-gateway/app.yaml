@@ -19,4 +19,5 @@ spec:
       cert_manager_issuer: "letsencrypt-prod"
       search_service_name: search-web
       fallback_gateway_host: continuumtest--gateway.elifesciences.org
+      fallback_gateway_port: "443"
       fallback_gateway_protocol: HTTPS

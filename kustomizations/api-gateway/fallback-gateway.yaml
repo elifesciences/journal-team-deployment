@@ -16,10 +16,8 @@ metadata:
     kubernetes.io/service-name: fallback-gateway
 addressType: FQDN
 ports:
-  - name: http
-    appProtocol: http
-    protocol: TCP
-    port: 80
+  - protocol: TCP
+    port: ${fallback_gateway_port}
 endpoints:
   - addresses:
       - ${fallback_gateway_host}

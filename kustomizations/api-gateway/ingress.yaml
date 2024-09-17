@@ -19,7 +19,7 @@ spec:
           service:
             name: fallback-gateway
             port:
-              number: 80
+              number: ${fallback_gateway_port}
   tls:
   - hosts:
     - ${hostname}
