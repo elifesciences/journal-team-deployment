@@ -5,6 +5,8 @@ namespace: journal
 resources:
 - deployment.yaml
 - journal-secret-parameters.yaml
+- service.yaml
+- ingress.yaml
 
 configMapGenerator:
 - name: journal-parameters
