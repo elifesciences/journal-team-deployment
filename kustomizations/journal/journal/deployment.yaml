@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: journal
+  namespace: journal
+spec:
+  template:
+    spec:
+      initContainers:
+      - name: journal-assets
+        image: elifesciences/journal:latest
+        args:
+        - bash
+        - '-c'
+        - 'cp -rv /srv/journal/web/* /assets/'
+        volumeMounts:
+        - name: assets-volume
+          mountPath: /assets
+      containers:
+      - name: journal
+        image: elifesciences/journal:latest
+        ports:
+        - containerPort: 9000
+        readinessProbe:
+          tcpSocket:
+            port: 9000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 10
+          timeoutSeconds: 10
+        volumeMounts:
+        - name: config-volume
+          mountPath: /srv/journal/app/config/parameters.yaml
+          subPath: parameters.yaml
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /ping
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 10
+          timeoutSeconds: 10
+        volumeMounts:
+        - name: asset-volume
+          mountPath: /srv/journal/web
+      volumes:
+      - name: config-volume
+        configMap:
+          name: journal-parameters
+          items:
+          - key: parameters.yaml
+            path: parameters.yaml
+      - name: assets-volume
+        emptyDir:
+          sizeLimit: 500Mi
