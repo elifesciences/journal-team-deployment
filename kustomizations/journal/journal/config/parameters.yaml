@@ -1,7 +1,13 @@
 imports:
   - resource: secret_parameters.yml # see external secret
-  - resource: era_articles.yml # see external secret
+  - resource: era_articles.yml # see configmap
 parameters:
+    # Setup new timeouts
+    api_connect_timeout: 0.5
+    api_timeout: 2
+    api_connect_timeout_slow: 1
+    api_timeout_slow: 5
+
     redis_cache: "redis://valkey-cache-master:6379"
     redis_sessions: "redis://valkey-sessions-master:6379"
     dismissible_info_bars: {}
