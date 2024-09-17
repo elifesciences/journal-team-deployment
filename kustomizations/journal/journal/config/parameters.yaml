@@ -25,6 +25,8 @@ parameters:
 
     cb_id: 0a5c50d8-fcf9-47b1-8f4f-1eaadb13941b
 
+    xpub_client_id: journal--${env}
+
     hypothesis_api: https://hypothes.is/api/
     hypothesis_authority: elifesciences.org
     hypothesis_client_id: a22cf324-9145-11e6-8cb6-27d92694374e
