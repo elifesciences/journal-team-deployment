@@ -9,7 +9,7 @@ parameters:
     session_name: journal
     oauth2_client_id: journal--${env}
     trusted_hosts:
-    - infra-ingress-nginx-controller.infra
+    - ${hostname}
     - localhost
     cache_control: private, no-cache, no-store, must-revalidate
 
