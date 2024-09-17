@@ -1,3 +1,5 @@
+imports:
+  - resource: secret_parameters.yml # see external secret
 parameters:
     redis_cache: "redis://valkey-cache-master:6379"
     redis_sessions: "redis://valkey-sessions-master:6379"
