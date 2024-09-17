@@ -20,3 +20,4 @@ spec:
       # deployment vars
       env: test
       hostname: journal.test.elifesciences.org
+      cert-manager-issuer: "letsencrypt-prod"
