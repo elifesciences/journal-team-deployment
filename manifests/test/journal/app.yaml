@@ -21,3 +21,5 @@ spec:
       env: test
       hostname: journal.test.elifesciences.org
       cert_manager_issuer: "letsencrypt-prod"
+
+      api_url: https://api.test.elifesciences.org
