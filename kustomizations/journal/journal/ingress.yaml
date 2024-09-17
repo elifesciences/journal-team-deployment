@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: journal-web
   annotations:
-    cert-manager.io/cluster-issuer: "${cert-manager-issuer}"
+    cert-manager.io/cluster-issuer: "${cert_manager_issuer}"
 spec:
   rules:
   - host: ${hostname}
