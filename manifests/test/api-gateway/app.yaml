@@ -1,0 +1,21 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: api-gateway
+  namespace: journal--test
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/api-gateway
+  prune: true
+  targetNamespace: journal--test
+  postBuild:
+    substitute:
+      hostname: api.test.elifesciences.org
+      cert_manager_issuer: "letsencrypt-prod"
+      search_service_name: search-web
+      fallback_gateway_host: continuumtest--gateway.elifesciences.org
+      fallback_gateway_protocol: HTTPS

@@ -2,10 +2,10 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: api-gateway-search
-  namespace: journal--test
+  namespace: journal
 spec:
   rules:
-  - host: test--gateway.elifesciences.org
+  - host: ${hostname}
     http:
       paths:
       - path: /search
