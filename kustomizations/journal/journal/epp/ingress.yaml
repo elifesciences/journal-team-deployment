@@ -17,4 +17,4 @@ spec:
           service:
             name: epp
             port:
-              number: 80
+              number: ${epp_port}

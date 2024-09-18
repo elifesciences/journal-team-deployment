@@ -25,4 +25,4 @@ spec:
       api_url: https://api.test.elifesciences.org
       epp_host: epp-client.epp--prod.svc.cluster.local
       epp_protocol: http
-      epp_port: "80"
+      epp_port: "3000"
