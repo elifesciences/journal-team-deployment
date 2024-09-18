@@ -25,3 +25,4 @@ spec:
       api_url: https://api.test.elifesciences.org
       epp_url: http://epp-client.epp--prod:3000
       observer_url: http://prod--observer.elife.internal
+      pubpub_url: https://elife-container.pubpub.org
