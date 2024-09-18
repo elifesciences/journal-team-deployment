@@ -7,7 +7,6 @@ resources:
 - journal-secret-parameters.yaml
 - service.yaml
 - ingress.yaml
-- epp
 
 configMapGenerator:
 - name: journal-parameters
