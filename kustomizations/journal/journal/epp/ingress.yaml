@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: journal-epp
+  namespace: journal
+  annotations:
+    nginx.ingress.kubernetes.io/upstream-vhost: ${epp_host}
+    nginx.ingress.kubernetes.io/backend-protocol: ${epp_protocol:-"HTTP"}
+spec:
+  rules:
+  - host: ${hostname}
+    http:
+      paths:
+      - path: /reviewed-preprints
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: epp
+            port:
+              number: 80
