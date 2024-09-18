@@ -35,3 +35,4 @@ spec:
       # deployment vars
       env: test
       hostname: test--search.elifesciences.org
+      api_url: https://api.test.elifesciences.org

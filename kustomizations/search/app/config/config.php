@@ -9,7 +9,7 @@ return [
     'elastic_ssl_verification' => false,
     'elastic_logging' => true,
     'elastic_force_sync' => false,
-    'api_url' => 'https://prod--gateway.elifesciences.org',
+    'api_url' => '${api_url}',
     'api_requests_batch' => 20,
     'rate_limit_minimum_page' => 21,
     'logger.level' => 'debug',
