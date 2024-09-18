@@ -16,6 +16,15 @@ spec:
         volumeMounts:
         - name: assets-volume
           mountPath: /assets
+      - name: error-assets
+        image: busybox:latest
+        args:
+        - sh
+        - '-c'
+        - 'cd /assets; wget https://raw.githubusercontent.com/elifesciences/error-pages/approved/public/404.html https://raw.githubusercontent.com/elifesciences/error-pages/approved/public/410.html https://raw.githubusercontent.com/elifesciences/error-pages/approved/public/4xx.html https://raw.githubusercontent.com/elifesciences/error-pages/approved/public/503.html https://raw.githubusercontent.com/elifesciences/error-pages/approved/public/5xx.html'
+        volumeMounts:
+        - name: error-assets-volume
+          mountPath: /assets
       containers:
       - name: journal
         image: elifesciences/journal:latest
@@ -59,6 +68,8 @@ spec:
           subPath: nginx-site.conf
         - name: assets-volume
           mountPath: /srv/journal/web
+        - name: error-assets-volume
+          mountPath: /srv/error-pages/public/
       volumes:
       - name: config-volume
         configMap:
@@ -86,3 +97,6 @@ spec:
       - name: assets-volume
         emptyDir:
           sizeLimit: 500Mi
+      - name: error-assets-volume
+        emptyDir:
+          sizeLimit: 50Mi
