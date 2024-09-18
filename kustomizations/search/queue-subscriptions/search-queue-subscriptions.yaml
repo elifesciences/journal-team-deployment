@@ -7,8 +7,6 @@ spec:
   endpoint: ${search_queue_arn}
   protocol: sqs
   topicARN: ${bus_articles_topic_arn}
-  tags:
-    Project: journal
 ---
 apiVersion: sns.services.k8s.aws/v1alpha1
 kind: Subscription
@@ -18,8 +16,6 @@ spec:
   endpoint: ${search_queue_arn}
   protocol: sqs
   topicARN: ${bus_podcast_episodes_topic_arn}
-  tags:
-    Project: journal
 ---
 apiVersion: sns.services.k8s.aws/v1alpha1
 kind: Subscription
@@ -29,8 +25,6 @@ spec:
   endpoint: ${search_queue_arn}
   protocol: sqs
   topicARN: ${bus_collections_topic_arn}
-  tags:
-    Project: journal
 ---
 apiVersion: sns.services.k8s.aws/v1alpha1
 kind: Subscription
@@ -40,8 +34,6 @@ spec:
   endpoint: ${search_queue_arn}
   protocol: sqs
   topicARN: ${bus_interviews_topic_arn}
-  tags:
-    Project: journal
 ---
 apiVersion: sns.services.k8s.aws/v1alpha1
 kind: Subscription
@@ -51,8 +43,6 @@ spec:
   endpoint: ${search_queue_arn}
   protocol: sqs
   topicARN: ${bus_blog_articles_topic_arn}
-  tags:
-    Project: journal
 ---
 apiVersion: sns.services.k8s.aws/v1alpha1
 kind: Subscription
@@ -62,8 +52,6 @@ spec:
   endpoint: ${search_queue_arn}
   protocol: sqs
   topicARN: ${bus_labs_posts_topic_arn}
-  tags:
-    Project: journal
 ---
 apiVersion: sns.services.k8s.aws/v1alpha1
 kind: Subscription
@@ -73,5 +61,3 @@ spec:
   endpoint: ${search_queue_arn}
   protocol: sqs
   topicARN: ${bus_reviewed_preprints_topic_arn}
-  tags:
-    Project: journal
