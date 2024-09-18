@@ -13,7 +13,7 @@ spec:
 apiVersion: sns.services.k8s.aws/v1alpha1
 kind: Subscription
 metadata:
-  name: search-queue-subscription-bus-articles
+  name: search-queue-subscription-bus-podcast-episodes
 spec:
   endpoint: ${search_queue_arn}
   protocol: sqs
@@ -24,7 +24,7 @@ spec:
 apiVersion: sns.services.k8s.aws/v1alpha1
 kind: Subscription
 metadata:
-  name: search-queue-subscription-bus-articles
+  name: search-queue-subscription-bus-collections
 spec:
   endpoint: ${search_queue_arn}
   protocol: sqs
@@ -35,7 +35,7 @@ spec:
 apiVersion: sns.services.k8s.aws/v1alpha1
 kind: Subscription
 metadata:
-  name: search-queue-subscription-bus-articles
+  name: search-queue-subscription-bus-interviews
 spec:
   endpoint: ${search_queue_arn}
   protocol: sqs
@@ -46,7 +46,7 @@ spec:
 apiVersion: sns.services.k8s.aws/v1alpha1
 kind: Subscription
 metadata:
-  name: search-queue-subscription-bus-articles
+  name: search-queue-subscription-bus-blog-articles
 spec:
   endpoint: ${search_queue_arn}
   protocol: sqs
@@ -57,7 +57,7 @@ spec:
 apiVersion: sns.services.k8s.aws/v1alpha1
 kind: Subscription
 metadata:
-  name: search-queue-subscription-bus-articles
+  name: search-queue-subscription-bus-labs-posts
 spec:
   endpoint: ${search_queue_arn}
   protocol: sqs
@@ -68,7 +68,7 @@ spec:
 apiVersion: sns.services.k8s.aws/v1alpha1
 kind: Subscription
 metadata:
-  name: search-queue-subscription-bus-articles
+  name: search-queue-subscription-bus-reviewed-preprints
 spec:
   endpoint: ${search_queue_arn}
   protocol: sqs
