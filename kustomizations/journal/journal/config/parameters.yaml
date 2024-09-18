@@ -18,6 +18,8 @@ parameters:
     crm_url: https://crm.elifesciences.org/crm/civicrm/
     crm_api_url: https://crm.elifesciences.org/crm/sites/all/modules/civicrm/extern/rest.php
 
+    side_by_side_view_url: https://lens.elifesciences.org/
+
     api_url: ${api_url}
     api_url_public: ${api_url}
 
