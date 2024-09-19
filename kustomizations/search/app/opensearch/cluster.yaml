@@ -73,8 +73,8 @@ spec:
       s3.client.default.identity_token_file: /usr/share/opensearch/config/aws-iam-token/token
     resources:
       requests:
-        memory: "4Gi"
-        cpu: "100m"
+        memory: "6Gi"
+        cpu: "1000m"
       limits:
         memory: "4Gi"
     roles:
