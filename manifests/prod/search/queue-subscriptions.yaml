@@ -1,0 +1,33 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: search-queue-subscriptions
+  namespace: journal--prod
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/search/queue-subscriptions
+  prune: true
+  targetNamespace: journal--prod
+  dependsOn:
+  - name: search-queue
+  postBuild:
+    substituteFrom:
+    # search_queue_arn and search_queue_name are retrieved from the configmap
+    - kind: ConfigMap
+      name: search-queue-config
+    substitute:
+      # deployment vars
+      env: prod
+
+      # Which SNS topics should the queue be subscribed to?
+      bus_articles_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-articles--prod
+      bus_podcast_episodes_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-podcast-episodes--prod
+      bus_collections_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-collections--prod
+      bus_interviews_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-interviews--prod
+      bus_blog_articles_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-blog-articles--prod
+      bus_labs_posts_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-labs-posts--prod
+      bus_reviewed_preprints_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-reviewed-preprints--prod

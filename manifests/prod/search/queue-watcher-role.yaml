@@ -1,0 +1,27 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: search-queue-watcher-role
+  namespace: journal--prod
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/search/queue-watcher-role
+  prune: true
+  targetNamespace: journal--prod
+  dependsOn:
+  - name: search-queue
+  postBuild:
+    substituteFrom:
+    # search_queue_arn and search_queue_name are retrieved from the configmap
+    - kind: ConfigMap
+      name: search-queue-config
+    substitute:
+      # deployment vars
+      env: prod
+      aws_oidc_arn: "arn:aws:iam::512686554592:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/0108D0073AFB87B6669E378F0A9CFB76"
+      aws_oidc_url: "oidc.eks.us-east-1.amazonaws.com/id/0108D0073AFB87B6669E378F0A9CFB76"
+      irsa_namespace: journal--prod
