@@ -16,3 +16,12 @@ spec:
     substitute:
       # deployment vars
       env: test
+
+      # Which SNS topics should the granted permission
+      bus_articles_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-articles--continuumtest
+      bus_podcast_episodes_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-podcast-episodes--continuumtest
+      bus_collections_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-collections--continuumtest
+      bus_interviews_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-interviews--continuumtest
+      bus_blog_articles_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-blog-articles--continuumtest
+      bus_labs_posts_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-labs-posts--continuumtest
+      bus_reviewed_preprints_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-reviewed-preprints--continuumtest

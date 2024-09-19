@@ -16,3 +16,12 @@ spec:
     substitute:
       # deployment vars
       env: prod
+
+      # Which SNS topics should the queue be subscribed to?
+      bus_articles_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-articles--prod
+      bus_podcast_episodes_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-podcast-episodes--prod
+      bus_collections_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-collections--prod
+      bus_interviews_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-interviews--prod
+      bus_blog_articles_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-blog-articles--prod
+      bus_labs_posts_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-labs-posts--prod
+      bus_reviewed_preprints_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-reviewed-preprints--prod
