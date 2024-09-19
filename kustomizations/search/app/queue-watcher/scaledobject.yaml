@@ -6,6 +6,7 @@ metadata:
   name: search-queue-watcher-scaledobject
   namespace: journal
 spec:
+  minReplicaCount: 1
   maxReplicaCount: 30
   scaleTargetRef:
     name: search-queue-watcher
