@@ -22,6 +22,8 @@ spec:
         region: ${aws_region}
         base_path: journal/search/opensearch/${env}
     # This is to work around JRE permission issues, see https://github.com/opensearch-project/opensearch-k8s-operator/issues/442
+    additionalConfig:
+      indices.query.bool.max_clause_count: "2048"
     additionalVolumes:
     - name: aws-iam-token
       path: /usr/share/opensearch/config/aws-iam-token
