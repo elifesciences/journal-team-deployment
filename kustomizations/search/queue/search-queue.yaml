@@ -16,7 +16,7 @@ spec:
             "AWS": "*"
           },
           "Action": "SQS:SendMessage",
-          "Resource": "arn:aws:sqs:${aws_region}:${aws_accountid}:elife-search-${env}",
+          "Resource": "arn:aws:sqs:${aws_region}:${aws_account_id}:elife-search-${env}",
           "Condition": {
             "StringLike": {
               "aws:SourceArn": "${bus_articles_topic_arn}"
@@ -29,7 +29,7 @@ spec:
             "AWS": "*"
           },
           "Action": "SQS:SendMessage",
-          "Resource": "arn:aws:sqs:${aws_region}:512686554592:elife-search-${env}",
+          "Resource": "arn:aws:sqs:${aws_region}:${aws_account_id}:elife-search-${env}",
           "Condition": {
             "StringLike": {
               "aws:SourceArn": "${bus_podcast_episodes_topic_arn}"
@@ -42,7 +42,7 @@ spec:
             "AWS": "*"
           },
           "Action": "SQS:SendMessage",
-          "Resource": "arn:aws:sqs:${aws_region}:512686554592:elife-search-${env}",
+          "Resource": "arn:aws:sqs:${aws_region}:${aws_account_id}:elife-search-${env}",
           "Condition": {
             "StringLike": {
               "aws:SourceArn": "${bus_collections_topic_arn}"
@@ -55,7 +55,7 @@ spec:
             "AWS": "*"
           },
           "Action": "SQS:SendMessage",
-          "Resource": "arn:aws:sqs:${aws_region}:512686554592:elife-search-${env}",
+          "Resource": "arn:aws:sqs:${aws_region}:${aws_account_id}:elife-search-${env}",
           "Condition": {
             "StringLike": {
               "aws:SourceArn": "${bus_interviews_topic_arn}"
@@ -68,7 +68,7 @@ spec:
             "AWS": "*"
           },
           "Action": "SQS:SendMessage",
-          "Resource": "arn:aws:sqs:${aws_region}:512686554592:elife-search-${env}",
+          "Resource": "arn:aws:sqs:${aws_region}:${aws_account_id}:elife-search-${env}",
           "Condition": {
             "StringLike": {
               "aws:SourceArn": "${bus_blog_articles_topic_arn}"
@@ -81,7 +81,7 @@ spec:
             "AWS": "*"
           },
           "Action": "SQS:SendMessage",
-          "Resource": "arn:aws:sqs:${aws_region}:512686554592:elife-search-${env}",
+          "Resource": "arn:aws:sqs:${aws_region}:${aws_account_id}:elife-search-${env}",
           "Condition": {
             "StringLike": {
               "aws:SourceArn": "${bus_labs_posts_topic_arn}"
@@ -94,7 +94,7 @@ spec:
             "AWS": "*"
           },
           "Action": "SQS:SendMessage",
-          "Resource": "arn:aws:sqs:${aws_region}:512686554592:elife-search-${env}",
+          "Resource": "arn:aws:sqs:${aws_region}:${aws_account_id}:elife-search-${env}",
           "Condition": {
             "StringLike": {
               "aws:SourceArn": "${bus_reviewed_preprints_topic_arn}"
