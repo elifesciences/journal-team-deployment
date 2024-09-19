@@ -2,6 +2,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: search-web
+  annotations:
+    cert-manager.io/cluster-issuer: "${cert_manager_issuer}"
 spec:
   rules:
   - host: ${hostname}
