@@ -16,3 +16,7 @@ spec:
             name: search-web
             port:
               number: 80
+tls:
+  - hosts:
+    - ${hostname}
+    secretName: search-web-tls
