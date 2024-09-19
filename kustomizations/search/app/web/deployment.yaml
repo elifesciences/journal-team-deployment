@@ -21,10 +21,10 @@ spec:
           timeoutSeconds: 10
         resources:
           requests:
-            memory: "128Mi"
+            memory: "256Mi"
             cpu: "20m"
           limits:
-            memory: "128Mi"
+            memory: "256Mi"
         volumeMounts:
         - name: config-volume
           mountPath: /app/config.php
