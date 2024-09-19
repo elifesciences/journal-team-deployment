@@ -3,6 +3,6 @@ kind: Queue
 metadata:
   name: search-queue
 spec:
-  queueName: search--${env}
+  queueName: elife-search-${env}
   tags:
     Project: journal

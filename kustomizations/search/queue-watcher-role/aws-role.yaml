@@ -4,7 +4,7 @@ metadata:
   name: search-queue-watcher
   namespace: journal
 spec:
-  name: search--${env}-queue-watcher
+  name: elife-search-${env}-queue-watcher
   tags:
   - key: Project
     value: journal
