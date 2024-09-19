@@ -17,7 +17,7 @@ spec:
       # deployment vars
       env: prod
       aws_region: "${aws_region}"
-      aws_account_id: "${aws_account_id}"
+      aws_account_id: "\"${aws_account_id}\""
 
       # Which SNS topics should the queue be subscribed to?
       bus_articles_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-articles--prod
