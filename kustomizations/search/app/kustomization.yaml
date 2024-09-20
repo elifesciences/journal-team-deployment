@@ -6,6 +6,7 @@ resources:
 - opensearch
 - web
 - queue-watcher
+- automation
 
 labels:
 - includeSelectors: true

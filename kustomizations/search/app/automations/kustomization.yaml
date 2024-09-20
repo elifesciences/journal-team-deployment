@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: journal
+resources:
+- search-source.yaml
+- search-policy-stable.yaml
+- search-policy-unstable.yaml
+- search-policy-remove-gearman.yaml
