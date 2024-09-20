@@ -4,3 +4,31 @@ namespace: journal
 
 resources:
 - ../app
+
+patches:
+- target:
+    kind: Deployment
+    name: search-queue-watcher
+  patch: |
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: search-queue-watcher
+    spec:
+      template:
+        spec:
+          containers:
+          - name: search
+            volumeMounts:
+            - name: logs
+              mountPath: /app/var/logs
+          - name: logs
+            image: cr.fluentbit.io/fluent/fluent-bit
+            command: ["-i", "tail", "-p", "path=/app/var/logs/all.json", "-o", "stdout"]
+            volumeMounts:
+            - name: logs
+              mountPath: /app/var/logs
+          volumes:
+          - name: logs
+            emptyDir:
+              sizeLimit: 50Mi
