@@ -21,7 +21,11 @@ spec:
         - name: config-volume
           mountPath: /app/config.php
           subPath: config.php
+        - name: logs
+          mountPath: /app/var/logs
       volumes:
+      - name: logs
+        emptyDir: {}
       - name: config-volume
         configMap:
           name: search-config
