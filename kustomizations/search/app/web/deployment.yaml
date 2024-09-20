@@ -33,7 +33,7 @@ spec:
           mountPath: /app/var/logs
       - name: logs
         image: cr.fluentbit.io/fluent/fluent-bit
-        command: ["/fluent-bit/bin/fluent-bit", "-i", "tail", "-p", "path=/app/var/logs/all.json", "-o", "stdout", "-p", "format=json_lines"]
+        command: ["/fluent-bit/bin/fluent-bit", "-i", "tail", "-p", "path=/app/var/logs/all.json", "-o", "stdout", "-p", "format=json_stream"]
         volumeMounts:
         - name: logs
           mountPath: /app/var/logs
