@@ -31,6 +31,12 @@ spec:
           subPath: config.php
         - name: logs
           mountPath: /app/var/logs
+      - name: logs
+        image: cr.fluentbit.io/fluent/fluent-bit
+        command: ["/fluent-bit/bin/fluent-bit", "-i", "tail", "-p", "path=/app/var/logs/all.json", "-o", "stdout"]
+        volumeMounts:
+        - name: logs
+          mountPath: /app/var/logs
       volumes:
       - name: logs
         emptyDir: {}
