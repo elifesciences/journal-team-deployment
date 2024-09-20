@@ -30,5 +30,4 @@ patches:
               mountPath: /app/var/logs
           volumes:
           - name: logs
-            emptyDir:
-              sizeLimit: 50Mi
+            emptyDir: {}
