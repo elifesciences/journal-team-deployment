@@ -6,7 +6,7 @@ metadata:
 spec:
   endpoint: ${search_queue_arn}
   protocol: sqs
-  rawMessageDelivery: true
+  rawMessageDelivery: "true"
   topicARN: ${bus_articles_topic_arn}
 ---
 apiVersion: sns.services.k8s.aws/v1alpha1
@@ -26,7 +26,7 @@ metadata:
 spec:
   endpoint: ${search_queue_arn}
   protocol: sqs
-  rawMessageDelivery: true
+  rawMessageDelivery: "true"
   topicARN: ${bus_collections_topic_arn}
 ---
 apiVersion: sns.services.k8s.aws/v1alpha1
@@ -36,7 +36,7 @@ metadata:
 spec:
   endpoint: ${search_queue_arn}
   protocol: sqs
-  rawMessageDelivery: true
+  rawMessageDelivery: "true"
   topicARN: ${bus_interviews_topic_arn}
 ---
 apiVersion: sns.services.k8s.aws/v1alpha1
@@ -46,7 +46,7 @@ metadata:
 spec:
   endpoint: ${search_queue_arn}
   protocol: sqs
-  rawMessageDelivery: true
+  rawMessageDelivery: "true"
   topicARN: ${bus_blog_articles_topic_arn}
 ---
 apiVersion: sns.services.k8s.aws/v1alpha1
@@ -56,7 +56,7 @@ metadata:
 spec:
   endpoint: ${search_queue_arn}
   protocol: sqs
-  rawMessageDelivery: true
+  rawMessageDelivery: "true"
   topicARN: ${bus_labs_posts_topic_arn}
 ---
 apiVersion: sns.services.k8s.aws/v1alpha1
@@ -66,5 +66,5 @@ metadata:
 spec:
   endpoint: ${search_queue_arn}
   protocol: sqs
-  rawMessageDelivery: true
+  rawMessageDelivery: "true"
   topicARN: ${bus_reviewed_preprints_topic_arn}
