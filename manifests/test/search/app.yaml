@@ -9,7 +9,7 @@ spec:
     kind: GitRepository
     name: journal-team-deployment
     namespace: flux-system
-  path: ./kustomizations/search/app
+  path: ./kustomizations/search/app-next
   prune: true
   targetNamespace: journal--test
   images:
