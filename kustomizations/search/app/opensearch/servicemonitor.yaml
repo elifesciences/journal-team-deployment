@@ -22,9 +22,6 @@ spec:
     tlsConfig:
       insecureSkipVerify: true
   jobLabel: opensearch-monitor
-  namespaceSelector:
-    matchNames:
-    - data-hub
   podTargetLabels:
   - opster.io/opensearch-cluster
   selector:
