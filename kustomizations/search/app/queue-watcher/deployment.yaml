@@ -25,10 +25,20 @@ spec:
           mountPath: /app/var/logs
       - name: logs
         image: cr.fluentbit.io/fluent/fluent-bit
-        command: ["/fluent-bit/bin/fluent-bit", "-i", "tail", "-p", "path=/app/var/logs/all.json", "-p", "parser=json", "-o", "stdout", "-p", "format=json_stream"]
+        command: 
+        - "/fluent-bit/bin/fluent-bit"
+        - "--parser=/config/json-parser.conf"
+        - "--input=tail"
+        - "--prop=path=/app/var/logs/all.json"
+        - "--prop=parser=search"
+        - "--output=stdout"
+        - "--prop=format=json_stream"
         volumeMounts:
         - name: logs
           mountPath: /app/var/logs
+        - name: log-config-volume
+          mountPath: /config/json-parser.conf
+          subPath: json-parser.conf
       volumes:
       - name: logs
         emptyDir: {}
@@ -38,3 +48,9 @@ spec:
           items:
           - key: config.php
             path: config.php
+      - name: log-config-volume
+        configMap:
+          name: search-log-config
+          items:
+          - key: json-parser.conf
+            path: json-parser.conf
