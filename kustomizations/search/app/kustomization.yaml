@@ -18,6 +18,6 @@ configMapGenerator:
 - name: search-config
   files:
   - config/config.php
-- name: log-config
+- name: search-log-config
   files:
   - config/json-parser.conf
