@@ -33,14 +33,14 @@ spec:
           mountPath: /app/var/logs
       - name: logs
         image: cr.fluentbit.io/fluent/fluent-bit
-        command: 
+        command:
         - "/fluent-bit/bin/fluent-bit"
         - "--parser=/config/json-parser.conf"
         - "--input=tail"
         - "--prop=path=/app/var/logs/all.json"
         - "--prop=parser=search"
         - "--output=stdout"
-        - "--prop=format=json_stream"
+        - "--prop=format=json_lines"
         volumeMounts:
         - name: logs
           mountPath: /app/var/logs
