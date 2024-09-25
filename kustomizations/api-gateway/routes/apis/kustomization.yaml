@@ -24,10 +24,11 @@ resources:
 
 - annotations.yaml
 - recommendations.yaml
+- digests.yaml
 
 # - articles.yaml
 # - bioprotocol.yaml
-# - digests.yaml
+
 # - metrics.yaml
 # - oauth2.yaml
 # - profiles.yaml
