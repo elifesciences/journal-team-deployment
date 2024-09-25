@@ -2,3 +2,10 @@ namespace:
 - kind: GatewayClass
   path: spec/parametersRef/namespace
   create: true
+
+- kind: HTTPRoute
+  path: spec/parentRefs/namespace
+  create: true
+- kind: HTTPRoute
+  path: spec/rules/backendRefs/namespace
+  create: true
