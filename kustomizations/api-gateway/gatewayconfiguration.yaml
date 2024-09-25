@@ -1,0 +1,12 @@
+---
+kind: GatewayConfiguration
+apiVersion: gateway-operator.konghq.com/v1beta1
+metadata:
+  name: api-gateway
+  namespace: journal
+spec:
+  dataPlaneOptions:
+    network:
+      services:
+        ingress:
+          type: ClusterIP # internal gateway only

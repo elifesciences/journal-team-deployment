@@ -3,9 +3,9 @@ kind: Kustomization
 namespace: journal
 
 resources:
-- fallback-gateway.yaml
-- ingress.yaml
-- search.yaml
+- gatewayconfiguration.yaml
+- gatewayclass.yaml
+- gateway.yaml
 
 labels:
 - includeSelectors: true

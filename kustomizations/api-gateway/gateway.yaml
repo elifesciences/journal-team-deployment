@@ -1,0 +1,12 @@
+---
+kind: Gateway
+apiVersion: gateway.networking.k8s.io/v1
+metadata:
+  name: api-gateway
+  namespace: journal
+spec:
+  gatewayClassName: api-gateway
+  listeners:
+  - name: http
+    protocol: HTTP
+    port: 80
