@@ -1,0 +1,24 @@
+---
+kind: HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1
+metadata:
+  name: oauth2
+  namespace: journal
+  annotations:
+    konghq.com/preserve-host: "false"
+spec:
+  parentRefs:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    name: api-gateway
+    namespace: journal
+  rules:
+  - backendRefs:
+    - name: ${profiles_service_name}
+      namespace: journal
+      kind: Service
+      port: ${profiles_port}
+    matches:
+    - path:
+        type: PathPrefix
+        value: /oauth2

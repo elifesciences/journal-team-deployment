@@ -28,6 +28,7 @@ resources:
 - bioprotocol.yaml
 - search.yaml
 - profiles.yaml
+- oauth2.yaml
 
 - reviewed-preprints.yaml
 
@@ -35,4 +36,3 @@ resources:
 
 
 # - metrics.yaml
-# - oauth2.yaml
