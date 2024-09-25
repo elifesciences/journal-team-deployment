@@ -7,5 +7,5 @@ spec:
   type: ExternalName
   externalName: ${annotations_hostname}
   ports:
-  - protocol: TCP
+  - protocol: ${annotations_protocol}
     port: ${annotations_port}

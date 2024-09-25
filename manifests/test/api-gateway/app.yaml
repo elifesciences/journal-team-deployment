@@ -19,3 +19,44 @@ spec:
       # define services
       annotations_hostname: continuumtest--annotations.elife.internal
       annotations_port: "80"
+      annotations_protocol: http
+      annotations_service_name: annotations-proxy
+
+      bioprotocol_hostname: continuumtest--bp.elife.internal
+      bioprotocol_port: "80"
+      bioprotocol_protocol: http
+      bioprotocol_service_name: bioprotocol-proxy
+
+      digests_hostname: continuumtest--digests.elife.internal
+      digests_port: "80"
+      digests_protocol: http
+      digests_service_name: digests-proxy
+
+      journal_cms_hostname: continuumtest--journal-cms.elife.internal
+      journal_cms_port: "80"
+      journal_cms_protocol: http
+      journal_cms_service_name: journal-cms-proxy
+
+      lax_hostname: continuumtest--lax.elifesciences.org
+      lax_port: "443"
+      lax_protocol: https
+      lax_service_name: lax-proxy
+
+      metrics_hostname: continuumtest--metrics.elife.internal
+      metrics_port: "80"
+      metrics_protocol: http
+      metrics_service_name: metrics-proxy
+
+      profiles_hostname: continuumtest--profiles.elife.internal
+      profiles_port: "80"
+      profiles_protocol: http
+      profiles_service_name: profiles-proxy
+
+      recommendations_hostname: continuumtest--recommendations.elife.internal
+      recommendations_port: "80"
+      recommendations_protocol: http
+      recommendations_service_name: recommendations-proxy
+
+      search_port: "80"
+      search_protocol: http
+      search_service_name: search-web

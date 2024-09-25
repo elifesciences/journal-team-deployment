@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: journal-cms
+  namespace: journal
+spec:
+  type: ExternalName
+  externalName: ${journal_cms_hostname}
+  ports:
+  - protocol: ${journal_cms_protocol}
+    port: ${journal_cms_port}

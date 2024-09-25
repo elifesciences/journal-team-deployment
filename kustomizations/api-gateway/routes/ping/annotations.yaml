@@ -14,7 +14,7 @@ spec:
     namespace: journal
   rules:
   - backendRefs:
-    - name: annotations
+    - name: ${annotations_service_name}
       namespace: journal
       kind: Service
       port: ${annotations_port}

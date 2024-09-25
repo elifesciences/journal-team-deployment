@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lax
+  namespace: journal
+spec:
+  type: ExternalName
+  externalName: ${lax_hostname}
+  ports:
+  - protocol: ${lax_protocol}
+    port: ${lax_port}

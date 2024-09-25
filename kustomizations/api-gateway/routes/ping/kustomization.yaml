@@ -3,11 +3,11 @@ kind: Kustomization
 
 resources:
 - annotations.yaml
-# - bioprotocol.yaml
-# - digests.yaml
-# - journal_cms.yaml
-# - lax.yaml
-# - metrics.yaml
-# - profiles.yaml
-# - recommendations.yaml
-# - search.yaml
+- bioprotocol.yaml
+- digests.yaml
+- journal-cms.yaml
+- lax.yaml
+- metrics.yaml
+- profiles.yaml
+- recommendations.yaml
+- search.yaml
