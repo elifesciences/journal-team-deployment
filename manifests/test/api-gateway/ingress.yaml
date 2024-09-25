@@ -1,7 +1,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: api-gateway
+  name: api-gateway-ingress
   namespace: journal--test
 spec:
   interval: 1m0s
@@ -9,9 +9,10 @@ spec:
     kind: GitRepository
     name: journal-team-deployment
     namespace: flux-system
-  path: ./kustomizations/api-gateway
+  path: ./kustomizations/api-gateway/ingress
   prune: true
   targetNamespace: journal--test
   postBuild:
     substitute:
       env: test
+      search_service_name: search-web
