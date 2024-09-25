@@ -4,28 +4,31 @@ kind: Kustomization
 nameSuffix: -api
 
 resources:
-- annotations.yaml
+# Journal CMS APIs
 - labs-posts.yaml
-# - annual-reports.yaml
+- subjects.yaml
+- podcast-episodes.yaml
+- people.yaml
+- blog-articles.yaml
+- events.yaml
+- interviews.yaml
+- collections.yaml
+- promotional-collections.yaml
+- community.yaml
+- covers.yaml
+- press-packages.yaml
+- job-adverts.yaml
+- highlights.yaml
+- annual-reports.yaml
+
+
+- annotations.yaml
+
 # - articles.yaml
 # - bioprotocol.yaml
-# - blog-articles.yaml
-# - collections.yaml
-# - community.yaml
-# - covers.yaml
 # - digests.yaml
-# - events.yaml
-# - highlights.yaml
-# - interviews.yaml
-# - job-adverts.yaml
-
 # - metrics.yaml
 # - oauth2.yaml
-# - people.yaml
-# - podcast-episodes.yaml
-# - press-packages.yaml
 # - profiles.yaml
-# - promotional-collections.yaml
 # - recommendations.yaml
 # - search.yaml
-# - subjects.yaml
