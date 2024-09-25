@@ -26,5 +26,5 @@ spec:
     - type: URLRewrite
       urlRewrite:
         path:
-          replacePrefixMatch: /ping
+          replacePrefixMatch: /api/ping
           type: ReplacePrefixMatch
