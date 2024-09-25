@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: review-preprints
+  name: reviewed-preprints-proxy
   namespace: journal
   annotations:
     konghq.com/protocol: ${reviewed_preprints_protocol}
