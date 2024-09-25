@@ -28,6 +28,8 @@ resources:
 - bioprotocol.yaml
 - search.yaml
 
+- reviewed-preprints.yaml
+
 # - articles.yaml
 
 
