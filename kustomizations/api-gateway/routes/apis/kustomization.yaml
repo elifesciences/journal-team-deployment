@@ -25,9 +25,10 @@ resources:
 - annotations.yaml
 - recommendations.yaml
 - digests.yaml
+- bioprotocol.yaml
 
 # - articles.yaml
-# - bioprotocol.yaml
+
 
 # - metrics.yaml
 # - oauth2.yaml
