@@ -13,12 +13,18 @@ spec:
     name: api-gateway
     namespace: journal
   rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /ping/annotations
-    backendRefs:
+  - backendRefs:
     - name: annotations
       namespace: journal
       kind: Service
       port: ${annotations_port}
+    matches:
+    - path:
+        type: PathPrefix
+        value: /ping/annotations
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          replacePrefixMatch: /ping
+          type: ReplacePrefixMatch
