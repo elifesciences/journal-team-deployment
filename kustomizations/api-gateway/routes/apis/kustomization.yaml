@@ -23,6 +23,7 @@ resources:
 
 
 - annotations.yaml
+- recommendations.yaml
 
 # - articles.yaml
 # - bioprotocol.yaml
@@ -30,5 +31,5 @@ resources:
 # - metrics.yaml
 # - oauth2.yaml
 # - profiles.yaml
-# - recommendations.yaml
+
 # - search.yaml

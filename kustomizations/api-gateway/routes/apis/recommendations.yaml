@@ -1,0 +1,24 @@
+---
+kind: HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1
+metadata:
+  name: recommendations
+  namespace: journal
+  annotations:
+    konghq.com/preserve-host: "false"
+spec:
+  parentRefs:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    name: api-gateway
+    namespace: journal
+  rules:
+  - backendRefs:
+    - name: ${recommendations_service_name}
+      namespace: journal
+      kind: Service
+      port: ${recommendations_port}
+    matches:
+    - path:
+        type: PathPrefix
+        value: /recommendations
