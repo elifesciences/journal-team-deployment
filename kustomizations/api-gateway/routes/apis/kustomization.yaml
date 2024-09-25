@@ -30,9 +30,9 @@ resources:
 - profiles.yaml
 - oauth2.yaml
 
+- metrics.yaml
+
 - reviewed-preprints.yaml
 
+
 # - articles.yaml
-
-
-# - metrics.yaml

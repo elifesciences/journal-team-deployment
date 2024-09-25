@@ -1,0 +1,30 @@
+---
+kind: HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1
+metadata:
+  name: metrics
+  namespace: journal
+  annotations:
+    konghq.com/preserve-host: "false"
+spec:
+  parentRefs:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    name: api-gateway
+    namespace: journal
+  rules:
+  - backendRefs:
+    - name: ${metrics_service_name}
+      namespace: journal
+      kind: Service
+      port: ${metrics_port}
+    matches:
+    - path:
+        type: PathPrefix
+        value: /metrics
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          replacePrefixMatch: /api/v2
+          type: ReplacePrefixMatch
