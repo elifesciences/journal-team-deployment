@@ -26,6 +26,7 @@ resources:
 - recommendations.yaml
 - digests.yaml
 - bioprotocol.yaml
+- search.yaml
 
 # - articles.yaml
 
@@ -33,5 +34,3 @@ resources:
 # - metrics.yaml
 # - oauth2.yaml
 # - profiles.yaml
-
-# - search.yaml
