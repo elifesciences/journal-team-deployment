@@ -1,6 +1,6 @@
 <?php
 return [
-    'debug' => false,
+    'debug' => ${search_app_debug_flag:-false},
     'validate' => false,
     'ttl' => 300,
     'elastic_servers' => ['https://opensearch:9200'],
@@ -12,7 +12,7 @@ return [
     'api_url' => '${api_url}',
     'api_requests_batch' => 20,
     'rate_limit_minimum_page' => 21,
-    'logger.level' => 'debug',
+    'logger.level' => '${search_app_logger_level:-info}',
     'aws' => [
         'queue_name' => '${search_queue_name}',
         'credential_file' => true,
