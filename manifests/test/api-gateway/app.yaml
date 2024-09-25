@@ -15,3 +15,7 @@ spec:
   postBuild:
     substitute:
       env: test
+
+      # define services
+      annotations_hostname: continuumtest--annotations.elife.internal
+      annotations_port: "80"

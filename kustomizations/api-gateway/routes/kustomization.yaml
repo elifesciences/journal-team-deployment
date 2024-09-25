@@ -3,5 +3,6 @@ kind: Kustomization
 namespace: journal
 
 resources:
-# - apis
+- services
 - ping
+# - apis
