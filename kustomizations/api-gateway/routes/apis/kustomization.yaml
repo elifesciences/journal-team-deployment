@@ -1,0 +1,29 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: journal
+
+resources:
+# - annotations.yaml
+# - annual-reports.yaml
+# - articles.yaml
+# - bioprotocol.yaml
+# - blog-articles.yaml
+# - collections.yaml
+# - community.yaml
+# - covers.yaml
+# - digests.yaml
+# - events.yaml
+# - highlights.yaml
+# - interviews.yaml
+# - job-adverts.yaml
+# - labs.yaml
+# - metrics.yaml
+# - oauth2.yaml
+# - people.yaml
+# - podcast-episodes.yaml
+# - press-packages.yaml
+# - profiles.yaml
+# - promotional-collections.yaml
+# - recommendations.yaml
+# - search.yaml
+# - subjects.yaml
