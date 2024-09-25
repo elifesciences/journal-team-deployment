@@ -14,10 +14,10 @@ spec:
     namespace: journal
   rules:
   - backendRefs:
-    - name: ${reviewed-preprints_service_name}
+    - name: ${reviewed_preprints_service_name}
       namespace: journal
       kind: Service
-      port: ${reviewed-preprints_port}
+      port: ${reviewed_preprints_port}
     matches:
     - path:
         type: PathPrefix
