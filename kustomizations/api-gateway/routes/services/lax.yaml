@@ -3,9 +3,11 @@ kind: Service
 metadata:
   name: lax
   namespace: journal
+  annotations:
+    konghq.com/protocol: ${lax_protocol}
 spec:
   type: ExternalName
   externalName: ${lax_hostname}
   ports:
-  - protocol: ${lax_protocol}
+  - protocol: TCP
     port: ${lax_port}

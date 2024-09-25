@@ -3,9 +3,11 @@ kind: Service
 metadata:
   name: journal-cms
   namespace: journal
+  annotations:
+    konghq.com/protocol: ${journal_cms_protocol}
 spec:
   type: ExternalName
   externalName: ${journal_cms_hostname}
   ports:
-  - protocol: ${journal_cms_protocol}
+  - protocol: TCP
     port: ${journal_cms_port}

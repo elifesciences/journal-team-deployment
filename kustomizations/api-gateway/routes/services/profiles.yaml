@@ -3,9 +3,11 @@ kind: Service
 metadata:
   name: profiles
   namespace: journal
+  annotations:
+    konghq.com/protocol: ${profiles_protocol}
 spec:
   type: ExternalName
   externalName: ${profiles_hostname}
   ports:
-  - protocol: ${profiles_protocol}
+  - protocol: TCP
     port: ${profiles_port}

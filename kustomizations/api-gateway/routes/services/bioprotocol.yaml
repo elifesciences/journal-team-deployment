@@ -3,9 +3,11 @@ kind: Service
 metadata:
   name: bioprotocol
   namespace: journal
+  annotations:
+    konghq.com/protocol: ${bioprotocol_protocol}
 spec:
   type: ExternalName
   externalName: ${bioprotocol_hostname}
   ports:
-  - protocol: ${bioprotocol_protocol}
+  - protocol: TCP
     port: ${bioprotocol_port}
