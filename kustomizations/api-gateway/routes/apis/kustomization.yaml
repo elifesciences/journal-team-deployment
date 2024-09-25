@@ -27,6 +27,7 @@ resources:
 - digests.yaml
 - bioprotocol.yaml
 - search.yaml
+- profiles.yaml
 
 - reviewed-preprints.yaml
 
@@ -35,4 +36,3 @@ resources:
 
 # - metrics.yaml
 # - oauth2.yaml
-# - profiles.yaml
