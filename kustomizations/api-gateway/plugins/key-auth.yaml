@@ -5,7 +5,7 @@ metadata:
   namespace: journal
 config:
   key_names:
-  - apikey
+  - Authorization
   anonymous: anonymous
   hide_credentials: true
 plugin: key-auth
