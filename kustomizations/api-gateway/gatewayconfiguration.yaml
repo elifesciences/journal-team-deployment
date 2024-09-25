@@ -10,3 +10,16 @@ spec:
       services:
         ingress:
           type: ClusterIP # internal gateway only
+  controlPlaneOptions:
+    deployment:
+      podTemplateSpec:
+        spec:
+          containers:
+          - name: controller
+            resources:
+              limits:
+                cpu: 200m
+                memory: 200Mi
+              requests:
+                cpu: 100m
+                memory: 100Mi
