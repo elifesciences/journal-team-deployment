@@ -5,6 +5,7 @@ nameSuffix: -api
 
 resources:
 - annotations.yaml
+- labs-posts.yaml
 # - annual-reports.yaml
 # - articles.yaml
 # - bioprotocol.yaml
@@ -17,7 +18,7 @@ resources:
 # - highlights.yaml
 # - interviews.yaml
 # - job-adverts.yaml
-# - labs.yaml
+
 # - metrics.yaml
 # - oauth2.yaml
 # - people.yaml
