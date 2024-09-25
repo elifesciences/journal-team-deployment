@@ -31,8 +31,6 @@ resources:
 - oauth2.yaml
 
 - metrics.yaml
+- articles.yaml
 
 - reviewed-preprints.yaml
-
-
-# - articles.yaml
