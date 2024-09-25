@@ -12,3 +12,4 @@ resources:
 - metrics.yaml
 - profiles.yaml
 - recommendations.yaml
+- reviewed-preprints.yaml

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: review-preprints
+  namespace: journal
+  annotations:
+    konghq.com/protocol: ${reviewed_preprints_protocol}
+spec:
+  type: ExternalName
+  externalName: ${reviewed_preprints_hostname}
+  ports:
+  - protocol: TCP
+    port: ${reviewed_preprints_port}

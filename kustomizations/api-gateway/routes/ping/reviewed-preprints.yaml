@@ -1,0 +1,30 @@
+---
+kind: HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1
+metadata:
+  name: reviewed-preprints
+  namespace: journal
+  annotations:
+    konghq.com/preserve-host: "false"
+spec:
+  parentRefs:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    name: api-gateway
+    namespace: journal
+  rules:
+  - backendRefs:
+    - name: ${reviewed_preprints_service_name}
+      namespace: ${reviewed_preprints_namespace}
+      kind: Service
+      port: ${reviewed_preprints_port}
+    matches:
+    - path:
+        type: PathPrefix
+        value: /ping/reviewed-preprints
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          replacePrefixMatch: /ping
+          type: ReplacePrefixMatch

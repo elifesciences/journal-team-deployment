@@ -16,7 +16,11 @@ spec:
     substitute:
       env: test
 
-      # define services
+      # define services deployed in this namespace
+      search_port: "80"
+      search_service_name: search-web
+
+      # define services deployed elsewhere
       annotations_hostname: continuumtest--annotations.elife.internal
       annotations_port: "80"
       annotations_protocol: http
@@ -57,6 +61,7 @@ spec:
       recommendations_protocol: http
       recommendations_service_name: recommendations-proxy
 
-      search_port: "80"
-      search_protocol: http
-      search_service_name: search-web
+      reviewed_preprints_service_name: reviewed-preprints-proxy
+      reviewed_preprints_port: "443"
+      reviewed_preprints_protocol: https
+      reviewed_preprints_hostname: staging--epp-api.elifesciences.org

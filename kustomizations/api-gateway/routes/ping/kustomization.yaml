@@ -11,3 +11,4 @@ resources:
 - profiles.yaml
 - recommendations.yaml
 - search.yaml
+- reviewed-preprints.yaml
