@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
 - services
 - ping
-# - apis
+- apis
