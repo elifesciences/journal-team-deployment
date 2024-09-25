@@ -1,0 +1,4 @@
+namespace:
+- kind: GatewayClass
+  path: spec/parametersRef/namespace
+  create: true

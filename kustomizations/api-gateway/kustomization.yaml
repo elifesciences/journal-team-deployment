@@ -12,3 +12,5 @@ labels:
   pairs:
     app.kubernetes.io/part-of: api-gateway
     app.kubernetes.io/instance: api-gateway-${env}
+configurations:
+- namespaceconfig.yaml
