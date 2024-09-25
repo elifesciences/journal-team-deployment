@@ -6,7 +6,9 @@ resources:
 - gatewayconfiguration.yaml
 - gatewayclass.yaml
 - gateway.yaml
+- plugins
 - routes
+- consumers
 
 labels:
 - includeSelectors: true
