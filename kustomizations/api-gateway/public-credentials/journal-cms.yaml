@@ -18,7 +18,7 @@ spec:
         request-transformer-config: |
           add:
             headers:
-            - "Authorization: Basic {{ (print "api_gateway:" (.journal_cms_backend_credentials | toString)) | b64enc }}"
+            - "Authorization: Basic {{ (print "api-gateway:" (.journal_cms_backend_credentials | toString)) | b64enc }}"
 
   dataFrom:
   - extract:
