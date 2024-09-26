@@ -7,3 +7,4 @@ resources:
 - key-auth.yaml
 - cors.yaml
 - acl.yaml
+- vary-response-transformer.yaml

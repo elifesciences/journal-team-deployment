@@ -1,0 +1,9 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: vary-response-transformer
+plugin: response-transformer
+config:
+  append:
+    headers:
+    - Vary:Authorization
