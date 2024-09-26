@@ -1,0 +1,14 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: acl
+plugin: acl
+config:
+  allow:
+  - admin
+  - edit-digests
+  - user
+  - view-restricted-annotations
+  - view-restricted-people
+  - view-restricted-profiles
+  - view-unpublished-content

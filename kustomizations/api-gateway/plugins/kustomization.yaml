@@ -6,3 +6,4 @@ resources:
 - logging.yaml
 - key-auth.yaml
 - cors.yaml
+- acl.yaml
