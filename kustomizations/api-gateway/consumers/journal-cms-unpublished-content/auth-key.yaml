@@ -12,7 +12,7 @@ spec:
     kind: ClusterSecretStore
   target:
     name: journal-cms-unpublished-content-auth-key
-    creationPolicy: Owner
+    creationPolicy: Merge
   data:
   - secretKey: key
     remoteRef:

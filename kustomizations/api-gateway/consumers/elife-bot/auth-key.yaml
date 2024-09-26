@@ -12,7 +12,7 @@ spec:
     kind: ClusterSecretStore
   target:
     name: elife-bot-auth-key
-    creationPolicy: Owner
+    creationPolicy: Merge
   data:
   - secretKey: key
     remoteRef:

@@ -12,7 +12,7 @@ spec:
     kind: ClusterSecretStore
   target:
     name: libero-continuum-adaptor-auth-key
-    creationPolicy: Owner
+    creationPolicy: Merge
   data:
   - secretKey: key
     remoteRef:
