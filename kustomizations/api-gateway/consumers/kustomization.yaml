@@ -7,3 +7,11 @@ commonAnnotations:
 resources:
 - anonymous.yaml
 - journal-cms-unpublished-content
+- journal--prod
+- journal--staging
+- lax
+- search
+- recommendations
+- alfred
+- elife-bot
+- libero-continuum-adaptor

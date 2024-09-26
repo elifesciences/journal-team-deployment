@@ -1,0 +1,7 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongConsumer
+metadata:
+  name: journal--staging
+username: journal--staging
+credentials:
+- journal--staging-auth-key

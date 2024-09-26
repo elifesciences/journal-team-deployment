@@ -1,0 +1,7 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongConsumer
+metadata:
+  name: journal--prod
+username: journal--prod
+credentials:
+- journal--prod-auth-key
