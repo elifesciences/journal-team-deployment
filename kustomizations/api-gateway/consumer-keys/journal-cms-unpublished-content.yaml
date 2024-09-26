@@ -1,7 +1,7 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: recommendations-auth-key
+  name: journal-cms-unpublished-content-auth-key
   namespace: journal
   labels:
     konghq.com/credential: key-auth
@@ -11,10 +11,10 @@ spec:
     name: secret-store
     kind: ClusterSecretStore
   target:
-    name: recommendations-auth-key
-    creationPolicy: Merge
+    name: journal-cms-unpublished-content-auth-key
+    creationPolicy: Owner
   data:
   - secretKey: key
     remoteRef:
       key: journal-team/api-gateway/consumers
-      property: recommendations
+      property: journal-cms-unpublished-content

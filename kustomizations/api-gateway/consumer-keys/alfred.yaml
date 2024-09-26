@@ -12,7 +12,7 @@ spec:
     kind: ClusterSecretStore
   target:
     name: alfred-auth-key
-    creationPolicy: Merge
+    creationPolicy: Owner
   data:
   - secretKey: key
     remoteRef:

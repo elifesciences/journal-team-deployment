@@ -12,6 +12,8 @@ spec:
   path: ./kustomizations/api-gateway
   prune: true
   targetNamespace: journal--test
+  dependsOn:
+  - name: api-gateway-consumer-keys
   postBuild:
     substitute:
       env: test

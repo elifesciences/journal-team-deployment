@@ -1,7 +1,7 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: libero-continuum-adaptor-auth-key
+  name: lax-auth-key
   namespace: journal
   labels:
     konghq.com/credential: key-auth
@@ -11,10 +11,10 @@ spec:
     name: secret-store
     kind: ClusterSecretStore
   target:
-    name: libero-continuum-adaptor-auth-key
-    creationPolicy: Merge
+    name: lax-auth-key
+    creationPolicy: Owner
   data:
   - secretKey: key
     remoteRef:
       key: journal-team/api-gateway/consumers
-      property: libero-continuum-adaptor
+      property: lax
