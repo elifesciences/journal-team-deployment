@@ -3,6 +3,8 @@ kind: ExternalSecret
 metadata:
   name: journal-cms-unpublished-content-auth-key
   namespace: journal
+  labels:
+    konghq.com/credential: key-auth
 spec:
   refreshInterval: 1h
   secretStoreRef:
