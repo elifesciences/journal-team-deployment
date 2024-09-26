@@ -18,7 +18,7 @@ spec:
         request-transformer-config: |
           append:
             headers:
-            - "Authorization: Basic {{ (print "api-gateway:" (.lax_backend_credentials | toString)) | b64enc }}"
+            - "Authorization: Basic {{ (print "api_gateway:" (.lax_backend_credentials | toString)) | b64enc }}"
   dataFrom:
   - extract:
       key: journal-team/api-gateway/public-credentials
