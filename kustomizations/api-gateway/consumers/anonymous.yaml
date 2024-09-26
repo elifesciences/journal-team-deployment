@@ -3,3 +3,5 @@ kind: KongConsumer
 metadata:
   name: anonymous
 username: anonymous
+credentials:
+- user-acl

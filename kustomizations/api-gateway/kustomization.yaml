@@ -9,7 +9,7 @@ resources:
 - plugins
 - routes
 - consumers
-# - consumer-groups
+- acl-groups
 # consumer keys should be deployed before this kustomization, otherwise kong gets upset about validation. see https://github.com/Kong/kubernetes-ingress-controller/issues/6480
 # - consumers-keys
 

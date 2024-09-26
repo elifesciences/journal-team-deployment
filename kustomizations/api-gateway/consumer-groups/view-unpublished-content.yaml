@@ -1,4 +1,0 @@
-apiVersion: configuration.konghq.com/v1beta1
-kind: KongConsumerGroup
-metadata:
-  name: view-unpublished-content
