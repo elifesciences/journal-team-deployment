@@ -5,6 +5,5 @@ metadata:
 username: libero-continuum-adaptor
 credentials:
 - libero-continuum-adaptor-auth-key
-consumerGroups:
-- view-restricted-people
-- view-restricted-profiles
+- view-restricted-people-acl
+- view-restricted-profiles-acl
