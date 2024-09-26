@@ -5,3 +5,5 @@ metadata:
 username: recommendations
 credentials:
 - recommendations-auth-key
+consumerGroups:
+- user

@@ -5,3 +5,6 @@ metadata:
 username: elife-bot
 credentials:
 - elife-bot-auth-key
+consumerGroups:
+- edit-digests
+- view-unpublished-content

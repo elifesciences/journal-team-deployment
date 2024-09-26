@@ -5,3 +5,7 @@ metadata:
 username: journal--staging
 credentials:
 - journal--staging-auth-key
+consumerGroups:
+- view-restricted-annotations
+- view-restricted-profiles
+- view-unpublished-content

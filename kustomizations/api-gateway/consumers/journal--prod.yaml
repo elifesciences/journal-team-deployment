@@ -5,3 +5,7 @@ metadata:
 username: journal--prod
 credentials:
 - journal--prod-auth-key
+consumerGroups:
+- user
+- view-restricted-annotations
+- view-restricted-profiles

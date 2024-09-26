@@ -5,3 +5,5 @@ metadata:
 username: search
 credentials:
 - search-auth-key
+consumerGroups:
+- user

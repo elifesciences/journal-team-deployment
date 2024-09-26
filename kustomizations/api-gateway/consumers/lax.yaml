@@ -5,3 +5,5 @@ metadata:
 username: lax
 credentials:
 - lax-auth-key
+consumerGroups:
+- user

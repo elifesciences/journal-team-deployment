@@ -5,3 +5,5 @@ metadata:
 username: journal-cms-unpublished-content
 credentials:
 - journal-cms-unpublished-content-auth-key
+consumerGroups:
+- view-unpublished-content
