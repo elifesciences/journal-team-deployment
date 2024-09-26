@@ -6,7 +6,6 @@ metadata:
   namespace: journal
   annotations:
     konghq.com/preserve-host: "false"
-    konghq.com/plugins: key-auth, logging, cors, acl, vary-response-transformer, public-credentials-request-transformer-lax
 spec:
   parentRefs:
   - group: gateway.networking.k8s.io

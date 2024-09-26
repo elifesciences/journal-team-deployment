@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+commonAnnotations:
+  konghq.com/plugins: key-auth, logging, cors, acl, vary-response-transformer, public-credentials-request-transformer-journal-cms
+resources:
+# Journal CMS APIs
+- annual-reports.yaml
+- blog-articles.yaml
+- collections.yaml
+- covers.yaml
+- events.yaml
+- highlights.yaml
+- interviews.yaml
+- job-adverts.yaml
+- labs-posts.yaml
+- people.yaml
+- podcast-episodes.yaml
+- press-packages.yaml
+- promotional-collections.yaml
+- subjects.yaml

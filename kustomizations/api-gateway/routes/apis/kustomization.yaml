@@ -2,36 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 nameSuffix: -api
-commonAnnotations:
-  konghq.com/plugins: key-auth, logging, cors, acl, vary-response-transformer
 resources:
-# Journal CMS APIs
-- labs-posts.yaml
-- subjects.yaml
-- podcast-episodes.yaml
-- people.yaml
-- blog-articles.yaml
-- events.yaml
-- interviews.yaml
-- collections.yaml
-- promotional-collections.yaml
-- community.yaml
-- covers.yaml
-- press-packages.yaml
-- job-adverts.yaml
-- highlights.yaml
-- annual-reports.yaml
-
-
-- annotations.yaml
-- recommendations.yaml
-- digests.yaml
-- bioprotocol.yaml
-- search.yaml
-- profiles.yaml
-- oauth2.yaml
-
-- metrics.yaml
-- articles.yaml
-
-- reviewed-preprints.yaml
+- unauthenticated
+- profiles-authenticated
+- lax-authenticated
+- journal-cms-authenticated

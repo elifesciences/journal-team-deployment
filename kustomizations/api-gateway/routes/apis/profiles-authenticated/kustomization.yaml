@@ -1,0 +1,7 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+commonAnnotations:
+  konghq.com/plugins: key-auth, logging, cors, acl, vary-response-transformer, public-credentials-request-transformer-profiles
+resources:
+- profiles.yaml
