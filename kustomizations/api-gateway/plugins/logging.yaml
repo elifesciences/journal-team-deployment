@@ -1,0 +1,8 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: logging
+  namespace: journal
+config:
+  path: /dev/stdout
+plugin: file-log

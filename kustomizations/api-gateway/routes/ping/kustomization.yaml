@@ -3,6 +3,9 @@ kind: Kustomization
 
 nameSuffix: -ping
 
+commonAnnotations:
+  konghq.com/plugins: logging
+
 resources:
 - annotations.yaml
 - bioprotocol.yaml
