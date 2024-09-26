@@ -8,3 +8,4 @@ resources:
 - cors.yaml
 - acl.yaml
 - vary-response-transformer.yaml
+- public-credentials-request-transformer-lax.yaml
