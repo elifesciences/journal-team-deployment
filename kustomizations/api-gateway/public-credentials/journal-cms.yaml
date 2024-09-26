@@ -1,0 +1,21 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: public-credentials-journal-cms
+  namespace: journal
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: secret-store
+    kind: ClusterSecretStore
+  target:
+    name: public-credentials-journal-cms
+    creationPolicy: Owner
+    template:
+      data:
+        credentials: "{{ .journal_cms_backend_credentials | toString }}"
+        authorization-header: "Authorization: Basic {{ (print \"api-gateway:\" (.journal_cms_backend_credentials | toString)) | b64enc }}"
+
+  dataFrom:
+  - extract:
+      key: journal-team/api-gateway/public-credentials

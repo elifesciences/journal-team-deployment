@@ -9,3 +9,5 @@ resources:
 - acl.yaml
 - vary-response-transformer.yaml
 - public-credentials-request-transformer-lax.yaml
+- public-credentials-request-transformer-profiles.yaml
+- public-credentials-request-transformer-journal-cms.yaml
