@@ -16,10 +16,9 @@ spec:
         credentials: "{{ .journal_cms_backend_credentials | toString }}"
         authorization-header: "Authorization: Basic {{ (print \"api-gateway:\" (.journal_cms_backend_credentials | toString)) | b64enc }}"
         request-transformer-config: |
-          config:
-            append:
-              headers:
-              - "Authorization: Basic {{ (print "api-gateway:" (.journal_cms_backend_credentials | toString)) | b64enc }}"
+          append:
+            headers:
+            - "Authorization: Basic {{ (print "api-gateway:" (.journal_cms_backend_credentials | toString)) | b64enc }}"
 
   dataFrom:
   - extract:
