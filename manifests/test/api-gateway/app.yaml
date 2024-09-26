@@ -54,7 +54,7 @@ spec:
       metrics_protocol: http
       metrics_service_name: metrics-proxy
 
-      profiles_hostname: continuumtest--profiles.elife.internal
+      profiles_hostname: prod--profiles.elife.internal
       profiles_port: "80"
       profiles_protocol: http
       profiles_service_name: profiles-proxy
