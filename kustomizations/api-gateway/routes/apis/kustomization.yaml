@@ -3,7 +3,7 @@ kind: Kustomization
 
 nameSuffix: -api
 commonAnnotations:
-  konghq.com/plugins: key-auth, logging
+  konghq.com/plugins: key-auth, logging, cors
 resources:
 # Journal CMS APIs
 - labs-posts.yaml

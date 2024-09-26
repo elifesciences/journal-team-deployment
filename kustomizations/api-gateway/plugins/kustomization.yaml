@@ -5,3 +5,4 @@ namespace: journal
 resources:
 - logging.yaml
 - key-auth.yaml
+- cors.yaml
