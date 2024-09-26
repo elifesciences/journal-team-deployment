@@ -19,7 +19,6 @@ spec:
           add:
             headers:
             - "Authorization: Basic {{ (print "api-gateway:" (.lax_backend_credentials | toString)) | b64enc }}"
-            - "X-Test: testvalue"
   dataFrom:
   - extract:
       key: journal-team/api-gateway/public-credentials
