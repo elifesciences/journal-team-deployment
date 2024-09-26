@@ -19,6 +19,7 @@ spec:
           append:
             headers:
             - "Authorization: Basic {{ (print "api-gateway:" (.journal_cms_backend_credentials | toString)) | b64enc }}"
+            - "X-Test: testvalue"
 
   dataFrom:
   - extract:
