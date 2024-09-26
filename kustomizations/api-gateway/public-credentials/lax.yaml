@@ -16,7 +16,7 @@ spec:
         credentials: "{{ .lax_backend_credentials | toString }}"
         authorization-header: "Authorization: Basic {{ (print \"api-gateway:\" (.lax_backend_credentials | toString)) | b64enc }}"
         request-transformer-config: |
-          add:
+          append:
             headers:
             - "Authorization: Basic {{ (print "api-gateway:" (.lax_backend_credentials | toString)) | b64enc }}"
   dataFrom:
