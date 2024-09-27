@@ -23,8 +23,3 @@ spec:
               requests:
                 cpu: 100m
                 memory: 100Mi
-            env:
-            - name: CONTROLLER_LOG_LEVEL
-              value: debug
-            - name: CONTROLLER_LOG_FORMAT
-              value: json
