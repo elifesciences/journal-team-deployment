@@ -10,6 +10,14 @@ spec:
       services:
         ingress:
           type: ClusterIP # internal gateway only
+    deployment:
+      podTemplateSpec:
+        spec:
+          containers:
+          - name: proxy
+            env:
+            - name: KONG_LOG_LEVEL
+              value: debug
   controlPlaneOptions:
     deployment:
       podTemplateSpec:
