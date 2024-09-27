@@ -14,7 +14,7 @@ spec:
     template:
       data:
         credentials: "{{ .profiles_backend_credentials | toString }}"
-        authorization-header: '"Authorization: Basic {{ (print \\\"api-gateway:\\\" (.profiles_backend_credentials | toString)) | b64enc }}"'
+        authorization-header: '"Authorization: Basic {{ (print "api-gateway:" (.profiles_backend_credentials | toString)) | b64enc }}"'
         request-transformer-config: |
           append:
             headers:
