@@ -2,7 +2,7 @@
 kind: GatewayConfiguration
 apiVersion: gateway-operator.konghq.com/v1beta1
 metadata:
-  name: api-gateway
+  name: api-gateway-${env}
   namespace: journal
 spec:
   dataPlaneOptions:

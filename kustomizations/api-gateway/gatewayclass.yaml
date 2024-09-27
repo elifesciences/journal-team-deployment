@@ -2,12 +2,12 @@
 kind: GatewayClass
 apiVersion: gateway.networking.k8s.io/v1
 metadata:
-  name: api-gateway
+  name: api-gateway-${env}
   namespace: journal
 spec:
   controllerName: konghq.com/gateway-operator
   parametersRef:
     group: gateway-operator.konghq.com
     kind: GatewayConfiguration
-    name: api-gateway
+    name: api-gateway-${env}
     namespace: journal
