@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--test
   images:
     - name: ghcr.io/elifesciences/search
-      newTag: remove-gearman-1b476a90-20240920.1108 # {"$imagepolicy": "journal--test:search-remove-gearman:tag"}
+      newTag: remove-gearman-33114762-20240927.1609 # {"$imagepolicy": "journal--test:search-remove-gearman:tag"}
   dependsOn:
     - name: search-queue
     - name: search-queue-watcher-role
@@ -35,6 +35,5 @@ spec:
       env: test
       hostname: search.test.elifesciences.org
       cert_manager_issuer: "letsencrypt-prod"
-
       # api_url: https://api.test.elifesciences.org
       api_url: http://continuumtest--gateway.elife.internal
