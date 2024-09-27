@@ -22,6 +22,7 @@ parameters:
 
     api_url: ${api_url}
     api_url_public: ${api_url}
+    api_url_search_page: ${api_url_search_page}
 
     gtm_id: GTM-NJBS9X
     google_optimize_id: OPT-MK8W6WS
