@@ -44,7 +44,7 @@ spec:
       journal_cms_protocol: http
       journal_cms_service_name: journal-cms-proxy
 
-      lax_hostname: prod--lax.elifesciences.org
+      lax_hostname: continuumtest--lax.elifesciences.org
       lax_port: "443"
       lax_protocol: https
       lax_service_name: lax-proxy
