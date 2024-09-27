@@ -26,3 +26,5 @@ spec:
             env:
             - name: CONTROLLER_LOG_LEVEL
               value: debug
+            - name: CONTROLLER_LOG_FORMAT
+              value: json
