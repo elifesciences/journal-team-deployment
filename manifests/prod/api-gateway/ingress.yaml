@@ -1,0 +1,24 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-gateway
+  namespace: journal--prod
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  rules:
+  - host: "api.prod.elifesciences.org"
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: dataplane-ingress-api-gateway-5jq5f-w6dv5
+            port:
+              number: 80
+  tls:
+  - secretName: api-gateway-tls
+    hosts:
+    - "api.prod.elifesciences.org"
