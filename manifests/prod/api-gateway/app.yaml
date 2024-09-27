@@ -1,0 +1,70 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: api-gateway
+  namespace: journal--prod
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/api-gateway
+  prune: true
+  targetNamespace: journal--prod
+  dependsOn:
+  - name: api-gateway-consumer-keys
+  - name: api-gateway-public-credentials
+  postBuild:
+    substitute:
+      env: prod
+
+      # define services deployed in this namespace
+      search_port: "80"
+      search_service_name: search-web
+
+      # define services deployed elsewhere
+      annotations_hostname: prod--annotations.elife.internal
+      annotations_port: "80"
+      annotations_protocol: http
+      annotations_service_name: annotations-proxy
+
+      bioprotocol_hostname: prod--bp.elife.internal
+      bioprotocol_port: "80"
+      bioprotocol_protocol: http
+      bioprotocol_service_name: bioprotocol-proxy
+
+      digests_hostname: prod--digests.elife.internal
+      digests_port: "80"
+      digests_protocol: http
+      digests_service_name: digests-proxy
+
+      journal_cms_hostname: prod--journal-cms.elife.internal
+      journal_cms_port: "80"
+      journal_cms_protocol: http
+      journal_cms_service_name: journal-cms-proxy
+
+      lax_hostname: prod--lax.elifesciences.org
+      lax_port: "443"
+      lax_protocol: https
+      lax_service_name: lax-proxy
+
+      metrics_hostname: prod--metrics.elife.internal
+      metrics_port: "80"
+      metrics_protocol: http
+      metrics_service_name: metrics-proxy
+
+      profiles_hostname: prod--profiles.elife.internal
+      profiles_port: "80"
+      profiles_protocol: http
+      profiles_service_name: profiles-proxy
+
+      recommendations_hostname: prod--recommendations.elife.internal
+      recommendations_port: "80"
+      recommendations_protocol: http
+      recommendations_service_name: recommendations-proxy
+
+      reviewed_preprints_service_name: reviewed-preprints-proxy
+      reviewed_preprints_port: "443"
+      reviewed_preprints_protocol: https
+      reviewed_preprints_hostname: prod--epp-api.elifesciences.org
