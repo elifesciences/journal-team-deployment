@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--test
   images:
     - name: elifesciences/journal
-      newTag: approved
+      newTag: 8b955ca2c0ebb7c13e828c20c6ab2d533e56237a
   postBuild:
     substitute:
       # deployment vars
