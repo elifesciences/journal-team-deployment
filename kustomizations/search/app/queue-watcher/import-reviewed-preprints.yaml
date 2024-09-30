@@ -17,7 +17,7 @@ spec:
             command:
             - bash
             - "-c"
-            - '/app/bin/console queue:import ReviewedPreprints --dateFrom="$(date +"%Y-%m-%dT00:00:00Z")"'
+            - '/app/bin/console queue:import ReviewedPreprints --dateFrom="$(date -d "7 days ago" +"%Y-%m-%dT00:00:00Z")"'
             resources:
               requests:
                 memory: "4Gi"
