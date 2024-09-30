@@ -85,7 +85,7 @@ spec:
             path: config_test.yaml
       - name: secret-parameters
         secret:
-          secretName: journal-secret-parameters
+          secretName: ${journal_secret_parameters_secret_name}
           items:
           - key: secret_parameters.yaml
             path: secret_parameters.yaml
