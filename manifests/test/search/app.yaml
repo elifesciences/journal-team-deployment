@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--test
   images:
     - name: ghcr.io/elifesciences/search
-      newTag: remove-gearman-9f40288d-20240930.2011 # {"$imagepolicy": "journal--test:search-remove-gearman:tag"}
+      newTag: remove-gearman-1cb0b093-20241002.0629 # {"$imagepolicy": "journal--test:search-remove-gearman:tag"}
   dependsOn:
     - name: search-queue
     - name: search-queue-watcher-role
