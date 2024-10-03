@@ -5,6 +5,7 @@ resources:
 - serviceaccount.yaml
 - deployment.yaml
 - import-job.yaml
+- import-research-articles.yaml
 - import-reviewed-preprints.yaml
 - scaledobject.yaml
 - scaledobject-authentication.yaml
