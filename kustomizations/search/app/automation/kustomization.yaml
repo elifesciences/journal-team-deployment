@@ -4,5 +4,3 @@ namespace: journal
 resources:
 - search-source.yaml
 - search-policy-stable.yaml
-- search-policy-unstable.yaml
-- search-policy-remove-gearman.yaml
