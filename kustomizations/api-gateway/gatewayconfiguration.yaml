@@ -14,7 +14,7 @@ spec:
       podTemplateSpec:
         spec:
           containers:
-          - name: controller
+          - name: proxy
             resources:
               limits:
                 memory: 650Mi
