@@ -45,10 +45,10 @@ spec:
       s3.client.default.identity_token_file: /usr/share/opensearch/config/aws-iam-token/token
     resources:
       requests:
-        memory: "2938Mi"
-        cpu: "100m"
+        memory: "${opensearch_manager_request_mem:-2938Mi}"
+        cpu: "${opensearch_manager_request_cpu:-100m}"
       limits:
-        memory: "2938Mi"
+        memory: "${opensearch_manager_limit_mem:-2938Mi}"
     roles:
     - "cluster_manager"
     diskSize: 5Gi
@@ -75,10 +75,10 @@ spec:
       s3.client.default.identity_token_file: /usr/share/opensearch/config/aws-iam-token/token
     resources:
       requests:
-        memory: "5102Mi"
-        cpu: "3500m"
+        memory: "${opensearch_data_request_mem:-5102Mi}"
+        cpu: "${opensearch_data_request_cpu:-3500m}"
       limits:
-        memory: "5102Mi"
+        memory: "${opensearch_data_limit_mem:-5102Mi}"
     roles:
     - "data"
     diskSize: 30Gi
