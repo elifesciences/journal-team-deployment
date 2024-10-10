@@ -5,6 +5,8 @@ metadata:
   name: opensearch
   namespace: journal
 spec:
+  confMgmt:
+    smartScaler: true
   general:
     serviceName: opensearch
     serviceAccount: opensearch
