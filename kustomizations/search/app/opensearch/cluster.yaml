@@ -76,7 +76,7 @@ spec:
     resources:
       requests:
         memory: "5102Mi"
-        cpu: "800m"
+        cpu: "3500m"
       limits:
         memory: "5102Mi"
     roles:
