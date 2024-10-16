@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--test
   images:
     - name: ghcr.io/elifesciences/search
-      newTag: master-71ba9849-20241009.1451 # {"$imagepolicy": "journal--test:search-stable:tag"}
+      newTag: master-dc818d2c-20241016.1345 # {"$imagepolicy": "journal--test:search-stable:tag"}
   dependsOn:
     - name: search-queue
     - name: search-queue-watcher-role
@@ -31,11 +31,9 @@ spec:
       opensearch_manager_request_mem: 3Gi
       opensearch_manager_request_cpu: 100m
       opensearch_manager_limit_mem: 3Gi
-
       opensearch_data_request_mem: 4Gi
       opensearch_data_request_cpu: 100m
       opensearch_data_limit_mem: 4Gi
-
       # opensearch backup vars
       aws_region: ${aws_region}
       aws_backup_s3_bucket: ${aws_backup_s3_bucket}
