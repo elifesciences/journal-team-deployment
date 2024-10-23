@@ -4,6 +4,8 @@ metadata:
   name: basex-validator
   annotations: 
     nginx.ingress.kubernetes.io/proxy-body-size: 4m
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "120"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "120"
 spec:
   rules:
   - host: ${hostname}
