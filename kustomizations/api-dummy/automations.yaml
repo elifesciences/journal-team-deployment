@@ -14,7 +14,7 @@ spec:
   imageRepositoryRef:
     name: api-dummy
   filterTags:
-    pattern: '^(?P<semver>[0-9]+\\.[0-9]+\\.[0-9]+).*'
+    pattern: '^(?P<semver>[0-9]+\.[0-9]+\.[0-9]+).*'
     extract: '$semver'
   policy:
     semver:
