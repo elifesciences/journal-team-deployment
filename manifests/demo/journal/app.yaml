@@ -1,0 +1,31 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: journal
+  namespace: journal--demo
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/journal
+  prune: true
+  targetNamespace: journal--demo
+  images:
+    - name: elifesciences/journal
+      newTag: 8b955ca2c0ebb7c13e828c20c6ab2d533e56237a
+  postBuild:
+    substitute:
+      # deployment vars
+      env: demo
+      hostname: journal.demo.elifesciences.org
+      cert_manager_issuer: "letsencrypt-prod"
+
+
+      journal_secret_parameters_secret_name: journal-secret-parameters
+      api_url: https://api.demo.elifesciences.org/
+      api_url_search_page: https://api.demo.elifesciences.org
+      epp_url: http://epp-client.epp--prod:3000
+      observer_url: http://prod--observer.elife.internal
+      pubpub_url: https://elife-container.pubpub.org
