@@ -4,6 +4,7 @@ namespace: api-dummy
 resources:
 - service.yaml
 - deployment.yaml
+- automations.yaml
 
 labels:
 - includeSelectors: true
