@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--demo
   images:
     - name: ghcr.io/elifesciences/api-dummy
-      newTag: 20241105163817.0.0-gf643a72-11688597460-1 # {"$imagepolicy": "journal--demo:api-dummy:tag"}
+      newTag: 20241105165320.0.0-g00eee83-11688853713-1 # {"$imagepolicy": "journal--demo:api-dummy:tag"}
   postBuild:
     substitute:
       # deployment vars
