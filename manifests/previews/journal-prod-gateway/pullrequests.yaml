@@ -2,7 +2,7 @@
 apiVersion: templates.kluctl.io/v1alpha1
 kind: ListGithubPullRequests
 metadata:
-  name: journal--previews-api-dummy
+  name: journal-prod-gateway
   namespace: journal--previews
 spec:
   interval: 1m
@@ -12,5 +12,5 @@ spec:
   base: develop
   head: elifesciences:.*
   labels:
-  - preview-api-dummy
+  - preview-prod-gateway
   limit: 100
