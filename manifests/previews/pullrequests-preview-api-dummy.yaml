@@ -9,7 +9,7 @@ spec:
   owner: elifesciences
   repo: journal
   state: open
-  base: master
+  base: develop
   head: elifesciences:.*
   labels:
   - preview-api-dummy
