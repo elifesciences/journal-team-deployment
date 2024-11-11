@@ -67,7 +67,7 @@ spec:
               interval: 1m0s
               sourceRef:
                 kind: GitRepository
-                name: flux-system
+                name: journal-team-deployment
                 namespace: flux-system
               path: ./kustomizations/api-dummy
               prune: true
