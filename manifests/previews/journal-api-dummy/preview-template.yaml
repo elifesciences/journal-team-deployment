@@ -49,6 +49,7 @@ spec:
               name: journal-api-dummy-preview-{{ matrix.pr.number }}
             jsonPath: status.latestImage
         templates:
+        # Namespace
         - object:
             apiVersion: v1
             kind: Namespace
@@ -56,6 +57,8 @@ spec:
               name: "journal--preview-{{ matrix.pr.number }}"
               annotations:
                 elifesciences.org/default-project: journal
+
+        # API Dummy deployment + Ingress
         - object:
             apiVersion: kustomize.toolkit.fluxcd.io/v1
             kind: Kustomization
@@ -77,6 +80,32 @@ spec:
               postBuild:
                 substitute:
                   env: demo
+        - object:
+            apiVersion: networking.k8s.io/v1
+            kind: Ingress
+            metadata:
+              name: api-dummy
+              namespace:  journal--preview-{{ matrix.pr.number }}
+              annotations:
+                cert-manager.io/cluster-issuer: "letsencrypt-prod"
+            spec:
+              rules:
+              - host: "api.pr-{{ matrix.pr.number }}.elifesciences.org"
+                http:
+                  paths:
+                  - path: /
+                    pathType: ImplementationSpecific
+                    backend:
+                      service:
+                        name: api-dummy
+                        port:
+                          number: 8080
+              tls:
+              - secretName: api-dummy-tls
+                hosts:
+                - "api.pr-{{ matrix.pr.number }}.elifesciences.org"
+
+        # Journal deployment
         - object:
             apiVersion: external-secrets.io/v1beta1
             kind: ExternalSecret
