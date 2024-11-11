@@ -1,0 +1,33 @@
+apiVersion: templates.kluctl.io/v1alpha1
+kind: ObjectTemplate
+metadata:
+  name: journal-api-dummy
+  namespace: journal--previews
+spec:
+  serviceAccountName: journal-previews
+  prune: true
+  matrix:
+  - name: pr
+    object:
+      ref:
+        apiVersion: templates.kluctl.io/v1alpha1
+        kind: ListGithubPullRequests
+        name: journal-api-dummy
+      jsonPath: status.pullRequests
+      expandLists: true
+  templates:
+  - object:
+      apiVersion: image.toolkit.fluxcd.io/v1beta2
+      kind: ImagePolicy
+      metadata:
+        name: journal-preview-{{ matrix.pr.number }}
+        namespace: journal--previews
+      spec:
+        imageRepositoryRef:
+          name: journal
+        filterTags:
+          pattern: '^preview-{{ matrix.pr.number }}-[a-fA-F0-9]+-(?P<ts>.*)'
+          extract: '$ts'
+        policy:
+          numerical:
+            order: asc
