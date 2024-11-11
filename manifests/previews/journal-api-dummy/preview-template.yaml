@@ -94,6 +94,7 @@ spec:
                 template:
                   data:
                     secret_parameters.yaml: |
+                      {% raw %}
                       parameters:
                         api_key: {{ .api_key | toString }}
                         hypothesis_client_secret: {{ .hypothesis_client_secret | toString }}
@@ -111,6 +112,7 @@ spec:
 
                         oauth2_client_secret: {{ .oauth2_client_secret | toString }}
                         secret: {{ .secret | toString }}
+                      {% endraw %}
               dataFrom:
               - extract:
                   key: journal-team/journal/demo
