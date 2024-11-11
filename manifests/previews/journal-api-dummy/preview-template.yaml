@@ -41,7 +41,7 @@ spec:
         serviceAccountName: journal-previews
         prune: true
         matrix:
-        - name: journal-image
+        - name: image
           object:
             ref:
               apiVersion: image.toolkit.fluxcd.io/v1beta2
@@ -56,3 +56,25 @@ spec:
               name: "journal--preview-{{ matrix.pr.number }}"
               annotations:
                 elifesciences.org/default-project: journal
+
+        - object:
+            apiVersion: kustomize.toolkit.fluxcd.io/v1
+            kind: Kustomization
+            metadata:
+              name: api-dummy--preview-{{ matrix.pr.number }}
+              namespace: journal--previews
+            spec:
+              interval: 1m0s
+              sourceRef:
+                kind: GitRepository
+                name: flux-system
+                namespace: flux-system
+              path: ./kustomizations/api-dummy
+              prune: true
+              targetNamespace: journal--preview-{{ matrix.pr.number }}
+              images:
+                - name: ghcr.io/elifesciences/api-dummy
+                  newTag: 20241105171536.0.0-g5834c98-11689211250-1
+              postBuild:
+                substitute:
+                  env: demo
