@@ -95,6 +95,7 @@ spec:
                   data:
                     secret_parameters.yaml: |
                       {% raw %}
+                      {% raw %}
                       parameters:
                         api_key: {{ .api_key | toString }}
                         hypothesis_client_secret: {{ .hypothesis_client_secret | toString }}
@@ -112,6 +113,7 @@ spec:
 
                         oauth2_client_secret: {{ .oauth2_client_secret | toString }}
                         secret: {{ .secret | toString }}
+                      {% endraw %}
                       {% endraw %}
               dataFrom:
               - extract:
