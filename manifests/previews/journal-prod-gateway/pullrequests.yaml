@@ -14,3 +14,6 @@ spec:
   labels:
   - preview-prod-gateway
   limit: 100
+  tokenRef:
+    secretName: github-elife-alfred-user-cluster-token
+    key: token
