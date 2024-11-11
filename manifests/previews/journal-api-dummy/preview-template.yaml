@@ -31,3 +31,28 @@ spec:
         policy:
           numerical:
             order: asc
+  - object:
+      apiVersion: templates.kluctl.io/v1alpha1
+      kind: ObjectTemplate
+      metadata:
+        name: journal-api-dummy-preview-{{ matrix.pr.number }}
+        namespace: journal-previews
+      spec:
+        serviceAccountName: journal-previews
+        prune: true
+        matrix:
+        - name: journal-image
+          object:
+            ref:
+              apiVersion: image.toolkit.fluxcd.io/v1beta2
+              kind: ImagePolicy
+              name: journal-api-dummy-preview-{{ matrix.pr.number }}
+            jsonPath: status.latestImage
+        templates:
+        - object:
+            apiVersion: v1
+            kind: Namespace
+            metadata:
+              name: "journal--preview-{{ matrix.pr.number }}"
+              annotations:
+                elifesciences.org/default-project: journal
