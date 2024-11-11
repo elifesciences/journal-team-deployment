@@ -36,7 +36,7 @@ spec:
       kind: ObjectTemplate
       metadata:
         name: journal-api-dummy-preview-{{ matrix.pr.number }}
-        namespace: journal-previews
+        namespace: journal--previews
       spec:
         serviceAccountName: journal-previews
         prune: true
