@@ -56,7 +56,6 @@ spec:
               name: "journal--preview-{{ matrix.pr.number }}"
               annotations:
                 elifesciences.org/default-project: journal
-
         - object:
             apiVersion: kustomize.toolkit.fluxcd.io/v1
             kind: Kustomization
@@ -73,8 +72,8 @@ spec:
               prune: true
               targetNamespace: journal--preview-{{ matrix.pr.number }}
               images:
-                - name: ghcr.io/elifesciences/api-dummy
-                  newTag: latest # {"$imagepolicy": "journal--previews:api-dummy:tag"}
+              - name: ghcr.io/elifesciences/api-dummy
+                newTag: 20241105171536.0.0-g5834c98-11689211250-1 # {"$imagepolicy": "journal--previews:api-dummy:tag"}
               postBuild:
                 substitute:
                   env: demo
