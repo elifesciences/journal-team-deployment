@@ -77,7 +77,7 @@ spec:
               postBuild:
                 substitute:
                   env: demo
-        - object:
+        - raw:
             apiVersion: external-secrets.io/v1beta1
             kind: ExternalSecret
             metadata:
@@ -95,25 +95,23 @@ spec:
                   data:
                     secret_parameters.yaml: |
                       {% raw %}
-                      {% raw %}
                       parameters:
-                        api_key: {{ .api_key | toString }}
-                        hypothesis_client_secret: {{ .hypothesis_client_secret | toString }}
+                        api_key: {{ '{{ .api_key | toString }}' }}
+                        hypothesis_client_secret: {{ '{{ .hypothesis_client_secret | toString }}' }}
 
-                        crm_api_key: {{ .crm_api_key | toString }}
-                        crm_api_site_key: {{ .crm_api_site_key | toString }}
+                        crm_api_key: {{ '{{ .crm_api_key | toString }}' }}
+                        crm_api_site_key: {{ '{{ .crm_api_site_key | toString }}' }}
 
-                        xpub_client_secret:  {{ .xpub_client_secret | toString }}
+                        xpub_client_secret:  {{ '{{ .xpub_client_secret | toString }}' }}
 
-                        mailer_host: {{ .mailer_host | toString }}
-                        mailer_port: {{ .mailer_port | toString }}
-                        mailer_username: {{ .mailer_username | toString }}
-                        mailer_password: {{ .mailer_password | toString }}
-                        mailer_encryption: {{ .mailer_encryption | toString }}
+                        mailer_host: {{ '{{ .mailer_host | toString }}' }}
+                        mailer_port: {{ '{{ .mailer_port | toString }}' }}
+                        mailer_username: {{ '{{ .mailer_username | toString }}' }}
+                        mailer_password: {{ '{{ .mailer_password | toString }}' }}
+                        mailer_encryption: {{ '{{ .mailer_encryption | toString }}' }}
 
-                        oauth2_client_secret: {{ .oauth2_client_secret | toString }}
-                        secret: {{ .secret | toString }}
-                      {% endraw %}
+                        oauth2_client_secret: {{ '{{ .oauth2_client_secret | toString }}' }}
+                        secret: {{ '{{ .secret | toString }}' }}
                       {% endraw %}
               dataFrom:
               - extract:
