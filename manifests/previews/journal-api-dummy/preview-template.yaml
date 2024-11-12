@@ -169,7 +169,7 @@ spec:
                   # deployment vars
                   env: demo
                   hostname: journal.pr-{{ matrix.pr.number }}.elifesciences.org
-                  cert_manager_issuer: "letsencrypt-prod"
+                  cert_manager_issuer: "letsencrypt"
 
                   journal_secret_parameters_secret_name: journal-secret-parameters
                   api_url: https://api.pr-{{ matrix.pr.number }}.elifesciences.org/
