@@ -177,3 +177,30 @@ spec:
                   epp_url: http://epp-client.epp--prod:3000
                   observer_url: http://prod--observer.elife.internal
                   pubpub_url: https://elife-container.pubpub.org
+        - raw: |
+            apiVersion: templates.kluctl.io/v1alpha1
+            kind: GithubComment
+            metadata:
+              name: journal-deploy-preview-{{ matrix.pr.number }}-{{ matrix['image'].split(':')[1] }}
+              namespace: journal--previews
+            spec:
+              github:
+                owner: elifesciences
+                repo: enhanced-preprints-client
+                pullRequestId: {{ matrix.pr.number }}
+                tokenRef:
+                  secretName: github-api-token
+                  key: token
+              comment:
+                source:
+                  text: |
+                    ## Preview environment deployed!
+
+                    The preview environment has been updated:
+                    Image tag deployed: {% raw %}{{ matrix['image'].split(':')[1] }}{% endraw %}
+
+                    URL: https://journal.pr-{{ matrix.pr.number }}.elifesciences.org
+
+                    This preview has been deployed with the latest API Dummy image
+
+                    **Note**: Updated images can take a few minutes to roll out.
