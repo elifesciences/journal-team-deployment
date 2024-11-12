@@ -163,7 +163,7 @@ spec:
               targetNamespace: "journal--preview-{{ matrix.pr.number }}"
               images:
                 - name: ghcr.io/elifesciences/journal
-                  newTag: "{% raw %}{{ matrix['image'].split(':')[1] }}{% endraw %}"
+                  newTag: "{% raw %}{{ matrix.image.split(':')[1] }}{% endraw %}"
               postBuild:
                 substitute:
                   # deployment vars
@@ -181,7 +181,7 @@ spec:
             apiVersion: templates.kluctl.io/v1alpha1
             kind: GithubComment
             metadata:
-              name: journal-deploy-preview-{{ matrix.pr.number }}-{{ matrix['image'].split(':')[1] }}
+              name: journal-deploy-preview-{{ matrix.pr.number }}-{% raw %}{{ matrix.image.split(':')[1] }}{% endraw %}
               namespace: journal--previews
             spec:
               github:
@@ -197,7 +197,7 @@ spec:
                     ## Preview environment deployed!
 
                     The preview environment has been updated:
-                    Image tag deployed: {% raw %}{{ matrix['image'].split(':')[1] }}{% endraw %}
+                    Image tag deployed: {% raw %}{{ matrix.image.split(':')[1] }}{% endraw %}
 
                     URL: https://journal.pr-{{ matrix.pr.number }}.elifesciences.org
 
