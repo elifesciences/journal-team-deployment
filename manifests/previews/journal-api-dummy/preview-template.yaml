@@ -196,8 +196,7 @@ spec:
                   text: |
                     ## Preview environment deployed!
 
-                    The preview environment has been updated:
-                    Image tag deployed: {% raw %}{{ matrix.image.split(':')[1] }}{% endraw %}
+                    Image tag deployed: `{% raw %}{{ matrix.image.split(':')[1] }}{% endraw %}`
 
                     URL: https://journal.pr-{{ matrix.pr.number }}.elifesciences.org
 
