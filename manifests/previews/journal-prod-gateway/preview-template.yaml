@@ -1,0 +1,158 @@
+apiVersion: templates.kluctl.io/v1alpha1
+kind: ObjectTemplate
+metadata:
+  name: journal-prod-gateway-previews
+  namespace: journal--previews
+spec:
+  serviceAccountName: journal-previews
+  prune: true
+  matrix:
+  - name: pr
+    object:
+      ref:
+        apiVersion: templates.kluctl.io/v1alpha1
+        kind: ListGithubPullRequests
+        name: journal-prod-gateway
+      jsonPath: status.pullRequests
+      expandLists: true
+  templates:
+  - object:
+      apiVersion: image.toolkit.fluxcd.io/v1beta2
+      kind: ImagePolicy
+      metadata:
+        name: journal-prod-gateway-preview-{{ matrix.pr.number }}
+        namespace: journal--previews
+      spec:
+        imageRepositoryRef:
+          name: journal
+        filterTags:
+          pattern: '^preview-{{ matrix.pr.number }}-[a-fA-F0-9]+-(?P<ts>.*)'
+          extract: '$ts'
+        policy:
+          numerical:
+            order: asc
+  - object:
+      apiVersion: templates.kluctl.io/v1alpha1
+      kind: ObjectTemplate
+      metadata:
+        name: journal-prod-gateway-preview-{{ matrix.pr.number }}
+        namespace: journal--previews
+      spec:
+        serviceAccountName: journal-previews
+        prune: true
+        matrix:
+        - name: image
+          object:
+            ref:
+              apiVersion: image.toolkit.fluxcd.io/v1beta2
+              kind: ImagePolicy
+              name: journal-prod-gateway-preview-{{ matrix.pr.number }}
+            jsonPath: status.latestImage
+        templates:
+        # Namespace
+        - object:
+            apiVersion: v1
+            kind: Namespace
+            metadata:
+              name: "journal--preview-{{ matrix.pr.number }}"
+              annotations:
+                elifesciences.org/default-project: journal
+
+        # Journal deployment
+        - object:
+            apiVersion: external-secrets.io/v1beta1
+            kind: ExternalSecret
+            metadata:
+              name: journal-secret-parameters
+              namespace: "journal--preview-{{ matrix.pr.number }}"
+            spec:
+              refreshInterval: 1h
+              secretStoreRef:
+                name: secret-store
+                kind: ClusterSecretStore
+              target:
+                name: journal-secret-parameters
+                creationPolicy: Owner
+                template:
+                  data:
+                    secret_parameters.yaml: |
+                      {% raw %}
+                      parameters:
+                        api_key: {{ '{{ .api_key | toString }}' }}
+                        hypothesis_client_secret: {{ '{{ .hypothesis_client_secret | toString }}' }}
+
+                        crm_api_key: {{ '{{ .crm_api_key | toString }}' }}
+                        crm_api_site_key: {{ '{{ .crm_api_site_key | toString }}' }}
+
+                        xpub_client_secret:  {{ '{{ .xpub_client_secret | toString }}' }}
+
+                        mailer_host: {{ '{{ .mailer_host | toString }}' }}
+                        mailer_port: {{ '{{ .mailer_port | toString }}' }}
+                        mailer_username: {{ '{{ .mailer_username | toString }}' }}
+                        mailer_password: {{ '{{ .mailer_password | toString }}' }}
+                        mailer_encryption: {{ '{{ .mailer_encryption | toString }}' }}
+
+                        oauth2_client_secret: {{ '{{ .oauth2_client_secret | toString }}' }}
+                        secret: {{ '{{ .secret | toString }}' }}
+                      {% endraw %}
+              dataFrom:
+              - extract:
+                  key: journal-team/journal/demo
+
+        - object:
+            apiVersion: kustomize.toolkit.fluxcd.io/v1
+            kind: Kustomization
+            metadata:
+              name: journal-prod-gateway-preview-{{ matrix.pr.number }}
+              namespace: journal--previews
+            spec:
+              interval: 1m0s
+              sourceRef:
+                kind: GitRepository
+                name: journal-team-deployment
+                namespace: flux-system
+              path: ./kustomizations/journal
+              prune: true
+              targetNamespace: "journal--preview-{{ matrix.pr.number }}"
+              images:
+                - name: ghcr.io/elifesciences/journal
+                  newTag: "{% raw %}{{ matrix.image.split(':')[1] }}{% endraw %}"
+              postBuild:
+                substitute:
+                  # deployment vars
+                  env: demo
+                  hostname: journal.pr-{{ matrix.pr.number }}.elifesciences.org
+                  cert_manager_issuer: "letsencrypt"
+
+                  journal_secret_parameters_secret_name: journal-secret-parameters
+                  api_url: https://api.prod.elifesciences.org/
+                  api_url_search_page: https://api.prod.elifesciences.org/
+                  epp_url: http://epp-client.epp--prod:3000
+                  observer_url: http://prod--observer.elife.internal
+                  pubpub_url: https://elife-container.pubpub.org
+        - raw: |
+            apiVersion: templates.kluctl.io/v1alpha1
+            kind: GithubComment
+            metadata:
+              name: journal-prod-gateway-preview-{{ matrix.pr.number }}-{% raw %}{{ matrix.image.split(':')[1] }}{% endraw %}
+              namespace: journal--previews
+            spec:
+              github:
+                owner: elifesciences
+                repo: journal
+                pullRequestId: {{ matrix.pr.number }}
+                tokenRef:
+                  secretName: github-elife-alfred-user-cluster-token
+                  key: token
+              comment:
+                source:
+                  text: |
+                    ## Preview environment deployed!
+
+                    Image tag deployed: `{% raw %}{{ matrix.image.split(':')[1] }}{% endraw %}`
+
+                    URL: https://journal.pr-{{ matrix.pr.number }}.elifesciences.org
+
+                    This preview has been deployed using the production gateway
+
+                    **Note**: Updated images can take a few minutes to roll out.
