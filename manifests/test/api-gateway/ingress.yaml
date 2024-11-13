@@ -5,7 +5,7 @@ metadata:
   name: api-gateway
   namespace: journal--test
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    cert-manager.io/cluster-issuer: "letsencrypt"
 spec:
   rules:
   - host: "api.test.elifesciences.org"
