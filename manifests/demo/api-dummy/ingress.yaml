@@ -5,7 +5,7 @@ metadata:
   name: api-dummy
   namespace: journal--demo
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    cert-manager.io/cluster-issuer: "letsencrypt"
 spec:
   rules:
   - host: "api.demo.elifesciences.org"
