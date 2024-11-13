@@ -87,7 +87,7 @@ spec:
               name: api-dummy
               namespace:  journal--preview-{{ matrix.pr.number }}
               annotations:
-                cert-manager.io/cluster-issuer: "letsencrypt-prod"
+                cert-manager.io/cluster-issuer: "letsencrypt"
             spec:
               rules:
               - host: "api.pr-{{ matrix.pr.number }}.elifesciences.org"
