@@ -43,7 +43,7 @@ spec:
       # deployment vars
       env: prod
       hostname: search.prod.elifesciences.org
-      cert_manager_issuer: "letsencrypt-prod"
+      cert_manager_issuer: "letsencrypt"
 
       # api_url: https://api.prod.elifesciences.org
       api_url: http://prod--gateway.elife.internal
