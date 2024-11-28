@@ -13,16 +13,14 @@ spec:
   prune: true
   targetNamespace: journal--demo
   images:
-    - name: elifesciences/journal # {"$imagepolicy": "journal--demo:journal-stable:name"}
-      newTag: 8b955ca2c0ebb7c13e828c20c6ab2d533e56237a # {"$imagepolicy": "journal--demo:journal-stable:tag"}
+    - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--demo:journal-stable:name"}
+      newTag: master-bdefba9b03d42390287cf13523ff93b6ac7a39b8-20241128.1539 # {"$imagepolicy": "journal--demo:journal-stable:tag"}
   postBuild:
     substitute:
       # deployment vars
       env: demo
       hostname: journal.demo.elifesciences.org
       cert_manager_issuer: "letsencrypt"
-
-
       journal_secret_parameters_secret_name: journal-secret-parameters
       api_url: https://api.demo.elifesciences.org/
       api_url_search_page: https://api.demo.elifesciences.org
