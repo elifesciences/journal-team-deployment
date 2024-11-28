@@ -13,8 +13,8 @@ spec:
   prune: true
   targetNamespace: journal--test
   images:
-    - name: elifesciences/journal
-      newTag: 8b955ca2c0ebb7c13e828c20c6ab2d533e56237a
+    - name: elifesciences/journal # {"$imagepolicy": "journal--test:journal-stable:name"}
+      newTag: 8b955ca2c0ebb7c13e828c20c6ab2d533e56237a # {"$imagepolicy": "journal--test:journal-stable:tag"}
   postBuild:
     substitute:
       # deployment vars
