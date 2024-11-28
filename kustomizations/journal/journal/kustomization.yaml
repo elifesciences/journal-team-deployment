@@ -7,7 +7,7 @@ resources:
 - service.yaml
 - ingress.yaml
 - automations/repository.yaml
-- automations/policy.yaml
+- automations/stable-policy.yaml
 
 configMapGenerator:
 - name: journal-parameters
