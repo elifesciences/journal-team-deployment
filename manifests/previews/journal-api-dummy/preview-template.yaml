@@ -57,7 +57,6 @@ spec:
               name: "journal--preview-{{ matrix.pr.number }}"
               annotations:
                 elifesciences.org/default-project: journal
-
         # API Dummy deployment + Ingress
         - object:
             apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -76,7 +75,7 @@ spec:
               targetNamespace: journal--preview-{{ matrix.pr.number }}
               images:
               - name: ghcr.io/elifesciences/api-dummy
-                newTag: 20241105171536.0.0-g5834c98-11689211250-1 # {"$imagepolicy": "journal--previews:api-dummy:tag"}
+                newTag: 20241212134226.0.0-gb4677c6-12297643528-1 # {"$imagepolicy": "journal--previews:api-dummy:tag"}
               postBuild:
                 substitute:
                   env: demo
@@ -85,7 +84,7 @@ spec:
             kind: Ingress
             metadata:
               name: api-dummy
-              namespace:  journal--preview-{{ matrix.pr.number }}
+              namespace: journal--preview-{{ matrix.pr.number }}
               annotations:
                 cert-manager.io/cluster-issuer: "letsencrypt"
             spec:
@@ -104,7 +103,6 @@ spec:
               - secretName: api-dummy-tls
                 hosts:
                 - "api.pr-{{ matrix.pr.number }}.elifesciences.org"
-
         # Journal deployment
         - object:
             apiVersion: external-secrets.io/v1beta1
@@ -145,7 +143,6 @@ spec:
               dataFrom:
               - extract:
                   key: journal-team/journal/demo
-
         - object:
             apiVersion: kustomize.toolkit.fluxcd.io/v1
             kind: Kustomization
@@ -162,15 +159,14 @@ spec:
               prune: true
               targetNamespace: "journal--preview-{{ matrix.pr.number }}"
               images:
-                - name: ghcr.io/elifesciences/journal
-                  newTag: "{% raw %}{{ matrix.image.split(':')[1] }}{% endraw %}"
+              - name: ghcr.io/elifesciences/journal
+                newTag: "{% raw %}{{ matrix.image.split(':')[1] }}{% endraw %}"
               postBuild:
                 substitute:
                   # deployment vars
                   env: demo
                   hostname: journal.pr-{{ matrix.pr.number }}.elifesciences.org
                   cert_manager_issuer: "letsencrypt"
-
                   journal_secret_parameters_secret_name: journal-secret-parameters
                   api_url: https://api.pr-{{ matrix.pr.number }}.elifesciences.org/
                   api_url_search_page: https://api.pr-{{ matrix.pr.number }}.elifesciences.org/
