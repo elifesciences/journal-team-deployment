@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--prod
   images:
     - name: ghcr.io/elifesciences/search
-      newTag: master-e35a5898-20241115.0757
+      newTag: master-41051e30-20250102.1034
   dependsOn:
   - name: search-queue
   - name: search-queue-watcher-role
