@@ -1,21 +1,21 @@
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: api-dummy
-  namespace: journal--demo
-spec:
-  interval: 1m0s
-  sourceRef:
-    kind: GitRepository
-    name: journal-team-deployment
-    namespace: flux-system
-  path: ./kustomizations/api-dummy
-  prune: true
-  targetNamespace: journal--demo
-  images:
-    - name: ghcr.io/elifesciences/api-dummy
-      newTag: 20241217103659.0.0-g0036a4a-12371253748-1 # {"$imagepolicy": "journal--demo:api-dummy:tag"}
-  postBuild:
-    substitute:
-      # deployment vars
-      env: demo
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: api-dummy
+#   namespace: journal--demo
+# spec:
+#   interval: 1m0s
+#   sourceRef:
+#     kind: GitRepository
+#     name: journal-team-deployment
+#     namespace: flux-system
+#   path: ./kustomizations/api-dummy
+#   prune: true
+#   targetNamespace: journal--demo
+#   images:
+#     - name: ghcr.io/elifesciences/api-dummy
+#       newTag: 20241217103659.0.0-g0036a4a-12371253748-1 # {"$imagepolicy": "journal--demo:api-dummy:tag"}
+#   postBuild:
+#     substitute:
+#       # deployment vars
+#       env: demo
