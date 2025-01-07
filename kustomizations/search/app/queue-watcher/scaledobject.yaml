@@ -17,4 +17,4 @@ spec:
     metadata:
       awsRegion: "${aws_region}"
       queueURL: "${search_queue_name}"
-      queueLength: "10"
+      queueLength: "50"
