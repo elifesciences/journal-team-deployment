@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--test
   images:
     - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--test:journal-stable:name"}
-      newTag: master-af954455837239f044f7e47bed394d2f0430395a-20250109.1034 # {"$imagepolicy": "journal--test:journal-stable:tag"}
+      newTag: master-eb4d60538692b9f107a7a75dae1d10425b36403e-20250109.1052 # {"$imagepolicy": "journal--test:journal-stable:tag"}
   postBuild:
     substitute:
       # deployment vars
