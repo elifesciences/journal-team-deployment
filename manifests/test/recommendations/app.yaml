@@ -14,12 +14,11 @@ spec:
   targetNamespace: journal--test
   images:
     - name: elifesciences/recommendations # {"$imagepolicy": "journal--test:recommendations-stable:name"}
-      newTag: be120f1a035d5150c8b76eb8f38b19520a5b2330 # {"$imagepolicy": "journal--test:recommendations-stable:tag"}
+      newTag: HEAD-b50265f0-20250110.1636 # {"$imagepolicy": "journal--test:recommendations-stable:tag"}
   postBuild:
     substitute:
       # deployment vars
       env: test
       hostname: recommendations.test.elifesciences.org
       cert_manager_issuer: "letsencrypt"
-
       api_url: https://api.test.elifesciences.org/
