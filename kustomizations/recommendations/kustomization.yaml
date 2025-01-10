@@ -4,7 +4,9 @@ namespace: journal
 
 resources:
 - deployment.yaml
-
+- service.yaml
+- config/recommendations-ingress-fastcgi-params.yaml
+- ingress.yaml
 
 configMapGenerator:
 - name: recommendations-config

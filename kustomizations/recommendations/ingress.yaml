@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: recommedations
+  annotations:
+    cert-manager.io/cluster-issuer: "${cert_manager_issuer}"
+    nginx.ingress.kubernetes.io/backend-protocol: "FCGI"
+    nginx.ingress.kubernetes.io/fastcgi-index: "app_prod.php"
+    nginx.ingress.kubernetes.io/fastcgi-params-configmap: "recommendations-ingress-fastcgi-params"
+spec:
+  rules:
+  - host: ${hostname}
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: recommedations-fastcgi
+            port:
+              number: 9000
+  tls:
+  - hosts:
+    - ${hostname}
+    secretName: recommedations-tls
