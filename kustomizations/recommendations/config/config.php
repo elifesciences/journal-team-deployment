@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'api.uri' => ' ${api_url}',
+    'api.uri' => '${api_url}',
 ];
