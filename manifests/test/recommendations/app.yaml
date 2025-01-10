@@ -22,4 +22,4 @@ spec:
       hostname: recommendations.test.elifesciences.org
       cert_manager_issuer: "letsencrypt"
 
-      api_url: https://api.prod.elifesciences.org
+      api_url: https://api.prod.elifesciences.org/
