@@ -33,7 +33,7 @@ spec:
         - "--parser=/config/json-parser.conf"
         - "--input=tail"
         - "--prop=path=/srv/recommendations/var/logs/all.json"
-        - "--prop=parser=search"
+        - "--prop=parser=recommendations"
         - "--output=stdout"
         - "--prop=format=json_lines"
         volumeMounts:
