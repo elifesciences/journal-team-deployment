@@ -13,6 +13,12 @@ spec:
         image: elifesciences/recommendations:latest
         ports:
         - containerPort: 9000
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "20m"
+          limits:
+            memory: "50Mi"
         readinessProbe:
           tcpSocket:
             port: 9000
