@@ -24,10 +24,36 @@ spec:
         - name: config-volume
           mountPath: /srv/recommendations/config.php
           subPath: config.php
+        - name: logs
+          mountPath: /srv/recommendations/var/logs
+      - name: logs
+        image: cr.fluentbit.io/fluent/fluent-bit
+        command:
+        - "/fluent-bit/bin/fluent-bit"
+        - "--parser=/config/json-parser.conf"
+        - "--input=tail"
+        - "--prop=path=/srv/recommendations/logs/all.json"
+        - "--prop=parser=search"
+        - "--output=stdout"
+        - "--prop=format=json_lines"
+        volumeMounts:
+        - name: logs
+          mountPath: /srv/recommendations/var/logs
+        - name: log-config-volume
+          mountPath: /config/json-parser.conf
+          subPath: json-parser.conf
       volumes:
+      - name: logs
+        emptyDir: {}
       - name: config-volume
         configMap:
           name: recommendations-config
           items:
           - key: config.php
             path: config.php
+      - name: log-config-volume
+        configMap:
+          name: recommendations-config
+          items:
+          - key: json-parser.conf
+            path: json-parser.conf

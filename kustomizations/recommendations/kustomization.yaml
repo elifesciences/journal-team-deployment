@@ -12,6 +12,7 @@ configMapGenerator:
 - name: recommendations-config
   files:
   - config/config.php
+  - config/json-parser.conf
 
 labels:
 - includeSelectors: true
