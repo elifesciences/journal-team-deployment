@@ -16,7 +16,7 @@ spec:
         pathType: ImplementationSpecific
         backend:
           service:
-            name: recommedations-fastcgi
+            name: recommendations-fastcgi
             port:
               number: 9000
   tls:
