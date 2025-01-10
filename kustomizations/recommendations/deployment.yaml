@@ -32,7 +32,7 @@ spec:
         - "/fluent-bit/bin/fluent-bit"
         - "--parser=/config/json-parser.conf"
         - "--input=tail"
-        - "--prop=path=/srv/recommendations/logs/all.json"
+        - "--prop=path=/srv/recommendations/var/logs/all.json"
         - "--prop=parser=search"
         - "--output=stdout"
         - "--prop=format=json_lines"
