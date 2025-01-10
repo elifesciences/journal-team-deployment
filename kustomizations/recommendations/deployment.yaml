@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendations
+  namespace: journal
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
+      containers:
+      - name: journal
+        image: elifesciences/recommendations:latest
+        ports:
+        - containerPort: 9000
+        readinessProbe:
+          tcpSocket:
+            port: 9000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 10
+          timeoutSeconds: 10
+        volumeMounts:
+        - name: config-volume
+          mountPath: /srv/recommendations/config.php
+          subPath: config.php
+      volumes:
+      - name: config-volume
+        configMap:
+          name: recommendations-config
+          items:
+          - key: config.php
+            path: config.php
