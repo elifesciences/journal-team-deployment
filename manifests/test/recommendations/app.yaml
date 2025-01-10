@@ -13,8 +13,8 @@ spec:
   prune: true
   targetNamespace: journal--test
   images:
-    - name: elifesciences/recommendations
-      newTag: be120f1a035d5150c8b76eb8f38b19520a5b2330
+    - name: elifesciences/recommendations # {"$imagepolicy": "journal--test:recommendations-stable:name"}
+      newTag: be120f1a035d5150c8b76eb8f38b19520a5b2330 # {"$imagepolicy": "journal--test:recommendations-stable:tag"}
   postBuild:
     substitute:
       # deployment vars
