@@ -1,0 +1,25 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: recommendations
+  namespace: journal--prod
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/recommendations
+  prune: true
+  targetNamespace: journal--prod
+  images:
+    - name: elifesciences/recommendations
+      newTag: be120f1a035d5150c8b76eb8f38b19520a5b2330
+  postBuild:
+    substitute:
+      # deployment vars
+      env: prod
+      hostname: recommendations.prod.elifesciences.org
+      cert_manager_issuer: "letsencrypt"
+
+      api_url: https://api.prod.elifesciences.org/
