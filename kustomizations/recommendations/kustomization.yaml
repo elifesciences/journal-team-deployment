@@ -7,6 +7,8 @@ resources:
 - service.yaml
 - config/recommendations-ingress-fastcgi-params.yaml
 - ingress.yaml
+- automations/repository.yaml
+- automations/stable-policy.yaml
 
 configMapGenerator:
 - name: recommendations-config
