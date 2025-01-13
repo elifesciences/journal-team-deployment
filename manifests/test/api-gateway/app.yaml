@@ -62,11 +62,6 @@ spec:
       profiles_protocol: http
       profiles_service_name: profiles-proxy
 
-      # recommendations_hostname: continuumtest--recommendations.elife.internal
-      # recommendations_port: "80"
-      # recommendations_protocol: http
-      # recommendations_service_name: recommendations-web
-
       reviewed_preprints_service_name: reviewed-preprints-proxy
       reviewed_preprints_port: "443"
       reviewed_preprints_protocol: https
