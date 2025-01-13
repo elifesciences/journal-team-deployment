@@ -15,6 +15,9 @@ configMapGenerator:
   files:
   - config/config.php
   - config/json-parser.conf
+- name: nginx-recommendations-site-conf
+  files:
+  - config/nginx-site.conf
 
 labels:
 - includeSelectors: true

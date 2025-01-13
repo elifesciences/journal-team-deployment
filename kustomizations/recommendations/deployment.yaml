@@ -48,6 +48,22 @@ spec:
         - name: log-config-volume
           mountPath: /config/json-parser.conf
           subPath: json-parser.conf
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /ping
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 10
+          timeoutSeconds: 10
+        volumeMounts:
+        - name: nginx-config-volume
+          mountPath: /etc/nginx/conf.d/default.conf
+          subPath: nginx-site.conf
       volumes:
       - name: logs
         emptyDir: {}
@@ -63,3 +79,9 @@ spec:
           items:
           - key: json-parser.conf
             path: json-parser.conf
+      - name: nginx-config-volume
+        configMap:
+          name: nginx-recommendations-site-conf
+          items:
+          - key: nginx-site.conf
+            path: nginx-site.conf
