@@ -4,9 +4,6 @@ metadata:
   name: recommedations
   annotations:
     cert-manager.io/cluster-issuer: "${cert_manager_issuer}"
-    nginx.ingress.kubernetes.io/backend-protocol: "FCGI"
-    nginx.ingress.kubernetes.io/fastcgi-index: "app_prod.php"
-    nginx.ingress.kubernetes.io/fastcgi-params-configmap: "recommendations-ingress-fastcgi-params"
 spec:
   rules:
   - host: ${hostname}
@@ -16,9 +13,9 @@ spec:
         pathType: ImplementationSpecific
         backend:
           service:
-            name: recommendations-fastcgi
+            name: recommendations-web
             port:
-              number: 9000
+              number: 80
   tls:
   - hosts:
     - ${hostname}

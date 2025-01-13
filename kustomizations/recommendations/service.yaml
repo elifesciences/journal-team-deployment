@@ -7,3 +7,13 @@ spec:
   ports:
   - port: 9000
     protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: recommendations-web
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    protocol: TCP
