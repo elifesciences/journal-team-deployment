@@ -23,6 +23,9 @@ spec:
       search_port: "80"
       search_service_name: search-web
 
+      recommendations_port: "80"
+      recommendations_service_name: recommendations-web
+
       # define services deployed elsewhere
       annotations_hostname: continuumtest--annotations.elife.internal
       annotations_port: "80"
@@ -59,10 +62,10 @@ spec:
       profiles_protocol: http
       profiles_service_name: profiles-proxy
 
-      recommendations_hostname: continuumtest--recommendations.elife.internal
-      recommendations_port: "80"
-      recommendations_protocol: http
-      recommendations_service_name: recommendations-proxy
+      # recommendations_hostname: continuumtest--recommendations.elife.internal
+      # recommendations_port: "80"
+      # recommendations_protocol: http
+      # recommendations_service_name: recommendations-web
 
       reviewed_preprints_service_name: reviewed-preprints-proxy
       reviewed_preprints_port: "443"
