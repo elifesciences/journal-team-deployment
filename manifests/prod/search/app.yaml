@@ -45,5 +45,4 @@ spec:
       hostname: search.prod.elifesciences.org
       cert_manager_issuer: "letsencrypt"
 
-      # api_url: https://api.prod.elifesciences.org
-      api_url: http://prod--gateway.elife.internal
+      api_url: https://api.prod.elifesciences.org

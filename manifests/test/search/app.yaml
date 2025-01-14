@@ -43,4 +43,3 @@ spec:
       hostname: search.test.elifesciences.org
       cert_manager_issuer: "letsencrypt"
       api_url: https://api.test.elifesciences.org
-      # api_url: http://continuumtest--gateway.elife.internal
