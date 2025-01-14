@@ -4,6 +4,7 @@ metadata:
   name: recommendations
   namespace: journal
 spec:
+  replicas: ${replicas:-1}
   template:
     spec:
       nodeSelector:
