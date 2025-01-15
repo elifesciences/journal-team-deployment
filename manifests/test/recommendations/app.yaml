@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--test
   images:
     - name: elifesciences/recommendations # {"$imagepolicy": "journal--test:recommendations-stable:name"}
-      newTag: HEAD-81be2c3a-20250113.1235 # {"$imagepolicy": "journal--test:recommendations-stable:tag"}
+      newTag: HEAD-c8b07ede-20250115.0456 # {"$imagepolicy": "journal--test:recommendations-stable:tag"}
   postBuild:
     substitute:
       # deployment vars
