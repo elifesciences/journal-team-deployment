@@ -13,8 +13,8 @@ spec:
   prune: true
   targetNamespace: journal--prod
   images:
-    - name: elifesciences/recommendations # {"$imagepolicy": "journal--prod:recommendations-stable:name"}
-      newTag: HEAD-e9516804-20250116.1140 # {"$imagepolicy": "journal--prod:recommendations-stable:tag"}
+    - name: ghcr.io/elifesciences/recommendations # {"$imagepolicy": "journal--prod:recommendations-stable:name"}
+      newTag: 20250116161010.0.0-ge951680-12812940934-1 # {"$imagepolicy": "journal--prod:recommendations-stable:tag"}
   postBuild:
     substitute:
       # deployment vars
