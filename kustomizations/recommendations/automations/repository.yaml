@@ -4,4 +4,4 @@ metadata:
   name: recommendations
 spec:
   interval: 5m
-  image: elifesciences/recommendations
+  image: ghcr.io/elifesciences/recommendations
