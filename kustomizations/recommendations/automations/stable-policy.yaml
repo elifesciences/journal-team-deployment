@@ -9,5 +9,5 @@ spec:
     pattern: '^(?P<semver>[0-9]+\.[0-9]+\.[0-9]+).*'
     extract: '$semver'
   policy:
-    numerical:
-      order: asc
+    semver:
+      range: '*'
