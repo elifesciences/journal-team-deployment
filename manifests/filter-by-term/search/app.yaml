@@ -45,4 +45,4 @@ spec:
       hostname: search.filter-by-term.elifesciences.org
       cert_manager_issuer: "letsencrypt"
 
-      api_url: https://api.filter-by-term.elifesciences.org
+      api_url: https://api.prod.elifesciences.org
