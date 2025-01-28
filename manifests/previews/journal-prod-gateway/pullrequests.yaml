@@ -5,7 +5,7 @@ metadata:
   name: journal-prod-gateway
   namespace: journal--previews
 spec:
-  interval: 1m
+  interval: 2m
   owner: elifesciences
   repo: journal
   state: open
