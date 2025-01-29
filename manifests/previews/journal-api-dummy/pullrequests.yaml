@@ -5,7 +5,7 @@ metadata:
   name: journal-api-dummy
   namespace: journal--previews
 spec:
-  interval: 2m
+  interval: 1m
   owner: elifesciences
   repo: journal
   state: open
