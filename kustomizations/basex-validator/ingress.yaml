@@ -2,10 +2,11 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: basex-validator
-  annotations: 
+  annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: 4m
     nginx.ingress.kubernetes.io/proxy-read-timeout: "120"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "120"
+    cert-manager.io/cluster-issuer: "letsencrypt"
 spec:
   rules:
   - host: ${hostname}
@@ -18,3 +19,7 @@ spec:
               name: basex-validator
               port:
                 number: 8984
+  tls:
+  - hosts:
+    - ${hostname}
+    secretName: basex-validator-tls
