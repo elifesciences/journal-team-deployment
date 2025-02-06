@@ -12,6 +12,10 @@ spec:
       containers:
       - name: digests
         image: elifesciences/digests:23f3d932a3fce58d7660f93316479918d53faa52
+        arguments:
+        - bash
+        - -c
+        - "./migrate.sh && exec venv/bin/uwsgi --ini=/srv/digests/uwsgi.ini --enable-threads"
         ports:
         - containerPort: 9000
         # readinessProbe:
