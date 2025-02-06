@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: digests
+  namespace: journal--test
+spec:
+  template:
+    spec:
+      containers:
+      - name: digests
+        image: elifesciences/digests:23f3d932a3fce58d7660f93316479918d53faa52
+        ports:
+        - containerPort: 9000
+        # readinessProbe:
+        #   exec:
+        #     command:
+        #       - bash
+        #       - -c
+        #       - "venv/bin/uwsgi_curl 127.0.0.1:9000 localhost/ping | grep pong"
+        #   periodSeconds: 5
