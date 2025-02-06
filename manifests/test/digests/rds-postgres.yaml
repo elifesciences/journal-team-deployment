@@ -1,0 +1,18 @@
+apiVersion: rds.services.k8s.aws/v1alpha1
+kind: DBInstance
+metadata:
+  name: digests-test
+  namespace: journal--test
+spec:
+  allocatedStorage: 5
+  dbInstanceClass: db.t4g.micro
+  dbInstanceIdentifier: digests-test
+  dbName: postgres
+  port: 5432
+  engine: postgres
+  engineVersion: "13.16"
+  masterUsername: "postgres"
+  manageMasterUserPassword: true
+  vpcSecurityGroupIDs:
+    - sg-0a04b1c8433227e63
+  dbSubnetGroupName: elife-flux-prod-ack-rds-controller-all-dbs
