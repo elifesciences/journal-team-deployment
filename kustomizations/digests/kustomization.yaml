@@ -10,3 +10,8 @@ labels:
   pairs:
     app.kubernetes.io/part-of: digests
     app.kubernetes.io/instance: digests-${env}
+
+configMapGenerator:
+- name: uwsgi-config
+  files:
+  - config/uwsgi.ini

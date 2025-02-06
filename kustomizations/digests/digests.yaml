@@ -19,3 +19,14 @@ spec:
         #       - -c
         #       - "venv/bin/uwsgi_curl 127.0.0.1:9000 localhost/ping | grep pong"
         #   periodSeconds: 5
+        volumeMounts:
+        - name: config-volume
+          mountPath: /srv/digests/uwsgi.ini
+          subPath: uwsgi.ini
+      volumes:
+      - name: config-volume
+        configMap:
+          name: uwsgi-config
+          items:
+          - key: uwsgi.ini
+            path: uwsgi.ini
