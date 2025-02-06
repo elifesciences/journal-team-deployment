@@ -7,6 +7,8 @@ metadata:
 spec:
   template:
     spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
       - name: digests
         image: elifesciences/digests:23f3d932a3fce58d7660f93316479918d53faa52
