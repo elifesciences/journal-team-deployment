@@ -12,6 +12,12 @@ spec:
   path: ./kustomizations/digests
   prune: true
   targetNamespace: journal--test
+  dependsOn:
+  - name: digests-database
+  - name: digests-database-secret
   postBuild:
+    substituteFrom:
+    - kind: Secret
+      name: digests-test-connection-values
     substitute:
       env: test
