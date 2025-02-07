@@ -21,3 +21,28 @@ spec:
       engine: postgres
       engine_version: "\"13.16\""
       project: journal
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: digests-database-secret
+  namespace: journal--test
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  path: ./kustomizations/utils/external-secret
+  prune: true
+  targetNamespace: journal--test
+  dependsOn:
+  - name: digests-database
+  postBuild:
+    substitute:
+      external_secret_name: digests-test-password-secret
+      kubernetes_secret_name: digests-test-connection-values
+      creation_policy: Merge
+    substituteFrom:
+    - kind: Secret
+      name: digests-test-connection-values
