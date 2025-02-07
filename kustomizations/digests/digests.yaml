@@ -18,6 +18,9 @@ spec:
         - "./migrate.sh && exec venv/bin/uwsgi --ini=/srv/digests/uwsgi.ini --enable-threads"
         ports:
         - containerPort: 9000
+        env:
+        - name: DATABASE_URL
+          value: "${DATABASE_URL}"
         # readinessProbe:
         #   exec:
         #     command:
