@@ -5,6 +5,7 @@ namespace: journal
 resources:
 - opensearch
 - web
+- queue-import
 - queue-watcher
 - automation
 - queue-serviceaccount.yaml
