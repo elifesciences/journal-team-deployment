@@ -10,4 +10,4 @@ labels:
 - includeSelectors: true
   pairs:
     app.kubernetes.io/component: queue
-    app.kubernetes.io/name: queue-watcher
+    app.kubernetes.io/name: queue-import
