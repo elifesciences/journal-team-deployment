@@ -75,7 +75,7 @@ spec:
               targetNamespace: journal--preview-{{ matrix.pr.number }}
               images:
               - name: ghcr.io/elifesciences/api-dummy
-                newTag: 20250211173143.0.0-g89a0bed-13268906613-1 # {"$imagepolicy": "journal--previews:api-dummy:tag"}
+                newTag: 20250211180609.0.0-g962e4a5-13269503110-1 # {"$imagepolicy": "journal--previews:api-dummy:tag"}
               postBuild:
                 substitute:
                   env: demo
