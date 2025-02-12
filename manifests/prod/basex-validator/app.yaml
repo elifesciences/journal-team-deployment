@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--prod
   images:
     - name: docker.io/elifesciences/basex-validator
-      newTag: master-dd3c780f-20250212.1538 # {"$imagepolicy": "journal--prod:basex-validator-stable:tag"}
+      newTag: master-41435931-20250212.1539 # {"$imagepolicy": "journal--prod:basex-validator-stable:tag"}
   postBuild:
     substitute:
       replicas: "2"
