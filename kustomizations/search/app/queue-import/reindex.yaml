@@ -18,7 +18,7 @@ spec:
             command:
             - bash
             - "-c"
-            - '/app/bin/reindex $(date "+%Y%m%d%H%M%S")'
+            - '/app/bin/reindex elife_search_$(date "+%Y%m%d%H%M%S")'
             resources:
               requests:
                 memory: "4Gi"
