@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--filter-by-term
   images:
     - name: ghcr.io/elifesciences/search
-      newTag: filter-by-term-multi-3e043da8-20250211
+      newTag: filter-by-term-multi-b9d94d2-20250217
   dependsOn:
   - name: search-queue
   - name: search-queue-watcher-role
