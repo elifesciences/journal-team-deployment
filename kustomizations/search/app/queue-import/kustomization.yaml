@@ -5,6 +5,7 @@ resources:
 - import-job.yaml
 - import-research-articles.yaml
 - import-reviewed-preprints.yaml
+- reindex.yaml
 
 labels:
 - includeSelectors: true
