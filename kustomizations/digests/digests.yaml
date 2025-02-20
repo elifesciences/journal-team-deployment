@@ -23,6 +23,14 @@ spec:
           value: "${DATABASE_URL}"
         - name: AWS_DEFAULT_REGION
           value: "${awsRegion}"
+        - name: BUS_REGION
+          value: "${busRegion}"
+        - name: BUS_SUBSCRIBER
+          value: "${busSubscriber}"
+        - name: BUS_NAME
+          value: "${busName}"
+        - name: BUS_ENV
+          value: "${busEnv}"
         # readinessProbe:
         #   exec:
         #     command:
