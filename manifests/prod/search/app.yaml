@@ -14,18 +14,18 @@ spec:
   targetNamespace: journal--prod
   images:
     - name: ghcr.io/elifesciences/search
-      newTag: master-adc718f3-20250210.1141 # {"$imagepolicy": "journal--prod:search-stable:tag"}
+      newTag: master-4195209e-20250219.1550 # {"$imagepolicy": "journal--prod:search-stable:tag"}
   dependsOn:
-  - name: search-queue
-  - name: search-queue-watcher-role
+    - name: search-queue
+    - name: search-queue-watcher-role
   postBuild:
     substituteFrom:
-    # search_queue_arn and search_queue_name are retrieved from the configmap
-    - kind: ConfigMap
-      name: search-queue-config
-    # search_queue_watcher_role_arn are retrieved from the configmap
-    - kind: ConfigMap
-      name: search-queue-watcher-role
+      # search_queue_arn and search_queue_name are retrieved from the configmap
+      - kind: ConfigMap
+        name: search-queue-config
+      # search_queue_watcher_role_arn are retrieved from the configmap
+      - kind: ConfigMap
+        name: search-queue-watcher-role
     substitute:
       # opensearch resources
       opensearch_manager_request_mem: 2938Mi
@@ -34,15 +34,12 @@ spec:
       opensearch_data_request_mem: 5102Mi
       opensearch_data_request_cpu: 3500m
       opensearch_data_limit_mem: 5102Mi
-
       # opensearch backup vars
       aws_region: ${aws_region}
       aws_backup_s3_bucket: ${aws_backup_s3_bucket}
       aws_backup_service_account_role_arn: ${aws_backup_service_account_role_arn}
-
       # deployment vars
       env: prod
       hostname: search.prod.elifesciences.org
       cert_manager_issuer: "letsencrypt"
-
       api_url: https://api.prod.elifesciences.org
