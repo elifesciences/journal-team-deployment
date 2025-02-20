@@ -21,3 +21,4 @@ spec:
       name: digests-database-secret
     substitute:
       env: test
+      awsRegion: us-east-1

@@ -21,6 +21,8 @@ spec:
         env:
         - name: DATABASE_URL
           value: "${DATABASE_URL}"
+        - name: AWS_DEFAULT_REGION
+          value: "${awsRegion}"
         # readinessProbe:
         #   exec:
         #     command:
