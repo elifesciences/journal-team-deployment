@@ -40,9 +40,8 @@ spec:
   - name: digests-database
   postBuild:
     substitute:
-      external_secret_name: digests-test-password-secret
-      kubernetes_secret_name: digests-test-connection-values
-      creation_policy: Merge
+      external_secret_name: digests-database-secret
+      kubernetes_secret_name: digests-database-secret # Target secret name
     substituteFrom:
     - kind: Secret
       name: digests-test-connection-values
