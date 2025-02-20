@@ -23,6 +23,6 @@ spec:
       env: test
       awsRegion: us-east-1
       busName: bus-digests
-      busSubscriber: '512686554592'
+      busSubscriber: '"512686554592"'
       busRegion: us-east-1
       busEnv: continuumtest
