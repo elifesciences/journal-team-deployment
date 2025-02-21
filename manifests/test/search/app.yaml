@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--test
   images:
     - name: ghcr.io/elifesciences/search
-      newTag: master-660c7eaf-20250221.1108 # {"$imagepolicy": "journal--test:search-stable:tag"}
+      newTag: master-61fe8484-20250221.1131 # {"$imagepolicy": "journal--test:search-stable:tag"}
   dependsOn:
     - name: search-queue
     - name: search-queue-watcher-role
