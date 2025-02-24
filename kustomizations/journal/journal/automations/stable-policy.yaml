@@ -6,7 +6,7 @@ spec:
   imageRepositoryRef:
     name: journal
   filterTags:
-    pattern: '^HEAD-[a-fA-F0-9]+-(?P<ts>.*)'
+    pattern: '^master-[a-fA-F0-9]+-(?P<ts>.*)'
     extract: '$ts'
   policy:
     numerical:
