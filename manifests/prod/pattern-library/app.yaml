@@ -1,0 +1,23 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: pattern-library
+  namespace: journal--prod
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/pattern-library
+  prune: true
+  targetNamespace: journal--prod
+  images:
+    - name: docker.io/elifesciences/pattern-library # {"$imagepolicy": "journal--prod:pattern-library-stable:name"}
+      newTag: 543d6b92d3cfe88aba34b494d81260b1e6d6264c # {"$imagepolicy": "journal--prod:pattern-library-stable:tag"}
+  postBuild:
+    substitute:
+      # deployment vars
+      env: prod
+      hostname: pattern-library.prod.elifesciences.org
+      cert_manager_issuer: "letsencrypt"
