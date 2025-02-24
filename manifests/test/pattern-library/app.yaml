@@ -13,8 +13,8 @@ spec:
   prune: true
   targetNamespace: journal--test
   images:
-    - name: docker.io/elifesciences/pattern-library
-      newTag: 543d6b92d3cfe88aba34b494d81260b1e6d6264c
+    - name: docker.io/elifesciences/pattern-library # {"$imagepolicy": "journal--test:pattern-library-stable:name"}
+      newTag: 543d6b92d3cfe88aba34b494d81260b1e6d6264c # {"$imagepolicy": "journal--test:pattern-library-stable:tag"}
   postBuild:
     substitute:
       # deployment vars
