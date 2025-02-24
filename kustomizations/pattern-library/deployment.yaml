@@ -11,7 +11,7 @@ spec:
         kubernetes.io/arch: amd64
       containers:
       - name: pattern-library
-        image: ghcr.io/elifesciences/pattern-library:latest
+        image: docker.io/elifesciences/pattern-library:latest
         ports:
         - containerPort: 80
         resources:

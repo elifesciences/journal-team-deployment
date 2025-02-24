@@ -13,7 +13,7 @@ spec:
   prune: true
   targetNamespace: journal--test
   images:
-    - name: ghcr.io/elifesciences/pattern-library
+    - name: docker.io/elifesciences/pattern-library
       newTag: 543d6b92d3cfe88aba34b494d81260b1e6d6264c
   postBuild:
     substitute:
