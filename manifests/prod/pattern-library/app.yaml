@@ -19,5 +19,5 @@ spec:
     substitute:
       # deployment vars
       env: prod
-      hostname: pattern-library.prod.elifesciences.org
+      hostname: ui-patterns.elifesciences.org
       cert_manager_issuer: "letsencrypt"
