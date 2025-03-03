@@ -1,0 +1,30 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: journal-preview
+  namespace: journal--test
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/journal
+  prune: true
+  targetNamespace: journal--test
+  images:
+    - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--test:journal-stable:name"}
+      newTag: master-c4a1b5d6ccb75a19c5189009b16e13e68610269f-20250224.1513 # {"$imagepolicy": "journal--test:journal-stable:tag"}
+  postBuild:
+    substitute:
+      # deployment vars
+      env: preview
+      hostname: preview.test.elifesciences.org
+      cert_manager_issuer: "letsencrypt"
+      journal_secret_parameters_secret_name: journal-secret-parameters
+      api_url: https://api.test.elifesciences.org
+      api_url_search_page: https://api.test.elifesciences.org
+      epp_url: http://epp-client.epp--prod:3000
+      observer_url: http://prod--observer.elife.internal
+      pubpub_url: https://elife-container.pubpub.org
+      hubspot_url: https://connect.elifesciences.org
