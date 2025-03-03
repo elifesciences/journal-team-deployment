@@ -17,13 +17,11 @@ spec:
       newTag: master-54d465e90e70e4af8027b23b269a4581c5679a1f-20250303.1431 # {"$imagepolicy": "journal--test:journal-stable:tag"}
   # avoid name collision with journal app
   namePrefix: preview-
-  commonMetadata:
-    labels:
-      app.kubernetes.io/instance: preview-journal
   postBuild:
     substitute:
       # deployment vars
       env: test
+      instance_name: journal-preview
       hostname: preview.test.elifesciences.org
       cert_manager_issuer: "letsencrypt"
       journal_secret_parameters_secret_name: journal-preview-secret-parameters

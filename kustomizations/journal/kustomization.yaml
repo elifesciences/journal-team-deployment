@@ -9,5 +9,6 @@ resources:
 labels:
 - includeSelectors: true
   pairs:
-    app.kubernetes.io/part-of: journal
-    app.kubernetes.io/instance: journal-${env}
+    app.kubernetes.io/part-of: continuum
+    app.kubernetes.io/name: journal
+    app.kubernetes.io/instance: ${instance_name:-journal}-${env}
