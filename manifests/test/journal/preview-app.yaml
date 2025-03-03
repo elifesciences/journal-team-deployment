@@ -17,6 +17,9 @@ spec:
       newTag: master-c4a1b5d6ccb75a19c5189009b16e13e68610269f-20250224.1513 # {"$imagepolicy": "journal--test:journal-stable:tag"}
   # avoid name collision with journal app
   namePrefix: preview-
+  commonMetadata:
+    labels:
+      app.kubernetes.io/instance: preview-journal
   postBuild:
     substitute:
       # deployment vars
