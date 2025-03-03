@@ -6,6 +6,7 @@ resources:
 - deployment.yaml
 - service.yaml
 - ingress.yaml
+- certSecret.yaml
 - automations/repository.yaml
 - automations/stable-policy.yaml
 
