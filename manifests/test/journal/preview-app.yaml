@@ -20,10 +20,10 @@ spec:
   postBuild:
     substitute:
       # deployment vars
-      env: preview
+      env: test
       hostname: preview.test.elifesciences.org
       cert_manager_issuer: "letsencrypt"
-      journal_secret_parameters_secret_name: journal-secret-parameters
+      journal_secret_parameters_secret_name: journal-preview-secret-parameters
       api_url: https://api.test.elifesciences.org
       api_url_search_page: https://api.test.elifesciences.org
       epp_url: http://epp-client.epp--prod:3000
