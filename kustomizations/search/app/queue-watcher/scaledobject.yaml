@@ -7,7 +7,7 @@ metadata:
   namespace: journal
 spec:
   minReplicaCount: 1
-  maxReplicaCount: 30
+  maxReplicaCount: 10
   scaleTargetRef:
     name: search-queue-watcher
   triggers:
