@@ -9,7 +9,7 @@ spec:
     kind: GitRepository
     name: journal-team-deployment
     namespace: flux-system
-  path: ./kustomizations/digests
+  path: ./kustomizations/digests/app
   prune: true
   targetNamespace: journal--test
   dependsOn:
