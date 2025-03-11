@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: digests-role-config
+  namespace: journal
+data: {}
+---
+apiVersion: services.k8s.aws/v1alpha1
+kind: FieldExport
+metadata:
+  name: digests-role-arn
+spec:
+  to:
+    name: digests-role-config
+    kind: configmap
+    key: digests_role_arn
+  from:
+    path: ".status.ackResourceMetadata.arn"
+    resource:
+      group: iam.services.k8s.aws
+      kind: Role
+      name: digests

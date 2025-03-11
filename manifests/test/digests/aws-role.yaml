@@ -1,0 +1,27 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: digests-role
+  namespace: journal--test
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/digests/role
+  prune: true
+  targetNamespace: journal--test
+  dependsOn:
+  - name: bus-digests-topic
+  postBuild:
+    substituteFrom:
+    # search_queue_arn and search_queue_name are retrieved from the configmap
+    - kind: ConfigMap
+      name: bus-digests-topic-config
+    substitute:
+      # deployment vars
+      env: test
+      aws_oidc_arn: "${cluster_oidc_arn}"
+      aws_oidc_url: "${cluster_oidc_url}"
+      irsa_namespace: journal--test

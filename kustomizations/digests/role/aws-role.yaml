@@ -1,0 +1,48 @@
+apiVersion: iam.services.k8s.aws/v1alpha1
+kind: Role
+metadata:
+  name: digests
+  namespace: journal
+spec:
+  name: elife-digests-${env}
+  tags:
+  - key: Project
+    value: journal
+  assumeRolePolicyDocument: |
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "Federated": "${aws_oidc_arn}"
+          },
+          "Action": "sts:AssumeRoleWithWebIdentity",
+          "Condition": {
+            "ForAnyValue:StringEquals": {
+              "${aws_oidc_url}:sub": [
+                "system:serviceaccount:${irsa_namespace}:digests"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  inlinePolicies:
+    allow-publish-to-bus: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "sns:GetTopicAttributes",
+              "sns:ListTopics",
+              "sns:Publish"
+            ],
+            "Resource": [
+              "${bus_digests_topic_arn}"
+            ]
+          }
+        ]
+      }
