@@ -6,4 +6,5 @@ metadata:
 spec:
   name: bus-digests--${env}
   tags:
-    Project: journal
+  - key: Project
+    value: journal
