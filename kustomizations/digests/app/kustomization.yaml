@@ -4,6 +4,7 @@ namespace: journal
 
 resources:
 - digests.yaml
+- serviceaccount.yaml
 
 labels:
 - includeSelectors: true
