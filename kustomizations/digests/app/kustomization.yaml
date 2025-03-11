@@ -5,6 +5,8 @@ namespace: journal
 resources:
 - digests.yaml
 - serviceaccount.yaml
+- service.yaml
+- ingress.yaml
 
 labels:
 - includeSelectors: true

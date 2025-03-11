@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: digests-api
+spec:
+  type: ClusterIP
+  ports:
+  - port: 9000
+    protocol: TCP
