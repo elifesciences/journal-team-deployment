@@ -2,7 +2,7 @@
 apiVersion: sns.services.k8s.aws/v1alpha1
 kind: Topic
 metadata:
-  name: digests-topic
+  name: bus-digests-topic
 spec:
   name: bus-digests--${env}
   tags:

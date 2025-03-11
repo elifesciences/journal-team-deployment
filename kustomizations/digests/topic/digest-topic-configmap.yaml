@@ -1,38 +1,38 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: digests-topic-config
+  name: bus-digests-topic-config
   namespace: journal
 data: {}
 ---
 apiVersion: services.k8s.aws/v1alpha1
 kind: FieldExport
 metadata:
-  name: digests-topic-arn
+  name: bus-digests-topic-arn
 spec:
   to:
-    name: digests-topic-config
+    name: bus-digests-topic-config
     kind: configmap
-    key: digests_topic_arn
+    key: bus_digests_topic_arn
   from:
     path: ".status.ackResourceMetadata.arn"
     resource:
       group: sns.services.k8s.aws
       kind: Topic
-      name: digests-topic
+      name: bus-digests-topic
 ---
 apiVersion: services.k8s.aws/v1alpha1
 kind: FieldExport
 metadata:
-  name: digests-topic-name
+  name: bus-digests-topic-name
 spec:
   to:
-    name: digests-topic-config
+    name: bus-digests-topic-config
     kind: configmap
-    key: digests_topic_name
+    key: bus_digests_topic_name
   from:
     path: ".spec.name"
     resource:
       group: sns.services.k8s.aws
       kind: Topic
-      name: digests-topic
+      name: bus-digests-topic
