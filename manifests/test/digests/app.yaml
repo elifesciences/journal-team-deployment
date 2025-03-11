@@ -13,12 +13,14 @@ spec:
   prune: true
   targetNamespace: journal--test
   dependsOn:
-  - name: digests-database
   - name: digests-database-secret
+  - name: digests-role
   postBuild:
     substituteFrom:
     - kind: Secret
-      name: digests-database-secret
+      name: digests-database-secret # DATABASE_URL
+    - kind: ConfigMap
+      name: digests-role-config # digests_role_arn
     substitute:
       env: test
       awsRegion: us-east-1
