@@ -26,6 +26,13 @@ spec:
       recommendations_port: "80"
       recommendations_service_name: recommendations-web
 
+      digests_port: "9000"
+      digests_service_name: digests-api
+
+      # To be removed when the externalservice is removed from api-gateway
+      digests_hostname: continuumtest--digests.elife.internal
+      digests_protocol: http
+
       # define services deployed elsewhere
       annotations_hostname: continuumtest--annotations.elife.internal
       annotations_port: "80"
@@ -36,11 +43,6 @@ spec:
       bioprotocol_port: "80"
       bioprotocol_protocol: http
       bioprotocol_service_name: bioprotocol-proxy
-
-      digests_hostname: continuumtest--digests.elife.internal
-      digests_port: "80"
-      digests_protocol: http
-      digests_service_name: digests-proxy
 
       journal_cms_hostname: continuumtest--journal-cms.elife.internal
       journal_cms_port: "80"
