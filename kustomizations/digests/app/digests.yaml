@@ -32,6 +32,8 @@ spec:
           value: "${busName}"
         - name: BUS_ENV
           value: "${busEnv}"
+        - name: ALLOWED_HOSTS
+          value: '*'
         # readinessProbe:
         #   exec:
         #     command:
