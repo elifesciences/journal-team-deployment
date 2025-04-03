@@ -52,11 +52,14 @@ spec:
         command:
         - "/fluent-bit/bin/fluent-bit"
         - "--parser=/config/json-parser.conf"
+        # Input
         - "--input=tail"
         - "--prop=path=/srv/digests/var/logs/digests.json.log"
         - "--prop=parser=digests"
-        - "--prop=format=json_lines"
+
+        # Output
         - "--output=stdout"
+        - "--prop=format=json_lines"
         volumeMounts:
         - name: logs
           mountPath: /srv/digests/var/logs
