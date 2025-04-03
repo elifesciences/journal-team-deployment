@@ -62,7 +62,7 @@ spec:
       data_hub_metrics_api_hostname: data-hub-metrics-api--stg.elifesciences.org
       data_hub_metrics_api_port: "443"
       data_hub_metrics_api_protocol: https
-      data_hub_metrics_api_service_name: data-hub-metrics-api
+      data_hub_metrics_api_service_name: data-hub-metrics-api-proxy
 
       profiles_hostname: continuumtest--profiles.elife.internal
       profiles_port: "80"
