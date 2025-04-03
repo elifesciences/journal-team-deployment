@@ -42,10 +42,36 @@ spec:
         #       - "venv/bin/uwsgi_curl 127.0.0.1:9000 localhost/ping | grep pong"
         #   periodSeconds: 5
         volumeMounts:
+        - name: logs
+          mountPath: /srv/digests/var/logs
         - name: config-volume
           mountPath: /srv/digests/uwsgi.ini
           subPath: uwsgi.ini
+      - name: logs
+        image: cr.fluentbit.io/fluent/fluent-bit
+        command:
+        - "/fluent-bit/bin/fluent-bit"
+        - "--parser=/config/json-parser.conf"
+        - "--input=tail"
+        - "--prop=path=/srv/digests/var/logs/digests.json.log"
+        - "--prop=parser=digests"
+        - "--prop=format=json_lines"
+        - "--output=stdout"
+        volumeMounts:
+        - name: logs
+          mountPath: /srv/digests/var/logs
+        - name: log-config-volume
+          mountPath: /config/json-parser.conf
+          subPath: json-parser.conf
       volumes:
+      - name: logs
+        emptyDir: {}
+      - name: log-config-volume
+        configMap:
+          name: digests-config
+          items:
+          - key: json-parser.conf
+            path: json-parser.conf
       - name: config-volume
         configMap:
           name: uwsgi-config
