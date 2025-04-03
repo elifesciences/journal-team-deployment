@@ -2,7 +2,7 @@
 kind: HTTPRoute
 apiVersion: gateway.networking.k8s.io/v1
 metadata:
-  name: data-hub-metrics-api
+  name: data-hub-metrics
   namespace: journal
   annotations:
     konghq.com/preserve-host: "false"
