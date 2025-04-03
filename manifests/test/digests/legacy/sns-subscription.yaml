@@ -3,6 +3,7 @@ apiVersion: sns.services.k8s.aws/v1alpha1
 kind: Subscription
 metadata:
   name: digests-test-to-journal-cms-continuumtest
+  namespace: journal--test
   annotation:
     elifesciences.org/description: |
       This is here to make sure digest "test" topics are received by continuumtest journal-cms
