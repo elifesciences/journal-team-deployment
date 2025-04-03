@@ -14,7 +14,7 @@ labels:
     app.kubernetes.io/instance: digests-${env}
 
 configMapGenerator:
-- name: uwsgi-config
+- name: digests-config
   files:
   - config/uwsgi.ini
   - config/json-parser.conf

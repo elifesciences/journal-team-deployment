@@ -74,7 +74,7 @@ spec:
             path: json-parser.conf
       - name: config-volume
         configMap:
-          name: uwsgi-config
+          name: digests-config
           items:
           - key: uwsgi.ini
             path: uwsgi.ini
