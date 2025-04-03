@@ -57,9 +57,10 @@ spec:
       metrics_protocol: http
       metrics_service_name: metrics-proxy
 
-      data_hub_metrics_api_namespace: data-hub
-      data_hub_metrics_api_service_name: data-hub-metrics-api--prod
-      data_hub_metrics_api_port: "8000"
+      data_hub_metrics_api_hostname: data-hub-metrics-api.elifesciences.org
+      data_hub_metrics_api_port: "443"
+      data_hub_metrics_api_protocol: https
+      data_hub_metrics_api_service_name: data-hub-metrics-api-proxy
 
       profiles_hostname: prod--profiles.elife.internal
       profiles_port: "80"
