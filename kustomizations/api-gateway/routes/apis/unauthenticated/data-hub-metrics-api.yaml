@@ -6,6 +6,8 @@ metadata:
   namespace: journal
   annotations:
     konghq.com/preserve-host: "false"
+    konghq.com/rewrite: '/elife-metrics/$1'
+    konghq.com/strip-path: 'true'
 spec:
   parentRefs:
   - group: gateway.networking.k8s.io
@@ -20,14 +22,5 @@ spec:
       port: ${data_hub_metrics_api_port}
     matches:
     - path:
-        type: PathPrefix
-        value: /metrics
-    - path:
         type: RegularExpression
-        value: "/metrics/article/[0-9]+/citations/version/[0-9]+"
-    filters:
-    - type: URLRewrite
-      urlRewrite:
-        path:
-          replacePrefixMatch: /elife-metrics
-          type: ReplacePrefixMatch
+        value: "/metrics/(article/[0-9]+/citations/version/[0-9]+)"

@@ -13,4 +13,4 @@ resources:
 
 - metrics.yaml
 - reviewed-preprints.yaml
-# - data-hub-metrics-api.yaml
+- data-hub-metrics-api.yaml
