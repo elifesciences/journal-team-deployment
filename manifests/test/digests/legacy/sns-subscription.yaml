@@ -4,7 +4,7 @@ kind: Subscription
 metadata:
   name: digests-test-to-journal-cms-continuumtest
   namespace: journal--test
-  annotation:
+  annotations:
     elifesciences.org/description: |
       This is here to make sure digest "test" topics are received by continuumtest journal-cms
       After journal-cms has it's own "test" deployment and queue subscriptions, we can remove this
