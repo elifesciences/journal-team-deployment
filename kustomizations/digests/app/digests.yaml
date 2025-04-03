@@ -34,13 +34,13 @@ spec:
           value: "${busEnv}"
         - name: ALLOWED_HOSTS
           value: '*'
-        # readinessProbe:
-        #   exec:
-        #     command:
-        #       - bash
-        #       - -c
-        #       - "venv/bin/uwsgi_curl 127.0.0.1:9000 localhost/ping | grep pong"
-        #   periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /ping
+            port: 9000
+          periodSeconds: 5
+          failureThreshold: 10
+          timeoutSeconds: 10
         volumeMounts:
         - name: logs
           mountPath: /srv/digests/var/logs
