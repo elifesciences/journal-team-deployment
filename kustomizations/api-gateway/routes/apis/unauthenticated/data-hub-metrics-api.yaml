@@ -6,7 +6,7 @@ metadata:
   namespace: journal
   annotations:
     konghq.com/preserve-host: "false"
-    konghq.com/rewrite: '/elife-metrics/$1'
+    konghq.com/rewrite: '/elife-metrics/article/85111/citations/version/2'
     konghq.com/strip-path: 'true'
 spec:
   parentRefs:
