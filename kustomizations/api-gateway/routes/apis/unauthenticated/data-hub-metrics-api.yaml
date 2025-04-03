@@ -17,7 +17,7 @@ spec:
   rules:
   - backendRefs:
     - name: ${data_hub_metrics_api_service_name}
-      namespace: ${data_hub_metrics_api_namespace}
+      namespace: journal
       kind: Service
       port: ${data_hub_metrics_api_port}
     matches:
