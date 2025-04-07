@@ -1,7 +1,0 @@
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: journal--filter-by-term
-  annotations:
-    elifesciences.org/default-project: journal
