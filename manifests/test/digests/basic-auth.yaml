@@ -11,8 +11,13 @@ spec:
   target:
     name: digests-api-basic-auth
     creationPolicy: Owner
-  data:
-  - secretKey: key
-    remoteRef:
-      key: journal-team/api-gateway/public-credentials
-      property: digests_backend_credentials
+    template:
+      engineVersion: v2
+      templateFrom:
+      - target: Data
+        literal: |-
+          {{- $hash = printf "%s" (htpasswd "digests_backend_credentials" .digests_backend_credentials) }}
+          auth: {{ $hash |  quote }}
+  dataFrom:
+  - extract:
+        key: journal-team/api-gateway/public-credentials
