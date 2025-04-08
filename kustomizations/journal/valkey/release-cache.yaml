@@ -19,3 +19,5 @@ spec:
     architecture: standalone
     auth:
       enabled: false
+    primary:
+      resourcesPreset: "small"
