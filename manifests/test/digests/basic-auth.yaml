@@ -17,9 +17,7 @@ spec:
       - target: Data
         literal: |-
           {{- $creds := list }}
-          {{- range $user, $pw := . }}
-            {{- $creds = append $creds (printf "%s" (htpasswd $user $pw)) }}
-          {{- end }}
+          {{- $creds = append $creds (printf "%s" (htpasswd "api-gateway" .["digests_backend_credentials"])) }}
           auth: {{ $creds | join "\n" | quote }}
   dataFrom:
   - extract:
