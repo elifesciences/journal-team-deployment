@@ -31,3 +31,4 @@ spec:
 
       hostname: digests.test.elifesciences.org
       cert_manager_issuer: "letsencrypt"
+      basic_auth_secret_name: digests-api-basic-auth
