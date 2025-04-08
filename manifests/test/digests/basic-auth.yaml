@@ -16,8 +16,11 @@ spec:
       templateFrom:
       - target: Data
         literal: |-
-          {{- $hash = printf "%s" (htpasswd "digests_backend_credentials" .digests_backend_credentials) }}
-          auth: {{ $hash |  quote }}
+          {{- $creds := list }}
+          {{- range $user, $pw := . }}
+            {{- $creds = append $creds (printf "%s" (htpasswd $user $pw)) }}
+          {{- end }}
+          auth: {{ $creds | join "\n" | quote }}
   dataFrom:
   - extract:
         key: journal-team/api-gateway/public-credentials
