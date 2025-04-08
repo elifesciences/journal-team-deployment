@@ -11,7 +11,8 @@ spec:
   target:
     name: digests-api-basic-auth
     creationPolicy: Owner
-  dataFrom:
-  - extract:
+  data:
+  - secretKey: key
+    remoteRef:
       key: journal-team/api-gateway/public-credentials
       property: digests_backend_credentials
