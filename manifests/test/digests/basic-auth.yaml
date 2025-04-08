@@ -1,0 +1,17 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: digests-api-basic-auth
+  namespace: journal--test
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: secret-store
+    kind: ClusterSecretStore
+  target:
+    name: digests-api-basic-auth
+    creationPolicy: Owner
+  dataFrom:
+  - extract:
+      key: journal-team/api-gateway/public-credentials
+      property: digests_backend_credentials
