@@ -20,4 +20,11 @@ spec:
     auth:
       enabled: false
     primary:
-      resourcesPreset: "small"
+      resources:
+        limits:
+          ephemeral-storage: 2Gi
+          memory: 192Mi
+        requests:
+          cpu: 100m
+          ephemeral-storage: 50Mi
+          memory: 128Mi
