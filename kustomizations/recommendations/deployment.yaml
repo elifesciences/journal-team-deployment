@@ -16,10 +16,10 @@ spec:
         - containerPort: 9000
         resources:
           requests:
-            memory: "50Mi"
+            memory: "200Mi"
             cpu: "20m"
           limits:
-            memory: "50Mi"
+            memory: "300Mi"
         readinessProbe:
           tcpSocket:
             port: 9000
