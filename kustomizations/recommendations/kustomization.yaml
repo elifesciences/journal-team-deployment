@@ -15,6 +15,7 @@ configMapGenerator:
   files:
   - config/config.php
   - config/json-parser.conf
+  - config/php-fpm-www-tweaks.conf
 - name: nginx-recommendations-site-conf
   files:
   - config/nginx-site.conf
