@@ -17,7 +17,7 @@ spec:
         resources:
           requests:
             memory: "200Mi"
-            cpu: "20m"
+            cpu: "110m"
           limits:
             memory: "300Mi"
         readinessProbe:
