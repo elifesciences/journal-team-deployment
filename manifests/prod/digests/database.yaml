@@ -1,0 +1,47 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: digests-database
+  namespace: journal--prod
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  path: ./kustomizations/utils/rds-dbinstance
+  prune: true
+  targetNamespace: journal--prod
+  postBuild:
+    substitute:
+      instance_name: digests-journal-prod
+      instance_storage: "5"
+      instance_class: db.t3.small
+      engine: postgres
+      engine_version: "\"13.16\""
+      project: journal
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: digests-database-secret
+  namespace: journal--prod
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  path: ./kustomizations/utils/rds-pg-external-secret
+  prune: true
+  targetNamespace: journal--prod
+  dependsOn:
+  - name: digests-database
+  postBuild:
+    substitute:
+      external_secret_name: digests-database-secret
+      kubernetes_secret_name: digests-database-secret # Target secret name
+    substituteFrom:
+    - kind: Secret
+      name: digests-journal-prod-connection-values
