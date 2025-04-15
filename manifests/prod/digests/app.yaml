@@ -1,0 +1,34 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: digests
+  namespace: journal--prod
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/digests/app
+  prune: true
+  targetNamespace: journal--prod
+  dependsOn:
+  - name: digests-database-secret
+  - name: digests-role
+  postBuild:
+    substituteFrom:
+    - kind: Secret
+      name: digests-database-secret # DATABASE_URL
+    - kind: ConfigMap
+      name: digests-role-config # digests_role_arn
+    substitute:
+      env: journal--prod
+      awsRegion: us-east-1
+      busName: bus-digests
+      busSubscriber: '"512686554592"'
+      busRegion: us-east-1
+      busEnv: journal--prod
+
+      hostname: digests.prod.elifesciences.org
+      cert_manager_issuer: "letsencrypt"
+      basic_auth_secret_name: digests-api-basic-auth

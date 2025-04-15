@@ -1,0 +1,24 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: digests-api-basic-auth
+  namespace: journal--prod
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: secret-store
+    kind: ClusterSecretStore
+  target:
+    name: digests-api-basic-auth
+    creationPolicy: Owner
+    template:
+      engineVersion: v2
+      templateFrom:
+      - target: Data
+        literal: |-
+          {{- $creds := list }}
+          {{- $creds = append $creds (printf "%s" (htpasswd "api-gateway" (index . "digests_backend_credentials"))) }}
+          auth: {{ $creds | join "\n" | quote }}
+  dataFrom:
+  - extract:
+        key: journal-team/api-gateway/public-credentials
