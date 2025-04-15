@@ -1,0 +1,30 @@
+---
+apiVersion: sns.services.k8s.aws/v1alpha1
+kind: Subscription
+metadata:
+  name: digests-to-journal-cms
+  namespace: journal--prod
+  annotations:
+    elifesciences.org/description: |
+      This is here to make sure digest "journal--prod" topics are received by legacy prod journal-cms.
+      After journal-cms has it's own prod deployment and queue subscriptions, we can remove this.
+spec:
+  endpoint: arn:aws:sqs:us-east-1:512686554592:journal-cms--prod
+  protocol: sqs
+  rawMessageDelivery: "true"
+  topicARN: arn:aws:sns:us-east-1:512686554592:bus-digests--journal--prod
+---
+apiVersion: sns.services.k8s.aws/v1alpha1
+kind: Subscription
+metadata:
+  name: digests-to-observer
+  namespace: journal--prod
+  annotations:
+    elifesciences.org/description: |
+      This is here to make sure digest "journal--prod" topics are received by legacy prod observer.
+      After observer has it's own prod deployment and queue subscriptions, we can remove this.
+spec:
+  endpoint: arn:aws:sqs:us-east-1:512686554592:observer--prod
+  protocol: sqs
+  rawMessageDelivery: "true"
+  topicARN: arn:aws:sns:us-east-1:512686554592:bus-digests--journal--prod
