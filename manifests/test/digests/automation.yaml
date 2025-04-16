@@ -1,7 +1,7 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageUpdateAutomation
 metadata:
-  name: journal
+  name: digests
   namespace: journal--test
 spec:
   interval: 5m
