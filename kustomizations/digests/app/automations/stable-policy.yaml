@@ -1,0 +1,13 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: digests-stable
+spec:
+  imageRepositoryRef:
+    name: digests
+  filterTags:
+    pattern: '^(?P<semver>[0-9]+\.[0-9]+\.[0-9]+).*'
+    extract: '$semver'
+  policy:
+    semver:
+      range: '*'
