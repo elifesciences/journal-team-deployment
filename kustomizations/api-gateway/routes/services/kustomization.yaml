@@ -7,7 +7,6 @@ resources:
 - annotations.yaml
 - bioprotocol.yaml
 - data-hub-metrics-api.yaml
-- digests.yaml
 - journal-cms.yaml
 - lax.yaml
 - metrics.yaml
