@@ -26,6 +26,7 @@ spec:
       name: digests-role-config # digests_role_arn
     substitute:
       env: journal--prod
+      replicas: "3"
       awsRegion: us-east-1
       busName: bus-digests
       busSubscriber: '"512686554592"'
