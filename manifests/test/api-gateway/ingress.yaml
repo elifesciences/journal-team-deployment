@@ -15,7 +15,7 @@ spec:
         pathType: ImplementationSpecific
         backend:
           service:
-            name: dataplane-ingress-api-gateway-6prk9-t4cws
+            name: dataplane-ingress-api-gateway-msg9s-474wp
             port:
               number: 80
   tls:
