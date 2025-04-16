@@ -12,7 +12,7 @@ spec:
         kubernetes.io/arch: amd64
       containers:
       - name: digests
-        image: elifesciences/digests:83be68c2f0678c15037549c04863a3a986350f08
+        image: ghcr.io/elifesciences/digests:latest
         args:
         - bash
         - -c
