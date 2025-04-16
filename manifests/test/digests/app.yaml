@@ -12,13 +12,13 @@ spec:
   path: ./kustomizations/digests/app
   prune: true
   targetNamespace: journal--test
+  dependsOn:
+  - name: digests-database-secret
+  - name: digests-role
   images:
   - name: elifesciences/digests
     newName: ghcr.io/elifesciences/digests # {"$imagepolicy": "journal--test:digests-stable:name"}
     newTag: 20250415170014.0.0-gd4e66fe-14475125563-1 # {"$imagepolicy": "journal--test:digests-stable:tag"}
-  dependsOn:
-  - name: digests-database-secret
-  - name: digests-role
   postBuild:
     substituteFrom:
     - kind: Secret
