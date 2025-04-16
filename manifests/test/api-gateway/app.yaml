@@ -29,10 +29,6 @@ spec:
       digests_port: "9000"
       digests_service_name: digests-api
 
-      # To be removed when the externalservice is removed from api-gateway
-      digests_hostname: continuumtest--digests.elife.internal
-      digests_protocol: http
-
       # define services deployed elsewhere
       annotations_hostname: continuumtest--annotations.elife.internal
       annotations_port: "80"
