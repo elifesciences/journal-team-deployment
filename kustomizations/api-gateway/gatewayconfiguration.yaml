@@ -9,6 +9,7 @@ spec:
     network:
       services:
         ingress:
+          externalTrafficPolicy: Local # internal gateway only
           type: ClusterIP # internal gateway only
     deployment:
       replicas: ${replicas:-1}
