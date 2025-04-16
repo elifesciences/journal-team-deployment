@@ -12,6 +12,10 @@ spec:
   path: ./kustomizations/digests/app
   prune: true
   targetNamespace: journal--test
+  images:
+  - name: elifesciences/digests
+    newName: ghcr.io/elifesciences/digests # {"$imagepolicy": "journal--test:digests-stable:name"}
+    newTag: latest # {"$imagepolicy": "journal--test:digests-stable:tag"}
   dependsOn:
   - name: digests-database-secret
   - name: digests-role
