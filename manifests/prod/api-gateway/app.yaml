@@ -19,6 +19,8 @@ spec:
     substitute:
       env: prod
 
+      replicas: 3
+
       # define services deployed in this namespace
       search_port: "80"
       search_service_name: search-web
