@@ -5,6 +5,7 @@ metadata:
   name: digests
   namespace: journal
 spec:
+  replicas: ${replicas:-1}
   template:
     spec:
       serviceAccountName: digests
