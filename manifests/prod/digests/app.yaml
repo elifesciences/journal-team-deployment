@@ -18,7 +18,7 @@ spec:
   images:
   - name: elifesciences/digests
     newName: ghcr.io/elifesciences/digests # {"$imagepolicy": "journal--prod:digests-stable:name"}
-    newTag: latest # {"$imagepolicy": "journal--prod:digests-stable:tag"}
+    newTag: 20250415170014.0.0-gd4e66fe-14475125563-1 # {"$imagepolicy": "journal--prod:digests-stable:tag"}
   postBuild:
     substituteFrom:
     - kind: Secret
@@ -32,7 +32,6 @@ spec:
       busSubscriber: '"512686554592"'
       busRegion: us-east-1
       busEnv: journal--prod
-
       hostname: digests.prod.elifesciences.org
       cert_manager_issuer: "letsencrypt"
       basic_auth_secret_name: digests-api-basic-auth
