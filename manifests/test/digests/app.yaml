@@ -17,7 +17,7 @@ spec:
   - name: digests-role
   images:
   - name: ghcr.io/elifesciences/digests # {"$imagepolicy": "journal--test:digests-stable:name"}
-    newTag: 20250417081040.0.0-g2c0f0f9-14511123744-1 # {"$imagepolicy": "journal--test:digests-stable:tag"}
+    newTag: 20250417081415.0.0-gcd1228e-14511184902-1 # {"$imagepolicy": "journal--test:digests-stable:tag"}
   postBuild:
     substituteFrom:
     - kind: Secret
