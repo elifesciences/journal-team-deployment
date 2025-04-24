@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--prod
   images:
     - name: ghcr.io/elifesciences/recommendations # {"$imagepolicy": "journal--prod:recommendations-stable:name"}
-      newTag: 20250424055912.0.0-g4b5e084-14634500941-1 # {"$imagepolicy": "journal--prod:recommendations-stable:tag"}
+      newTag: 20250424062131.0.0-gb43ef13-14634828929-1 # {"$imagepolicy": "journal--prod:recommendations-stable:tag"}
   postBuild:
     substitute:
       # deployment vars
