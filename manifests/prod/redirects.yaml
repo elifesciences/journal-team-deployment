@@ -12,10 +12,10 @@ metadata:
   namespace: journal--prod
 spec:
   rules:
-  - host: test-redirect-1.elifesciences.org
-  - host: test-redirect-2.elifesciences.org
+  - host: test-redirect-1.elifesciences.net
+  - host: test-redirect-2.elifesciences.net
   tls:
   - hosts:
-    - test-redirect-1.elifesciences.org
-    - test-redirect-2.elifesciences.org
-    secretName: test-redirects-tls
+    - test-redirect-1.elifesciences.net
+    - test-redirect-2.elifesciences.net
+    secretName: test-redirects-domain-tls
