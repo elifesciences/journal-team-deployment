@@ -47,6 +47,9 @@ spec:
       items:
       - id: redirects
         domainName: redirects.prod.elifesciences.org
+        customOriginConfig:
+          httpSPort: 443
+          originProtocolPolicy: https-only
     viewerCertificate:
       acmCertificateARN: arn:aws:acm:us-east-1:512686554592:certificate/7ecad4de-174b-4f54-b52e-f0166e8001ab
       sslSupportMethod: sni-only
