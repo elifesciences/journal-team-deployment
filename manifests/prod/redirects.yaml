@@ -15,12 +15,12 @@ spec:
   rules:
   - host: test-redirect.elifesciences.org
   - host: test-redirect2.elifesciences.org
-  - host: test-redirect-1.elifesciences.net
-  - host: test-redirect-2.elifesciences.net
+  - host: test-redirect-4.elifesciences.net
+  - host: test-redirect-5.elifesciences.net
   tls:
   - hosts:
     - test-redirect.elifesciences.org
     - test-redirect2.elifesciences.org
-    - test-redirect-1.elifesciences.net
-    - test-redirect-2.elifesciences.net
+    - test-redirect-4.elifesciences.net
+    - test-redirect-5.elifesciences.net
     secretName: test-redirects-selective-domains-tls
