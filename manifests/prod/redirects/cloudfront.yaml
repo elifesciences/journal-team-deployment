@@ -15,6 +15,7 @@ spec:
       - "e-lifejournal.com"
       - "e-lifejournal.net"
       - "elifejournal.org"
+    comment: Redirects Cloudfront to offload repetitive redirect responses
     defaultCacheBehavior:
       allowedMethods:
         items:
