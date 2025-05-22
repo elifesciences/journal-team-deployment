@@ -8,14 +8,19 @@ metadata:
     nginx.ingress.kubernetes.io/server-snippet: |
       add_header Cache-Control "public, max-age=86400, immutable";
       return 302 https://elifesciences.org$request_uri;
+    external-dns.alpha.kubernetes.io/hostname: test-redirect.elifesciences.org,test-redirect2.elifesciences.org
   name: test-journal-redirects
   namespace: journal--prod
 spec:
   rules:
+  - host: test-redirect.elifesciences.org
+  - host: test-redirect2.elifesciences.org
   - host: test-redirect-1.elifesciences.net
   - host: test-redirect-2.elifesciences.net
   tls:
   - hosts:
+    - test-redirect.elifesciences.org
+    - test-redirect2.elifesciences.org
     - test-redirect-1.elifesciences.net
     - test-redirect-2.elifesciences.net
-    secretName: test-redirects-domain-tls
+    secretName: test-redirects-selective-domains-tls
