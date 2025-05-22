@@ -1,0 +1,20 @@
+# This is used purely to redirect similar domains to the journal, with SSL
+#
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/server-snippet: |
+      add_header Cache-Control "public, max-age=86400, immutable";
+      return 302 https://elifesciences.org$request_uri;
+  name: test-journal-redirects
+  namespace: journal--prod
+spec:
+  rules:
+  - host: test-redirect-1.elifesciences.org
+  - host: test-redirect-2.elifesciences.org
+  tls:
+  - hosts:
+    - test-redirect-1.elifesciences.org
+    - test-redirect-2.elifesciences.org
+    secretName: test-redirects-tls
