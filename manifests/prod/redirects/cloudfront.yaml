@@ -32,6 +32,7 @@ spec:
           - "HEAD"
       compress: true
       defaultTTL: 0
+      minTTL: 0
       forwardedValues:
         cookies:
           forward: none
