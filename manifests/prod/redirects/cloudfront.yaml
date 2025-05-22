@@ -48,6 +48,7 @@ spec:
       - id: redirects
         domainName: redirects.prod.elifesciences.org
         customOriginConfig:
+          httpPort: 80
           httpSPort: 443
           originProtocolPolicy: https-only
     viewerCertificate:
