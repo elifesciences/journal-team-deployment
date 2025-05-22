@@ -15,14 +15,6 @@ spec:
       - "e-lifejournal.com"
       - "e-lifejournal.net"
       - "elifejournal.org"
-    comment: string
-    continuousDeploymentPolicyID: string
-    customErrorResponses:
-      items:
-      - errorCachingMinTTL: integer
-        errorCode: integer
-        responseCode: string
-        responsePagePath: string
     defaultCacheBehavior:
       allowedMethods:
         items:
