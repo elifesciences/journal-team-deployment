@@ -8,20 +8,30 @@ metadata:
     nginx.ingress.kubernetes.io/server-snippet: |
       add_header Cache-Control "public, max-age=86400, immutable";
       return 302 https://elifesciences.org$request_uri;
-    external-dns.alpha.kubernetes.io/hostname: test-redirect.elifesciences.org,test-redirect2.elifesciences.org
+    external-dns.alpha.kubernetes.io/hostname: redirects.prod.elifesciences.org
     external-dns.alpha.kubernetes.io/ingress-hostname-source: annotation-only
-  name: test-journal-redirects
+  name: journal-redirects
   namespace: journal--prod
 spec:
   rules:
-  - host: test-redirect.elifesciences.org
-  - host: test-redirect2.elifesciences.org
-  - host: test-redirect-6.elifesciences.net
-  - host: test-redirect-7.elifesciences.net
+  - host: redirects.prod.elifesciences.org
+  - host: elifesciences.net
+  - host: e-lifejournal.com
+  - host: e-lifejournal.net
+  - host: e-lifejournal.org
+  - host: e-lifesciences.net
+  - host: e-lifesciences.org
+  - host: elifejournal.net
+  - host: elifejournal.org
   tls:
   - hosts:
-    - test-redirect.elifesciences.org
-    - test-redirect2.elifesciences.org
-    - test-redirect-6.elifesciences.net
-    - test-redirect-7.elifesciences.net
-    secretName: test-redirects-selective-domains-tls
+    - redirects.prod.elifesciences.org
+    - elifesciences.net
+    - e-lifejournal.com
+    - e-lifejournal.net
+    - e-lifejournal.org
+    - e-lifesciences.net
+    - e-lifesciences.org
+    - elifejournal.net
+    - elifejournal.org
+    secretName: redirects-tls
