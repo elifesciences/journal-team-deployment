@@ -8,6 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/server-snippet: |
       add_header Cache-Control "public, max-age=86400, immutable";
       return 302 https://elifesciences.org$request_uri;
+    external-dns.alpha.kubernetes.io/target: "a4f0cf99ffbb34a38ab5f23522f49323-acdd7707f23bf68c.elb.us-east-1.amazonaws.com"
   name: journal-redirects
   namespace: journal--prod
 spec:
