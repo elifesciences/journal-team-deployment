@@ -5,7 +5,6 @@ kind: Ingress
 metadata:
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt"
-    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     nginx.ingress.kubernetes.io/server-snippet: |
       add_header Cache-Control "public, max-age=86400, immutable";
       return 302 https://elifesciences.org$request_uri;
@@ -21,6 +20,14 @@ spec:
     - host: e-lifesciences.org
     - host: elifejournal.net
     - host: elifejournal.org
+    - host: www.elifesciences.net
+    - host: www.e-lifejournal.com
+    - host: www.e-lifejournal.net
+    - host: www.e-lifejournal.org
+    - host: www.e-lifesciences.net
+    - host: www.e-lifesciences.org
+    - host: www.elifejournal.net
+    - host: www.elifejournal.org
   tls:
     - hosts:
         - elifesciences.net
