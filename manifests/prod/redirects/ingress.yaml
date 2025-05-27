@@ -12,24 +12,22 @@ metadata:
   namespace: journal--prod
 spec:
   rules:
-  - host: redirects.prod.elifesciences.org
-  - host: elifesciences.net
-  - host: e-lifejournal.com
-  - host: e-lifejournal.net
-  - host: e-lifejournal.org
-  - host: e-lifesciences.net
-  - host: e-lifesciences.org
-  - host: elifejournal.net
-  - host: elifejournal.org
+    - host: elifesciences.net
+    - host: e-lifejournal.com
+    - host: e-lifejournal.net
+    - host: e-lifejournal.org
+    - host: e-lifesciences.net
+    - host: e-lifesciences.org
+    - host: elifejournal.net
+    - host: elifejournal.org
   tls:
-  - hosts:
-    - redirects.prod.elifesciences.org
-    - elifesciences.net
-    - e-lifejournal.com
-    - e-lifejournal.net
-    - e-lifejournal.org
-    - e-lifesciences.net
-    - e-lifesciences.org
-    - elifejournal.net
-    - elifejournal.org
-    secretName: redirects-tls
+    - hosts:
+        - elifesciences.net
+        - e-lifejournal.com
+        - e-lifejournal.net
+        - e-lifejournal.org
+        - e-lifesciences.net
+        - e-lifesciences.org
+        - elifejournal.net
+        - elifejournal.org
+      secretName: redirects-tls
