@@ -29,6 +29,8 @@ spec:
     - host: www.elifejournal.net
     - host: www.elifejournal.org
     - host: prod.elifesciences.org
+    - host: www.elifesciences.org
+    - host: elife.elifesciences.org
   tls:
     - hosts:
         - elifesciences.net
@@ -48,4 +50,6 @@ spec:
         - www.elifejournal.net
         - www.elifejournal.org
         - prod.elifesciences.org
+        - www.elifesciences.org
+        - elife.elifesciences.org
       secretName: redirects-tls
