@@ -11,3 +11,8 @@ labels:
     app.kubernetes.io/component: iiif
     app.kubernetes.io/instance: iiif--${env}
     app.kubernetes.io/name: iiif
+
+configMapGenerator:
+- name: journal_delegate
+  files:
+  - config/journal_delegate.rb

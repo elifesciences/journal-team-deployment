@@ -14,6 +14,13 @@ spec:
       containers:
         - name: cantaloupe
           image: ghcr.io/elifesciences/cantaloupe:latest
+          env:
+            - name: SOURCE_DELEGATE
+              value: "true"
+            - name: DELEGATE_SCRIPT_ENABLED
+              value: "true"
+            - name: DELEGATE_SCRIPT_PATHNAME
+              value: /delegate/journal_delegate.rb
           # resources:
           #   requests:
           #     cpu: 1000m
@@ -30,3 +37,14 @@ spec:
           readinessProbe:
             tcpSocket:
               port: http
+          volumeMounts:
+            - name: journal-delegate-volume
+              mountPath: /delegate/journal_delegate.rb
+              subPath: journal_delegate.rb
+    volumes:
+      - name: journal-delegate-volume
+        configMap:
+          name: journal_delegate
+          items:
+          - key: journal_delegate.rb
+            path: journal_delegate.rb
