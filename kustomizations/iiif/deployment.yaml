@@ -26,7 +26,8 @@ spec:
 
             - name: PROCESSOR_DOWNSCALE_LINEAR
               value: "true"
-
+            - name: PROCESSOR_JPG_QUALITY
+              value: "100"
           # resources:
           #   requests:
           #     cpu: 1000m
