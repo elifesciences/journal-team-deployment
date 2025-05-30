@@ -6,6 +6,10 @@ metadata:
     cert-manager.io/cluster-issuer: "letsencrypt"
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /iiif/2/$1:$2
+
+    ## This fixes issues with encoded paths, such as the / encoded as %2F in lax:96357%2Felife-96357-fig2-figsupp1-v1.tif
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      rewrite ^ $request_uri?;
 spec:
   rules:
   - host: ${hostname}
