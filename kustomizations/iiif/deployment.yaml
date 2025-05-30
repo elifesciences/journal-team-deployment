@@ -44,7 +44,7 @@ spec:
     volumes:
       - name: journal-delegate-volume
         configMap:
-          name: journal_delegate
+          name: journal-delegate
           items:
           - key: journal_delegate.rb
             path: journal_delegate.rb
