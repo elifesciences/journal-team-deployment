@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: journal
 resources:
 - deployment.yaml
+- service.yaml
 
 labels:
 - includeSelectors: true
