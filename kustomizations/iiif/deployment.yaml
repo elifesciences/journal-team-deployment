@@ -25,7 +25,7 @@ spec:
               value: ScriptLookupStrategy
 
             - name: PROCESSOR_DOWNSCALE_LINEAR
-              value: true
+              value: "true"
 
           # resources:
           #   requests:
