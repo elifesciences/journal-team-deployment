@@ -13,6 +13,6 @@ labels:
     app.kubernetes.io/name: iiif
 
 configMapGenerator:
-- name: journal-delegate
+- name: iiif-journal-delegate
   files:
   - config/journal_delegate.rb
