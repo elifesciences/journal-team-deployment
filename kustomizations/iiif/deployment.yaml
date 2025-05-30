@@ -30,6 +30,8 @@ spec:
               value: "100"
             - name: PROCESSOR_JPG_PROGRESSIVE
               value: "false"
+            - name: PROCESSOR_IMAGEIO_TIF_READER
+              value: "it.geosolutions.imageioimpl.plugins.tiff.TIFFImageReader"
           # resources:
           #   requests:
           #     cpu: 1000m
