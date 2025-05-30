@@ -24,6 +24,9 @@ spec:
             - name: HTTPSOURCE_LOOKUP_STRATEGY
               value: ScriptLookupStrategy
 
+            - name: PROCESSOR_DOWNSCALE_LINEAR
+              value: true
+
           # resources:
           #   requests:
           #     cpu: 1000m
