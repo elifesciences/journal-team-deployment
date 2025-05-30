@@ -26,6 +26,8 @@ spec:
 
             - name: PROCESSOR_JPG_QUALITY
               value: "100"
+            - name: PROCESSOR_SELECTION_STRATEGY
+              value: ManualSelectionStrategy
             - name: PROCESSOR_MANUALSELECTIONSTRATEGY_TIF
               value: JaiProcessor
           # resources:
