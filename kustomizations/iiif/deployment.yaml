@@ -6,7 +6,7 @@ spec:
   replicas: ${replicas:=1}
   strategy:
     rollingUpdate:
-      maxUnavailable: ${maxUnavailable:=1}
+      maxUnavailable: ${maxUnavailable:=25%}
   template:
     spec:
       nodeSelector:
