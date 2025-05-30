@@ -18,3 +18,4 @@ spec:
   postBuild:
     substitute:
       env: test
+      hostname: iiif.test.elifesciences.org

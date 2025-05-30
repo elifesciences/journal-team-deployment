@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: iiif
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /iiif/2/$1:$2
+spec:
+  rules:
+  - host: ${hostname}
+    http:
+      paths:
+        # rewrite either lax: or lax/ to lax:
+        - path: /(.*)[:/]{1}(.*)
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: iiif
+              port:
+                number: 8182
+  tls:
+  - hosts:
+    - ${hostname}
+    secretName: ${hostname}-tls
