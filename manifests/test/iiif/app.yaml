@@ -9,7 +9,7 @@ spec:
     kind: GitRepository
     name: journal-team-deployment
     namespace: flux-system
-  path: ./kustomizations/iiif
+  path: ./kustomizations/iiif/cantaloupe
   prune: true
   targetNamespace: journal--test
   images:
