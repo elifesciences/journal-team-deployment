@@ -21,6 +21,9 @@ spec:
               value: "true"
             - name: DELEGATE_SCRIPT_PATHNAME
               value: /delegate/journal_delegate.rb
+            - name: HTTPSOURCE_LOOKUP_STRATEGY
+              value: ScriptLookupStrategy
+
           # resources:
           #   requests:
           #     cpu: 1000m
