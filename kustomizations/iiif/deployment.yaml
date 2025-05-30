@@ -24,14 +24,10 @@ spec:
             - name: HTTPSOURCE_LOOKUP_STRATEGY
               value: ScriptLookupStrategy
 
-            - name: PROCESSOR_DOWNSCALE_LINEAR
-              value: "true"
             - name: PROCESSOR_JPG_QUALITY
               value: "100"
-            - name: PROCESSOR_JPG_PROGRESSIVE
-              value: "false"
-            - name: PROCESSOR_IMAGEIO_TIF_READER
-              value: "com.sun.media.imageioimpl.plugins.tiff.TIFFImageReader"
+            - name: PROCESSOR_SHARPEN
+              value: "1"
           # resources:
           #   requests:
           #     cpu: 1000m
