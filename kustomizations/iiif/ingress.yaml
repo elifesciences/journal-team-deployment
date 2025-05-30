@@ -4,23 +4,19 @@ metadata:
   name: iiif
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /iiif/2/$1:$2
 
-    ## This needs to be configured manually without annotations, because our iiif expects ids to contain special characters,
-    # such as / encoded as %2F in lax:96357%2Felife-96357-fig2-figsupp1-v1.tif
-    # nginx.ingress.kubernetes.io/use-regex will decode them before passing upstream
-    # rewrite either lax: or lax/ to lax:
+    ## This fixes issues with encoded paths, such as the / encoded as %2F in lax:96357%2Felife-96357-fig2-figsupp1-v1.tif
     nginx.ingress.kubernetes.io/configuration-snippet: |
-      location / {
-        rewrite ^ $request_uri;
-        rewrite /([\w]+)[:\/]{1}(.*) /iiif/2/$1:$2 break;
-        proxy_pass http://upstream_balancer$uri;
-      }
+      rewrite ^ $request_uri?;
 spec:
   rules:
   - host: ${hostname}
     http:
       paths:
-        - path: /
+        # rewrite either lax: or lax/ to lax:
+        - path: /([\w]+)[:/]{1}(.*)
           pathType: ImplementationSpecific
           backend:
             service:
