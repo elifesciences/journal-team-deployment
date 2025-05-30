@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iiif
+spec:
+  replicas: ${replicas:=1}
+  strategy:
+    rollingUpdate:
+      maxUnavailable: ${maxUnavailable:=1}
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
+      containers:
+        - name: cantaloupe
+          image: ghcr.io/elifesciences/cantaloupe:latest
+          # resources:
+          #   requests:
+          #     cpu: 1000m
+          #     memory: 1Gi
+          #   limits:
+          #     memory: 1.5Gi
+          ports:
+            - name: http
+              containerPort: 8182
+              protocol: TCP
+          livenessProbe:
+            tcpSocket:
+              port: http
+          readinessProbe:
+            tcpSocket:
+              port: http
