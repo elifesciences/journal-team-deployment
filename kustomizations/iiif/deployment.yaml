@@ -32,8 +32,6 @@ spec:
               value: "false"
             - name: PROCESSOR_IMAGEIO_TIF_READER
               value: "com.sun.media.imageioimpl.plugins.tiff.TIFFImageReader"
-            - name: PROCESSOR_SHARPEN
-              value: "0.5"
           # resources:
           #   requests:
           #     cpu: 1000m
