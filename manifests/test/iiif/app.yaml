@@ -12,6 +12,9 @@ spec:
   path: ./kustomizations/iiif
   prune: true
   targetNamespace: journal--test
+  images:
+    - name: ghcr.io/elifesciences/cantaloupe
+      newTag: 20250529144750-gebbba3f-15326583143-1-5.0.7
   postBuild:
     substitute:
       env: test
