@@ -26,8 +26,8 @@ spec:
 
             - name: PROCESSOR_JPG_QUALITY
               value: "100"
-            - name: PROCESSOR_SHARPEN
-              value: "1"
+            - name: PROCESSOR_MANUALSELECTIONSTRATEGY_TIF
+              value: JaiProcessor
           # resources:
           #   requests:
           #     cpu: 1000m
