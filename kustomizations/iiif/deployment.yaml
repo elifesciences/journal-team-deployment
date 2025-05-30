@@ -28,6 +28,8 @@ spec:
               value: "true"
             - name: PROCESSOR_JPG_QUALITY
               value: "100"
+            - name: PROCESSOR_JPG_PROGRESSIVE
+              value: "false"
           # resources:
           #   requests:
           #     cpu: 1000m
