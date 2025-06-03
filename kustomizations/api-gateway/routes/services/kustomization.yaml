@@ -4,11 +4,10 @@ kind: Kustomization
 nameSuffix: -proxy
 
 resources:
-- annotations.yaml
-- bioprotocol.yaml
-- data-hub-metrics-api.yaml
-- journal-cms.yaml
-- lax.yaml
-- metrics.yaml
-- profiles.yaml
-- reviewed-preprints.yaml
+  - annotations.yaml
+  - bioprotocol.yaml
+  - journal-cms.yaml
+  - lax.yaml
+  - metrics.yaml
+  - profiles.yaml
+  - reviewed-preprints.yaml
