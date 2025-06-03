@@ -52,15 +52,10 @@ spec:
       lax_protocol: https
       lax_service_name: lax-proxy
 
-      metrics_hostname: prod--metrics.elife.internal
-      metrics_port: "80"
-      metrics_protocol: http
+      metrics_hostname: data-hub-metrics-api.elifesciences.org
+      metrics_port: "443"
+      metrics_protocol: https
       metrics_service_name: metrics-proxy
-
-      data_hub_metrics_api_hostname: data-hub-metrics-api.elifesciences.org
-      data_hub_metrics_api_port: "443"
-      data_hub_metrics_api_protocol: https
-      data_hub_metrics_api_service_name: data-hub-metrics-api-proxy
 
       profiles_hostname: prod--profiles.elife.internal
       profiles_port: "80"
