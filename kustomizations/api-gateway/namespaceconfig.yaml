@@ -8,4 +8,3 @@ namespace:
   create: true
 - kind: HTTPRoute
   path: spec/rules/backendRefs/namespace
-  create: true
