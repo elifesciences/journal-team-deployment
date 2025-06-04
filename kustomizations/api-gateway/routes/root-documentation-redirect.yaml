@@ -13,12 +13,7 @@ spec:
     name: api-gateway
     namespace: journal
   rules:
-  - backendRefs:
-    - name: api-raml-docs
-      namespace: journal
-      kind: Service
-      port: 80
-    matches:
+  - matches:
     - path:
         type: Exact
         value: /
