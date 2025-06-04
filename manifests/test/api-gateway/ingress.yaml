@@ -22,3 +22,22 @@ spec:
   - secretName: api-gateway-tls
     hosts:
     - "api.test.elifesciences.org"
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-gateway-ping
+  namespace: journal--test
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      return 200 "pong";
+spec:
+  rules:
+  - host: "api.test.elifesciences.org"
+    http:
+      paths:
+      - path: /ping
+        pathType: ImplementationSpecific
+      - path: /ping-fastly
+        pathType: ImplementationSpecific
