@@ -2,7 +2,7 @@
 kind: HTTPRoute
 apiVersion: gateway.networking.k8s.io/v1
 metadata:
-  name: root-documentation-redirect
+  name: documentation-redirect
   namespace: journal
   annotations:
     konghq.com/preserve-host: "false"
