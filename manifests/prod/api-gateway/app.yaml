@@ -15,6 +15,9 @@ spec:
   dependsOn:
   - name: api-gateway-consumer-keys
   - name: api-gateway-public-credentials
+  images:
+    - name: ghcr.io/elifesciences/api-raml-docs # {"$imagepolicy": "journal--prod:api-raml-docs:name"}
+      newTag: latest  # {"$imagepolicy": "journal--prod:api-raml-docs:tag"}
   postBuild:
     substitute:
       env: prod
