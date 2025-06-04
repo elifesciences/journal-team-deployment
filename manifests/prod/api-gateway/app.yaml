@@ -16,55 +16,44 @@ spec:
   - name: api-gateway-consumer-keys
   - name: api-gateway-public-credentials
   images:
-    - name: ghcr.io/elifesciences/api-raml-docs # {"$imagepolicy": "journal--prod:api-raml-docs:name"}
-      newTag: latest  # {"$imagepolicy": "journal--prod:api-raml-docs:tag"}
+  - name: ghcr.io/elifesciences/api-raml-docs # {"$imagepolicy": "journal--prod:api-raml-docs:name"}
+    newTag: 2.33.1 # {"$imagepolicy": "journal--prod:api-raml-docs:tag"}
   postBuild:
     substitute:
       env: prod
-
       replicas: "3"
-
       # define services deployed in this namespace
       search_port: "80"
       search_service_name: search-web
-
       recommendations_port: "80"
       recommendations_service_name: recommendations-web
-
       digests_port: "9000"
       digests_service_name: digests-api
-
       # define services deployed elsewhere
       annotations_hostname: prod--annotations.elife.internal
       annotations_port: "80"
       annotations_protocol: http
       annotations_service_name: annotations-proxy
-
       bioprotocol_hostname: prod--bp.elife.internal
       bioprotocol_port: "80"
       bioprotocol_protocol: http
       bioprotocol_service_name: bioprotocol-proxy
-
       journal_cms_hostname: prod--journal-cms.elife.internal
       journal_cms_port: "80"
       journal_cms_protocol: http
       journal_cms_service_name: journal-cms-proxy
-
       lax_hostname: prod--lax.elifesciences.org
       lax_port: "443"
       lax_protocol: https
       lax_service_name: lax-proxy
-
       metrics_hostname: data-hub-metrics-api.elifesciences.org
       metrics_port: "443"
       metrics_protocol: https
       metrics_service_name: metrics-proxy
-
       profiles_hostname: prod--profiles.elife.internal
       profiles_port: "80"
       profiles_protocol: http
       profiles_service_name: profiles-proxy
-
       reviewed_preprints_service_name: reviewed-preprints-proxy
       reviewed_preprints_port: "443"
       reviewed_preprints_protocol: https
