@@ -39,5 +39,15 @@ spec:
       paths:
       - path: /ping
         pathType: ImplementationSpecific
+        backend:
+          service:
+            name: dataplane-ingress-api-gateway-5nzf9-dvnn5
+            port:
+              number: 80
       - path: /ping-fastly
         pathType: ImplementationSpecific
+        backend:
+          service:
+            name: dataplane-ingress-api-gateway-5nzf9-dvnn5
+            port:
+              number: 80
