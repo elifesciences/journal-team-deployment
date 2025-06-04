@@ -25,4 +25,6 @@ spec:
     filters:
     - type: RequestRedirect
       requestRedirect:
-        path: /documentation/
+        path:
+          type: ReplaceFullPath
+          replaceFullPath: /documentation/
