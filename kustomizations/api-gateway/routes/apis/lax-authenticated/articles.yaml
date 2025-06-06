@@ -20,13 +20,13 @@ spec:
       port: ${lax_port}
     matches:
     - path:
-        type: PathPrefix
-        value: /articles
+        type: RegularExpression
+        value: /articles(.*)
     # This isn't working due to the implementation using the reqiuest-transformer Kong plugin,
     # which is also used by public-credentials-request-transformer-lax, and  it's a highlander scenario
-    filters:
-    - type: URLRewrite
-      urlRewrite:
-        path:
-          replacePrefixMatch: /api/v2/articles
-          type: ReplacePrefixMatch
+    # filters:
+    # - type: URLRewrite
+    #   urlRewrite:
+    #     path:
+    #       replacePrefixMatch: /api/v2/articles
+    #       type: ReplacePrefixMatch
