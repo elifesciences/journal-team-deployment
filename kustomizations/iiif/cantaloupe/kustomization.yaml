@@ -11,7 +11,7 @@ labels:
   pairs:
     app.kubernetes.io/component: iiif
     app.kubernetes.io/instance: iiif--${env}
-    app.kubernetes.io/name: iiif
+    app.kubernetes.io/name: cantaloupe
 
 configMapGenerator:
 - name: iiif-journal-delegate
