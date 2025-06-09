@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: iiif
+  name: cantaloupe
 spec:
   replicas: ${replicas:=1}
   strategy:
