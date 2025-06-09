@@ -1,0 +1,21 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: loris
+  namespace: journal--test
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/iiif/loris
+  prune: true
+  targetNamespace: journal--test
+  images:
+    - name: elifesciences/loris
+      newTag: 16288aac796c6bec1b4eee14725b03d54ac06abf
+  postBuild:
+    substitute:
+      env: test
+      hostname: loris.test.elifesciences.org
