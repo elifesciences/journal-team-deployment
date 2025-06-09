@@ -32,5 +32,3 @@ spec:
       busSubscriber: '"512686554592"'
       busRegion: us-east-1
       busEnv: journal--prod
-      hostname: digests.prod.elifesciences.org
-      cert_manager_issuer: "letsencrypt"
