@@ -40,6 +40,4 @@ spec:
       aws_backup_service_account_role_arn: ${aws_backup_service_account_role_arn}
       # deployment vars
       env: prod
-      hostname: search.prod.elifesciences.org
-      cert_manager_issuer: "letsencrypt"
       api_url: https://api.prod.elifesciences.org
