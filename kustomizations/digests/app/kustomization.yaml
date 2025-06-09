@@ -6,7 +6,6 @@ resources:
 - digests.yaml
 - serviceaccount.yaml
 - service.yaml
-- ingress.yaml
 - automations/repository.yaml
 - automations/stable-policy.yaml
 
