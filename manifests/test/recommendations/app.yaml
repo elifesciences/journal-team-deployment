@@ -19,6 +19,4 @@ spec:
     substitute:
       # deployment vars
       env: test
-      hostname: recommendations.test.elifesciences.org
-      cert_manager_issuer: "letsencrypt"
       api_url: https://api.test.elifesciences.org/

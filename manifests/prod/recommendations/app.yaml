@@ -19,7 +19,5 @@ spec:
     substitute:
       # deployment vars
       env: prod
-      hostname: recommendations.prod.elifesciences.org
-      cert_manager_issuer: "letsencrypt"
       replicas: "3"
       api_url: https://api.prod.elifesciences.org/

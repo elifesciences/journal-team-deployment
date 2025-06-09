@@ -6,7 +6,6 @@ resources:
 - deployment.yaml
 - service.yaml
 - config/recommendations-ingress-fastcgi-params.yaml
-- ingress.yaml
 - automations/repository.yaml
 - automations/stable-policy.yaml
 
