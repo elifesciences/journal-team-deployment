@@ -20,7 +20,7 @@ spec:
           pathType: ImplementationSpecific
           backend:
             service:
-              name: iiif
+              name: cantaloupe
               port:
                 number: 8182
   tls:
