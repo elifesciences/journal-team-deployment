@@ -30,3 +30,14 @@ spec:
           readinessProbe:
             tcpSocket:
               port: http
+          volumeMounts:
+          - name: config-volume
+            mountPath: /srv/digests/uwsgi.ini
+            subPath: uwsgi.ini
+      volumes:
+      - name: config-volume
+        configMap:
+          name: digests-config
+          items:
+          - key: uwsgi.ini
+            path: uwsgi.ini

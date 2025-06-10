@@ -12,3 +12,8 @@ labels:
     app.kubernetes.io/component: iiif
     app.kubernetes.io/instance: iiif--${env}
     app.kubernetes.io/name: loris
+
+configMapGenerator:
+- name: loris-config
+  files:
+  - config/uwsgi.ini
