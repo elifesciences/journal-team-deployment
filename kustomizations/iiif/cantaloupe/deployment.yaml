@@ -21,7 +21,10 @@ spec:
               value: /delegate/journal_delegate.rb
             - name: HTTPSOURCE_LOOKUP_STRATEGY
               value: ScriptLookupStrategy
-
+            - name: PROCESSOR_DOWNSCALE_LINEAR
+              value: "false"
+            - name: processor.background_color
+              value: white
             - name: PROCESSOR_JPG_QUALITY
               value: "100"
           # resources:
