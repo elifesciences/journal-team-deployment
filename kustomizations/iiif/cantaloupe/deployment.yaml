@@ -25,8 +25,8 @@ spec:
               value: "false"
             - name: processor.background_color
               value: white
-            - name: PROCESSOR_JPG_QUALITY
-              value: "100"
+            # - name: PROCESSOR_JPG_QUALITY
+            #   value: "100"
           # resources:
           #   requests:
           #     cpu: 1000m
