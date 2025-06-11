@@ -16,7 +16,7 @@ spec:
     http:
       paths:
         # rewrite either lax: or lax/ to lax:
-        - path: /([\w]+)[:/]{1}(.*)
+        - path: ^/([^/:]+)[/:](.+\.(?!(?i)(?:webp)$)[^.]+)$
           pathType: ImplementationSpecific
           backend:
             service:
@@ -37,7 +37,7 @@ metadata:
       This is here because the journal uses webp, but cantaloupe doesn't (yet) support it.
       https://github.com/cantaloupe-project/cantaloupe/issues/710
     nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /iiif/2/$1:$2.jpg$3
+    nginx.ingress.kubernetes.io/rewrite-target: /iiif/2/$1:$2.jpg
 
     ## This fixes issues with encoded paths, such as the / encoded as %2F in lax:96357%2Felife-96357-fig2-figsupp1-v1.tif
     nginx.ingress.kubernetes.io/configuration-snippet: |
@@ -48,7 +48,7 @@ spec:
     http:
       paths:
         # rewrite either lax: or lax/ to lax:
-        - path: /([\w]+)[:/]{1}(.*).tif(.+)
+        - path: ^/([^/:]+)[/:](.+)\.(?i)(?:webp)$
           pathType: ImplementationSpecific
           backend:
             service:
