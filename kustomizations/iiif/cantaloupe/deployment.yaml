@@ -23,8 +23,10 @@ spec:
               value: ScriptLookupStrategy
             - name: PROCESSOR_DOWNSCALE_LINEAR
               value: "false"
-            - name: processor.background_color
+            - name: PROCESSOR_BACKGROUND_COLOR
               value: white
+            - name: PRINT_STACK_TRACE_ON_ERROR_PAGES
+              value: "false"
             # - name: PROCESSOR_JPG_QUALITY
             #   value: "100"
           # resources:
