@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--test
   images:
     - name: ghcr.io/elifesciences/cantaloupe
-      newTag: 20250529144750-gebbba3f-15326583143-1-5.0.7
+      newTag: 20250617070523-g46e1f8d-15700467018-1-5.0.7
   postBuild:
     substitute:
       env: test
