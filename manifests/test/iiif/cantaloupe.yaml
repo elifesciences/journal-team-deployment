@@ -22,7 +22,6 @@ spec:
       # iiif_role_arn are retrieved from the configmap
       - kind: ConfigMap
         name: iiif-role
-  postBuild:
     substitute:
       env: test
       hostname: iiif.test.elifesciences.org
