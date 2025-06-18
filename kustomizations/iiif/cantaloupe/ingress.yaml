@@ -16,6 +16,17 @@ spec:
     http:
       paths:
         # rewrite either lax: or lax/ to lax:
+        - path: /([^/:]+)[/:](.+\.json)$
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: cantaloupe
+              port:
+                number: 8182
+  - host: ${hostname}
+    http:
+      paths:
+        # rewrite either lax: or lax/ to lax:
         - path: /([^/:]+)[/:](.+\.(?!(?i)(?:webp)$)[^.]+)$
           pathType: ImplementationSpecific
           backend:
