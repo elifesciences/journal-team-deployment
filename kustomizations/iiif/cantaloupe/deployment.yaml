@@ -28,6 +28,16 @@ spec:
               value: white
             - name: PRINT_STACK_TRACE_ON_ERROR_PAGES
               value: "false"
+            - name: CACHE_SERVER_DERIVATIVE_ENABLED
+              value: "true"
+            - name: CACHE_SERVER_DERIVATIVE
+              value: "S3Cache"
+            - name: S3CACHE_ENDPOINT
+              value: "s3.us-east-1.amazonaws.com"
+            - name: S3CACHE_BUCKET_NAME
+              value: "${iiif_cache_bucket_name}"
+            - name: S3CACHE_OBJECT_KEY_PREFIX
+              value: "iiif-cache/"
             # - name: PROCESSOR_JPG_QUALITY
             #   value: "100"
           # resources:

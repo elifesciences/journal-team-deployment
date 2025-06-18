@@ -13,12 +13,16 @@ spec:
   prune: true
   targetNamespace: journal--test
   dependsOn:
+  - name: iiif-cache-bucket
   - name: iiif-role
   images:
     - name: ghcr.io/elifesciences/cantaloupe
       newTag: 20250617070523-g46e1f8d-15700467018-1-5.0.7
   postBuild:
     substituteFrom:
+      # iiif_cache_bucket_name is retrieved from the configmap
+      - kind: ConfigMap
+        name: iiif-cache-config
       # iiif_role_arn are retrieved from the configmap
       - kind: ConfigMap
         name: iiif-role
