@@ -28,3 +28,24 @@ spec:
         }
       ]
     }
+  inlinePolicies:
+    giveAccessToCacheBucket: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+           "Action": [
+             "s3:*"
+           ],
+           "Effect": "Allow",
+           "Resource": "${iiif_cache_bucket_arn}"
+         },
+         {
+           "Action": [
+             "s3:*"
+           ],
+           "Effect": "Allow",
+           "Resource": "${iiif_cache_bucket_arn}/*"
+         }
+        ]
+      }

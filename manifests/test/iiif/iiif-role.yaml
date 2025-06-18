@@ -12,7 +12,13 @@ spec:
   path: ./kustomizations/iiif/aws-role
   prune: true
   targetNamespace: journal--test
+  dependsOn:
+  - name: iiif-cache-bucket
   postBuild:
+    substituteFrom:
+      # iiif_cache_bucket_arn is retrieved from the configmap
+      - kind: ConfigMap
+        name: iiif-cache-config
     substitute:
       # deployment vars
       env: test
