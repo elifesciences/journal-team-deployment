@@ -13,7 +13,7 @@ spec:
   prune: true
   targetNamespace: journal--test
   dependsOn:
-  - name: aws-role
+  - name: iiif-role
   images:
     - name: ghcr.io/elifesciences/cantaloupe
       newTag: 20250617070523-g46e1f8d-15700467018-1-5.0.7
