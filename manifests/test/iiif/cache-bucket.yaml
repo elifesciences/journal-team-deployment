@@ -1,0 +1,18 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: iiif-cache-bucket
+  namespace: journal--test
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/iiif/cache-bucket
+  prune: true
+  targetNamespace: journal--test
+  postBuild:
+    substitute:
+      # deployment vars
+      env: test
