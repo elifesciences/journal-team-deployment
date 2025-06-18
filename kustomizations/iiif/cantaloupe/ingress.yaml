@@ -16,7 +16,7 @@ spec:
     http:
       paths:
         # rewrite either lax: or lax/ to lax:
-        - path: /([^/:]+)[/:](.+\.json)$
+        - path: /([^/:]+)[/:](.+info.json)$
           pathType: ImplementationSpecific
           backend:
             service:
