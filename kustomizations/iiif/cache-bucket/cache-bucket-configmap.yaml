@@ -20,7 +20,7 @@ spec:
     resource:
       group: s3.services.k8s.aws
       kind: Bucket
-      name: iiif-cache-test
+      name: iiif-cache-${env}
 
 ---
 
@@ -38,4 +38,4 @@ spec:
     resource:
       group: s3.services.k8s.aws
       kind: Bucket
-      name: iiif-cache-test
+      name: iiif-cache-${env}
