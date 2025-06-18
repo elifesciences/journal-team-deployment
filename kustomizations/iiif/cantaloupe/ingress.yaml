@@ -16,7 +16,7 @@ spec:
     http:
       paths:
         # rewrite either lax: or lax/ to lax:
-        - path: /([^/:]+)[/:](.+info.json)$
+        - path: /([^/:]+)[/:](.+\.(?!(?i)(?:webp)$)[^.]+)$
           pathType: ImplementationSpecific
           backend:
             service:
@@ -26,8 +26,8 @@ spec:
   - host: ${hostname}
     http:
       paths:
-        # rewrite either lax: or lax/ to lax:
-        - path: /([^/:]+)[/:](.+\.(?!(?i)(?:webp)$)[^.]+)$
+        # rewrite either lax: or lax/ to lax: if we accidentally get a redirect to the iiif endpoint from cantaloupe
+        - path: /iiif/v2/([^/:]+)[/:](.+\.(?!(?i)(?:webp)$)[^.]+)$
           pathType: ImplementationSpecific
           backend:
             service:
