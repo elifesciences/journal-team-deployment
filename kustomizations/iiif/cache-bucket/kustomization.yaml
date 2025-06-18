@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: journal
 resources:
 - cache-bucket.yaml
+- cache-bucket-configmap.yaml
 
 labels:
 - includeSelectors: true

@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: iiif-cache-config
+data: {}
+
+---
+
+apiVersion: services.k8s.aws/v1alpha1
+kind: FieldExport
+metadata:
+  name: iiif-cache-config-arn
+spec:
+  to:
+    name: iiif-cache-config
+    kind: configmap
+    key: iiif_cache_bucket_arn
+  from:
+    path: ".status.ackResourceMetadata.arn"
+    resource:
+      group: s3.services.k8s.aws
+      kind: Bucket
+      name: iiif-cache-test
+
+---
+
+apiVersion: services.k8s.aws/v1alpha1
+kind: FieldExport
+metadata:
+  name: iiif-cache-config-name
+spec:
+  to:
+    name: iiif-cache-config
+    kind: configmap
+    key: iiif_cache_bucket_arn
+  from:
+    path: ".spec.name"
+    resource:
+      group: s3.services.k8s.aws
+      kind: Bucket
+      name: iiif-cache-test
