@@ -32,8 +32,8 @@ spec:
               value: "true"
             - name: CACHE_SERVER_DERIVATIVE
               value: "S3Cache"
-            - name: S3CACHE_ENDPOINT
-              value: "s3.us-east-1.amazonaws.com"
+            - name: S3Cache.region
+              value: "us-east-1"
             - name: S3CACHE_BUCKET_NAME
               value: "${iiif_cache_bucket_name}"
             - name: S3CACHE_OBJECT_KEY_PREFIX
