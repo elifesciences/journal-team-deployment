@@ -9,6 +9,7 @@ spec:
       maxUnavailable: ${maxUnavailable:=25%}
   template:
     spec:
+      serviceAccount: iiif
       containers:
         - name: cantaloupe
           image: ghcr.io/elifesciences/cantaloupe:latest
