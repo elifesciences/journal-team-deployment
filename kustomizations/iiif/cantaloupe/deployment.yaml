@@ -40,12 +40,10 @@ spec:
               value: "iiif-cache/"
             # - name: PROCESSOR_JPG_QUALITY
             #   value: "100"
-          # resources:
-          #   requests:
-          #     cpu: 1000m
-          #     memory: 1Gi
-          #   limits:
-          #     memory: 1.5Gi
+          resources:
+            requests:
+              cpu: 300m
+              memory: 600Mi
           ports:
             - name: http
               containerPort: 8182
