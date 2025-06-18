@@ -32,7 +32,7 @@ spec:
   to:
     name: iiif-cache-config
     kind: configmap
-    key: iiif_cache_bucket_arn
+    key: iiif_cache_bucket_name
   from:
     path: ".spec.name"
     resource:
