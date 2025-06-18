@@ -21,7 +21,7 @@ spec:
           "Condition": {
             "ForAnyValue:StringEquals": {
               "${aws_oidc_url}:sub": [
-                "system:serviceaccount:${irsa_namespace}:iiif-${env}"
+                "system:serviceaccount:${irsa_namespace}:iiif"
               ]
             }
           }

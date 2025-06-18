@@ -9,7 +9,7 @@ spec:
     kind: GitRepository
     name: journal-team-deployment
     namespace: flux-system
-  path: ./kustomizations/iiif/iiif-aws-role
+  path: ./kustomizations/iiif/aws-role
   prune: true
   targetNamespace: journal--test
   postBuild:
