@@ -16,7 +16,7 @@ spec:
     http:
       paths:
         # rewrite either lax: or lax/ to lax:, optionally allow /iiif/2 prefix
-        - path: ^/(?:iiif/[\d]/)?([^/:]+)[/:](.+\.(?!(?i)(?:webp)$)[^.]+)$
+        - path: /(?:iiif/[\d]/)?([^/:]+)[/:](.+\.(?!(?i)(?:webp)$)[^.]+)$
           pathType: ImplementationSpecific
           backend:
             service:
