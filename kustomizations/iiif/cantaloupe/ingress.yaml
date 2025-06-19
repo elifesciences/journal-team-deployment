@@ -15,19 +15,8 @@ spec:
   - host: ${hostname}
     http:
       paths:
-        # rewrite either lax: or lax/ to lax:
-        - path: /([^/:]+)[/:](.+\.(?!(?i)(?:webp)$)[^.]+)$
-          pathType: ImplementationSpecific
-          backend:
-            service:
-              name: cantaloupe
-              port:
-                number: 8182
-  - host: ${hostname}
-    http:
-      paths:
-        # rewrite either lax: or lax/ to lax: if we accidentally get a redirect to the iiif endpoint from cantaloupe
-        - path: /iiif/v2/([^/:]+)[/:](.+\.(?!(?i)(?:webp)$)[^.]+)$
+        # rewrite either lax: or lax/ to lax:, optionally allow /iiif/2 prefix
+        - path: ^/(?:iiif/[\d]/)?([^/:]+)[/:](.+\.(?!(?i)(?:webp)$)[^.]+)$
           pathType: ImplementationSpecific
           backend:
             service:
