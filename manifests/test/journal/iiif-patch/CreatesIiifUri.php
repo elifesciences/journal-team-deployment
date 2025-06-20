@@ -58,7 +58,6 @@ trait CreatesIiifUri
 
         //patch in the hostname
         $uri = str_replace('iiif.elifesciences.org', 'iiif.test.elifesciences.org', $uri);
-        var_dump($uri);
 
         return "$uri/$region/$size/0/default.$extension";
     }
