@@ -3,3 +3,5 @@ configMapGenerator:
 - name: journal-iiif-hostname-override
   files:
   - CreatesIiifUri.php
+  options:
+    disableNameSuffixHash: true
