@@ -45,7 +45,7 @@ spec:
               - name: journal
                 volumeMounts:
                 - name: journal-iiif-hostname-override
-                  mountPath: /srv/journal/app/src/Helper/CreatesIiifUri.php
+                  mountPath: /srv/journal/src/Helper/CreatesIiifUri.php
                   subPath: CreatesIiifUri.php
               volumes:
               - name: journal-iiif-hostname-override
