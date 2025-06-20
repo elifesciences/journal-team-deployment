@@ -1,5 +1,5 @@
 namespace: journal--test
 configMapGenerator:
-- name: iiif-hostname-override
+- name: journal-iiif-hostname-override
   files:
   - CreatesIiifUri.php
