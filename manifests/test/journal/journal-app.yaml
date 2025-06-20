@@ -22,8 +22,8 @@ spec:
       hostname: journal.test.elifesciences.org
       cert_manager_issuer: "letsencrypt"
       journal_secret_parameters_secret_name: journal-secret-parameters
-      api_url: https://api.test.elifesciences.org
-      api_url_search_page: https://api.test.elifesciences.org
+      api_url: https://api.prod.elifesciences.org
+      api_url_search_page: https://api.prod.elifesciences.org
       epp_url: http://epp-client.epp--prod:3000
       observer_url: http://prod--observer.elife.internal
       pubpub_url: https://elife-container.pubpub.org
