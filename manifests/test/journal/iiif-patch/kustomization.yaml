@@ -1,3 +1,4 @@
+namespace: journal--test
 configMapGenerator:
 - name: iiif-hostname-override
   files:
