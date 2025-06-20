@@ -28,3 +28,29 @@ spec:
       observer_url: http://prod--observer.elife.internal
       pubpub_url: https://elife-container.pubpub.org
       hubspot_url: https://connect.elifesciences.org
+  patches:
+    - target:
+        kind: Deployment
+        name: journal
+      patch: |
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: journal
+          namespace: journal
+        spec:
+          template:
+            spec:
+              containers:
+              - name: journal
+                volumeMounts:
+                - name: iiif-hostname-override
+                  mountPath: /srv/journal/app/src/Helper/CreatesIiifUri.php
+                  subPath: CreatesIiifUri.php
+              volumes:
+              - name: iiif-hostname-override
+                configMap:
+                  name: iiif-hostname-override
+                  items:
+                  - key: CreatesIiifUri.php
+                    path: CreatesIiifUri.php
