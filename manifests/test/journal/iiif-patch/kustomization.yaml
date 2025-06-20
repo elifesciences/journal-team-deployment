@@ -1,0 +1,4 @@
+configMapGenerator:
+- name: iiif-hostname-override
+  files:
+  - CreatesIiifUri.php
