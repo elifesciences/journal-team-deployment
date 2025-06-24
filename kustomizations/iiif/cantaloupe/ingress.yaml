@@ -14,10 +14,10 @@ metadata:
     # 2. Checks if the 'format' named capture group is 'webp' and, if so, redefines it to 'jpg'.
     # This snippet executes BEFORE the rewrite-target is processed.
     nginx.ingress.kubernetes.io/configuration-snippet: |
-      # rewrite ^ $request_uri?;
       if ($format = "webp") {
         set $format "jpg";
       }
+      rewrite ^ $request_uri?;
 spec:
   rules:
   - host: ${hostname}
