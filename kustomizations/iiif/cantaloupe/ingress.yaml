@@ -29,7 +29,7 @@ spec:
         # - Separator (colon or slash, non-capturing)
         # - 'id_part': Everything after the first separator, up to the IIIF region segment
         # - Standard IIIF segments: region, size, rotation, quality, format
-        - path: "^/(?:iiif/\\d+/)?(?<service_prefix>[^:/]+)(?:[:/])(?<id_part>.*)/(?<region>[^/]+)/(?<size>[^/]+)/(?<rotation>[^/]+)/(?<quality>[^/]+)\\.(?<format>[a-zA-Z0-9]+)$"
+        - path: "/(?:iiif/\\d+/)?(?<service_prefix>[^:/]+)(?:[:/])(?<id_part>.*)/(?<region>[^/]+)/(?<size>[^/]+)/(?<rotation>[^/]+)/(?<quality>[^/]+)\\.(?<format>[a-zA-Z0-9]+)"
           pathType: ImplementationSpecific
           backend:
             service:
