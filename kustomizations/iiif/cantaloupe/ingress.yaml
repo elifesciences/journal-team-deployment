@@ -6,18 +6,33 @@ metadata:
     cert-manager.io/cluster-issuer: "letsencrypt"
     nginx.ingress.kubernetes.io/use-regex: "true"
 
-    # Rewrite target for the IIIF Image API.
-    # Combines 'service_prefix' and 'id_part' with a colon, then appends other IIIF segments.
-    nginx.ingress.kubernetes.io/rewrite-target: /iiif/2/$service_prefix:$id_part/$region/$size/$rotation/$quality.$format
-
     # 1. Rewrites the URI to fix issues with encoded paths (e.g., %2F).
     # 2. Checks if the 'format' named capture group is 'webp' and, if so, redefines it to 'jpg'.
     # This snippet executes BEFORE the rewrite-target is processed.
     nginx.ingress.kubernetes.io/configuration-snippet: |
-      if ($format = "webp") {
-        set $format "jpg";
+      set $captured_service_prefix "";
+      set $captured_id_part_encoded ""; # This will hold the encoded ID
+      set $captured_iiif_segments_raw "";
+      set $captured_quality "";
+      set $captured_format_raw "";
+
+      if ($request_uri ~* "^(?:/iiif/\\d+)?/([^:/]+)(?:[:/])(.*?)/([^/]+)/([^/]+)/([^/]+)/([^/]+)\\.([a-zA-Z0-9]+)(\\?.*)?$") {
+        set $captured_service_prefix $1;
+        set $captured_id_part_encoded $2; # This should retain %2F if present in request_uri
+        set $captured_region $3;
+        set $captured_size $4;
+        set $captured_rotation $5;
+        set $captured_quality $6;
+        set $captured_format_raw $7;
+        set $captured_args $8; # Capture any query string parameters
       }
-      rewrite ^ $request_uri?;
+
+      set $final_format $captured_format_raw;
+      if ($captured_format_raw = "webp") {
+        set $final_format "jpg";
+      }
+
+      rewrite .* "/iiif/2/${captured_service_prefix}:${captured_id_part_encoded}/${captured_region}/${captured_size}/${captured_rotation}/${captured_quality}.${final_format}${captured_args}" last;
 spec:
   rules:
   - host: ${hostname}
