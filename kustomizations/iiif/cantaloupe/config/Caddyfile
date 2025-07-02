@@ -1,4 +1,8 @@
 :8080 {
+
+    handle / {
+        reverse_proxy http://localhost:8182
+    }
     # first remove cantaloupe prefix if it's there
     uri strip_prefix /iiif/v2
 
