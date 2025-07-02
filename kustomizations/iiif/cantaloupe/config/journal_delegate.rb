@@ -22,8 +22,10 @@ class CustomDelegate
   def httpsource_resource_info(options = {})
     logger = Java::edu.illinois.library.cantaloupe.delegate.Logger
 
-    identifier = context['identifier']
+    # replace double encoded slashes with a /
+    identifier = context['identifier'].gsub('%252F', '/')
     logger.info 'identifier: ' << identifier
+
     if identifier.start_with?('lax:') or identifier.start_with?('lax/') then
       logger.info 'prefix: ' << identifier[0..2] << ' is HTTPSource ' << 'https://s3-external-1.amazonaws.com/prod-elife-published/articles/'
       return 'https://s3-external-1.amazonaws.com/prod-elife-published/articles/' <<  identifier[4..-1]
