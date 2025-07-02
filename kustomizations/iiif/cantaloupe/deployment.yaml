@@ -45,15 +45,15 @@ spec:
               cpu: 300m
               memory: 600Mi
           ports:
-            - name: http
+            - name: cantaloupe
               containerPort: 8182
               protocol: TCP
           livenessProbe:
             tcpSocket:
-              port: http
+              port: cantaloupe
           readinessProbe:
             tcpSocket:
-              port: http
+              port: cantaloupe
           volumeMounts:
             - name: iiif-journal-delegate-volume
               mountPath: /delegate/journal_delegate.rb
@@ -61,7 +61,7 @@ spec:
         - name: caddy
           image: caddy:latest
           ports:
-            - name: http
+            - name: iiif-journal
               containerPort: 8080
               protocol: TCP
           volumeMounts:
