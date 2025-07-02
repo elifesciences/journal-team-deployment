@@ -58,6 +58,16 @@ spec:
             - name: iiif-journal-delegate-volume
               mountPath: /delegate/journal_delegate.rb
               subPath: journal_delegate.rb
+        - name: caddy
+          image: caddy:latest
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          volumeMounts:
+            - name: caddy-proxy-config-volume
+              mountPath: /etc/caddy/Caddyfile
+              subPath: Caddyfile
       volumes:
         - name: iiif-journal-delegate-volume
           configMap:
@@ -65,3 +75,9 @@ spec:
             items:
             - key: journal_delegate.rb
               path: journal_delegate.rb
+        - name: caddy-proxy-config-volume
+          configMap:
+            name: caddy-proxy-config
+            items:
+            - key: Caddyfile
+              path: Caddyfile
