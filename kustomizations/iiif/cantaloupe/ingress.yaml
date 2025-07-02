@@ -6,14 +6,15 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt"
 
+    nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - host: ${hostname}
     http:
       paths:
-        - path: /
-          pathType: Exact
+        - path: /$
+          pathType: ImplementationSpecific
           backend:
             service:
               name: cantaloupe
