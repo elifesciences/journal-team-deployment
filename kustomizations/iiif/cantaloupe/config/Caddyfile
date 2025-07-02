@@ -3,24 +3,27 @@
     handle / {
         reverse_proxy http://localhost:8182
     }
-    # first remove cantaloupe prefix if it's there
-    uri strip_prefix /iiif/v2
 
-    # rewrite webp to jpg if there
-    uri path_regexp /(.*)\.webp /$1.jpg
+    handle {
+        # first remove cantaloupe prefix if it's there
+        uri strip_prefix /iiif/v2
 
-    # rewrite identifier to normalise the prefix to ":"
-    uri path_regexp /([^/:]+)[/:](.+)$ /$1:$2
+        # rewrite webp to jpg if there
+        uri path_regexp /(.*)\.webp /$1.jpg
 
-    # Normalise the URI-encoded forward slashes in identifier
-    # Handle identifiers with 2 slashes (e.g., /a/b/c/full/full/0/default.jpg)
-    uri path_regexp ^/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)$ /$1%2F$2%2F$3/$4/$5/$6/$7
-    # Handle identifiers with 1 slash (e.g., /a/b/full/full/0/default.jpg)
-    uri path_regexp ^/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)$ /$1%2F$2/$3/$4/$5/$6
+        # rewrite identifier to normalise the prefix to ":"
+        uri path_regexp /([^/:]+)[/:](.+)$ /$1:$2
+
+        # Normalise the URI-encoded forward slashes in identifier
+        # Handle identifiers with 2 slashes (e.g., /a/b/c/full/full/0/default.jpg)
+        uri path_regexp ^/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)$ /$1%2F$2%2F$3/$4/$5/$6/$7
+        # Handle identifiers with 1 slash (e.g., /a/b/full/full/0/default.jpg)
+        uri path_regexp ^/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)$ /$1%2F$2/$3/$4/$5/$6
 
 
-    # finally, add the cantaloupe prefix back in
-    uri path_regexp /(.*) /iiif/2/$1
+        # finally, add the cantaloupe prefix back in
+        uri path_regexp /(.*) /iiif/2/$1
 
-    reverse_proxy http://localhost:8182
+        reverse_proxy http://localhost:8182
+    }
 }
