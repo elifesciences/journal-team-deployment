@@ -24,6 +24,8 @@
         # finally, add the cantaloupe prefix back in
         uri path_regexp /(.*) /iiif/2/$1
 
-        reverse_proxy http://localhost:8182
+        reverse_proxy http://localhost:8182 {
+          header_down location "/iiif/2/" "/"
+        }
     }
 }
