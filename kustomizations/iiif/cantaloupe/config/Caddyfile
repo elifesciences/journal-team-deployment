@@ -20,6 +20,23 @@
         # Handle identifiers with 1 slash (e.g., /a/b/full/full/0/default.jpg)
         uri path_regexp ^/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)$ /$1%2F$2/$3/$4/$5/$6
 
+        # Normalise the URI-encoded forward slashes in identifier for info
+        # Handle identifiers with 2 slashes (e.g., /a/b/c/info.json)
+        uri path_regexp ^/([^/]+)/([^/]+)/([^/]+)/info\.json$ /$1%2F$2%2F$3/info.json
+        # Handle identifiers with 1 slash (e.g., /a/b/info.json)
+        uri path_regexp ^/([^/]+)/([^/]+)/info\.json$ /$1%2F$2/info.json
+
+        # Normalise the URI-encoded forward slashes in identifier for base image identifier requests
+        # Handle identifiers with 2 slashes (e.g., /a/b/c/ or /a/b/c)
+        # We have to exclude info.json because it looks like an imageidentifier path to these
+        @notInfoJSON {
+            not path */info.json
+        }
+        uri @notInfoJSON path_regexp ^/([^/]+)/([^/]+)/([^/]+)/$ /$1%2F$2%2F$3/
+        uri @notInfoJSON path_regexp ^/([^/]+)/([^/]+)/([^/]+)$ /$1%2F$2%2F$3
+        # Handle identifiers with 1 slash (e.g., /a/b/ or /a/b)
+        uri @notInfoJSON path_regexp ^/([^/]+)/([^/]+)/$ /$1%2F$2/
+        uri @notInfoJSON path_regexp ^/([^/]+)/([^/]+)$ /$1%2F$2
 
         # finally, add the cantaloupe prefix back in
         uri path_regexp /(.*) /iiif/2/$1
