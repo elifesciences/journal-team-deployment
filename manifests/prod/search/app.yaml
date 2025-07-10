@@ -32,7 +32,7 @@ spec:
       opensearch_manager_request_cpu: 100m
       opensearch_manager_limit_mem: 2938Mi
       opensearch_data_request_mem: 5102Mi
-      opensearch_data_request_cpu: 3500m
+      opensearch_data_request_cpu: 500m
       opensearch_data_limit_mem: 5102Mi
       # opensearch backup vars
       aws_region: ${aws_region}
