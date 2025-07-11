@@ -38,6 +38,10 @@ spec:
               value: "${iiif_cache_bucket_name}"
             - name: S3CACHE_OBJECT_KEY_PREFIX
               value: "iiif-cache/"
+            - name: MAX_PIXELS
+              value: "256000000"
+            - name: MAX_SCALE
+              value: "2.0"
             # - name: PROCESSOR_JPG_QUALITY
             #   value: "100"
           resources:
