@@ -63,7 +63,7 @@ spec:
               mountPath: /delegate/journal_delegate.rb
               subPath: journal_delegate.rb
         - name: caddy
-          image: caddy:latest
+          image: ghcr.io/elifesciences/cantaloupe-caddy:latest
           ports:
             - name: iiif-journal
               containerPort: 8080
