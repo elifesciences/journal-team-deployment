@@ -41,17 +41,18 @@
         uri @notInfoJSON path_regexp ^/([^/]+)/([^/]+)/$ /$1%2F$2/
         uri @notInfoJSON path_regexp ^/([^/]+)/([^/]+)$ /$1%2F$2
 
-        # finally, add the cantaloupe prefix back in
-        uri path_regexp /(.*) /iiif/2/$1
-
         # If this is the info url, then do a string replace on the body
         @infoJSON {
             path */info.json
         }
         replace @infoJSON "iiif/2/" ""
 
+        # finally, add the cantaloupe prefix back in
+        uri path_regexp /(.*) /iiif/2/$1
+
         reverse_proxy http://localhost:8182 {
-          header_down location "/iiif/2/" "/"
+            header_up X-Forwarded-Proto "HTTPS"
+            header_down location "/iiif/2/" "/"
         }
     }
 }
