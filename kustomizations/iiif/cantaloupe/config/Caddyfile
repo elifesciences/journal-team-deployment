@@ -15,7 +15,7 @@
         uri path_regexp /([^/:]+)[/:](.+)$ /$1:$2
 
         # rewrite any accidental %25%2F back to %2F - assuming this has been double encoded, it should be decoded as %2F literal
-        uri replace "%2F" "/"
+        uri replace "%252F" "%2F"
 
         # Normalise the URI-encoded forward slashes in identifier
         # Handle identifiers with 2 slashes (e.g., /a/b/c/full/full/0/default.jpg)
