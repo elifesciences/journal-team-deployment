@@ -30,7 +30,7 @@ spec:
           - name: controller
             resources:
               limits:
-                cpu: null
+                cpu: {}
                 memory: 250Mi
               requests:
                 cpu: 100m
