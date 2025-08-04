@@ -4,6 +4,20 @@
         reverse_proxy http://localhost:8182
     }
 
+    handle /ping {
+        skip_log
+        header Cache-Control "must-revalidate, no-cache, no-store, private"
+        header Content-Type "text/plain; charset=UTF-8"
+        respond "pong" 200
+    }
+
+    handle /ping-fastly {
+        skip_log
+        header Cache-Control "must-revalidate, no-cache, no-store, private"
+        header Content-Type "text/plain; charset=UTF-8"
+        respond "pong" 200
+    }
+
     handle {
         # first remove cantaloupe prefix if it's there
         uri strip_prefix /iiif/v2
