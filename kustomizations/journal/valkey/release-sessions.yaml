@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: valkey
-      version: "0.3.17"
+      version: "3.0.22"
       interval: 5m
       sourceRef:
         kind: HelmRepository
@@ -16,10 +16,13 @@ spec:
   values:
     global:
       defaultStorageClass: journal-gp3
+    image:
+      repository: bitnamilegacy/valkey
+      tag: 8.1.3-debian-12-r1
     architecture: standalone
     auth:
       enabled: false
-    master:
+    primary:
       resourcesPreset: none
       resources:
         limits:
