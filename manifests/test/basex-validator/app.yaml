@@ -13,8 +13,8 @@ spec:
   prune: true
   targetNamespace: journal--test
   images:
-    - name: docker.io/elifesciences/basex-validator # {"$imagepolicy": "journal--test:basex-validator:name"}
-      newTag: master-a6f962ba-20250807.0643 # {"$imagepolicy": "journal--test:basex-validator:tag"}
+    - name: ghcr.io/elifesciences/basex-validator # {"$imagepolicy": "journal--test:basex-validator:name"}
+      newTag: 20250807064325.0.0-ga6f962b-16797135113-1 # {"$imagepolicy": "journal--test:basex-validator:tag"}
   postBuild:
     substitute:
       replicas: "1"
