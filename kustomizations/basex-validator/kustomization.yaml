@@ -4,6 +4,7 @@ namespace: basex-validator
 resources:
 - automations/basex-validator-policy.yaml
 - automations/basex-validator-source.yaml
+- automations.yaml
 - service.yaml
 - deployment.yaml
 - ingress.yaml

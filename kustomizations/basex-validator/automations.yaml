@@ -1,0 +1,21 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: basex-validator-ghcr
+spec:
+  interval: 5m
+  image: ghcr.io/elifesciences/basex-validator
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: basex-validator
+spec:
+  imageRepositoryRef:
+    name: basex-validator-ghcr
+  filterTags:
+    pattern: '^(?P<semver>[0-9]+\.[0-9]+\.[0-9]+).*'
+    extract: '$semver'
+  policy:
+    semver:
+      range: '*'
