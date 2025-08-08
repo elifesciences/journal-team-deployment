@@ -4,12 +4,14 @@ metadata:
   name: journal-dragonfly-sessions
 spec:
   replicas: 2
+  args:
+  - proactor_threads: 2
   resources:
     requests:
       cpu: 100m
-      memory: 128Mi
+      memory: 512Mi
     limits:
-      memory: 192Mi
+      memory: 600Mi
   snapshot:
     cron: "* * * * *"
     persistentVolumeClaimSpec:
