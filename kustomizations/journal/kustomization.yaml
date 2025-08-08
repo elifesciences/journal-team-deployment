@@ -5,7 +5,6 @@ namespace: journal
 resources:
 - valkey
 - journal
-- dragonfly
 
 labels:
 - includeSelectors: true
