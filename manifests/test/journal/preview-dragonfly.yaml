@@ -1,0 +1,16 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: journal-preview-dragonfly
+  namespace: journal--test
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/journal/dragonfly
+  prune: true
+  targetNamespace: journal--test
+  # avoid name collision with journal app
+  namePrefix: preview-
