@@ -28,6 +28,8 @@ spec:
       observer_url: http://prod--observer.elife.internal
       pubpub_url: https://elife-container.pubpub.org
       hubspot_url: https://connect.elifesciences.org
+      cache_uri: redis://journal-dragonfly-cache:6379
+      session_uri: redis://journal-dragonfly-sessions:6379
   patches:
     - target:
         kind: Deployment

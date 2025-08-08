@@ -2,8 +2,8 @@ imports:
   - resource: secret_parameters.yml # see external secret
   - resource: era_articles.yml # see configmap
 parameters:
-    redis_cache: "redis://journal-valkey-cache-primary:6379"
-    redis_sessions: "redis://journal-valkey-sessions-primary:6379"
+    redis_cache: "${cache_uri}"
+    redis_sessions: "${session_uri}"
     dismissible_info_bars: {}
 
     session_name: journal
