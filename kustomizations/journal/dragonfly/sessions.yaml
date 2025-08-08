@@ -13,6 +13,7 @@ spec:
   snapshot:
     cron: "* * * * *"
     persistentVolumeClaimSpec:
+      storageClassName: journal-gp3
       accessModes:
       - ReadWriteOnce
       resources:
