@@ -5,3 +5,11 @@ namespace: journal
 resources:
 - cache.yaml
 - sessions.yaml
+
+labels:
+- includeSelectors: true
+  pairs:
+    app.kubernetes.io/part-of: continuum
+    app.kubernetes.io/name: journal
+    app.kubernetes.io/component: dragonfly-cache
+    app.kubernetes.io/instance: ${instance_name:-journal}-${env}

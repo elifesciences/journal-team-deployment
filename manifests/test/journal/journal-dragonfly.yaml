@@ -14,5 +14,6 @@ spec:
   targetNamespace: journal--test
   postBuild:
     substitute:
+      env: test
       journal_cache_replicas: "2"
       journal_sessions_replicas: "2"
