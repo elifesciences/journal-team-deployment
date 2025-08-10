@@ -3,7 +3,7 @@ kind: Dragonfly
 metadata:
   name: journal-dragonfly-sessions
 spec:
-  replicas: 2
+  replicas: ${journal_sessions_replicas:-1}
   args:
   - "--proactor_threads=2"
   resources:

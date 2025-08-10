@@ -3,7 +3,7 @@ kind: Dragonfly
 metadata:
   name: journal-dragonfly-cache
 spec:
-  replicas: 2
+  replicas: ${journal_cache_replicas:-1}
   args:
   - "--proactor_threads=2"
   - "--dbfilename=journal-cache-snapshot"

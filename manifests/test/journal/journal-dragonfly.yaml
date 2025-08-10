@@ -12,3 +12,7 @@ spec:
   path: ./kustomizations/journal/dragonfly
   prune: true
   targetNamespace: journal--test
+  postBuild:
+    substitute:
+      journal_cache_replicas: "2"
+      journal_sessions_replicas: "2"
