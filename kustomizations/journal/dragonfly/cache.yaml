@@ -6,6 +6,7 @@ spec:
   replicas: 2
   args:
   - "--proactor_threads=2"
+  - "--dbfilename=journal-cache-snapshot"
   resources:
     requests:
       cpu: 100m
@@ -20,4 +21,4 @@ spec:
       - ReadWriteOnce
       resources:
         requests:
-          storage: 8Gi
+          storage: 2Gi
