@@ -6,6 +6,7 @@ spec:
   replicas: ${journal_sessions_replicas:-1}
   args:
   - "--proactor_threads=2"
+  - "--dbfilename=journal-sessions-snapshot"
   resources:
     requests:
       cpu: 100m
