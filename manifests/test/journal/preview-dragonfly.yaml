@@ -14,3 +14,6 @@ spec:
   targetNamespace: journal--test
   # avoid name collision with journal app
   namePrefix: preview-
+  postBuild:
+    substitute:
+      env: test
