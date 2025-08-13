@@ -15,5 +15,5 @@ spec:
   postBuild:
     substitute:
       env: test
-      journal_cache_replicas: "2"
-      journal_sessions_replicas: "2"
+      journal_cache_replicas: "1"
+      journal_sessions_replicas: "1"
