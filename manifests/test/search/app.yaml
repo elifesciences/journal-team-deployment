@@ -32,6 +32,7 @@ spec:
       opensearch_manager_request_mem: 3Gi
       opensearch_manager_request_cpu: 100m
       opensearch_manager_limit_mem: 3Gi
+      opensearch_data_replicas: "3"
       opensearch_data_request_mem: 4Gi
       opensearch_data_request_cpu: 100m
       opensearch_data_limit_mem: 4Gi
