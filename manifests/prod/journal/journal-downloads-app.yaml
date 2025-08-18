@@ -1,0 +1,34 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: journal-downloads
+  namespace: journal--prod
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/journal/downloads
+  prune: true
+  targetNamespace: journal--prod
+  dependsOn:
+  - name: journal-downloads-role
+  images:
+    - name: ghcr.io/elifesciences/journal-downloads # {"$imagepolicy": "journal--prod:journal-downloads-stable:name"}
+      newTag: 20250818104109.0.0-g7ea090d-17038246327-1 # {"$imagepolicy": "journal--prod:journal-downloads-stable:tag"}
+  postBuild:
+    substituteFrom:
+    # role_arn are retrieved from the configmap
+    - kind: ConfigMap
+      name: journal-downloads-role
+    substitute:
+      # deployment vars
+      env: prod
+      hostname: journal.prod.elifesciences.org
+      hostname_override: elifesciences.org
+      cert_manager_issuer: "letsencrypt"
+      secret_name: journal-downloads-secret
+      aws_bucket_name: prod-elife-published
+      aws_endpoint: s3.us-east-1.amazonaws.com
+      aws_region: us-east-1
