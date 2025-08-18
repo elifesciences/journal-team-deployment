@@ -19,4 +19,4 @@ spec:
       aws_oidc_arn: "${cluster_oidc_arn}"
       aws_oidc_url: "${cluster_oidc_url}"
       irsa_namespace: journal--test
-      aws_bucket: continuumtest-elife-published
+      aws_bucket: arn:aws:s3:::continuumtest-elife-published
