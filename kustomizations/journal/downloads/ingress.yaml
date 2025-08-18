@@ -9,7 +9,7 @@ spec:
   - host: ${hostname}
     http:
       paths:
-      - path: /downloads
+      - path: /download
         pathType: ImplementationSpecific
         backend:
           service:
