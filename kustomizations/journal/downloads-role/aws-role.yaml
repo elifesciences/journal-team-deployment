@@ -1,0 +1,51 @@
+apiVersion: iam.services.k8s.aws/v1alpha1
+kind: Role
+metadata:
+  name: journal-dowloads
+  namespace: journal
+spec:
+  name: elife-journal-downloads-${env}
+  tags:
+  - key: Project
+    value: journal
+  assumeRolePolicyDocument: |
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "Federated": "${aws_oidc_arn}"
+          },
+          "Action": "sts:AssumeRoleWithWebIdentity",
+          "Condition": {
+            "ForAnyValue:StringEquals": {
+              "${aws_oidc_url}:sub": [
+                "system:serviceaccount:${irsa_namespace}:journal-downloads"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  inlinePolicies:
+    giveAccessToCacheBucket: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+           "Action": [
+             "s3:*"
+           ],
+           "Effect": "Allow",
+           "Resource": "${bucket_arn}"
+         },
+         {
+           "Action": [
+             "s3:*"
+           ],
+           "Effect": "Allow",
+           "Resource": "${bucket_arn}/*"
+         }
+        ]
+      }
