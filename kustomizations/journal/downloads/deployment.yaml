@@ -10,7 +10,7 @@ spec:
       - name: journal
         image: ghcr.io/elifesciences/journal-downloads:latest
         envFrom:
-        - secretKeyRef:
+        - secretRef:
             name: ${secret_name}
         ports:
         - containerPort: 3000
