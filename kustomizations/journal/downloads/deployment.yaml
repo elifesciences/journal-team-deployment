@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
       - name: journal
-        image: elifesciences/journal-downloads:latest
+        image: ghcr.io/elifesciences/journal-downloads:latest
         ports:
         - containerPort: 3000
         readinessProbe:
