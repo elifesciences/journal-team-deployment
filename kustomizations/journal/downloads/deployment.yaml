@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: journal-downloads
+  namespace: journal
+spec:
+  template:
+    spec:
+      containers:
+      - name: journal
+        image: elifesciences/journal-downloads:latest
+        ports:
+        - containerPort: 3000
+        readinessProbe:
+          tcpSocket:
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 10
+          timeoutSeconds: 10

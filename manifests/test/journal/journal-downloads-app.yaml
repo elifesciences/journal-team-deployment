@@ -1,0 +1,23 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: journal
+  namespace: journal--test
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/journal/downloads
+  prune: true
+  targetNamespace: journal--test
+  images:
+    - name: ghcr.io/elifesciences/journal-downloads # {"$imagepolicy": "journal--test:journal-downloads-stable:name"}
+      newTag: 20250815093851.0.0-gacb00e0-16987382315-1 # {"$imagepolicy": "journal--test:journal-downloads-stable:tag"}
+  postBuild:
+    substitute:
+      # deployment vars
+      env: test
+      hostname: journal.test.elifesciences.org
+      cert_manager_issuer: "letsencrypt"
