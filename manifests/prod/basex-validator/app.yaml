@@ -20,3 +20,4 @@ spec:
       replicas: "2"
       hostname: basex-validator.elifesciences.org
       env: prod
+      secret_name: basex-validator-secret

@@ -14,6 +14,9 @@ spec:
       containers:
         - name: basex-validator
           image: ghcr.io/elifesciences/basex-validator:latest
+          envFrom:
+            - secretRef:
+                name: ${secret_name}
           resources:
             requests:
               cpu: 1.5
