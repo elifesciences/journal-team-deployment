@@ -31,5 +31,3 @@ spec:
       aws_bucket_name: continuumtest-elife-published
       aws_endpoint: s3.us-east-1.amazonaws.com
       aws_region: us-east-1
-      aws_access_key_id: 'None'
-      aws_secret_access_key: 'None'

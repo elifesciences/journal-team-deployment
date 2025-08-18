@@ -20,10 +20,6 @@ spec:
           value: ${aws_endpoint}
         - name: AWS_REGION
           value: ${aws_region}
-        - name: AWS_ACCESS_KEY_ID
-          value: ${aws_access_key_id}
-        - name: AWS_SECRET_ACCESS_KEY
-          value: ${aws_secret_access_key}
         ports:
         - containerPort: 3000
         readinessProbe:
