@@ -14,6 +14,8 @@ spec:
         - secretRef:
             name: ${secret_name}
         env:
+        - name: HOST_OVERRIDE
+          value: ${hostname_override}
         - name: AWS_BUCKET
           value: ${aws_bucket_name}
         - name: AWS_ENDPOINT
