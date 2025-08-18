@@ -4,6 +4,7 @@ metadata:
   name: journal-downloads
   namespace: journal
 spec:
+  replicas: ${replicas:=1}
   template:
     spec:
       serviceAccount: journal-downloads
