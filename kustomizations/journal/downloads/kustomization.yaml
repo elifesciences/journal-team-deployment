@@ -5,6 +5,8 @@ namespace: journal
 resources:
 - deployment.yaml
 - serviceaccount.yaml
+- service.yaml
+- ingress.yaml
 
 labels:
 - includeSelectors: true
