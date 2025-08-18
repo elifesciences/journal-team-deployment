@@ -4,6 +4,7 @@ namespace: journal
 
 resources:
 - deployment.yaml
+- serviceaccount.yaml
 
 labels:
 - includeSelectors: true

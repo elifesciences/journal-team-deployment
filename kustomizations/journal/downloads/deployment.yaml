@@ -6,6 +6,7 @@ metadata:
 spec:
   template:
     spec:
+      serviceAccount: journal-downloads
       containers:
       - name: journal
         image: ghcr.io/elifesciences/journal-downloads:latest
