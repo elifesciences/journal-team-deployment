@@ -12,6 +12,17 @@ spec:
         envFrom:
         - secretRef:
             name: ${secret_name}
+        env:
+        - name: AWS_BUCKET
+          value: ${aws_bucket_name}
+        - name: AWS_ENDPOINT
+          value: ${aws_endpoint}
+        - name: AWS_REGION
+          value: ${aws_region}
+        - name: AWS_ACCESS_KEY_ID
+          value: ${aws_access_key_id}
+        - name: AWS_SECRET_ACCESS_KEY
+          value: ${aws_secret_access_key}
         ports:
         - containerPort: 3000
         readinessProbe:
