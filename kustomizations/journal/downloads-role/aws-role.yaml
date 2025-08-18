@@ -1,7 +1,7 @@
 apiVersion: iam.services.k8s.aws/v1alpha1
 kind: Role
 metadata:
-  name: journal-dowloads
+  name: journal-downloads
   namespace: journal
 spec:
   name: elife-journal-downloads-${env}
