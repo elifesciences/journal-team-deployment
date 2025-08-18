@@ -21,3 +21,4 @@ spec:
       env: test
       hostname: journal.test.elifesciences.org
       cert_manager_issuer: "letsencrypt"
+      secret_name: journal-downloads-secret
