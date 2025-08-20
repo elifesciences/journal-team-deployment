@@ -36,12 +36,12 @@ spec:
           {
             "Action": [
               "s3:ListBucket",
-              "s3:GetObject",
+              "s3:GetObject"
             ],
             "Effect": "Allow",
             "Resource": [
               "${aws_bucket_name}",
-              "${aws_bucket_name}/*",
+              "${aws_bucket_name}/*"
             ]
           }
         ]
