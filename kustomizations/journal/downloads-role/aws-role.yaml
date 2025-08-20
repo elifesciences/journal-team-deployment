@@ -40,8 +40,8 @@ spec:
             ],
             "Effect": "Allow",
             "Resource": [
-              "${iiif_cache_bucket_arn}",
-              "${iiif_cache_bucket_arn}/*",
+              "${aws_bucket_name}",
+              "${aws_bucket_name}/*",
             ]
           }
         ]
