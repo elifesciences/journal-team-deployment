@@ -19,3 +19,4 @@ spec:
       aws_oidc_arn: "${cluster_oidc_arn}"
       aws_oidc_url: "${cluster_oidc_url}"
       irsa_namespace: journal--prod
+      aws_bucket_name: arn:aws:s3:::prod-elife-published
