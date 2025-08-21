@@ -51,9 +51,9 @@ metadata:
   name: cantaloupe-favicon
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt"
-  nginx.ingress.kubernetes.io/configuration-snippet: |
-    return 404;
-    access_log off;
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      return 404;
+      access_log off;
 spec:
   rules:
   - host: ${hostname}
