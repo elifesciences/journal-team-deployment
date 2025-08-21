@@ -42,6 +42,9 @@ spec:
               value: "256000000"
             - name: MAX_SCALE
               value: "2.0"
+              # configure max heap size
+            - name: JAVA_OPTS
+              value: "-Xmx2560m"
             # - name: PROCESSOR_JPG_QUALITY
             #   value: "100"
           resources:
