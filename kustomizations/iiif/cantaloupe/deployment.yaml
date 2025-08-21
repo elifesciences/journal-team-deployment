@@ -46,8 +46,8 @@ spec:
             #   value: "100"
           resources:
             requests:
-              cpu: 300m
-              memory: 2Gi
+              cpu: 600m
+              memory: 2.5Gi
           ports:
             - name: cantaloupe
               containerPort: 8182
