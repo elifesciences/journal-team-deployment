@@ -18,6 +18,18 @@
         respond "pong" 200
     }
 
+    handle /favicon.ico {
+        skip_log
+        header Content-Type "text/plain; charset=UTF-8"
+        respond "" 404
+    }
+
+    handle /robots.txt {
+        skip_log
+        header Content-Type "text/plain; charset=UTF-8"
+        respond "User-Agent: *\nDisallow: /"
+    }
+
     handle {
         # first remove cantaloupe prefix if it's there
         uri strip_prefix /iiif/v2
