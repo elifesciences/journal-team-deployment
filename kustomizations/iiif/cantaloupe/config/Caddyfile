@@ -27,7 +27,8 @@
     handle /robots.txt {
         skip_log
         header Content-Type "text/plain; charset=UTF-8"
-        respond "User-Agent: *\nDisallow: /"
+        respond `User-Agent: *
+Disallow: /`
     }
 
     handle {
