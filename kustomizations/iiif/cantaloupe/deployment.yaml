@@ -44,13 +44,13 @@ spec:
               value: "2.0"
               # configure max heap size
             - name: JAVA_OPTS
-              value: "-Xmx2560m"
+              value: "-Xmx3584m"
             # - name: PROCESSOR_JPG_QUALITY
             #   value: "100"
           resources:
             requests:
               cpu: 600m
-              memory: 3Gi
+              memory: 4Gi
           ports:
             - name: cantaloupe
               containerPort: 8182
