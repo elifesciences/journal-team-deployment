@@ -60,7 +60,7 @@ spec:
     http:
       paths:
         - path: /favicon.ico
-          pathType: Exact
+          pathType: ImplementationSpecific
           backend:
             service:
               name: cantaloupe
