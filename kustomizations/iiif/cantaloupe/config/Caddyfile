@@ -1,6 +1,6 @@
 (uri_normalization) {
     # first remove cantaloupe prefix if it's there
-    uri strip_prefix /iiif/v2
+    uri strip_prefix /iiif/2
 
     # rewrite webp to jpg if there
     uri path_regexp /(.*)\.webp /$1.jpg
@@ -92,7 +92,7 @@ Disallow: /`
 
             handle_response @fallback {
                 # Rewrite .tif to .jpg for the fallback attempt
-                rewrite @loris_fallback_tif /{http.regexp.loris_fallback_tif.1}.jpg{http.regexp.loris_fallback_tif.2}?fallback=1
+                rewrite @loris_fallback_tif /{http.regexp.loris_fallback_tif.1}.jpg{http.regexp.loris_fallback_tif.2}
 
                 # Re-apply URI normalisation
                 import uri_normalization
