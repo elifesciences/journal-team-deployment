@@ -80,6 +80,23 @@ Disallow: /`
         reverse_proxy http://localhost:8182 {
             header_up X-Forwarded-Proto "HTTPS"
             header_down location "/iiif/2/" "/"
+
+            @fallback {
+                status 500 501 502
+            }
+
+            handle_response @fallback {
+                @loris_fallback_tif {
+                    path_regexp loris_fallback_tif ^/(.*)\.tif(.*)$
+                }
+                rewrite @loris_fallback_tif /{http.regexp.loris_fallback_tif.1}.jpg{http.regexp.loris_fallback_tif.2}?fallback=1
+
+                # try again
+                reverse_proxy http://localhost:8182 {
+                    header_up X-Forwarded-Proto "HTTPS"
+                    header_down location "/iiif/2/" "/"
+                }
+            }
         }
     }
 }
