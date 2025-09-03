@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--test
   images:
     - name: docker.io/elifesciences/pattern-library # {"$imagepolicy": "journal--test:pattern-library-stable:name"}
-      newTag: HEAD-bcb60cc2-20250903.1243 # {"$imagepolicy": "journal--test:pattern-library-stable:tag"}
+      newTag: HEAD-0868c1f3-20250903.1248 # {"$imagepolicy": "journal--test:pattern-library-stable:tag"}
   postBuild:
     substitute:
       # deployment vars
