@@ -1,3 +1,37 @@
+(uri_normalization) {
+    # first remove cantaloupe prefix if it's there
+    uri strip_prefix /iiif/2
+
+    # rewrite webp to jpg if there
+    uri path_regexp /(.*)\.webp /$1.jpg
+
+    # rewrite identifier to normalise the prefix to ":"
+    uri path_regexp /([^/:]+)[/:](.+)$ /$1:$2
+
+    # rewrite any accidental %25%2F back to %2F
+    uri replace "%252F" "%2F"
+
+    # Normalise the URI-encoded forward slashes in identifier
+    # Handle identifiers with 2 slashes (e.g., /a/b/c/full/full/0/default.jpg)
+    uri path_regexp ^/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)$ /$1%2F$2%2F$3/$4/$5/$6/$7
+    # Handle identifiers with 1 slash (e.g., /a/b/full/full/0/default.jpg)
+    uri path_regexp ^/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)$ /$1%2F$2/$3/$4/$5/$6
+
+    # Normalise the URI-encoded forward slashes in identifier for info
+    # Handle identifiers with 2 slashes (e.g., /a/b/c/info.json)
+    uri path_regexp ^/([^/]+)/([^/]+)/([^/]+)/info\.json$ /$1%2F$2%2F$3/info.json
+    # Handle identifiers with 1 slash (e.g., /a/b/info.json)
+    uri path_regexp ^/([^/]+)/([^/]+)/info\.json$ /$1%2F$2/info.json
+
+    uri @notInfoJSON path_regexp ^/([^/]+)/([^/]+)/([^/]+)/$ /$1%2F$2%2F$3/
+    uri @notInfoJSON path_regexp ^/([^/]+)/([^/]+)/([^/]+)$ /$1%2F$2%2F$3
+    uri @notInfoJSON path_regexp ^/([^/]+)/([^/]+)/$ /$1%2F$2/
+    uri @notInfoJSON path_regexp ^/([^/]+)/([^/]+)$ /$1%2F$2
+
+    # finally, add the cantaloupe prefix back in
+    uri path_regexp /(.*) /iiif/2/$1
+}
+
 :8080 {
 
     handle / {
@@ -32,54 +66,46 @@ Disallow: /`
     }
 
     handle {
-        # first remove cantaloupe prefix if it's there
-        uri strip_prefix /iiif/v2
-
-        # rewrite webp to jpg if there
-        uri path_regexp /(.*)\.webp /$1.jpg
-
-        # rewrite identifier to normalise the prefix to ":"
-        uri path_regexp /([^/:]+)[/:](.+)$ /$1:$2
-
-        # rewrite any accidental %25%2F back to %2F - assuming this has been double encoded, it should be decoded as %2F literal
-        uri replace "%252F" "%2F"
-
-        # Normalise the URI-encoded forward slashes in identifier
-        # Handle identifiers with 2 slashes (e.g., /a/b/c/full/full/0/default.jpg)
-        uri path_regexp ^/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)$ /$1%2F$2%2F$3/$4/$5/$6/$7
-        # Handle identifiers with 1 slash (e.g., /a/b/full/full/0/default.jpg)
-        uri path_regexp ^/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)$ /$1%2F$2/$3/$4/$5/$6
-
-        # Normalise the URI-encoded forward slashes in identifier for info
-        # Handle identifiers with 2 slashes (e.g., /a/b/c/info.json)
-        uri path_regexp ^/([^/]+)/([^/]+)/([^/]+)/info\.json$ /$1%2F$2%2F$3/info.json
-        # Handle identifiers with 1 slash (e.g., /a/b/info.json)
-        uri path_regexp ^/([^/]+)/([^/]+)/info\.json$ /$1%2F$2/info.json
-
-        # Normalise the URI-encoded forward slashes in identifier for base image identifier requests
-        # Handle identifiers with 2 slashes (e.g., /a/b/c/ or /a/b/c)
-        # We have to exclude info.json because it looks like an imageidentifier path to these
-        @notInfoJSON {
-            not path */info.json
+		@infoJSON {
+			path */info.json
+		}
+		@notInfoJSON {
+			not path */info.json
+		}
+		@loris_fallback_tif {
+            path_regexp loris_fallback_tif ^/(.*)\.tif(.*)$
         }
-        uri @notInfoJSON path_regexp ^/([^/]+)/([^/]+)/([^/]+)/$ /$1%2F$2%2F$3/
-        uri @notInfoJSON path_regexp ^/([^/]+)/([^/]+)/([^/]+)$ /$1%2F$2%2F$3
-        # Handle identifiers with 1 slash (e.g., /a/b/ or /a/b)
-        uri @notInfoJSON path_regexp ^/([^/]+)/([^/]+)/$ /$1%2F$2/
-        uri @notInfoJSON path_regexp ^/([^/]+)/([^/]+)$ /$1%2F$2
 
-        # If this is the info url, then do a string replace on the body
-        @infoJSON {
-            path */info.json
-        }
+        # Apply URI normalisation
+		import uri_normalization
+
+		# Replace incorrect URI in body if info.json
         replace @infoJSON "iiif/2/" ""
-
-        # finally, add the cantaloupe prefix back in
-        uri path_regexp /(.*) /iiif/2/$1
 
         reverse_proxy http://localhost:8182 {
             header_up X-Forwarded-Proto "HTTPS"
             header_down location "/iiif/2/" "/"
+
+            @fallback {
+                status 500 501 502
+            }
+
+            handle_response @fallback {
+                # Rewrite .tif to .jpg for the fallback attempt
+                rewrite @loris_fallback_tif /{http.regexp.loris_fallback_tif.1}.jpg{http.regexp.loris_fallback_tif.2}
+
+                # Re-apply URI normalisation
+                import uri_normalization
+
+                # Replace incorrect URI in body if info.json
+                replace @infoJSON "iiif/2/" ""
+
+                # try again
+                reverse_proxy http://localhost:8182 {
+                    header_up X-Forwarded-Proto "HTTPS"
+                    header_down location "/iiif/2/" "/"
+                }
+            }
         }
     }
 }
