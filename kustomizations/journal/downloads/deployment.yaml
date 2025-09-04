@@ -19,6 +19,8 @@ spec:
           value: prod
         - name: HOST_OVERRIDE
           value: ${hostname_override}
+        - name: CDN_HOST
+          value: ${cdn_host}
         - name: AWS_BUCKET
           value: ${aws_bucket_name}
         - name: AWS_ENDPOINT

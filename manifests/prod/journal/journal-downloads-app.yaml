@@ -28,6 +28,7 @@ spec:
       replicas: "3"
       hostname: journal.prod.elifesciences.org
       hostname_override: elifesciences.org
+      cdn_host: cdn.elifesciences.org
       cert_manager_issuer: "letsencrypt"
       secret_name: journal-downloads-secret
       aws_bucket_name: prod-elife-published
