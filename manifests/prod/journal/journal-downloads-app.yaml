@@ -27,7 +27,7 @@ spec:
       env: prod
       replicas: "3"
       hostname: journal.prod.elifesciences.org
-      hostname_override: elifesciences.org
+      allowed_hosts: elifesciences.org, journal.prod.elifesciences.org
       cdn_host: cdn.elifesciences.org
       cert_manager_issuer: "letsencrypt"
       secret_name: journal-downloads-secret

@@ -17,8 +17,8 @@ spec:
         env:
         - name: NODE_ENV
           value: prod
-        - name: HOST_OVERRIDE
-          value: ${hostname_override}
+        - name: ALLOWED_HOSTS
+          value: ${allowed_hosts}
         - name: CDN_HOST
           value: ${cdn_host}
         - name: AWS_BUCKET
