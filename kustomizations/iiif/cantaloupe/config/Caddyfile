@@ -66,20 +66,23 @@ Disallow: /`
     }
 
     handle {
-		@infoJSON {
-			path */info.json
-		}
-		@notInfoJSON {
-			not path */info.json
-		}
-		@loris_fallback_tif {
+        @infoJSON {
+            path */info.json
+        }
+        @notInfoJSON {
+            not path */info.json
+        }
+        @loris_fallback_tif {
             path_regexp loris_fallback_tif ^/(.*)\.tif(.*)$
         }
 
         # Apply URI normalisation
-		import uri_normalization
+        import uri_normalization
 
-		# Replace incorrect URI in body if info.json
+        # some articles we force a fallback
+        uri path_regexp /lax:72657/elife-72657-fig1-v2.tif(.*) /lax:72657/elife-72657-fig1-v2.jpg(.*)
+
+        # Replace incorrect URI in body if info.json
         replace @infoJSON "iiif/2/" ""
 
         reverse_proxy http://localhost:8182 {
