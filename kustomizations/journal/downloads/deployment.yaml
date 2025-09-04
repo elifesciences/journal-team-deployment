@@ -16,7 +16,7 @@ spec:
             name: ${secret_name}
         env:
         - name: NODE_ENV
-          value: dev
+          value: prod
         - name: HOST_OVERRIDE
           value: ${hostname_override}
         - name: AWS_BUCKET
