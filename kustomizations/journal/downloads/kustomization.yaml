@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: journal
 
 resources:
+- automations.yaml
 - deployment.yaml
 - serviceaccount.yaml
 - service.yaml
