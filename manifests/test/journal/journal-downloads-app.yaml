@@ -27,7 +27,7 @@ spec:
       env: test
       hostname: journal.test.elifesciences.org
       hostname_override: continuumtest--cdn-journal.elifesciences.org
-      cdn_host: continuumtest--cdn.elifesciences.org
+      cdn_host: continuumtest-cdn.elifesciences.org
       cert_manager_issuer: "letsencrypt"
       secret_name: journal-downloads-secret
       aws_bucket_name: continuumtest-elife-published
