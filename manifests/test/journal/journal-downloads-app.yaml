@@ -16,7 +16,7 @@ spec:
   - name: journal-downloads-role
   images:
   - name: ghcr.io/elifesciences/journal-downloads # {"$imagepolicy": "journal--test:journal-downloads:name"}
-    newTag: 20250905073840.0.0-ge25ea7c-17486933369-1 # {"$imagepolicy": "journal--test:journal-downloads:tag"}
+    newTag: 20250905074731.0.0-g0ee19a5-17487098205-1 # {"$imagepolicy": "journal--test:journal-downloads:tag"}
   postBuild:
     substituteFrom:
     # role_arn are retrieved from the configmap
