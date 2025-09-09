@@ -9,6 +9,8 @@ spec:
       maxUnavailable: ${maxUnavailable:=25%}
   template:
     spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
       serviceAccount: iiif
       containers:
         - name: cantaloupe
