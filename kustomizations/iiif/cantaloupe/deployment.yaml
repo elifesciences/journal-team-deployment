@@ -109,4 +109,4 @@ spec:
             name: loris-config
             items:
             - key: uwsgi.ini
-            path: uwsgi.ini
+              path: uwsgi.ini
