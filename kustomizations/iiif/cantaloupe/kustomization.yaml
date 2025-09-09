@@ -22,3 +22,6 @@ configMapGenerator:
 - name: caddy-proxy-config
   files:
   - config/Caddyfile
+- name: loris-config
+  files:
+  - lorisconfig/wsgi.ini

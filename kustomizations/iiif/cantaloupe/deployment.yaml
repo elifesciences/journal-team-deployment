@@ -65,6 +65,22 @@ spec:
             - name: iiif-journal-delegate-volume
               mountPath: /delegate/journal_delegate.rb
               subPath: journal_delegate.rb
+        - name: loris
+          image: elifesciences/loris:latest
+          ports:
+            - name: loris
+              containerPort: 5004
+              protocol: TCP
+          livenessProbe:
+            tcpSocket:
+              port: loris
+          readinessProbe:
+            tcpSocket:
+              port: loris
+          volumeMounts:
+          - name: loris-config-volume
+            mountPath: /opt/loris/uwsgi.ini
+            subPath: uwsgi.ini
         - name: caddy
           image: ghcr.io/elifesciences/cantaloupe-caddy:latest
           ports:
@@ -88,3 +104,9 @@ spec:
             items:
             - key: Caddyfile
               path: Caddyfile
+        - name: loris-config-volume
+          configMap:
+            name: loris-config
+            items:
+            - key: uwsgi.ini
+            path: uwsgi.ini
