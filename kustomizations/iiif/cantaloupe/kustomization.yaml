@@ -24,4 +24,4 @@ configMapGenerator:
   - config/Caddyfile
 - name: loris-config
   files:
-  - lorisconfig/wsgi.ini
+  - lorisconfig/uwsgi.ini
