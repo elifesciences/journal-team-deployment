@@ -25,3 +25,5 @@ configMapGenerator:
 - name: loris-config
   files:
   - lorisconfig/uwsgi.ini
+  - lorisconfig/loris2.conf
+  - lorisconfig/loris2.wsgi
