@@ -83,6 +83,12 @@ spec:
           - name: loris-config-volume
             mountPath: /opt/loris/uwsgi.ini
             subPath: uwsgi.ini
+          - name: loris-config-volume
+            mountPath: /opt/loris/etc/loris2.conf
+            subPath: loris2.conf
+          - name: loris-config-volume
+            mountPath: /var/www/loris2/loris2.wsgi
+            subPath: loris2.wsgi
         - name: caddy
           image: ghcr.io/elifesciences/cantaloupe-caddy:latest
           ports:
@@ -93,12 +99,6 @@ spec:
             - name: caddy-proxy-config-volume
               mountPath: /etc/caddy/Caddyfile
               subPath: Caddyfile
-            - name: loris-config-volume
-              mountPath: /opt/loris/etc/loris2.conf
-              subPath: loris2.conf
-            - name: loris-config-volume
-              mountPath: /var/www/loris2/loris2.wsgi
-              subPath: loris2.wsgi
       volumes:
         - name: iiif-journal-delegate-volume
           configMap:
