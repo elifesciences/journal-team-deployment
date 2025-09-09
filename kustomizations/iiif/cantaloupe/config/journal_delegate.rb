@@ -38,6 +38,12 @@ class CustomDelegate
       logger.info 'prefix: ' << identifier[0..10] << ' is HTTPSource ' << '${journal_cms_prefix_url}'
       return '${journal_cms_prefix_url}' <<  identifier[12..-1]
     end
+
+    if identifier.start_with?('loris-') then
+      logger.info 'loris prefix is HTTPSource http://localhost:5004'
+      return 'http://localhost:5004/' <<  identifier[4..-1]
+    end
+
     nil
   end
 
