@@ -41,7 +41,7 @@ class CustomDelegate
 
     if identifier.start_with?('loris-') then
       logger.info 'loris prefix is HTTPSource http://localhost:5004'
-      return 'http://localhost:5004/' <<  identifier[6..-1]
+      return 'http://localhost:5004/' <<  identifier[6..-1] << '/full/full/0/default.tif'
     end
 
     nil
