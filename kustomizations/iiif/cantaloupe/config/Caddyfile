@@ -80,7 +80,13 @@ Disallow: /`
         import uri_normalization
 
         # some articles we force a fallback to loris
-        uri path_regexp ^/iiif/2/lax:72657%2Felife-72657-fig1-v2.tif(.*) /iiif/2/loris-lax:72657%2Felife-72657-fig1-v2.jpg$1
+        uri path_regexp ^/iiif/2/lax:72657%2Felife-72657-fig1-v2.tif(.*) /iiif/2/loris-lax:72657%2Felife-72657-fig1-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:72657%2Felife-72657-fig1-figsupp1-v2.tif(.*) /iiif/2/loris-lax:72657%2Felife-72657-fig1-figsupp1-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:72657%2Felife-72657-fig1-figsupp2-v2.tif(.*) /iiif/2/loris-lax:72657%2Felife-72657-fig1-figsupp2-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:72657%2Felife-72657-fig3-v2.tif(.*) /iiif/2/loris-lax:72657%2Felife-72657-fig3-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:72657%2Felife-72657-fig4-v2.tif(.*) /iiif/2/loris-lax:72657%2Felife-72657-fig4-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:72657%2Felife-72657-fig10-v2.tif(.*) /iiif/2/loris-lax:72657%2Felife-72657-fig10-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:72657%2Felife-72657-fig15-v2.tif(.*) /iiif/2/loris-lax:72657%2Felife-72657-fig15-v2.tif$1
 
         # Replace incorrect URI in body if info.json
         replace @infoJSON "iiif/2/" ""
