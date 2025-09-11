@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt"
+    nginx.ingress.kubernetes.io/server-snippet: |
+      add_header Cache-Control "public, max-age=86400, immutable";
+      return 302  https://elifesciences.org/inside-elife/d457b4cd;
+  name: 2016-redirect
+  namespace: journal--prod
+spec:
+  rules:
+    - host: 2016.elifesciences.org
+  tls:
+    - hosts:
+        - 2016.elifesciences.org
+      secretName: 2016.elifesciences.org-tls
