@@ -34,3 +34,4 @@ spec:
       aws_bucket_name: prod-elife-published
       aws_endpoint: s3.us-east-1.amazonaws.com
       aws_region: us-east-1
+      proxy_config: cdn.elifesciences.org:s3://prod-elife-published

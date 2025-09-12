@@ -33,3 +33,4 @@ spec:
       aws_bucket_name: continuumtest-elife-published
       aws_endpoint: s3.us-east-1.amazonaws.com
       aws_region: us-east-1
+      proxy_config: continuumtest-cdn.elifesciences.org:s3://continuumtest-elife-published

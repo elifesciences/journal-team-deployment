@@ -19,10 +19,14 @@ spec:
           value: prod
         - name: ALLOWED_HOSTS
           value: ${allowed_hosts}
+        # Legacy config
         - name: CDN_HOST
           value: ${cdn_host}
         - name: AWS_BUCKET
           value: ${aws_bucket_name}
+        # New config
+        - name: PROXY_CONFIG
+          value: ${proxy_config}
         - name: AWS_ENDPOINT
           value: ${aws_endpoint}
         - name: AWS_REGION
