@@ -31,4 +31,4 @@ spec:
       secret_name: journal-downloads-secret
       aws_endpoint: s3.us-east-1.amazonaws.com
       aws_region: us-east-1
-      proxy_config: continuumtest-cdn.elifesciences.org:s3://continuumtest-elife-published,cdn.elifesciences.org:s3://prod-elife-published,iiif.elifesciences.org:http://cantaloupe.journal--prod
+      proxy_config: continuumtest-cdn.elifesciences.org:s3://continuumtest-elife-published,cdn.elifesciences.org:s3://prod-elife-published,iiif.elifesciences.org:http://cantaloupe.journal--prod:8080
