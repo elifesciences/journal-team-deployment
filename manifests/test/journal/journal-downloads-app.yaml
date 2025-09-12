@@ -27,10 +27,8 @@ spec:
       env: test
       hostname: journal.test.elifesciences.org
       allowed_hosts: continuumtest--cdn-journal.elifesciences.org, journal.test.elifesciences.org
-      cdn_host: continuumtest-cdn.elifesciences.org
       cert_manager_issuer: "letsencrypt"
       secret_name: journal-downloads-secret
-      aws_bucket_name: continuumtest-elife-published
       aws_endpoint: s3.us-east-1.amazonaws.com
       aws_region: us-east-1
       proxy_config: continuumtest-cdn.elifesciences.org:s3://continuumtest-elife-published,cdn.elifesciences.org:s3://prod-elife-published

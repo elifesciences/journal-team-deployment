@@ -28,10 +28,8 @@ spec:
       replicas: "3"
       hostname: journal.prod.elifesciences.org
       allowed_hosts: elifesciences.org, journal.prod.elifesciences.org
-      cdn_host: cdn.elifesciences.org
       cert_manager_issuer: "letsencrypt"
       secret_name: journal-downloads-secret
-      aws_bucket_name: prod-elife-published
       aws_endpoint: s3.us-east-1.amazonaws.com
       aws_region: us-east-1
       proxy_config: cdn.elifesciences.org:s3://prod-elife-published
