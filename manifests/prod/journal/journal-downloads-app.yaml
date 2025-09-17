@@ -25,7 +25,7 @@ spec:
     substitute:
       # deployment vars
       env: prod
-      replicas: "3"
+      replicas: "5"
       hostname: journal.prod.elifesciences.org
       allowed_hosts: elifesciences.org, journal.prod.elifesciences.org
       cert_manager_issuer: "letsencrypt"
