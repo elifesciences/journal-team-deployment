@@ -12,4 +12,7 @@ resources:
 labels:
 - includeSelectors: true
   pairs:
+    app.kubernetes.io/part-of: continuum
+    app.kubernetes.io/name: journal-downloads
+    app.kubernetes.io/component: journal-downloads
     app.kubernetes.io/instance: ${instance_name:-journal-downloads}-${env}
