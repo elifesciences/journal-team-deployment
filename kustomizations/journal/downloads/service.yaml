@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: journal-downloads-web
   annotations:
-    service.kubernetes.io/topology-aware-hints: auto
+    service.kubernetes.io/topology-mode: Auto
 spec:
   type: ClusterIP
   ports:
