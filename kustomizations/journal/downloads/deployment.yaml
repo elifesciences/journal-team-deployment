@@ -28,10 +28,10 @@ spec:
           value: ${aws_region}
         resources:
           limits:
-            memory: 300Mi
+            memory: 600Mi
           requests:
             cpu: 1.1
-            memory: 600Mi
+            memory: 300Mi
         ports:
         - containerPort: 3000
         readinessProbe:
