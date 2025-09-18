@@ -9,3 +9,4 @@ spec:
       targetPort: iiif-journal
       protocol: TCP
       name: iiif-journal
+  trafficDistribution: PreferClose
