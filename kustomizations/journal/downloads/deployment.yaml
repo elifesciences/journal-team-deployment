@@ -9,7 +9,7 @@ spec:
     spec:
       serviceAccount: journal-downloads
       containers:
-      - name: journal
+      - name: journal-downloads
         image: ghcr.io/elifesciences/journal-downloads:latest
         envFrom:
         - secretRef:
@@ -26,6 +26,12 @@ spec:
           value: ${aws_endpoint}
         - name: AWS_REGION
           value: ${aws_region}
+        resources:
+          limits:
+            memory: 300Mi
+          requests:
+            cpu: 1.1
+            memory: 600Mi
         ports:
         - containerPort: 3000
         readinessProbe:
