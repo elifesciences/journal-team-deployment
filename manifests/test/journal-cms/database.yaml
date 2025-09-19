@@ -38,6 +38,8 @@ spec:
         #     type: count
         #     deleteFromStorage: true
     pxc:
+      nodeSelector:
+        kubernetes.io/arch: amd64
       # request certs with cert-manager, not helm charts
       certManager: true
       resources:
