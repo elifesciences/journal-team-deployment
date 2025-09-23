@@ -28,4 +28,4 @@ spec:
   resources:
     requests:
       storage: 1200Gi # Ignored, required
-  volumeName: journal-cms-files
+  volumeName: journal-cms-files-${env}
