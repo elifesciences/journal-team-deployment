@@ -1,0 +1,18 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: journal-cms-cache
+  namespace: journal--test
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/journal-cms/cache
+  prune: true
+  targetNamespace: journal--test
+  postBuild:
+    substitute:
+      env: test
+      journal_cms_cache_replicas: "1"

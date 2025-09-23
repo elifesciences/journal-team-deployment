@@ -1,0 +1,26 @@
+apiVersion: dragonflydb.io/v1alpha1
+kind: Dragonfly
+metadata:
+  name: journal-cms-cache
+spec:
+  replicas: ${journal_cms_cache_replicas:-1}
+  args:
+  - "--proactor_threads=2"
+  - "--dbfilename=journal-cms-cache-snapshot"
+  - "--cache_mode=true"
+  - "--maxmemory=512M"
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+    limits:
+      memory: 565Mi
+  snapshot:
+    cron: "* * * * *"
+    persistentVolumeClaimSpec:
+      storageClassName: journal-gp3
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 2Gi

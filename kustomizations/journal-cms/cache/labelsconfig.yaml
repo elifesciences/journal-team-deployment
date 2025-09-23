@@ -1,0 +1,4 @@
+commonLabels:
+- path: spec/labels
+  create: true
+  kind: Dragonfly
