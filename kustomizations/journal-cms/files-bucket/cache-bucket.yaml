@@ -1,0 +1,36 @@
+apiVersion: s3.services.k8s.aws/v1alpha1
+kind: Bucket
+metadata:
+  name: journal-cms-files-${env}
+spec:
+  name: elife-journal-cms-files-${env}
+  policy: |
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Principal": {
+            "AWS": [
+              "${aws_s3_csi_service_account_role_arn}"
+            ]
+          },
+          "Action": [
+            "s3:ListBucket"
+          ],
+          "Effect": "Allow",
+          "Resource": "arn:aws:s3:::selife-journal-cms-files-${env}"
+        },
+        {
+          "Principal": {
+            "AWS": [
+              "${aws_s3_csi_service_account_role_arn}"
+            ]
+          },
+          "Action": [
+            "s3:GetObject"
+          ],
+          "Effect": "Allow",
+          "Resource": "arn:aws:s3:::selife-journal-cms-files-${env}/*"
+        }
+      ]
+    }

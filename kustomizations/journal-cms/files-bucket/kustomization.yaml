@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: journal
+resources:
+- cache-bucket.yaml
+- cache-bucket-configmap.yaml
+
+labels:
+- includeSelectors: true
+  pairs:
+    app.kubernetes.io/part-of: continuum
+    app.kubernetes.io/component: journal-cms
+    app.kubernetes.io/name: journal-cms
+    app.kubernetes.io/instance: ${instance_name:-journal-cms}-${env}
