@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: journal
 resources:
 - files-bucket.yaml
+- persistent-volume.yaml
 
 labels:
 - includeSelectors: true
@@ -11,3 +12,5 @@ labels:
     app.kubernetes.io/component: journal-cms
     app.kubernetes.io/name: journal-cms
     app.kubernetes.io/instance: ${instance_name:-journal-cms}-${env}
+configurations:
+- namespaceconfig.yaml

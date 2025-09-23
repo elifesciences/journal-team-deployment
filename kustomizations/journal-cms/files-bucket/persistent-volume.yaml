@@ -1,0 +1,31 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: journal-cms-files-${env}
+spec:
+  capacity:
+    storage: 1200Gi # Ignored, required
+  accessModes:
+    - ReadWriteMany
+  storageClassName: "" # Required for static provisioning
+  claimRef:
+    name: journal-cms-files
+  csi:
+    driver: s3.csi.aws.com # required
+    volumeHandle: s3-csi-driver-volume # Must be unique
+    volumeAttributes:
+      bucketName: s3-csi-driver
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: journal-cms-files
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: "" # Required for static provisioning
+  resources:
+    requests:
+      storage: 1200Gi # Ignored, required
+  volumeName: journal-cms-files
