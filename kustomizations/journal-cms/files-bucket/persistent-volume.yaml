@@ -15,7 +15,7 @@ spec:
     driver: s3.csi.aws.com # required
     volumeHandle: s3-csi-driver-volume # Must be unique
     volumeAttributes:
-      bucketName: s3-csi-driver
+      bucketName: elife-journal-cms-files-${env}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
