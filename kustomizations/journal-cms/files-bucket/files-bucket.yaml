@@ -1,7 +1,7 @@
 apiVersion: s3.services.k8s.aws/v1alpha1
 kind: Bucket
 metadata:
-  name: journal-cms-files-${env}
+  name: journal-cms-files
 spec:
   name: elife-journal-cms-files-${env}
   policy: |
@@ -18,7 +18,7 @@ spec:
             "s3:ListBucket"
           ],
           "Effect": "Allow",
-          "Resource": "arn:aws:s3:::selife-journal-cms-files-${env}"
+          "Resource": "arn:aws:s3:::elife-journal-cms-files-${env}"
         },
         {
           "Principal": {
@@ -30,7 +30,7 @@ spec:
             "s3:GetObject"
           ],
           "Effect": "Allow",
-          "Resource": "arn:aws:s3:::selife-journal-cms-files-${env}/*"
+          "Resource": "arn:aws:s3:::elife-journal-cms-files-${env}/*"
         }
       ]
     }
