@@ -16,3 +16,4 @@ spec:
     substitute:
       # deployment vars
       env: test
+      aws_s3_csi_service_account_role_arn: ${aws_s3_csi_service_account_role_arn}
