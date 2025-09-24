@@ -27,7 +27,10 @@ spec:
             ]
           },
           "Action": [
-            "s3:GetObject"
+            "s3:GetObject",
+            "s3:PutObject",
+            "s3:AbortMultipartUpload",
+            "s3:DeleteObject"
           ],
           "Effect": "Allow",
           "Resource": "arn:aws:s3:::elife-journal-cms-files-${env}/*"
