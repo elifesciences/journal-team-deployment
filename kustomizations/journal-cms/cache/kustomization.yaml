@@ -9,8 +9,9 @@ labels:
 - includeSelectors: true
   pairs:
     app.kubernetes.io/part-of: continuum
-    app.kubernetes.io/name: journal-cms
-    app.kubernetes.io/component: cache
-    app.kubernetes.io/instance: ${instance_name:-journal-cms}-${env}
+    app.kubernetes.io/component: journal-cms
+    app.kubernetes.io/name: journal-cms-cache
+    app.kubernetes.io/instance: ${instance_name:-journal-cms-cache}-${env}
+
 configurations:
 - labelsconfig.yaml

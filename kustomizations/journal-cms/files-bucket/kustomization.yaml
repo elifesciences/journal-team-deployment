@@ -10,7 +10,7 @@ labels:
   pairs:
     app.kubernetes.io/part-of: continuum
     app.kubernetes.io/component: journal-cms
-    app.kubernetes.io/name: journal-cms
-    app.kubernetes.io/instance: ${instance_name:-journal-cms}-${env}
+    app.kubernetes.io/name: journal-cms-files-bucket
+    app.kubernetes.io/instance: ${instance_name:-journal-cms-files-bucket}-${env}
 configurations:
 - namespaceconfig.yaml
