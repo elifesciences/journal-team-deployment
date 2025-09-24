@@ -29,7 +29,7 @@ spec:
       ]
     }
   inlinePolicies:
-    giveAccessToCacheBucket: |
+    giveAccessToFilesBucket: |
       {
         "Version": "2012-10-17",
         "Statement": [
@@ -42,12 +42,24 @@ spec:
             "Action": ["s3:*"],
             "Effect": "Allow",
             "Resource": "${journal_cms_files_bucket_arn}/*"
-          },
+          }
+        ]
+      }
+    giveAccessToQueue: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [
           {
             "Action": "*",
             "Effect": "Allow",
             "Resource": "${journal_cms_queue_arn}"
-          },
+          }
+        ]
+      }
+    giveAccessToBusTopics: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [
           {
             "Action": [
               "sns:GetTopicAttributes",
