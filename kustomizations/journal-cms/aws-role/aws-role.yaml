@@ -29,7 +29,7 @@ spec:
       ]
     }
   inlinePolicies:
-    giveAccessToFilesBucket: |
+    readWriteToS3FilesBucket: |
       {
         "Version": "2012-10-17",
         "Statement": [
@@ -45,7 +45,7 @@ spec:
           }
         ]
       }
-    giveAccessToQueue: |
+    readWriteToQueue: |
       {
         "Version": "2012-10-17",
         "Statement": [
@@ -56,7 +56,7 @@ spec:
           }
         ]
       }
-    giveAccessToBusTopics: |
+    readWriteToBusTopics: |
       {
         "Version": "2012-10-17",
         "Statement": [
