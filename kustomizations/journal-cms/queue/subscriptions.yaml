@@ -4,7 +4,7 @@ kind: Subscription
 metadata:
   name: journal-cms-queue-subscription-bus-articles
 spec:
-  endpoint: arn:aws:sqs:${aws_region}:${aws_account_id}:journal-cms-${env}
+  endpoint: arn:aws:sqs:${aws_region}:${aws_account_id}:journal-cms--${env}
   protocol: sqs
   rawMessageDelivery: "true"
   topicARN: ${bus_articles_topic_arn}
@@ -14,7 +14,7 @@ kind: Subscription
 metadata:
   name: journal-cms-queue-subscription-bus-digests
 spec:
-  endpoint: arn:aws:sqs:${aws_region}:${aws_account_id}:journal-cms-${env}
+  endpoint: arn:aws:sqs:${aws_region}:${aws_account_id}:journal-cms--${env}
   protocol: sqs
   rawMessageDelivery: "true"
   topicARN: ${bus_digests_topic_arn}

@@ -3,7 +3,7 @@ kind: Queue
 metadata:
   name: journal-cms-queue
 spec:
-  queueName: journal-cms-${env}
+  queueName: journal-cms--${env}
   tags:
     Project: journal
   policy: |
@@ -16,7 +16,7 @@ spec:
             "AWS": "*"
           },
           "Action": "SQS:SendMessage",
-          "Resource": "arn:aws:sqs:${aws_region}:${aws_account_id}:journal-cms-${env}",
+          "Resource": "arn:aws:sqs:${aws_region}:${aws_account_id}:journal-cms--${env}",
           "Condition": {
             "StringLike": {
               "aws:SourceArn": "${bus_articles_topic_arn}"
@@ -29,7 +29,7 @@ spec:
             "AWS": "*"
           },
           "Action": "SQS:SendMessage",
-          "Resource": "arn:aws:sqs:${aws_region}:${aws_account_id}:journal-cms-${env}",
+          "Resource": "arn:aws:sqs:${aws_region}:${aws_account_id}:journal-cms--${env}",
           "Condition": {
             "StringLike": {
               "aws:SourceArn": "${bus_digests_topic_arn}"
