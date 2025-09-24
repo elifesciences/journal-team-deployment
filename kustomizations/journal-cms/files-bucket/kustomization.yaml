@@ -4,6 +4,7 @@ namespace: journal
 resources:
 - files-bucket.yaml
 - persistent-volume.yaml
+- configmap.yaml
 
 labels:
 - includeSelectors: true
