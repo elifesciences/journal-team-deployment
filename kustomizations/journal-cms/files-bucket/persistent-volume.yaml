@@ -11,6 +11,9 @@ spec:
   storageClassName: "" # Required for static provisioning
   claimRef:
     name: journal-cms-files
+  mountOptions:
+    - allow-delete
+    - allow-overwrite
   csi:
     driver: s3.csi.aws.com # required
     volumeHandle: s3-csi-driver-volume # Must be unique
