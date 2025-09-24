@@ -1,0 +1,44 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: journal-cms
+  namespace: journal--test
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/journal-cms/aws-role
+  prune: true
+  targetNamespace: journal--test
+  dependsOn:
+  - name: journal-cms-files-bucket
+  - name: journal-cms-queue
+  postBuild:
+    substituteFrom:
+    # journal_cms_files_bucket_arn
+    - kind: ConfigMap
+      name: journal-cms-files-bucket-config
+    # journal_cms_queue_arn
+    - kind: ConfigMap
+      name: journal-cms-queue-config
+    # bus_annual_reports_topic_arn
+    # bus_blog_articles_topic_arn
+    # bus_collections_topic_arn
+    # bus_covers_topic_arn
+    # bus_events_topic_arn
+    # bus_interviews_topic_arn
+    # bus_labs_posts_topic_arn
+    # bus_people_topic_arn
+    # bus_podcast_episodes_topic_arn
+    # bus_press_packages_topic_arn
+    # bus_subjects_topic_arn
+    - kind: ConfigMap
+      name: journal-cms-bus-config
+    substitute:
+      # deployment vars
+      env: test
+      aws_oidc_arn: "${cluster_oidc_arn}"
+      aws_oidc_url: "${cluster_oidc_url}"
+      irsa_namespace: journal--test
