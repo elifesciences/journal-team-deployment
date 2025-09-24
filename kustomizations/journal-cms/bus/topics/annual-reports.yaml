@@ -1,0 +1,42 @@
+---
+apiVersion: sns.services.k8s.aws/v1alpha1
+kind: Topic
+metadata:
+  name: bus-annual-reports
+spec:
+  name: bus-annual-reports--${env}
+  tags:
+    - key: Project
+      value: journal
+---
+apiVersion: services.k8s.aws/v1alpha1
+kind: FieldExport
+metadata:
+  name: bus-annual-reports-topic-arn
+spec:
+  to:
+    name: journal-cms-bus-config
+    kind: configmap
+    key: bus_annual_reports_topic_arn
+  from:
+    path: ".status.ackResourceMetadata.arn"
+    resource:
+      group: sns.services.k8s.aws
+      kind: Topic
+      name: bus-annual-reports
+---
+apiVersion: services.k8s.aws/v1alpha1
+kind: FieldExport
+metadata:
+  name: bus-annual-reports-topic-name
+spec:
+  to:
+    name: journal-cms-bus-config
+    kind: configmap
+    key: bus_annual_reports_topic_name
+  from:
+    path: ".spec.name"
+    resource:
+      group: sns.services.k8s.aws
+      kind: Topic
+      name: bus-annual-reports

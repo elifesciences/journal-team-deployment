@@ -1,0 +1,42 @@
+---
+apiVersion: sns.services.k8s.aws/v1alpha1
+kind: Topic
+metadata:
+  name: bus-podcast-episodes
+spec:
+  name: bus-podcast-episodes--${env}
+  tags:
+    - key: Project
+      value: journal
+---
+apiVersion: services.k8s.aws/v1alpha1
+kind: FieldExport
+metadata:
+  name: bus-podcast-episodes-topic-arn
+spec:
+  to:
+    name: journal-cms-bus-config
+    kind: configmap
+    key: bus_podcast_episodes_topic_arn
+  from:
+    path: ".status.ackResourceMetadata.arn"
+    resource:
+      group: sns.services.k8s.aws
+      kind: Topic
+      name: bus-podcast-episodes
+---
+apiVersion: services.k8s.aws/v1alpha1
+kind: FieldExport
+metadata:
+  name: bus-podcast-episodes-topic-name
+spec:
+  to:
+    name: journal-cms-bus-config
+    kind: configmap
+    key: bus_podcast_episodes_topic_name
+  from:
+    path: ".spec.name"
+    resource:
+      group: sns.services.k8s.aws
+      kind: Topic
+      name: bus-podcast-episodes

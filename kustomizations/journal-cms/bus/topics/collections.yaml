@@ -1,0 +1,42 @@
+---
+apiVersion: sns.services.k8s.aws/v1alpha1
+kind: Topic
+metadata:
+  name: bus-collections
+spec:
+  name: bus-collections--${env}
+  tags:
+    - key: Project
+      value: journal
+---
+apiVersion: services.k8s.aws/v1alpha1
+kind: FieldExport
+metadata:
+  name: bus-collections-topic-arn
+spec:
+  to:
+    name: journal-cms-bus-config
+    kind: configmap
+    key: bus_collections_topic_arn
+  from:
+    path: ".status.ackResourceMetadata.arn"
+    resource:
+      group: sns.services.k8s.aws
+      kind: Topic
+      name: bus-collections
+---
+apiVersion: services.k8s.aws/v1alpha1
+kind: FieldExport
+metadata:
+  name: bus-collections-topic-name
+spec:
+  to:
+    name: journal-cms-bus-config
+    kind: configmap
+    key: bus_collections_topic_name
+  from:
+    path: ".spec.name"
+    resource:
+      group: sns.services.k8s.aws
+      kind: Topic
+      name: bus-collections
