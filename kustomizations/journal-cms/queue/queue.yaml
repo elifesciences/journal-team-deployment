@@ -1,0 +1,40 @@
+apiVersion: sqs.services.k8s.aws/v1alpha1
+kind: Queue
+metadata:
+  name: journal-cms-queue
+spec:
+  queueName: journal-cms-${env}
+  tags:
+    Project: journal
+  policy: |
+    {
+      "Version": "2008-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "AWS": "*"
+          },
+          "Action": "SQS:SendMessage",
+          "Resource": "arn:aws:sqs:${aws_region}:${aws_account_id}:journal-cms-${env}",
+          "Condition": {
+            "StringLike": {
+              "aws:SourceArn": "${bus_articles_topic_arn}"
+            }
+          }
+        },
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "AWS": "*"
+          },
+          "Action": "SQS:SendMessage",
+          "Resource": "arn:aws:sqs:${aws_region}:${aws_account_id}:journal-cms-${env}",
+          "Condition": {
+            "StringLike": {
+              "aws:SourceArn": "${bus_digests_topic_arn}"
+            }
+          }
+        }
+      ]
+    }

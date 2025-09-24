@@ -1,0 +1,23 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: journal-cms-queue
+  namespace: journal--test
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/journal-cms/queue
+  prune: true
+  targetNamespace: journal--test
+  postBuild:
+    substitute:
+      # deployment vars
+      env: test
+      aws_region: "${aws_region}"
+      aws_account_id: "${aws_account_id}"
+
+      bus_articles_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-articles--test
+      bus_digests_topic_arn: arn:aws:sns:us-east-1:512686554592:bus-digests--test

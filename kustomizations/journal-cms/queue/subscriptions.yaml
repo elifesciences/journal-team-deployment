@@ -1,0 +1,20 @@
+---
+apiVersion: sns.services.k8s.aws/v1alpha1
+kind: Subscription
+metadata:
+  name: journal-cms-queue-subscription-bus-articles
+spec:
+  endpoint: arn:aws:sqs:${aws_region}:${aws_account_id}:journal-cms-${env}
+  protocol: sqs
+  rawMessageDelivery: "true"
+  topicARN: ${bus_articles_topic_arn}
+---
+apiVersion: sns.services.k8s.aws/v1alpha1
+kind: Subscription
+metadata:
+  name: journal-cms-queue-subscription-bus-digests
+spec:
+  endpoint: arn:aws:sqs:${aws_region}:${aws_account_id}:journal-cms-${env}
+  protocol: sqs
+  rawMessageDelivery: "true"
+  topicARN: ${bus_digests_topic_arn}
