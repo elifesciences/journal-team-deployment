@@ -19,10 +19,10 @@ spec:
           - name: proxy
             resources:
               limits:
-                memory: 650Mi
+                memory: 1Gi
               requests:
                 cpu: 100m
-                memory: 630Mi
+                memory: 900Mi
   controlPlaneOptions:
     deployment:
       podTemplateSpec:
