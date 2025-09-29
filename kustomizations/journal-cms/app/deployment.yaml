@@ -2,13 +2,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: digests
+  name: journal-cms
   namespace: journal
 spec:
   replicas: ${replicas:-1}
   template:
     spec:
-      serviceAccountName: digests
+      serviceAccountName: journal-cms
       containers:
       - name: journal-cms
         image: ghcr.io/elifesciences/journal-cms:latest
