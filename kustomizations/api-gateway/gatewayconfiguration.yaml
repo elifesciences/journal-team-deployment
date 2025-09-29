@@ -32,10 +32,10 @@ spec:
             resources:
               limits:
                 cpu: 1
-                memory: 325Mi
+                memory: 400Mi
               requests:
                 cpu: 100m
-                memory: 400Mi
+                memory: 325Mi
             env:
             - name: CONTROLLER_INGRESS_CLASS
               value: api-gateway-${env}
