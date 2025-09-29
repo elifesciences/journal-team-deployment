@@ -9,6 +9,7 @@ spec:
     network:
       services:
         ingress:
+          name: api-gateway-web
           type: ClusterIP # internal gateway only
     deployment:
       replicas: ${replicas:-1}
