@@ -13,11 +13,11 @@ spec:
       - name: journal-cms
         image: ghcr.io/elifesciences/journal-cms:latest
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         readinessProbe:
           httpGet:
             path: /ping
-            port: 80
+            port: 8080
           periodSeconds: 5
           failureThreshold: 10
           timeoutSeconds: 10
