@@ -22,7 +22,7 @@ spec:
                 memory: 1Gi
               requests:
                 cpu: 100m
-                memory: 900Mi
+                memory: 800Mi
   controlPlaneOptions:
     deployment:
       podTemplateSpec:
@@ -32,10 +32,10 @@ spec:
             resources:
               limits:
                 cpu: 1
-                memory: 300Mi
+                memory: 325Mi
               requests:
                 cpu: 100m
-                memory: 255Mi
+                memory: 400Mi
             env:
             - name: CONTROLLER_INGRESS_CLASS
               value: api-gateway-${env}
