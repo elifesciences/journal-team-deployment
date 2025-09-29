@@ -22,7 +22,7 @@ spec:
         - name: DRUPAL_DATABASE_HOST
           value: ${journal_cms_database_host}
         - name: DRUPAL_DATABASE_PORT
-          value: "${journal_cms_database_port:-3306}"
+          value: ${journal_cms_database_port:-\"3306\"}
         - name: DRUPAL_DATABASE_PASSWORD
           value: ${journal_cms_database_password}
         - name: DRUPAL_DATABASE_PASSWORD
