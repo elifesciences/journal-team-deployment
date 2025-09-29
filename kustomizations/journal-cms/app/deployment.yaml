@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: digests
+  namespace: journal
+spec:
+  replicas: ${replicas:-1}
+  template:
+    spec:
+      serviceAccountName: digests
+      containers:
+      - name: journal-cms
+        image: ghcr.io/elifesciences/journal-cms:latest
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /ping
+            port: 80
+          periodSeconds: 5
+          failureThreshold: 10
+          timeoutSeconds: 10
+        volumeMounts:
+        - name: journal-cms-files
+          mountPath: /opt/drupal/web/sites/default/files/
+      volumes:
+      - name: journal-cms-files
+        persistentVolumeClaim:
+          claimName: journal-cms-files

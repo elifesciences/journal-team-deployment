@@ -15,7 +15,12 @@ spec:
   images:
     - name: ghcr.io/elifesciences/journal-cms
       newTag: dockerise-20250922180621-g3c960dc-17924253967-1
+  dependsOn:
+    - name: journal-cms-aws-role
   postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: journal-cms-role
     substitute:
       # deployment vars
       env: test
