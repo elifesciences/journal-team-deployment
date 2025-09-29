@@ -26,6 +26,26 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  name: api-gateway-documentation-redirect
+  namespace: journal--test
+  annotations:
+    nginx.ingress.kubernetes.io/temporal-redirect: /documentation/
+spec:
+  rules:
+  - host: "api.test.elifesciences.org"
+    http:
+      paths:
+      - path: /
+        pathType: Exact
+        backend:
+          service:
+            name: api-gateway-web
+            port:
+              number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
   name: api-gateway-ping
   namespace: journal--test
   annotations:
