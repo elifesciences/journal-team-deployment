@@ -24,3 +24,9 @@ spec:
     substitute:
       # deployment vars
       env: test
+
+      journal_cms_database_host: journal-cms-database-haproxy
+      journal_cms_database_name: journal_cms
+      journal_cms_database_username: root
+      journal_cms_database_password_secret_name: journal-cms-database-secrets
+      journal_cms_database_password_secret_key: root
