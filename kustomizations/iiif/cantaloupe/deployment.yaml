@@ -62,7 +62,7 @@ spec:
               port: cantaloupe
           livenessProbe:
             httpGet:
-              path: /lax:96357%2Felife-96357-fig2-figsupp1-v1.tif/full/full/0/default.jpg
+              path: /iiif/2/lax:96357%2Felife-96357-fig2-figsupp1-v1.tif/full/full/0/default.jpg
               port: cantaloupe
             initialDelaySeconds: 10
             periodSeconds: 5
