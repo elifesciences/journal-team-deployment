@@ -15,6 +15,7 @@ spec:
         ports:
         - containerPort: 8080
         env:
+        # Drupal Database config
         - name: DRUPAL_DATABASE_NAME
           value: ${journal_cms_database_name}
         - name: DRUPAL_DATABASE_USERNAME
@@ -29,9 +30,15 @@ spec:
               name: ${journal_cms_database_password_secret_name}
               key: ${journal_cms_database_password_secret_key}
 
-
+        # Drupal Redis config
         - name: REDIS_HOST
           value: ${journal_cms_redis_host}
+
+        # eLife API gateway
+        - name: JCMS_API_GATEWAY
+          value;
+        - name: JCMS_API_GATEWAY_FOR_MIGRATION
+          value;
         readinessProbe:
           httpGet:
             path: /ping
