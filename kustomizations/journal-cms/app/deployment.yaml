@@ -52,6 +52,14 @@ spec:
           value: ${journal_cms_iiif_base_uri}
         - name: JCMS_IIIF_MOUNT
           value: ${journal_cms_iiif_mount:-iiif}
+
+        # AWS config
+        - name: JCMS_SQS_REGION
+          value: ${aws_region}
+        - name: JCMS_SQS_QUEUE
+          value: ${journal_cms_queue_name}
+        - name: JCMS_TOPIC_TEMPLATE
+          value: ${journal_cms_topic_template}
         readinessProbe:
           httpGet:
             path: /ping

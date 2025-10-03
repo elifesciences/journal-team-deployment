@@ -17,10 +17,13 @@ spec:
       newTag: dockerise-20250929110427-g94b9c64-18094799533-1
   dependsOn:
     - name: journal-cms-aws-role
+    - name: journal-cms-queue
   postBuild:
     substituteFrom:
       - kind: ConfigMap
         name: journal-cms-role
+      - kind: ConfigMap
+        name: journal-cms-queue-config
       # provides: DRUPAL_HASH_SALT
       - kind: Secret
         name: journal-cms-app-secret
@@ -48,3 +51,8 @@ spec:
 
       # IIIF config
       journal_cms_iiif_base_uri: https://iiif.test.elifesciences.org
+
+      # AWS config
+      aws_region: ${aws_region}
+      journal_cms_queue_name: journal-cms--dev
+      journal_cms_topic_template: arn:aws:sns:us-east-1:512686554592:bus-%s--test
