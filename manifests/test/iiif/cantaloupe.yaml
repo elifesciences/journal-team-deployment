@@ -19,7 +19,7 @@ spec:
   - name: ghcr.io/elifesciences/cantaloupe
     newTag: 20251002095227.0.0-g4108f26-18189600746-1-5.0.7 # {"$imagepolicy": "journal--test:cantaloupe-stable:tag"}
   - name: ghcr.io/elifesciences/cantaloupe-caddy
-    newTag: 20251002095227.0.0-g4108f26-18189600746-1-v2.10.2 # {"$imagepolicy": "journal--test:cantaloupe-caddy-stable:tag"}
+    newTag: 20251003090834.0.0-g7964b70-18218043504-1-v2.10.2 # {"$imagepolicy": "journal--test:cantaloupe-caddy-stable:tag"}
   postBuild:
     substituteFrom:
     # iiif_cache_bucket_name is retrieved from the configmap
