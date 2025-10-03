@@ -29,6 +29,9 @@ spec:
               name: ${journal_cms_database_password_secret_name}
               key: ${journal_cms_database_password_secret_key}
 
+
+        - name: REDIS_HOST
+          value: ${journal_cms_redis_host}
         readinessProbe:
           httpGet:
             path: /ping

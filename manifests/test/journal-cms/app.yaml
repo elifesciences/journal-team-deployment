@@ -30,3 +30,5 @@ spec:
       journal_cms_database_username: root
       journal_cms_database_password_secret_name: journal-cms-database-secrets
       journal_cms_database_password_secret_key: root
+
+      journal_cms_redis_host: journal-cms-cache
