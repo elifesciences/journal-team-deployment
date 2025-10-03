@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: journal-cms
+  name: journal-cms-app
   namespace: journal
 spec:
   replicas: ${replicas:-1}
