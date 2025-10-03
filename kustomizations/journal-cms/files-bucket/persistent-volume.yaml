@@ -15,6 +15,8 @@ spec:
     - allow-delete
     - allow-overwrite
     - allow-other
+    - uid=33 # www-data on debian
+    - gid=33 # www-data on debian
   csi:
     driver: s3.csi.aws.com # required
     volumeHandle: s3-csi-driver-volume # Must be unique
