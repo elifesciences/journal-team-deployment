@@ -42,6 +42,9 @@ spec:
         kubernetes.io/arch: amd64
       # request certs with cert-manager, not helm charts
       certManager: true
+      configuration: |
+        [mysqld]
+        sort_buffer_size=4M
       resources:
         requests:
           memory: 1.2Gi
