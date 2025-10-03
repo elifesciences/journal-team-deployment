@@ -1,0 +1,23 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: journal-cms-web
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt"
+spec:
+  rules:
+  - host: ${hostname}
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: journal-cms-web
+              port:
+                number: 8080
+  tls:
+  - hosts:
+    - ${hostname}
+    secretName: ${hostname}-tls
