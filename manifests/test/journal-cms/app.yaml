@@ -38,3 +38,6 @@ spec:
       # eLife API gateway config
       journal_cms_api_gateway: http://api-gateway-web
       journal_cms_api_gateway_for_migration: http://api-gateway-web
+
+      # IIIF config
+      journal_cms_iiif_base_uri: https://iiif.test.elifesciences.org

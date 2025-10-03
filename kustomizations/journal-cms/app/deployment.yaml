@@ -39,6 +39,12 @@ spec:
           value: ${journal_cms_api_gateway}
         - name: JCMS_API_GATEWAY_FOR_MIGRATION
           value: ${journal_cms_api_gateway_for_migration}
+
+        # iiif service config
+        - name: JCMS_IIIF_BASE_URI
+          value: ${journal_cms_iiif_base_uri}
+        - name: JCMS_IIIF_MOUNT
+          value: ${journal_cms_iiif_mount:-iiif}
         readinessProbe:
           httpGet:
             path: /ping
