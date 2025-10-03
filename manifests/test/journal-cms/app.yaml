@@ -28,6 +28,10 @@ spec:
       # deployment vars
       env: test
 
+      # Drupal app config
+      journal_cms_app_hash_salt_secret_name: journal-cms-app-secret
+      journal_cms_app_hash_salt_secret_key: journal_cms_hash_salt
+
       # Drupal Database config
       journal_cms_database_host: journal-cms-database-haproxy
       journal_cms_database_name: journal_cms

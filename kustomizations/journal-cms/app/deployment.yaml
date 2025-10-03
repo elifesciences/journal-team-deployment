@@ -17,7 +17,10 @@ spec:
         env:
         # Drupal security config
         - name: DRUPAL_HASH_SALT
-          value: ${journal_cms_hash_salt}
+          valueFrom:
+            secretKeyRef:
+              name: ${journal_cms_app_hash_salt_secret_name}
+              key: ${journal_cms_app_hash_salt_secret_key}
 
         # Drupal Database config
         - name: DRUPAL_DATABASE_NAME
