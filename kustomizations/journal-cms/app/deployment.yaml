@@ -34,11 +34,11 @@ spec:
         - name: REDIS_HOST
           value: ${journal_cms_redis_host}
 
-        # eLife API gateway
+        # eLife API gateway config
         - name: JCMS_API_GATEWAY
-          value;
+          value: ${journal_cms_api_gateway}
         - name: JCMS_API_GATEWAY_FOR_MIGRATION
-          value;
+          value: ${journal_cms_api_gateway_for_migration}
         readinessProbe:
           httpGet:
             path: /ping
