@@ -54,5 +54,4 @@ spec:
 
       # AWS config
       aws_region: ${aws_region}
-      journal_cms_queue_name: journal-cms--dev
       journal_cms_topic_template: arn:aws:sns:us-east-1:512686554592:bus-%s--test
