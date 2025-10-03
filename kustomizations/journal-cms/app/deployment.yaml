@@ -15,6 +15,10 @@ spec:
         ports:
         - containerPort: 8080
         env:
+        # Drupal security config
+        - name: DRUPAL_HASH_SALT
+          value: ${journal_cms_hash_salt}
+
         # Drupal Database config
         - name: DRUPAL_DATABASE_NAME
           value: ${journal_cms_database_name}

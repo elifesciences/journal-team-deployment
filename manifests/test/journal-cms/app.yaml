@@ -21,6 +21,9 @@ spec:
     substituteFrom:
       - kind: ConfigMap
         name: journal-cms-role
+      # provides: DRUPAL_HASH_SALT
+      - kind: Secret
+        name: journal-cms-app-secret
     substitute:
       # deployment vars
       env: test
