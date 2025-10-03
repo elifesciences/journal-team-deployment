@@ -15,6 +15,10 @@ spec:
         ports:
         - containerPort: 8080
         env:
+        # generally helpful config for drupal
+        - name: DRUSH_OPTIONS_URI
+          value: https://${hostname}
+
         # Drupal security config
         - name: DRUPAL_HASH_SALT
           valueFrom:
