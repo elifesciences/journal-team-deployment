@@ -14,56 +14,19 @@ spec:
         image: ghcr.io/elifesciences/journal-cms:latest
         ports:
         - containerPort: 8080
-        env:
-        # generally helpful config for drupal
-        - name: DRUSH_OPTIONS_URI
-          value: https://${hostname}
-
+        envFrom:
+        # General Drupal config
+        - configMapRef:
+            name: journal-cms-app-config
         # Drupal security config
-        - name: DRUPAL_HASH_SALT
-          valueFrom:
-            secretKeyRef:
-              name: ${journal_cms_app_hash_salt_secret_name}
-              key: ${journal_cms_app_hash_salt_secret_key}
-
-        # Drupal Database config
-        - name: DRUPAL_DATABASE_NAME
-          value: ${journal_cms_database_name}
-        - name: DRUPAL_DATABASE_USERNAME
-          value: ${journal_cms_database_username}
-        - name: DRUPAL_DATABASE_HOST
-          value: ${journal_cms_database_host}
-        - name: DRUPAL_DATABASE_PORT
-          value: ${journal_cms_database_port:-"3306"}
+        - secretRef:
+            name: ${journal_cms_app_hash_salt_secret_name}
+        env:
         - name: DRUPAL_DATABASE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: ${journal_cms_database_password_secret_name}
               key: ${journal_cms_database_password_secret_key}
-
-        # Drupal Redis config
-        - name: REDIS_HOST
-          value: ${journal_cms_redis_host}
-
-        # eLife API gateway config
-        - name: JCMS_API_GATEWAY
-          value: ${journal_cms_api_gateway}
-        - name: JCMS_API_GATEWAY_FOR_MIGRATION
-          value: ${journal_cms_api_gateway_for_migration}
-
-        # iiif service config
-        - name: JCMS_IIIF_BASE_URI
-          value: ${journal_cms_iiif_base_uri}
-        - name: JCMS_IIIF_MOUNT
-          value: ${journal_cms_iiif_mount:-iiif}
-
-        # AWS config
-        - name: JCMS_SQS_REGION
-          value: ${aws_region}
-        - name: JCMS_SQS_QUEUE
-          value: ${journal_cms_queue_name}
-        - name: JCMS_TOPIC_TEMPLATE
-          value: ${journal_cms_topic_template}
         readinessProbe:
           httpGet:
             path: /ping

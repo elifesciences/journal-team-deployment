@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: journal-cms-app-config
+data:
+  # generally helpful config for drupal
+  DRUSH_OPTIONS_URI: https://${hostname}
+
+  # Drupal Database config
+  DRUPAL_DATABASE_NAME: ${journal_cms_database_name}
+  DRUPAL_DATABASE_USERNAME: ${journal_cms_database_username}
+  DRUPAL_DATABASE_HOST: ${journal_cms_database_host}
+  DRUPAL_DATABASE_PORT: ${journal_cms_database_port:-"3306"}
+
+  # Drupal Redis config
+  REDIS_HOST: ${journal_cms_redis_host}
+
+  # eLife API gateway config
+  JCMS_API_GATEWAY: ${journal_cms_api_gateway}
+  JCMS_API_GATEWAY_FOR_MIGRATION: ${journal_cms_api_gateway_for_migration}
+
+  # iiif service config
+  JCMS_IIIF_BASE_URI: ${journal_cms_iiif_base_uri}
+  JCMS_IIIF_MOUNT: ${journal_cms_iiif_mount:-iiif}
+
+  # AWS config
+  JCMS_SQS_REGION: ${aws_region}
+  JCMS_SQS_QUEUE: ${journal_cms_queue_name}
+  JCMS_TOPIC_TEMPLATE: ${journal_cms_topic_template}

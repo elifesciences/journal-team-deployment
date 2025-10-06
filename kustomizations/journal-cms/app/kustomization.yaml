@@ -7,6 +7,7 @@ resources:
   - deployment.yaml
   - service.yaml
   - ingress.yaml
+  - config.yaml
 
 labels:
 - includeSelectors: true
