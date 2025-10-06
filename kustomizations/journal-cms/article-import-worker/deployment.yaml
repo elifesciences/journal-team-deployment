@@ -12,9 +12,10 @@ spec:
       containers:
       - name: journal-cms
         image: ghcr.io/elifesciences/journal-cms:latest
-        command: drush
-        args:
-          - ai 1
+        command:
+          - drush
+          - ai
+          - "1"
         env:
         # Drupal security config
         - name: DRUPAL_HASH_SALT
