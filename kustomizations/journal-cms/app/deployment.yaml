@@ -12,7 +12,7 @@ spec:
       initContainers:
       - name: update-db
         image: ghcr.io/elifesciences/journal-cms:latest
-        command: drush updatedb -y
+        command: [ "drush", "updatedb", "-y" ]
         envFrom:
         # General Drupal config
         - configMapRef:
