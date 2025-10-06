@@ -9,6 +9,23 @@ spec:
   template:
     spec:
       serviceAccountName: journal-cms
+      initContainers:
+      - name: update-db
+        image: ghcr.io/elifesciences/journal-cms:latest
+        command: drush updatedb -y
+        envFrom:
+        # General Drupal config
+        - configMapRef:
+            name: journal-cms-app-config
+        # Drupal security config
+        - secretRef:
+            name: ${journal_cms_app_hash_salt_secret_name}
+        env:
+        - name: DRUPAL_DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ${journal_cms_database_password_secret_name}
+              key: ${journal_cms_database_password_secret_key}
       containers:
       - name: journal-cms
         image: ghcr.io/elifesciences/journal-cms:latest
