@@ -4,7 +4,7 @@ namespace: journal
 
 resources:
   - serviceaccount.yaml
-  - article-import-worker.yaml
+  - deployment.yaml
 
 labels:
 - includeSelectors: true
