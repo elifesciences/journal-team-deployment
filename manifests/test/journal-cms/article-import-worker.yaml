@@ -1,0 +1,54 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: journal-cms-article-import-worker
+  namespace: journal--test
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/journal-cms/article-import-worker
+  prune: true
+  targetNamespace: journal--test
+  images:
+    - name: ghcr.io/elifesciences/journal-cms
+      newTag: dockerise-20250929110427-g94b9c64-18094799533-1
+  dependsOn:
+    - name: journal-cms-aws-role
+    - name: journal-cms-queue
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: journal-cms-role
+      - kind: ConfigMap
+        name: journal-cms-queue-config
+      # provides: DRUPAL_HASH_SALT
+      - kind: Secret
+        name: journal-cms-app-secret
+    substitute:
+      # deployment vars
+      env: test
+      hostname: journal-cms.test.elifesciences.org
+
+      # Drupal app config
+      journal_cms_app_hash_salt_secret_name: journal-cms-app-secret
+      journal_cms_app_hash_salt_secret_key: journal_cms_hash_salt
+
+      # Drupal Database config
+      journal_cms_database_host: journal-cms-database-haproxy
+      journal_cms_database_name: journal_cms
+      journal_cms_database_username: root
+      journal_cms_database_password_secret_name: journal-cms-database-secrets
+      journal_cms_database_password_secret_key: root
+
+      # Drupal Redis config
+      journal_cms_redis_host: journal-cms-cache
+
+      # eLife API gateway config
+      journal_cms_api_gateway: http://api-gateway-web
+      journal_cms_api_gateway_for_migration: http://api-gateway-web
+
+      # AWS config
+      aws_region: ${aws_region}

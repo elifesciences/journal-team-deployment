@@ -1,0 +1,57 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: journal-cms-article-import
+  namespace: journal
+spec:
+  replicas: ${article_import_replicas:-1}
+  template:
+    spec:
+      serviceAccountName: journal-cms
+      containers:
+      - name: journal-cms
+        image: ghcr.io/elifesciences/journal-cms:latest
+        command: drush
+        args:
+          - ai 1
+        env:
+        # Drupal security config
+        - name: DRUPAL_HASH_SALT
+          valueFrom:
+            secretKeyRef:
+              name: ${journal_cms_app_hash_salt_secret_name}
+              key: ${journal_cms_app_hash_salt_secret_key}
+
+        # Drupal Database config
+        - name: DRUPAL_DATABASE_NAME
+          value: ${journal_cms_database_name}
+        - name: DRUPAL_DATABASE_USERNAME
+          value: ${journal_cms_database_username}
+        - name: DRUPAL_DATABASE_HOST
+          value: ${journal_cms_database_host}
+        - name: DRUPAL_DATABASE_PORT
+          value: ${journal_cms_database_port:-"3306"}
+        - name: DRUPAL_DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ${journal_cms_database_password_secret_name}
+              key: ${journal_cms_database_password_secret_key}
+
+        # Drupal Redis config
+        - name: REDIS_HOST
+          value: ${journal_cms_redis_host}
+
+        # eLife API gateway config
+        - name: JCMS_API_GATEWAY
+          value: ${journal_cms_api_gateway}
+        - name: JCMS_API_GATEWAY_FOR_MIGRATION
+          value: ${journal_cms_api_gateway_for_migration}
+
+        # AWS config
+        - name: JCMS_SQS_REGION
+          value: ${aws_region}
+        - name: JCMS_SQS_QUEUE
+          value: ${journal_cms_queue_name}
+        - name: JCMS_TOPIC_TEMPLATE
+          value: ${journal_cms_topic_template}
