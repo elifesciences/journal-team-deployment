@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--test
   images:
     - name: ghcr.io/elifesciences/journal-cms
-      newTag: dockerise-20250929110427-g94b9c64-18094799533-1
+      newTag: dockerise-20251006130543-gdd71ca9-18281823724-1
   dependsOn:
     - name: journal-cms-aws-role
     - name: journal-cms-queue
