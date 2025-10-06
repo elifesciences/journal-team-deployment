@@ -38,10 +38,13 @@ spec:
         # General Drupal config
         - configMapRef:
             name: journal-cms-app-config
-        # Drupal security config
-        - secretRef:
-            name: ${journal_cms_app_hash_salt_secret_name}
         env:
+        # Drupal security config
+        - name: DRUPAL_HASH_SALT
+          valueFrom:
+            secretKeyRef:
+              name: ${journal_cms_app_hash_salt_secret_name}
+              key: ${journal_cms_app_hash_salt_secret_key}
         - name: DRUPAL_DATABASE_PASSWORD
           valueFrom:
             secretKeyRef:
