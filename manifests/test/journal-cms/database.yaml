@@ -75,6 +75,6 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: journal-cms-database
-  namespace: journal
+  namespace: journal--test
   annotations:
     eks.amazonaws.com/role-arn: "${aws_backup_service_account_role_arn}"
