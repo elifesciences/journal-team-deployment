@@ -27,7 +27,7 @@ spec:
         journal-cms-prod-backups:
           type: s3
           s3:
-            bucket: "${aws_backup_s3_bucket}/journal-cms/prod"
+            bucket: "${aws_backup_s3_bucket}/journal/journal-cms/prod/database/"
             region: "${aws_region}"
       schedule:
         # - name: "daily-backup"
@@ -70,3 +70,11 @@ spec:
         requests:
           memory: 15Mi
           cpu: 10m
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: journal-cms
+  namespace: journal
+  annotations:
+    eks.amazonaws.com/role-arn: "${aws_backup_service_account_role_arn}"
