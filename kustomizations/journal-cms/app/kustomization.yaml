@@ -8,6 +8,7 @@ resources:
   - service.yaml
   - ingress.yaml
   - config.yaml
+  - cron/drupal-core.yaml
 
 labels:
 - includeSelectors: true
