@@ -39,4 +39,4 @@ spec:
           volumes:
           - name: ssmtp-config
             secretRef:
-              name: journal-cms-mail-parameters
+              name: ${journal_cms_mail_config_secret_name}
