@@ -31,3 +31,12 @@ spec:
                 secretKeyRef:
                   name: ${journal_cms_database_password_secret_name}
                   key: ${journal_cms_database_password_secret_key}
+            volumeMounts:
+            - name: ssmtp-config
+              mountPath: /etc/ssmtp/ssmtp.conf
+              subPath: ssmtp.conf
+              readOnly: true
+          volumes:
+          - name: ssmtp-config
+            secretRef:
+              name: journal-cms-mail-parameters

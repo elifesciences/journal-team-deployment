@@ -134,9 +134,16 @@ spec:
           failureThreshold: 10
           timeoutSeconds: 10
         volumeMounts:
+        - name: ssmtp-config
+          mountPath: /etc/ssmtp/ssmtp.conf
+          subPath: ssmtp.conf
+          readOnly: true
         - name: journal-cms-files
           mountPath: /opt/drupal/web/sites/default/files/
       volumes:
       - name: journal-cms-files
         persistentVolumeClaim:
           claimName: journal-cms-files
+      - name: ssmtp-config
+        secretRef:
+          name: journal-cms-mail-parameters
