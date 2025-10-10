@@ -9,6 +9,7 @@ resources:
   - ingress.yaml
   - config.yaml
   - cron/drupal-core.yaml
+  - cron/purge-revisions.yaml
 
 labels:
 - includeSelectors: true

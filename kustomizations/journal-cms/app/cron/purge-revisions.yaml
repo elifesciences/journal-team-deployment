@@ -1,0 +1,33 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: journal-cms-purge-revisions
+  namespace: journal
+spec:
+  schedule: "0 3 * * *" # 3am every day
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          serviceAccountName: journal-cms
+          containers:
+          - name: drupal-cron
+            image: ghcr.io/elifesciences/journal-cms:latest
+            command: [ "bash", "-c", "drush paragraphs-revisions-purge --feedback=1000 && drush paragraphs-revisions-optimise" ]
+            envFrom:
+            # General Drupal config
+            - configMapRef:
+                name: journal-cms-app-config
+            env:
+            # Drupal security config
+            - name: DRUPAL_HASH_SALT
+              valueFrom:
+                secretKeyRef:
+                  name: ${journal_cms_app_hash_salt_secret_name}
+                  key: ${journal_cms_app_hash_salt_secret_key}
+            - name: DRUPAL_DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ${journal_cms_database_password_secret_name}
+                  key: ${journal_cms_database_password_secret_key}
