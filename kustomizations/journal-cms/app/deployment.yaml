@@ -86,6 +86,25 @@ spec:
             secretKeyRef:
               name: ${journal_cms_database_password_secret_name}
               key: ${journal_cms_database_password_secret_key}
+      - name: migrate-content
+        image: ghcr.io/elifesciences/journal-cms:latest
+        command: [ "bash", "-c", "../vendor/bin/drush migrate:import jcms_subjects_json | exit \"$(grep -c SQLSTATE -)\"" ]
+        envFrom:
+        # General Drupal config
+        - configMapRef:
+            name: journal-cms-app-config
+        env:
+        # Drupal security config
+        - name: DRUPAL_HASH_SALT
+          valueFrom:
+            secretKeyRef:
+              name: ${journal_cms_app_hash_salt_secret_name}
+              key: ${journal_cms_app_hash_salt_secret_key}
+        - name: DRUPAL_DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ${journal_cms_database_password_secret_name}
+              key: ${journal_cms_database_password_secret_key}
       containers:
       - name: journal-cms
         image: ghcr.io/elifesciences/journal-cms:latest
