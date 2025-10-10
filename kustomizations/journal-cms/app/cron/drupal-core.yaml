@@ -1,11 +1,11 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: search-queue-import-all
+  name: journal-cms-drupal-core
   namespace: journal
 spec:
-  suspend: true
   schedule: "*/5 * * * *" # evey 5 minutes
+  restartPolicy: OnFailure
   jobTemplate:
     spec:
       template:
