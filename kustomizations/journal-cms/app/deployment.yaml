@@ -145,5 +145,5 @@ spec:
         persistentVolumeClaim:
           claimName: journal-cms-files
       - name: ssmtp-config
-        secretRef:
-          name: ${journal_cms_mail_config_secret_name}
+        secret:
+          secretName: ${journal_cms_mail_config_secret_name}

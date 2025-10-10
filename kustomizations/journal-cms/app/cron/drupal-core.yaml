@@ -38,5 +38,5 @@ spec:
               readOnly: true
           volumes:
           - name: ssmtp-config
-            secretRef:
-              name: ${journal_cms_mail_config_secret_name}
+            secret:
+              secretName: ${journal_cms_mail_config_secret_name}
