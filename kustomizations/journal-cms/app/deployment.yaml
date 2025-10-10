@@ -138,6 +138,10 @@ spec:
           mountPath: /etc/ssmtp/ssmtp.conf
           subPath: ssmtp.conf
           readOnly: true
+        - name: ssmtp-config
+          mountPath: /etc/ssmtp/revaliases
+          subPath: revaliases
+          readOnly: true
         - name: journal-cms-files
           mountPath: /opt/drupal/web/sites/default/files/
       volumes:
