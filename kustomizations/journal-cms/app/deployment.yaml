@@ -88,7 +88,7 @@ spec:
               key: ${journal_cms_database_password_secret_key}
       - name: migrate-content
         image: ghcr.io/elifesciences/journal-cms:latest
-        command: [ "bash", "-c", "$(drush migrate:import jcms_subjects_json 2>&1 | tee /dev/stderr | grep -c SQLSTATE)" ]
+        command: [ "bash", "-c", "exit $(drush migrate:import jcms_subjects_json 2>&1 | tee /dev/stderr | grep -c SQLSTATE)" ]
         envFrom:
         # General Drupal config
         - configMapRef:
