@@ -5,11 +5,11 @@ metadata:
   namespace: journal
 spec:
   schedule: "*/5 * * * *" # evey 5 minutes
-  restartPolicy: OnFailure
   jobTemplate:
     spec:
       template:
         spec:
+          restartPolicy: OnFailure
           serviceAccountName: journal-cms
           containers:
           - name: drupal-cron
