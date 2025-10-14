@@ -93,4 +93,4 @@ spec:
     kind: ClusterSecretStore
   dataFrom:
   - extract:
-      key: flux-prod/backup-credentials/journal-cms--test
+      key: clusters/flux-prod/backup-credentials/journal-cms--test
