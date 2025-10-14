@@ -29,7 +29,7 @@ spec:
           s3:
             bucket: "${aws_backup_s3_bucket}/journal/journal-cms/prod/database/"
             region: "${aws_region}"
-            crendetialsSecret: journal-cms--test--backup # See ExternalSecret below
+            credentialsSecret: journal-cms--test--backup # See ExternalSecret below
       schedule:
         # - name: "daily-backup"
         #   schedule: "0 0 * * *"
