@@ -29,6 +29,7 @@ spec:
           s3:
             bucket: "${aws_backup_s3_bucket}/journal/journal-cms/prod/database/"
             region: "${aws_region}"
+            crendetialsSecret: journal-cms--test--backup # See ExternalSecret below
       schedule:
         # - name: "daily-backup"
         #   schedule: "0 0 * * *"
@@ -78,3 +79,20 @@ metadata:
   namespace: journal--test
   annotations:
     eks.amazonaws.com/role-arn: "${aws_backup_service_account_role_arn}"
+---
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: journal-cms--test--backup
+  namespace: journal--test
+spec:
+  refreshInterval: 1h
+  target:
+    name: journal-cms--test--backup
+    creationPolicy: Owner
+  secretStoreRef:
+    name: secret-store
+    kind: ClusterSecretStore
+  dataFrom:
+  - extract:
+      key: flux-prod/backup-credentials/journal-cms--test
