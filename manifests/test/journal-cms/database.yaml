@@ -31,13 +31,20 @@ spec:
             region: "${aws_region}"
             credentialsSecret: journal-cms--test--backup # See ExternalSecret below
       schedule:
-        # - name: "daily-backup"
-        #   schedule: "0 0 * * *"
-        #   storageName: journal-cms-prod-backups
-        #   retention:
-        #     count: 30
-        #     type: count
-        #     deleteFromStorage: true
+        - name: "daily-backup"
+          schedule: "0 0 * * *"
+          storageName: journal-cms-prod-backups
+          retention:
+            count: 30
+            type: count
+            deleteFromStorage: true
+        - name: "monthly-backup"
+          schedule: "0 1 1 * *"
+          storageName: journal-cms-prod-backups
+          retention:
+            count: 12
+            type: count
+            deleteFromStorage: true
     pxc:
       nodeSelector:
         kubernetes.io/arch: amd64
