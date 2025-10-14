@@ -4,6 +4,8 @@ metadata:
   name: journal-cms-files
 spec:
   name: elife-journal-cms-files-${env}
+  versioning:
+    status: Enabled
   policy: |
     {
       "Version": "2012-10-17",
