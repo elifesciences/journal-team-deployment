@@ -23,6 +23,9 @@ data:
   JCMS_IIIF_BASE_URI: ${journal_cms_iiif_base_uri}
   JCMS_IIIF_MOUNT: ${journal_cms_iiif_mount:-iiif}
 
+  # To fix unknown host requests for content validator
+  JCMS_CONTENT_VALIDATOR_BASE_URL: http://localhost:8080
+
   # AWS config
   JCMS_SQS_REGION: ${aws_region}
   JCMS_SQS_QUEUE: ${journal_cms_queue_name}
