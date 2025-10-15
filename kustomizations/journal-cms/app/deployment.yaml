@@ -18,6 +18,8 @@ spec:
         - configMapRef:
             name: journal-cms-app-config
         env:
+        - name: JCMS_CONTENT_VALIDATOR_BASE_URL
+          value: http://localhost:8080
         # Drupal security config
         - name: DRUPAL_HASH_SALT
           valueFrom:
