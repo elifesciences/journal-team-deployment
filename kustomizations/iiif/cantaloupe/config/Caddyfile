@@ -87,6 +87,7 @@ Disallow: /`
         uri path_regexp ^/iiif/2/lax:72657%2Felife-72657-fig4-v2.tif(.*) /iiif/2/loris-lax:72657%2Felife-72657-fig4-v2.tif$1
         uri path_regexp ^/iiif/2/lax:72657%2Felife-72657-fig10-v2.tif(.*) /iiif/2/loris-lax:72657%2Felife-72657-fig10-v2.tif$1
         uri path_regexp ^/iiif/2/lax:72657%2Felife-72657-fig15-v2.tif(.*) /iiif/2/loris-lax:72657%2Felife-72657-fig15-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:64934%2Felife-64934-fig3-v2.tif(.*) /iiif/2/loris-lax:64934%2Felife-64934-fig3-v2.tif$1
 
         # Replace incorrect URI in body if info.json
         replace @infoJSON "iiif/2/" ""
