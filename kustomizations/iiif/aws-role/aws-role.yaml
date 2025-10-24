@@ -64,7 +64,7 @@ spec:
             "Action": [
               "s3:GetObject",
               "s3:GetObjectAttributes",
-              "s3:ListBucket",
+              "s3:ListBucket"
             ],
             "Effect": "Allow",
             "Resource": "${iiif_epp_bucket_arn}/*"
