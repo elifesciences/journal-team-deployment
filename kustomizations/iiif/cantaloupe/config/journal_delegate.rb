@@ -9,7 +9,7 @@ class CustomDelegate
     identifier = context['identifier']
     logger.info 'identifier: ' << identifier
 
-    if (context['identifier'].start_with?('epp/')) then
+    if (context['identifier'].start_with?('epp:')) then
       'S3Source'
     else
       'HttpSource'
