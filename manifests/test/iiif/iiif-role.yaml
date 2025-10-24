@@ -25,3 +25,4 @@ spec:
       aws_oidc_arn: "${cluster_oidc_arn}"
       aws_oidc_url: "${cluster_oidc_url}"
       irsa_namespace: journal--test
+      iiif_epp_bucket_arn: arn:aws:s3:::staging-elife-epp-data
