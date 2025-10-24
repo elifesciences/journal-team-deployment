@@ -10,8 +10,10 @@ class CustomDelegate
     logger.info 'identifier: ' << identifier
 
     if (context['identifier'].start_with?('epp:')) then
+      logger.info 'select S3Source for identifier: ' << identifier
       'S3Source'
     else
+      logger.info 'select HttpSource for identifier: ' << identifier
       'HttpSource'
     end
   end
@@ -29,7 +31,7 @@ class CustomDelegate
 
     # replace double encoded slashes with a /
     identifier = context['identifier'].gsub('%252F', '/')
-    logger.info 'identifier: ' << identifier
+    logger.info 'httpsource identifier: ' << identifier
 
     if identifier.start_with?('lax:') or identifier.start_with?('lax/') then
       logger.info 'prefix: ' << identifier[0..2] << ' is HTTPSource ' << '${lax_prefix_url}'
@@ -55,7 +57,8 @@ class CustomDelegate
   def s3source_object_info(options = {})
     logger = Java::edu.illinois.library.cantaloupe.delegate.Logger
 
-    identifier = context['identifier']
+    identifier = context['identifier'].gsub('%252F', '/')
+    logger.info 's3source identifier: ' << identifier
 
     if identifier.start_with?('epp:')
       logger.info "prefix: #{identifier[0..2]} is S3Source ${epp_bucket}/${epp_prefix}"
