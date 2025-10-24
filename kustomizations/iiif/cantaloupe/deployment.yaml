@@ -24,6 +24,8 @@ spec:
               value: /delegate/journal_delegate.rb
             - name: HTTPSOURCE_LOOKUP_STRATEGY
               value: ScriptLookupStrategy
+            - name: S3SOURCE_LOOKUP_STRATEGY
+              value: ScriptLookupStrategy
             - name: PROCESSOR_DOWNSCALE_LINEAR
               value: "false"
             - name: PROCESSOR_BACKGROUND_COLOR
