@@ -35,3 +35,5 @@ spec:
       lax_prefix_url: 'https://s3-external-1.amazonaws.com/continuumtest-elife-published/articles/'
       digests_prefix_url: 'https://s3-external-1.amazonaws.com/continuumtest-elife-published/digests/'
       journal_cms_prefix_url: 'https://continuumtest--journal-cms.elifesciences.org/sites/default/files/iiif/'
+      epp_bucket: staging-elife-epp-data
+      epp_prefix: 'automation/'

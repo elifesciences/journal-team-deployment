@@ -52,6 +52,22 @@ class CustomDelegate
     nil
   end
 
+  def s3source_object_info(options = {})
+    logger = Java::edu.illinois.library.cantaloupe.delegate.Logger
+
+    identifier = context['identifier']
+
+    if identifier.start_with?('epp:')
+      logger.info "prefix: #{identifier[0..2]} is S3Source ${epp_bucket}/${epp_prefix}"
+      return {
+        'bucket' => '${epp_bucket}',
+        'key'    => '${epp_prefix}' << identifier[4..-1]
+      }
+    end
+
+    nil
+  end
+
   def metadata(options = {})
   end
   def redactions(options = {})
