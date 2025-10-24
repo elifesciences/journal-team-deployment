@@ -8,7 +8,12 @@ class CustomDelegate
 
     identifier = context['identifier']
     logger.info 'identifier: ' << identifier
-    'HttpSource'
+
+    if (context['identifier'].start_with?('epp/')) then
+      'S3Source'
+    else
+      'HttpSource'
+    end
   end
 
   def pre_authorize(options = {})
