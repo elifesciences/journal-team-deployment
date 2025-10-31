@@ -16,13 +16,13 @@ spec:
     substitute:
       # opensearch resources
       opensearch_manager_replicas: "3"
-      opensearch_manager_request_mem: 3Gi
+      opensearch_manager_request_mem: 2938Mi
       opensearch_manager_request_cpu: 100m
-      opensearch_manager_limit_mem: 3Gi
+      opensearch_manager_limit_mem: 2938Mi
       opensearch_data_replicas: "3"
-      opensearch_data_request_mem: 4Gi
-      opensearch_data_request_cpu: 100m
-      opensearch_data_limit_mem: 4Gi
+      opensearch_data_request_mem: 5830Mi
+      opensearch_data_request_cpu: 500m
+      opensearch_data_limit_mem: 5830Mi
       # opensearch backup vars
       aws_region: ${aws_region}
       aws_backup_s3_bucket: ${aws_backup_s3_bucket}
