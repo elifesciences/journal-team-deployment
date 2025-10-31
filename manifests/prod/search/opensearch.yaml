@@ -1,0 +1,31 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: search-opensearch
+  namespace: journal--prod
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/search/opensearch
+  prune: true
+  targetNamespace: journal--prod
+  postBuild:
+    substitute:
+      # opensearch resources
+      opensearch_manager_replicas: "3"
+      opensearch_manager_request_mem: 3Gi
+      opensearch_manager_request_cpu: 100m
+      opensearch_manager_limit_mem: 3Gi
+      opensearch_data_replicas: "3"
+      opensearch_data_request_mem: 4Gi
+      opensearch_data_request_cpu: 100m
+      opensearch_data_limit_mem: 4Gi
+      # opensearch backup vars
+      aws_region: ${aws_region}
+      aws_backup_s3_bucket: ${aws_backup_s3_bucket}
+      aws_backup_service_account_role_arn: ${aws_backup_service_account_role_arn}
+      # deployment vars
+      env: prod
