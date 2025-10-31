@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: journal
 
 resources:
-- opensearch
+# - opensearch
 - web
 - queue-import
 - queue-watcher
