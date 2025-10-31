@@ -14,6 +14,9 @@ spec:
   targetNamespace: journal--test
   postBuild:
     substitute:
+      # deployment vars
+      env: test
+      opensearch_version: 2.11.0
       # opensearch resources
       opensearch_manager_replicas: "3"
       opensearch_manager_request_mem: 3Gi
@@ -27,5 +30,3 @@ spec:
       aws_region: ${aws_region}
       aws_backup_s3_bucket: ${aws_backup_s3_bucket}
       aws_backup_service_account_role_arn: ${aws_backup_service_account_role_arn}
-      # deployment vars
-      env: test

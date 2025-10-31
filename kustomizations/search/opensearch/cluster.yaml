@@ -8,14 +8,14 @@ spec:
   confMgmt:
     smartScaler: true
   general:
-    image: public.ecr.aws/opensearchproject/opensearch:2.11.0
+    image: public.ecr.aws/opensearchproject/opensearch:${opensearch_version}
     serviceName: opensearch
     serviceAccount: opensearch
-    version: 2.11.0
+    version: ${opensearch_version}
     monitoring:
       enable: false
     pluginsList:
-    - "https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/releases/download/2.11.0.0/prometheus-exporter-2.11.0.0.zip"
+    - "https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/releases/download/${opensearch_version}.0/prometheus-exporter-${opensearch_version}.0.zip"
     - "repository-s3"
     snapshotRepositories:
     - name: ${aws_backup_s3_bucket}
@@ -31,8 +31,8 @@ spec:
     - name: aws-iam-token
       path: /usr/share/opensearch/config/aws-iam-token
   dashboards:
-    version: 2.11.0
-    image: public.ecr.aws/opensearchproject/opensearch-dashboards:2.11.0
+    version: ${opensearch_version}
+    image: public.ecr.aws/opensearchproject/opensearch-dashboards:${opensearch_version}
     enable: true
     replicas: 1
     resources:
