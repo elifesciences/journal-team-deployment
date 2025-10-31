@@ -18,6 +18,7 @@ spec:
   dependsOn:
     - name: search-queue
     - name: search-queue-watcher-role
+    - name: search-opensearch
   postBuild:
     substituteFrom:
       # search_queue_arn and search_queue_name are retrieved from the configmap
