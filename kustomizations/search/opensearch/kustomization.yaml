@@ -8,5 +8,7 @@ resources:
 labels:
 - includeSelectors: true
   pairs:
+    app.kubernetes.io/part-of: search
+    app.kubernetes.io/instance: search-${env}
     app.kubernetes.io/component: opensearch
     app.kubernetes.io/name: opensearch
