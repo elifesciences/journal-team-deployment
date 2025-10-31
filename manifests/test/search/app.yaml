@@ -10,7 +10,7 @@ spec:
     name: journal-team-deployment
     namespace: flux-system
   path: ./kustomizations/search/app
-  prune: true
+  prune: false
   targetNamespace: journal--test
   images:
     - name: ghcr.io/elifesciences/search
