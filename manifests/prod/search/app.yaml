@@ -18,6 +18,7 @@ spec:
   dependsOn:
     - name: search-queue
     - name: search-queue-watcher-role
+    - name: search-opensearch
   postBuild:
     substituteFrom:
       # search_queue_arn and search_queue_name are retrieved from the configmap
@@ -27,19 +28,7 @@ spec:
       - kind: ConfigMap
         name: search-queue-watcher-role
     substitute:
-      # opensearch resources
-      opensearch_manager_replicas: "3"
-      opensearch_manager_request_mem: 2938Mi
-      opensearch_manager_request_cpu: 100m
-      opensearch_manager_limit_mem: 2938Mi
-      opensearch_data_replicas: "3"
-      opensearch_data_request_mem: 5830Mi
-      opensearch_data_request_cpu: 500m
-      opensearch_data_limit_mem: 5830Mi
-      # opensearch backup vars
-      aws_region: ${aws_region}
-      aws_backup_s3_bucket: ${aws_backup_s3_bucket}
-      aws_backup_service_account_role_arn: ${aws_backup_service_account_role_arn}
       # deployment vars
       env: prod
+      aws_region: ${aws_region}
       api_url: https://api.prod.elifesciences.org
