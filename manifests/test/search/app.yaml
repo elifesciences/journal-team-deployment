@@ -29,6 +29,6 @@ spec:
         name: search-queue-watcher-role
     substitute:
       # deployment vars
-      aws_region: ${aws_region}
       env: test
+      aws_region: ${aws_region}
       api_url: https://api.test.elifesciences.org
