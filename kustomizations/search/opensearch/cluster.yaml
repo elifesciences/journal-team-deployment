@@ -27,6 +27,8 @@ spec:
     # This is to work around JRE permission issues, see https://github.com/opensearch-project/opensearch-k8s-operator/issues/442
     additionalConfig:
       indices.query.bool.max_clause_count: "2048"
+      # Set default admin password
+      OPENSEARCH_INITIAL_ADMIN_PASSWORD: admin
     additionalVolumes:
     - name: aws-iam-token
       path: /usr/share/opensearch/config/aws-iam-token
