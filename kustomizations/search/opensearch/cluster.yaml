@@ -33,9 +33,9 @@ spec:
   security:
     config:
       securityConfigSecret:
-        name: opensearch-securityconfig-secret
+        name: opensearch-securityconfig
       adminCredentialsSecret:
-        name: opensearch-creds-secret
+        name: opensearch-admin-creds
   dashboards:
     version: ${opensearch_version}
     image: public.ecr.aws/opensearchproject/opensearch-dashboards:${opensearch_version}
