@@ -31,10 +31,11 @@ spec:
     - name: aws-iam-token
       path: /usr/share/opensearch/config/aws-iam-token
   security:
-    securityConfigSecret:
-      name: opensearch-securityconfig-secret
-    adminCredentialsSecret:
-      name: opensearch-creds-secret
+    config:
+      securityConfigSecret:
+        name: opensearch-securityconfig-secret
+      adminCredentialsSecret:
+        name: opensearch-creds-secret
   dashboards:
     version: ${opensearch_version}
     image: public.ecr.aws/opensearchproject/opensearch-dashboards:${opensearch_version}
