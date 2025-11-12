@@ -37,7 +37,7 @@ spec:
         sources:
         - serviceAccountToken:
             audience: sts.amazonaws.com
-            expirationSeconds: 86400
+            expirationSeconds: 2592000 # 60s*60m*24h*30d
             path: token
   security:
     config:
