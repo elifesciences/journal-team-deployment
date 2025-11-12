@@ -36,6 +36,11 @@ spec:
         name: opensearch-securityconfig
       adminCredentialsSecret:
         name: opensearch-admin-creds
+    tls:
+      transport:
+        generate: true
+      http:
+        generate: true
   dashboards:
     version: ${opensearch_version}
     image: public.ecr.aws/opensearchproject/opensearch-dashboards:${opensearch_version}
