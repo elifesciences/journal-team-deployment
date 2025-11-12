@@ -30,7 +30,7 @@ spec:
       digests_port: "9000"
       digests_service_name: digests-api
       # define services deployed in other namespaces
-      metrics_hostname: data-hub-metrics-api--prod.data-hub
+      metrics_hostname: data-hub-metrics-api--stg.data-hub
       metrics_port: "8000"
       metrics_protocol: http
       metrics_service_name: metrics-proxy
