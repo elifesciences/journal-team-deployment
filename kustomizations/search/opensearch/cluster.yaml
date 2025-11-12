@@ -26,10 +26,19 @@ spec:
         base_path: journal/search/${env}/opensearch
     # This is to work around JRE permission issues, see https://github.com/opensearch-project/opensearch-k8s-operator/issues/442
     additionalConfig:
-      indices.query.bool.max_clause_count: "2048"
+      s3.client.default.identity_token_file: /usr/share/opensearch/config/aws-iam-token
+      AWS_ROLE_ARN: arn:aws:iam::512686554592:role/elife-flux-prod-backups-cluster-role
+      AWS_WEB_IDENTITY_TOKEN_FILE: /usr/share/opensearch/config/aws-iam-token
     additionalVolumes:
-    - name: aws-iam-token
+    - name: sa-aws-iam-token
       path: /usr/share/opensearch/config/aws-iam-token
+      subPath: token
+      projected:
+        sources:
+        - serviceAccountToken:
+            audience: sts.amazonaws.com
+            expirationSeconds: 86400
+            path: token
   security:
     config:
       securityConfigSecret:
@@ -55,9 +64,6 @@ spec:
   nodePools:
   - component: managers
     replicas: ${opensearch_manager_replicas:-1}
-    additionalConfig:
-      # This is to work around JRE permission issues, see https://github.com/opensearch-project/opensearch-k8s-operator/issues/442
-      s3.client.default.identity_token_file: /usr/share/opensearch/config/aws-iam-token/token
     resources:
       requests:
         memory: "${opensearch_manager_request_mem:-2938Mi}"
@@ -85,9 +91,6 @@ spec:
           - ReadWriteOnce
   - component: data
     replicas: ${opensearch_data_replicas:-1}
-    additionalConfig:
-      # This is to work around JRE permission issues, see https://github.com/opensearch-project/opensearch-k8s-operator/issues/442
-      s3.client.default.identity_token_file: /usr/share/opensearch/config/aws-iam-token/token
     resources:
       requests:
         memory: "${opensearch_data_request_mem:-5102Mi}"
