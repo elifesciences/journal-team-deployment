@@ -60,7 +60,7 @@ spec:
         memory: "256Mi"
         cpu: "210m"
       limits:
-        memory: "256Mi"
+        memory: "384Mi"
   nodePools:
   - component: managers
     replicas: ${opensearch_manager_replicas:-1}
