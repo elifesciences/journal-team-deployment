@@ -17,9 +17,9 @@ spec:
   - name: iiif-role
   images:
   - name: ghcr.io/elifesciences/cantaloupe
-    newTag: 20251013140759.0.0-gf237ddb-18468465309-1-5.0.7 # {"$imagepolicy": "journal--test:cantaloupe-stable:tag"}
+    newTag: 20251114075823.0.0-g0781c1e-19358120761-1-5.0.7 # {"$imagepolicy": "journal--test:cantaloupe-stable:tag"}
   - name: ghcr.io/elifesciences/cantaloupe-caddy
-    newTag: 20251013140759.0.0-gf237ddb-18468465309-1-v2.10.2 # {"$imagepolicy": "journal--test:cantaloupe-caddy-stable:tag"}
+    newTag: 20251114075823.0.0-g0781c1e-19358120761-1-v2.10.2 # {"$imagepolicy": "journal--test:cantaloupe-caddy-stable:tag"}
   postBuild:
     substituteFrom:
     # iiif_cache_bucket_name is retrieved from the configmap
