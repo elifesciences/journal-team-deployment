@@ -15,7 +15,7 @@ spec:
     monitoring:
       enable: false
     pluginsList:
-    - "https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/releases/download/${opensearch_version}.0/prometheus-exporter-${opensearch_version}.0.zip"
+    - "https://github.com/aiven/prometheus-exporter-plugin-for-opensearch/releases/download/${opensearch_prometheus_exporter_version:-${opensearch_version}.0}/prometheus-exporter-${opensearch_prometheus_exporter_version:-${opensearch_version}.0}.zip"
     - "repository-s3"
     snapshotRepositories:
     - name: ${aws_backup_s3_bucket}
@@ -51,8 +51,8 @@ spec:
       http:
         generate: true
   dashboards:
-    version: ${opensearch_version}
-    image: public.ecr.aws/opensearchproject/opensearch-dashboards:${opensearch_version}
+    version: ${opensearch_dashboards_version:-${opensearch_version}}
+    image: public.ecr.aws/opensearchproject/opensearch-dashboards:${opensearch_dashboards_version:-${opensearch_version}}
     enable: true
     replicas: 1
     resources:
