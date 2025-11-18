@@ -16,7 +16,7 @@ spec:
     substitute:
       # deployment vars
       env: test
-      opensearch_version: 3.0.0
+      opensearch_version: 3.1.0
       # opensearch resources
       opensearch_manager_replicas: "3"
       opensearch_manager_request_mem: 3Gi
