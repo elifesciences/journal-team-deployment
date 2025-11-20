@@ -7,6 +7,7 @@ resources:
 - cluster.yaml
 - serviceaccount.yaml
 - servicemonitor.yaml
+- snapshotpolicy.yaml
 labels:
 - includeSelectors: true
   pairs:
