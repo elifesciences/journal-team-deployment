@@ -89,8 +89,8 @@ Disallow: /`
         uri path_regexp ^/iiif/2/lax:72657%2Felife-72657-fig15-v2.tif(.*) /iiif/2/loris-lax:72657%2Felife-72657-fig15-v2.tif$1
         uri path_regexp ^/iiif/2/lax:64934%2Felife-64934-fig3-v2.tif(.*) /iiif/2/loris-lax:64934%2Felife-64934-fig3-v2.tif$1
 
-        uri path_regexp ^/iiif/2/lax:65745%2Felife-65745-fig1-v1(.*) /iiif/2/loris-lax:65745%2Felife-65745-fig1-v1.$1
-        uri path_regexp ^/iiif/2/lax:65745%2Felife-65745-fig1-v1(.*) /iiif/2/loris-lax:65745%2Felife-65745-fig1-v1.$1
+        uri path_regexp ^/iiif/2/lax:65745%2Felife-65745-fig1-v1.tif(.*) /iiif/2/loris-lax:65745%2Felife-65745-fig1-v1.$1
+        uri path_regexp ^/iiif/2/lax:65745%2Felife-65745-fig1-v1.tif(.*) /iiif/2/loris-lax:65745%2Felife-65745-fig1-v1.$1
         uri path_regexp ^/iiif/2/lax:65745%2Felife-65745-fig2-v1.tif(.*) /iiif/2/loris-lax:65745%2Felife-65745-fig2-v1.tif$1
         uri path_regexp ^/iiif/2/lax:65745%2Felife-65745-fig2-v1.tif(.*) /iiif/2/loris-lax:65745%2Felife-65745-fig2-v1.tif$1
         uri path_regexp ^/iiif/2/lax:65745%2Felife-65745-fig2-figsupp1-v1.tif(.*) /iiif/2/loris-lax:65745%2Felife-65745-fig2-figsupp1-v1.tif$1
