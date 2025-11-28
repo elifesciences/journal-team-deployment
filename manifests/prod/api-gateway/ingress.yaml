@@ -6,11 +6,16 @@ metadata:
   namespace: journal--prod
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt"
-    # Use a snippet to conditionally redirect ONLY the root path
+
     nginx.ingress.kubernetes.io/configuration-snippet: |
-       if ($request_uri = /) {
-         return 302 /documentation/;
-       }
+      # Mitigation for CVE-2025-64459 https://github.com/elifesciences/issues/issues/9443
+      if ($arg__connector) { return 403 "Forbidden"; }
+      if ($arg__negated) { return 403 "Forbidden"; }
+
+      # Use a snippet to conditionally redirect ONLY the root path
+      if ($request_uri = /) {
+        return 302 /documentation/;
+      }
 spec:
   rules:
   - host: "api.prod.elifesciences.org"
