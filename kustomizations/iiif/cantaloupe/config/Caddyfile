@@ -115,6 +115,22 @@ Disallow: /`
         uri path_regexp ^/iiif/2/lax:65745%2Felife-65745-fig7-figsupp1-v1.tif(.*) /iiif/2/loris-lax:65745%2Felife-65745-fig7-figsupp1-v1.tif$1
         uri path_regexp ^/iiif/2/lax:65745%2Felife-65745-fig7-v1.tif(.*) /iiif/2/loris-lax:65745%2Felife-65745-fig7-v1.tif$1
 
+        uri path_regexp ^/iiif/2/lax:16270%2Felife-16270-fig1-figsupp2-v2.tif(.*) /iiif/2/loris-lax:16270%2Felife-16270-fig1-figsupp2-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:16270%2Felife-16270-fig1-v2.tif(.*) /iiif/2/loris-lax:16270%2Felife-16270-fig1-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:16270%2Felife-16270-fig2-figsupp1-v2.tif(.*) /iiif/2/loris-lax:16270%2Felife-16270-fig2-figsupp1-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:16270%2Felife-16270-fig2-figsupp2-v2.tif(.*) /iiif/2/loris-lax:16270%2Felife-16270-fig2-figsupp2-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:16270%2Felife-16270-fig2-v2.tif(.*) /iiif/2/loris-lax:16270%2Felife-16270-fig2-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:16270%2Felife-16270-fig3-figsupp1-v2.tif(.*) /iiif/2/loris-lax:16270%2Felife-16270-fig3-figsupp1-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:16270%2Felife-16270-fig3-figsupp2-v2.tif(.*) /iiif/2/loris-lax:16270%2Felife-16270-fig3-figsupp2-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:16270%2Felife-16270-fig3-figsupp3-v2.tif(.*) /iiif/2/loris-lax:16270%2Felife-16270-fig3-figsupp3-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:16270%2Felife-16270-fig3-v2.tif(.*) /iiif/2/loris-lax:16270%2Felife-16270-fig3-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:16270%2Felife-16270-fig4-figsupp1-v2.tif(.*) /iiif/2/loris-lax:16270%2Felife-16270-fig4-figsupp1-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:16270%2Felife-16270-fig4-figsupp2-v2.tif(.*) /iiif/2/loris-lax:16270%2Felife-16270-fig4-figsupp2-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:16270%2Felife-16270-fig4-v2.tif(.*) /iiif/2/loris-lax:16270%2Felife-16270-fig4-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:16270%2Felife-16270-fig5-figsupp1-v2.tif(.*) /iiif/2/loris-lax:16270%2Felife-16270-fig5-figsupp1-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:16270%2Felife-16270-fig5-figsupp2-v2.tif(.*) /iiif/2/loris-lax:16270%2Felife-16270-fig5-figsupp2-v2.tif$1
+        uri path_regexp ^/iiif/2/lax:16270%2Felife-16270-fig5-v2.tif(.*) /iiif/2/loris-lax:16270%2Felife-16270-fig5-v2.tif$1
+
         # Replace incorrect URI in body if info.json
         replace @infoJSON "iiif/2/" ""
 
