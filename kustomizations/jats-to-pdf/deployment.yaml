@@ -1,0 +1,19 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jats-to-pdf
+  namespace: journal
+spec:
+  replicas: ${replicas:-1}
+  template:
+    spec:
+      securityContext:
+        securityContext:
+          seccompProfile:
+            type: RuntimeDefault
+      containers:
+      - name: jats-to-pdf
+        image: ghcr.io/elifesciences/jats-to-pdf:latest
+        ports:
+        - containerPort: 3000
