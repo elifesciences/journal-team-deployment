@@ -12,6 +12,9 @@ spec:
   path: ./kustomizations/jats-to-pdf
   prune: true
   targetNamespace: journal--test
+  images:
+  - name: ghcr.io/elifesciences/jats-to-pdf # {"$imagepolicy": "journal--test:jats-to-pdf-stable:name"}
+    newTag: latest # {"$imagepolicy": "journal--test:jats-to-pdf-stable:tag"}
   postBuild:
     substitute:
       env: test
