@@ -1,0 +1,21 @@
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImageRepository
+metadata:
+  name: jats-to-pdf
+spec:
+  interval: 5m
+  image: ghcr.io/elifesciences/jats-to-pdf
+---
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImagePolicy
+metadata:
+  name: jats-to-pdf-stable
+spec:
+  imageRepositoryRef:
+    name: jats-to-pdf
+  filterTags:
+    pattern: '^main-[a-fA-F0-9]+-(?P<ts>.*)'
+    extract: '$ts'
+  policy:
+    numerical:
+      order: asc
