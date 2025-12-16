@@ -5,6 +5,7 @@ namespace: journal
 resources:
 - automations.yaml
 - deployment.yaml
+- service.yaml
 
 labels:
 - includeSelectors: true

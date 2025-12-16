@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jats-to-pdf-api
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3000
+    protocol: TCP
