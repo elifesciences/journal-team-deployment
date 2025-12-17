@@ -17,3 +17,9 @@ spec:
         image: ghcr.io/elifesciences/jats-to-pdf:latest
         ports:
         - containerPort: 3000
+        resources:
+          limits:
+            memory: 800Mi
+          requests:
+            cpu: 200m
+            memory: 700Mi
