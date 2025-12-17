@@ -1,0 +1,24 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jats-to-pdf
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 4m
+    cert-manager.io/cluster-issuer: "letsencrypt"
+spec:
+  rules:
+  - host: ${hostname}
+    http:
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: jats-to-pdf-api
+              port:
+                number: 3000
+  tls:
+  - hosts:
+    - ${hostname}
+    secretName: ${hostname}-tls

@@ -6,6 +6,7 @@ resources:
 - automations.yaml
 - deployment.yaml
 - service.yaml
+- ingress.yaml
 
 labels:
 - includeSelectors: true

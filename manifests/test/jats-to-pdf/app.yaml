@@ -18,3 +18,4 @@ spec:
   postBuild:
     substitute:
       env: test
+      hostname: jats-to-pdf.test.elifescieces.org
