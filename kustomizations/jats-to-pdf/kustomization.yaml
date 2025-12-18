@@ -7,6 +7,7 @@ resources:
 - deployment.yaml
 - service.yaml
 - service-scaler.yaml
+- http-scaled-object.yaml
 - ingress.yaml
 
 labels:
