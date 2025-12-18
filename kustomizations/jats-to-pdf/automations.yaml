@@ -2,6 +2,7 @@ apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImageRepository
 metadata:
   name: jats-to-pdf
+  namespace: journal
 spec:
   interval: 5m
   image: ghcr.io/elifesciences/jats-to-pdf
@@ -10,6 +11,7 @@ apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImagePolicy
 metadata:
   name: jats-to-pdf-stable
+  namespace: journal
 spec:
   imageRepositoryRef:
     name: jats-to-pdf
