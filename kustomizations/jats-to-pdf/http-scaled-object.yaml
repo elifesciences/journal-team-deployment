@@ -15,7 +15,7 @@ spec:
     service: jats-to-pdf-api
     port: 3000
   replicas:
-    min: 1
+    min: 0
     max: 10
   scaledownPeriod: 30
   scalingMetric:
