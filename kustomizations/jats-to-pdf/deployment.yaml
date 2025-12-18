@@ -18,7 +18,14 @@ spec:
         - containerPort: 3000
         resources:
           limits:
-            memory: 2200Mi
-          requests:
-            cpu: 200m
             memory: 2000Mi
+          requests:
+            cpu: 1
+            memory: 1900Mi
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          periodSeconds: 5
+          failureThreshold: 10
+          timeoutSeconds: 10
