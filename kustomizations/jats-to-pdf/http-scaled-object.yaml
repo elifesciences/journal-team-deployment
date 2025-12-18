@@ -19,4 +19,6 @@ spec:
     min: 1
     max: 10
   scaledownPeriod: 300
-  targetPendingRequests: 1
+  scalingMetric:
+    concurrency:
+      targetValue: 2
