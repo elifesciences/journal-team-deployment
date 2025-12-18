@@ -6,7 +6,6 @@ metadata:
 spec:
   hosts:
   - "${hostname}"
-  - "test-${hostname}"
   pathPrefixes:
   - /
   scaleTargetRef:
