@@ -18,7 +18,7 @@ spec:
   replicas:
     min: 1
     max: 10
-  scaledownPeriod: 300
+  scaledownPeriod: 30
   scalingMetric:
     concurrency:
       targetValue: 2
