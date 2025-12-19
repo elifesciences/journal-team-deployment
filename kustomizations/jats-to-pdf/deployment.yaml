@@ -26,6 +26,6 @@ spec:
           httpGet:
             path: /health
             port: 3000
-          periodSeconds: 5
-          failureThreshold: 10
-          timeoutSeconds: 10
+          periodSeconds: 2
+          failureThreshold: 5
+          timeoutSeconds: 2
