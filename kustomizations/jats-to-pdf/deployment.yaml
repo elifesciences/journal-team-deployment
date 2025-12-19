@@ -24,7 +24,7 @@ spec:
             memory: 1900Mi
         readinessProbe:
           httpGet:
-            path: /
+            path: /health
             port: 3000
           periodSeconds: 5
           failureThreshold: 10
