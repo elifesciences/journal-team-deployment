@@ -22,9 +22,3 @@ spec:
     - path:
         type: PathPrefix
         value: /ping/metrics
-    filters:
-    - type: URLRewrite
-      urlRewrite:
-        path:
-          replacePrefixMatch: /
-          type: ReplacePrefixMatch
