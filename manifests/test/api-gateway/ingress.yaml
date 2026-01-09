@@ -48,7 +48,7 @@ spec:
     http:
       paths:
       - path: /ping
-        pathType: ImplementationSpecific
+        pathType: Exact
         backend:
           service:
             name: api-gateway-web
