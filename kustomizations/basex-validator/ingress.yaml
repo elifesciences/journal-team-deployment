@@ -23,3 +23,28 @@ spec:
   - hosts:
     - ${hostname}
     secretName: basex-validator-tls
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: basex-validator-traefik
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt"
+    external-dns.alpha.kubernetes.io/controller: "disabled"
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: ${hostname}
+    http:
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: basex-validator
+              port:
+                number: 8984
+  tls:
+  - hosts:
+    - ${hostname}
+    secretName: basex-validator-tls
