@@ -7,12 +7,6 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-read-timeout: "120"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "120"
     cert-manager.io/cluster-issuer: "letsencrypt"
-
-    # Mirror configuration
-    nginx.ingress.kubernetes.io/mirror-target: "https://traefik.traefik.svc.cluster.local$request_uri"
-    nginx.ingress.kubernetes.io/mirror-host: "${hostname}"
-    nginx.ingress.kubernetes.io/mirror-request-body: "on"
-
 spec:
   rules:
   - host: ${hostname}
