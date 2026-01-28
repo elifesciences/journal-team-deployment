@@ -18,8 +18,86 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
+  "id": 39,
   "links": [],
   "panels": [
+    {
+      "datasource": {
+        "type": "victoriametrics-logs-datasource",
+        "uid": "P022A0A8F82CACB18"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "victoriametrics-logs-datasource",
+            "uid": "P022A0A8F82CACB18"
+          },
+          "editorMode": "code",
+          "expr": "kubernetes.pod_namespace:\"traefik\" \"jats-to-pdf.prod.elifesciences.org\" \"ClientAddr\" | unpack_json | RequestAddr:\"jats-to-pdf.prod.elifesciences.org\"",
+          "interval": "",
+          "queryType": "instant",
+          "refId": "A"
+        }
+      ],
+      "title": "Ingress Logs",
+      "transformations": [
+        {
+          "id": "extractFields",
+          "options": {
+            "delimiter": ",",
+            "format": "json",
+            "keepTime": true,
+            "replace": true,
+            "source": "Line"
+          }
+        }
+      ],
+      "type": "table"
+    },
     {
       "datasource": {
         "type": "victoriametrics-logs-datasource",
@@ -33,7 +111,7 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 0
+        "y": 8
       },
       "id": 1,
       "options": {
@@ -76,5 +154,6 @@
   "timepicker": {},
   "timezone": "UTC",
   "title": "JATS-to-PDF operational dashboard",
-  "version": 0
+  "uid": "907fb91f-5d14-48a1-9f43-ba039c7e6983",
+  "version": 1
 }
