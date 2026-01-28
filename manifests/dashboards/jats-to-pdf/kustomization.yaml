@@ -3,7 +3,7 @@ kind: Kustomization
 configMapGenerator:
 - name: jats-to-pdf-dashboards
   files:
-  - prod-jats-to-pdf-dashboard.json
+  - prod-dashboard.json
   options:
     labels:
       grafana_dashboard: "1"
