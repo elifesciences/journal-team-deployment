@@ -3,7 +3,6 @@ kind: Ingress
 metadata:
   name: journal-web
   annotations:
-    external-dns.alpha.kubernetes.io/controller: "disabled"
     cert-manager.io/cluster-issuer: "${cert_manager_issuer}"
 spec:
   rules:
@@ -27,6 +26,7 @@ kind: Ingress
 metadata:
   name: journal-web-traefik
   annotations:
+    external-dns.alpha.kubernetes.io/controller: "disabled"
     cert-manager.io/cluster-issuer: "${cert_manager_issuer}"
 spec:
   ingressClassName: traefik
