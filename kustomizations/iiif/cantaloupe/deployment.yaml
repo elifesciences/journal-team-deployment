@@ -53,6 +53,9 @@ spec:
             #   value: "100"
             - name: ENDPOINT_API_ENABLED
               value: "true"
+          envFrom:
+            - configMapRef:
+                name: ${iiif-api-admin-secret}
           resources:
             requests:
               cpu: "1.6"
