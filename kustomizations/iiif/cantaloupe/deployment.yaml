@@ -51,6 +51,8 @@ spec:
               value: "-Xmx7680m"
             # - name: PROCESSOR_JPG_QUALITY
             #   value: "100"
+            - name: ENDPOINT_API_ENABLED
+              value: "true"
           resources:
             requests:
               cpu: "1.6"
