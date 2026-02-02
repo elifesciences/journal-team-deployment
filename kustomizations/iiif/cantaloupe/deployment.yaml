@@ -55,7 +55,7 @@ spec:
               value: "true"
           envFrom:
             - configMapRef:
-                name: ${iiif-api-admin-secret}
+                name: ${iiif_api_admin_secret}
           resources:
             requests:
               cpu: "1.6"
