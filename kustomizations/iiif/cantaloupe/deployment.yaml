@@ -54,7 +54,7 @@ spec:
             - name: ENDPOINT_API_ENABLED
               value: "true"
           envFrom:
-            - configMapRef:
+            - secretRef:
                 name: ${iiif_api_admin_secret}
           resources:
             requests:
