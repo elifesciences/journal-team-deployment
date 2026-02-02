@@ -6,7 +6,7 @@ metadata:
     cert-manager.io/cluster-issuer: "${cert_manager_issuer}"
     external-dns.alpha.kubernetes.io/controller: "disabled"
 spec:
-  ingressClassName: ${ingress_class_name:-null}
+  ingressClassName: traefik
   rules:
   - host: ${hostname}
     http:
