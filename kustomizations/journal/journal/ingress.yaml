@@ -5,6 +5,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: "${cert_manager_issuer}"
 spec:
+  ingressClassName: ${ingress_class_name:-null}
   rules:
   - host: ${hostname}
     http:

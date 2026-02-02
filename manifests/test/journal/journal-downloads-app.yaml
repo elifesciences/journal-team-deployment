@@ -32,3 +32,4 @@ spec:
       aws_endpoint: s3.us-east-1.amazonaws.com
       aws_region: us-east-1
       proxy_config: cdn.elifesciences.org:s3://elife-cdn,cdn.elifesciences.org/articles:s3://prod-elife-published,cdn.elifesciences.org/preprints:s3://prod-elife-published,iiif.elifesciences.org:http://cantaloupe.journal--prod:8080,continuumtest-cdn.elifesciences.org:s3://elife-cdn,continuumtest-cdn.elifesciences.org/articles:s3://continuumtest-elife-published,continuumtest-cdn.elifesciences.org/preprints:s3://continuumtest-elife-published
+      ingress_class_name: traefik
