@@ -33,3 +33,4 @@ spec:
       hubspot_url: https://connect.elifesciences.org
       cache_uri: redis://preview-journal-dragonfly-cache:6379
       session_uri: redis://preview-journal-dragonfly-sessions:6379
+      ingress_class_name: traefik
