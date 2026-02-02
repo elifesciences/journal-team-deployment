@@ -32,6 +32,7 @@ spec:
       env: test
       hostname: iiif.test.elifesciences.org
       replicas: "1"
+      iiif-api-admin-secret: iiif-api-admin-secret
       lax_prefix_url: 'https://s3-external-1.amazonaws.com/prod-elife-published/articles/'
       digests_prefix_url: 'https://s3-external-1.amazonaws.com/prod-elife-published/digests/'
       journal_cms_prefix_url: 'https://continuumtest--journal-cms.elifesciences.org/sites/default/files/iiif/'
