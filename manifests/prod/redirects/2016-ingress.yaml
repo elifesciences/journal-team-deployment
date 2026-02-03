@@ -4,14 +4,22 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/controller: "disabled"
     cert-manager.io/cluster-issuer: "letsencrypt"
-    nginx.ingress.kubernetes.io/server-snippet: |
-      add_header Cache-Control "public, max-age=86400, immutable";
-      return 302  https://elifesciences.org/inside-elife/d457b4cd;
+    traefik.ingress.kubernetes.io/router.middlewares: journal-prod-2016-redirect@kubernetescrd
   name: 2016-redirect
   namespace: journal--prod
 spec:
+  ingressClassName: traefik
   rules:
     - host: 2016.elifesciences.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
   tls:
     - hosts:
         - 2016.elifesciences.org
