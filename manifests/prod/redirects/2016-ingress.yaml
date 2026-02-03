@@ -21,7 +21,7 @@ kind: Ingress
 metadata:
   annotations:
     external-dns.alpha.kubernetes.io/controller: "disabled"
-    traefik.ingress.kubernetes.io/router.middlewares: journal-prod-developers-redirect@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: journal-prod-2016-redirect@kubernetescrd
     cert-manager.io/cluster-issuer: "letsencrypt"
   name: 2016-redirect-traefik
   namespace: journal--prod
