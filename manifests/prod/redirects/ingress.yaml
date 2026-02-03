@@ -6,32 +6,202 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/controller: "disabled"
     cert-manager.io/cluster-issuer: "letsencrypt"
-    nginx.ingress.kubernetes.io/server-snippet: |
-      add_header Cache-Control "public, max-age=86400, immutable";
-      return 302 https://elifesciences.org$request_uri;
+    traefik.ingress.kubernetes.io/router.middlewares: journal-prod-journal-redirects@kubernetescrd
   name: journal-redirects
   namespace: journal--prod
 spec:
+  ingressClassName: traefik
   rules:
     - host: elifesciences.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
     - host: e-lifejournal.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
     - host: e-lifejournal.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
     - host: e-lifejournal.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
     - host: e-lifesciences.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
     - host: e-lifesciences.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
     - host: elifejournal.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
     - host: elifejournal.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
     - host: www.elifesciences.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
     - host: www.e-lifejournal.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
     - host: www.e-lifejournal.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
     - host: www.e-lifejournal.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
     - host: www.e-lifesciences.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
     - host: www.e-lifesciences.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
     - host: www.elifejournal.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
     - host: www.elifejournal.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
     - host: prod.elifesciences.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
     - host: www.elifesciences.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
     - host: elife.elifesciences.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
   tls:
     - hosts:
         - elifesciences.net
