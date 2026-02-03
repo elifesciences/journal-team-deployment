@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
+    external-dns.alpha.kubernetes.io/controller: "disabled"
     cert-manager.io/cluster-issuer: "letsencrypt"
     nginx.ingress.kubernetes.io/server-snippet: |
       add_header Cache-Control "public, max-age=86400, immutable";
@@ -22,7 +23,6 @@ metadata:
   name: developers-redirect-traefik
   namespace: journal--prod
   annotations:
-    external-dns.alpha.kubernetes.io/controller: "disabled"
     cert-manager.io/cluster-issuer: "letsencrypt"
     traefik.ingress.kubernetes.io/router.middlewares: journal-prod-developers-redirect@kubernetescrd
 spec:
