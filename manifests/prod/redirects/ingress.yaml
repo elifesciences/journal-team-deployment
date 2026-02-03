@@ -53,3 +53,239 @@ spec:
         - www.elifesciences.org
         - elife.elifesciences.org
       secretName: redirects-tls
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/controller: "disabled"
+    cert-manager.io/cluster-issuer: "letsencrypt"
+    traefik.ingress.kubernetes.io/router.middlewares: journal-prod-journal-redirect@kubernetescrd
+  name: journal-redirects-traefik
+  namespace: journal--prod
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: elifesciences.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
+    - host: e-lifejournal.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
+    - host: e-lifejournal.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
+    - host: e-lifejournal.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
+    - host: e-lifesciences.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
+    - host: e-lifesciences.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
+    - host: elifejournal.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
+    - host: elifejournal.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
+    - host: www.elifesciences.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
+    - host: www.e-lifejournal.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
+    - host: www.e-lifejournal.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
+    - host: www.e-lifejournal.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
+    - host: www.e-lifesciences.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
+    - host: www.e-lifesciences.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
+    - host: www.elifejournal.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
+    - host: www.elifejournal.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
+    - host: prod.elifesciences.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
+    - host: www.elifesciences.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
+    - host: elife.elifesciences.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummy-http-svc
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - elifesciences.net
+        - e-lifejournal.com
+        - e-lifejournal.net
+        - e-lifejournal.org
+        - e-lifesciences.net
+        - e-lifesciences.org
+        - elifejournal.net
+        - elifejournal.org
+        - www.elifesciences.net
+        - www.e-lifejournal.com
+        - www.e-lifejournal.net
+        - www.e-lifejournal.org
+        - www.e-lifesciences.net
+        - www.e-lifesciences.org
+        - www.elifejournal.net
+        - www.elifejournal.org
+        - prod.elifesciences.org
+        - www.elifesciences.org
+        - elife.elifesciences.org
+      secretName: redirects-tls
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: journal-redirects
+  namespace: journal--prod
+spec:
+  redirectRegex:
+    regex: ^https?://[^/]+(.*)
+    replacement: https://elifesciences.org$${1}
+    permanent: true
