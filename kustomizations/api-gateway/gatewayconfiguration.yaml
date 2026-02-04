@@ -42,5 +42,3 @@ spec:
             env:
             - name: CONTROLLER_INGRESS_CLASS
               value: api-gateway-${env}
-            - name: CONTROLLER_LOG_LEVEL
-              value: debug
