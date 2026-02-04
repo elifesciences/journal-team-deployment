@@ -23,6 +23,9 @@ spec:
               requests:
                 cpu: 100m
                 memory: 800Mi
+            env:
+              - name: KONG_LOG_LEVEL
+                value: "debug"
   controlPlaneOptions:
     deployment:
       podTemplateSpec:
