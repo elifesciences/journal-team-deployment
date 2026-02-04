@@ -70,7 +70,7 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/controller: "disabled"
     cert-manager.io/cluster-issuer: "letsencrypt"
-    traefik.ingress.kubernetes.io/router.middlewares: traefik-ping@kubernetescrd,traefik-ping-fastly@kubernetescrd,traefik-deny-robots@kubernetescrd,journal-test-api-gateway-documentation-redirect@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: traefik-ping@kubernetescrd,traefik-ping-fastly@kubernetescrd,traefik-deny-robots@kubernetescrd
 spec:
   ingressClassName: traefik
   rules:
@@ -88,17 +88,6 @@ spec:
   - secretName: api-gateway-tls
     hosts:
     - "api.test.elifesciences.org"
----
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: api-gateway-documentation-redirect
-  namespace: journal--test
-spec:
-  redirectRegex:
-    regex: "^https?://[^/]+/$"
-    replacement: "/documentation/"
-    permanent: false
 ---
 # Mitigation for CVE-2025-64459
 apiVersion: traefik.io/v1alpha1
