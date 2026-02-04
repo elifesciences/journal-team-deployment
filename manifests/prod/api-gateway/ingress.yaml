@@ -39,6 +39,7 @@ metadata:
   name: api-gateway-ping
   namespace: journal--prod
   annotations:
+    external-dns.alpha.kubernetes.io/controller: "disabled"
     cert-manager.io/cluster-issuer: "letsencrypt"
     nginx.ingress.kubernetes.io/configuration-snippet: |
       return 200 "pong";
@@ -68,7 +69,6 @@ metadata:
   name: api-gateway-traefik
   namespace: journal--prod
   annotations:
-    external-dns.alpha.kubernetes.io/controller: "disabled"
     cert-manager.io/cluster-issuer: "letsencrypt"
     traefik.ingress.kubernetes.io/router.middlewares: traefik-ping@kubernetescrd,traefik-ping-fastly@kubernetescrd,traefik-deny-robots@kubernetescrd,journal-prod-api-gateway-documentation-redirect@kubernetescrd
 spec:
