@@ -7,16 +7,9 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/controller: "disabled"
     cert-manager.io/cluster-issuer: "letsencrypt"
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      # Mitigation for CVE-2025-64459 https://github.com/elifesciences/issues/issues/9443
-      if ($arg__connector) { return 403 "Forbidden"; }
-      if ($arg__negated) { return 403 "Forbidden"; }
-
-      # Use a snippet to conditionally redirect ONLY the root path
-      if ($request_uri = /) {
-        return 302 /documentation/;
-      }
+    traefik.ingress.kubernetes.io/router.middlewares: traefik-ping@kubernetescrd,traefik-ping-fastly@kubernetescrd,traefik-deny-robots@kubernetescrd,journal-prod-api-gateway-documentation-redirect@kubernetescrd
 spec:
+  ingressClassName: traefik
   rules:
   - host: "api.prod.elifesciences.org"
     http:
@@ -32,36 +25,6 @@ spec:
   - secretName: api-gateway-tls
     hosts:
     - "api.prod.elifesciences.org"
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: api-gateway-ping
-  namespace: journal--prod
-  annotations:
-    external-dns.alpha.kubernetes.io/controller: "disabled"
-    cert-manager.io/cluster-issuer: "letsencrypt"
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      return 200 "pong";
-spec:
-  rules:
-  - host: "api.prod.elifesciences.org"
-    http:
-      paths:
-      - path: /ping
-        pathType: Exact
-        backend:
-          service:
-            name: api-gateway-web
-            port:
-              number: 80
-      - path: /ping-fastly
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: api-gateway-web
-            port:
-              number: 80
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
