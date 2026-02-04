@@ -5,8 +5,8 @@ metadata:
   name: api-gateway
   namespace: journal--prod
   annotations:
+    external-dns.alpha.kubernetes.io/controller: "disabled"
     cert-manager.io/cluster-issuer: "letsencrypt"
-
     nginx.ingress.kubernetes.io/configuration-snippet: |
       # Mitigation for CVE-2025-64459 https://github.com/elifesciences/issues/issues/9443
       if ($arg__connector) { return 403 "Forbidden"; }
@@ -69,7 +69,6 @@ metadata:
   name: api-gateway-traefik
   namespace: journal--prod
   annotations:
-    external-dns.alpha.kubernetes.io/controller: "disabled"
     cert-manager.io/cluster-issuer: "letsencrypt"
     traefik.ingress.kubernetes.io/router.middlewares: traefik-ping@kubernetescrd,traefik-ping-fastly@kubernetescrd,traefik-deny-robots@kubernetescrd,journal-prod-api-gateway-documentation-redirect@kubernetescrd
 spec:
