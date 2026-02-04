@@ -95,9 +95,10 @@ metadata:
   name: api-gateway-documentation-redirect
   namespace: journal--test
 spec:
-  replacePathRegex:
-    regex: "^/$"
+  redirectRegex:
+    regex: "^https?://[^/]+/$"
     replacement: "/documentation/"
+    permanent: false
 ---
 # Mitigation for CVE-2025-64459
 apiVersion: traefik.io/v1alpha1
