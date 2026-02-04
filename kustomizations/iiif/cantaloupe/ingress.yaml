@@ -4,6 +4,7 @@ kind: Ingress
 metadata:
   name: cantaloupe
   annotations:
+    external-dns.alpha.kubernetes.io/controller: "disabled"
     cert-manager.io/cluster-issuer: "letsencrypt"
 spec:
   rules:
@@ -27,7 +28,6 @@ kind: Ingress
 metadata:
   name: cantaloupe-traefik
   annotations:
-    external-dns.alpha.kubernetes.io/controller: "disabled"
     cert-manager.io/cluster-issuer: "letsencrypt"
 spec:
   ingressClassName: traefik
