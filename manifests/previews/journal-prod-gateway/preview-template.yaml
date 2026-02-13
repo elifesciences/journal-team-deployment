@@ -47,7 +47,7 @@ spec:
               apiVersion: image.toolkit.fluxcd.io/v1
               kind: ImagePolicy
               name: journal-prod-gateway-preview-{{ matrix.pr.number }}
-            jsonPath: status.latestImage
+            jsonPath: status.latestRef
         templates:
         # Namespace
         - object:
@@ -116,8 +116,8 @@ spec:
               targetNamespace: "journal--preview-{{ matrix.pr.number }}"
               images:
                 - name: elifesciences/journal
-                  newName: "{% raw %}{{ matrix.image.split(':')[0] }}{% endraw %}"
-                  newTag: "{% raw %}{{ matrix.image.split(':')[1] }}{% endraw %}"
+                  newName: "{% raw %}{{ matrix.image.name }}{% endraw %}"
+                  newTag: "{% raw %}{{ matrix.image.tag }}{% endraw %}"
               postBuild:
                 substitute:
                   # deployment vars
@@ -135,7 +135,7 @@ spec:
             apiVersion: templates.kluctl.io/v1alpha1
             kind: GithubComment
             metadata:
-              name: journal-prod-gateway-preview-{{ matrix.pr.number }}-{% raw %}{{ matrix.image.split(':')[1] }}{% endraw %}
+              name: journal-prod-gateway-preview-{{ matrix.pr.number }}-{% raw %}{{ matrix.image.tag }}{% endraw %}
               namespace: journal--previews
             spec:
               github:
@@ -150,7 +150,7 @@ spec:
                   text: |
                     ## Preview environment deployed!
 
-                    Image tag deployed: `{% raw %}{{ matrix.image.split(':')[1] }}{% endraw %}`
+                    Image tag deployed: `{% raw %}{{ matrix.image.tag }}{% endraw %}`
 
                     URL: https://journal.pr-{{ matrix.pr.number }}.elifesciences.org
 
