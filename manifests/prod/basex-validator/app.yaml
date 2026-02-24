@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--prod
   images:
     - name: ghcr.io/elifesciences/basex-validator # {"$imagepolicy": "journal--prod:basex-validator:name"}
-      newTag: 20260223094233.0.0-gff6a5f1-22300619294-1 # {"$imagepolicy": "journal--prod:basex-validator:tag"}
+      newTag: 20260224195221.0.0-g2e318ca-22367507824-1 # {"$imagepolicy": "journal--prod:basex-validator:tag"}
   postBuild:
     substitute:
       replicas: "2"
