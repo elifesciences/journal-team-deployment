@@ -38,7 +38,6 @@ Each environment has its own namespace: `journal--test`, `journal--prod`, `journ
 | basex-validator | XML validation service | `kustomizations/basex-validator/` |
 | recommendations | Article recommendations (PHP) | `kustomizations/recommendations/` |
 | pattern-library | UI pattern library | `kustomizations/pattern-library/` |
-| epp-client | Enhanced Preprints client | `kustomizations/epp-client/` |
 
 ## Commands
 
