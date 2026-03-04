@@ -104,14 +104,14 @@ Use `ExternalSecret` resources referencing the `ClusterSecretStore` named `secre
 
 - **Labels**: always apply `app.kubernetes.io/part-of`, `app.kubernetes.io/name`, `app.kubernetes.io/instance` (with `${env}` suffix)
 - **Naming**: services use `<service>-web` for HTTP endpoints; queues use `<service>-queue-watcher`
-- **Logging**: use Fluent Bit sidecar containers for structured log forwarding
+- **Logging**: if a container stores logs on the filesystem, use Fluent Bit sidecar containers to export to stdout
 - **Hostnames**: test uses `<service>.test.elifesciences.org`, prod uses `<service>.elifesciences.org`
 - **TLS**: always configure via cert-manager annotation `cert-manager.io/cluster-issuer: "${cert_manager_issuer}"`
-- **Dependencies**: use `dependsOn` in Flux Kustomizations to ensure proper ordering, and `substituteFrom` to pass ConfigMap/Secret values between components
+- **Dependencies**: use `dependsOn` in Flux Kustomizations to ensure proper ordering if one kustomize output (Secret/ConfigMap) is needed for anothers input. Use `substituteFrom` to pass ConfigMap/Secret values as input.
 
 ## Boundaries
 
 - Never modify files under `manifests/` that contain `# {"$imagepolicy":` comments — these are managed by Flux image automation
 - Never hardcode environment-specific values in `kustomizations/` — use `${variable}` substitution
 - Always deploy to `test` before `prod`
-- Do not create standalone Kubernetes resources outside the Kustomize structure
+- Prefer not to create standalone Kubernetes resources outside the Kustomize structure
