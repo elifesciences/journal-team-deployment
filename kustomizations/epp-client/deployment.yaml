@@ -11,7 +11,7 @@ spec:
         kubernetes.io/arch: amd64
       containers:
       - name: epp-client
-        image: ghcr.io/elifesciences/epp-client:latest
+        image: ghcr.io/elifesciences/enhanced-preprints-client:latest
         ports:
         - containerPort: 3000
         resources:

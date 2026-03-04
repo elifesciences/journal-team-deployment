@@ -4,4 +4,4 @@ metadata:
   name: epp-client
 spec:
   interval: 5m
-  image: ghcr.io/elifesciences/epp-client
+  image: ghcr.io/elifesciences/enhanced-preprints-client
