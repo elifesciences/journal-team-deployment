@@ -38,6 +38,7 @@ Each environment has its own namespace: `journal--test`, `journal--prod`, `journ
 | basex-validator | XML validation service | `kustomizations/basex-validator/` |
 | recommendations | Article recommendations (PHP) | `kustomizations/recommendations/` |
 | pattern-library | UI pattern library | `kustomizations/pattern-library/` |
+| epp-client | Enhanced Preprints client | `kustomizations/epp-client/` |
 
 ## Commands
 
@@ -45,12 +46,14 @@ Each environment has its own namespace: `journal--test`, `journal--prod`, `journ
 # Trigger Flux to reconcile immediately
 make reconcile
 
-# Generate rendered Kustomize output for a target
-make generate-reference TARGET=manifests/test/journal
+# Generate rendered Kustomize output for a kustomization base
+make generate-reference TARGET=kustomizations/journal
 
 # Compare current vs reference output
-make compare-reference TARGET=manifests/test/journal
+make compare-reference TARGET=kustomizations/journal
 ```
+
+Note: these commands operate on `kustomizations/<service>/` bases (which are valid Kustomize directories), not on `manifests/<env>/<service>/` (which contain Flux Kustomization CRDs, not Kustomize overlays).
 
 ## Common Tasks
 
@@ -71,21 +74,28 @@ For image tags managed by Flux automation, changes happen automatically via `Ima
 
 ### Adding a new service
 
-Follow the pattern of an existing simple service like `jats-to-pdf`:
+Follow the pattern of an existing simple service (e.g. `pattern-library` for always-running services, `jats-to-pdf` for scale-to-zero):
 
-1. Create `kustomizations/<service>/` with at minimum:
+1. **Verify the container image** before writing any configuration:
+   - Confirm the exact image name in the registry (it may differ from the service name)
+   - Check the tag naming convention (e.g. `master-<hash>-<timestamp>`, `HEAD-<hash>-<timestamp>`, `main-<hash>-<timestamp>`) — this varies between images
+   - Confirm the image is publicly accessible; if private, configure `imagePullSecrets` on the Deployment and `secretRef` on the ImageRepository
+
+2. Create `kustomizations/<service>/` with at minimum:
    - `kustomization.yaml` — list resources, add labels, define configMapGenerators
    - `deployment.yaml` — pod spec with `${variable}` placeholders
    - `service.yaml` — ClusterIP service
    - `ingress.yaml` — Traefik ingress with `${hostname}` and TLS
+   - `automations/repository.yaml` — `ImageRepository` to scan the container registry
+   - `automations/stable-policy.yaml` — `ImagePolicy` with a `filterTags.pattern` matching the image's tag convention. Use a strict regex anchored with `$` (e.g. `'^master-[a-fA-F0-9]+-(?P<ts>\d{8}\.\d{4})$'`) to avoid matching unexpected tag suffixes
 
-2. Create environment overlays in `manifests/test/<service>/` and `manifests/prod/<service>/`:
-   - A Flux `Kustomization` resource referencing `./kustomizations/<service>`
-   - `postBuild.substitute` with `env`, `hostname`, `replicas`, and any service-specific vars
-   - An `images` block with the initial image tag
-   - `ImagePolicy`, `ImageRepository`, and `ImageUpdateAutomation` for automated deploys
+3. Create `manifests/test/<service>/` with:
+   - `app.yaml` — Flux `Kustomization` referencing `./kustomizations/<service>` with `postBuild.substitute` values (`env`, `hostname`, `cert_manager_issuer`, etc.), an `images` block with `$imagepolicy` markers, and initial tag set to `latest` (Flux automation will update it on first reconciliation)
+   - `automation.yaml` — `ImageUpdateAutomation` with `update.path` pointing to `./manifests/test/<service>`
 
-3. Deploy to `test` first, validate, then create `prod` overlay.
+   Note: the image name must be consistent across the deployment, ImageRepository, and the `images` block in the Flux Kustomization.
+
+4. Deploy to `test` first, validate, then create `prod` overlay.
 
 ### Adding an AWS resource (SQS, SNS, S3, IAM Role)
 
@@ -107,7 +117,21 @@ Use `ExternalSecret` resources referencing the `ClusterSecretStore` named `secre
 - **Logging**: if a container stores logs on the filesystem, use Fluent Bit sidecar containers to export to stdout
 - **Hostnames**: test uses `<service>.test.elifesciences.org`, prod uses `<service>.elifesciences.org`
 - **TLS**: always configure via cert-manager annotation `cert-manager.io/cluster-issuer: "${cert_manager_issuer}"`
+- **Image tag patterns**: tag conventions vary by image — always check the actual registry. Use strict anchored regexes in `ImagePolicy.filterTags.pattern` (e.g. end with `$`) to avoid matching variant tags (like `-approved` suffixes)
 - **Dependencies**: use `dependsOn` in Flux Kustomizations to ensure proper ordering if one kustomize output (Secret/ConfigMap) is needed for anothers input. Use `substituteFrom` to pass ConfigMap/Secret values as input.
+
+### Verifying a deployment
+
+After pushing changes, verify the deployment is healthy:
+
+1. Run `make reconcile` to trigger immediate Flux reconciliation (otherwise wait for the 1-minute interval).
+2. Check the Flux Kustomization is ready: `kubectl get kustomization <service> -n journal--<env>`
+3. Check pods are running: `kubectl get pods -n journal--<env> -l app.kubernetes.io/part-of=<service>`
+4. For services with image automation, also verify:
+   - `kubectl get imagerepository <service> -n journal--<env>` — should show successful scan
+   - `kubectl get imagepolicy <service>-stable -n journal--<env>` — should resolve to a tag
+   - `kubectl get imageupdateautomation <service> -n journal--<env>` — should show `repository up-to-date`
+5. Check pod events if a pod is not starting: `kubectl get events -n journal--<env> --field-selector involvedObject.name=<pod-name>`
 
 ## Boundaries
 
