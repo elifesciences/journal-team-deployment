@@ -1,0 +1,23 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: epp-client
+  namespace: journal--test
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/epp-client
+  prune: true
+  targetNamespace: journal--test
+  images:
+    - name: ghcr.io/elifesciences/epp-client # {"$imagepolicy": "journal--test:epp-client-stable:name"}
+      newTag: latest # {"$imagepolicy": "journal--test:epp-client-stable:tag"}
+  postBuild:
+    substitute:
+      # deployment vars
+      env: test
+      hostname: epp-client.test.elifesciences.org
+      cert_manager_issuer: "letsencrypt"
