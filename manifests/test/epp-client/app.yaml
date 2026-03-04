@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--test
   images:
     - name: ghcr.io/elifesciences/enhanced-preprints-client # {"$imagepolicy": "journal--test:epp-client-stable:name"}
-      newTag: latest # {"$imagepolicy": "journal--test:epp-client-stable:tag"}
+      newTag: master-378b7ede-20260217.1201 # {"$imagepolicy": "journal--test:epp-client-stable:tag"}
   postBuild:
     substitute:
       # deployment vars
