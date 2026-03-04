@@ -79,7 +79,7 @@ Follow the pattern of an existing simple service (e.g. `pattern-library` for alw
 1. **Verify the container image** before writing any configuration:
    - Confirm the exact image name in the registry (it may differ from the service name)
    - Check the tag naming convention (e.g. `master-<hash>-<timestamp>`, `HEAD-<hash>-<timestamp>`, `main-<hash>-<timestamp>`) — this varies between images
-   - Confirm the image is publicly accessible; if private, configure `imagePullSecrets` on the Deployment and `secretRef` on the ImageRepository
+   - Confirm the image is publicly accessible; if access is denied (403), verify the image name is correct first — registries return 403 for both private and nonexistent images to avoid leaking what exists. Only configure `imagePullSecrets`/`secretRef` after confirming the name is correct
 
 2. Create `kustomizations/<service>/` with at minimum:
    - `kustomization.yaml` — list resources, add labels, define configMapGenerators
