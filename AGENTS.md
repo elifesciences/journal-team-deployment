@@ -54,6 +54,15 @@ make compare-reference TARGET=kustomizations/journal
 
 Note: these commands operate on `kustomizations/<service>/` bases (which are valid Kustomize directories), not on `manifests/<env>/<service>/` (which contain Flux Kustomization CRDs, not Kustomize overlays).
 
+```bash
+# Purge a single image from the Cantaloupe (IIIF) cache in prod.
+# Credentials are fetched automatically from the iiif-api-admin-secret k8s secret.
+# The id is the IIIF image identifier, e.g. the source path used to request the image.
+make purge-iiif-cache-item id="lax:100555/elife-100555-fig3-v1.tif"
+```
+
+The target port-forwards to the Cantaloupe pod, waits for the tunnel to be ready, then POSTs a `PurgeItemFromCache` task to the `/tasks` API endpoint with HTTP Basic Auth. The port-forward is cleaned up automatically on exit.
+
 ## Common Tasks
 
 ### Changing configuration for a service
