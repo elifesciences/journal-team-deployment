@@ -31,7 +31,7 @@ spec:
     substitute:
       env: prod
       hostname: iiif.prod.elifesciences.org
-      replicas: "8"
+      replicas: "13"
       iiif_api_admin_secret: iiif-api-admin-secret
       lax_prefix_url: 'https://s3-external-1.amazonaws.com/prod-elife-published/articles/'
       digests_prefix_url: 'https://s3-external-1.amazonaws.com/prod-elife-published/digests/'
