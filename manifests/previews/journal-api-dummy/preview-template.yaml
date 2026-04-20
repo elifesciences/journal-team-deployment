@@ -192,7 +192,7 @@ spec:
               prune: true
               targetNamespace: "journal--preview-{{ matrix.pr.number }}"
               images:
-              - name: elifesciences/journal
+              - name: ghcr.io/elifesciences/journal
                 newName: "{% raw %}{{ matrix.image.split(':')[0] }}{% endraw %}"
                 newTag: "{% raw %}{{ matrix.image.split(':')[1] }}{% endraw %}"
               postBuild:
