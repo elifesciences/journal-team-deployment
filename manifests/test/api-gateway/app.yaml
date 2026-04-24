@@ -17,7 +17,7 @@ spec:
   - name: api-gateway-public-credentials
   images:
   - name: ghcr.io/elifesciences/api-raml-docs # {"$imagepolicy": "journal--test:api-raml-docs:name"}
-    newTag: 2.34.0 # {"$imagepolicy": "journal--test:api-raml-docs:tag"}
+    newTag: 2.35.0 # {"$imagepolicy": "journal--test:api-raml-docs:tag"}
   postBuild:
     substitute:
       env: test
