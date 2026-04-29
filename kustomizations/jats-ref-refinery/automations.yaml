@@ -1,0 +1,23 @@
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImageRepository
+metadata:
+  name: jats-ref-refinery
+  namespace: journal
+spec:
+  interval: 5m
+  image: ghcr.io/elifesciences/jats-ref-refinery
+---
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImagePolicy
+metadata:
+  name: jats-ref-refinery-stable
+  namespace: journal
+spec:
+  imageRepositoryRef:
+    name: jats-ref-refinery
+  filterTags:
+    pattern: '^main-[a-fA-F0-9]+-(?P<ts>\d{8}\.\d{4})$'
+    extract: '$ts'
+  policy:
+    numerical:
+      order: asc

@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jats-ref-refinery-api-scaler
+  namespace: journal
+  annotations:
+    traefik.ingress.kubernetes.io/service.nativelb: "true"
+spec:
+  type: ExternalName
+  externalName: ${keda_proxy:-'keda-add-ons-http-interceptor-proxy.keda.svc.cluster.local'}
+  ports:
+    - port: 8080

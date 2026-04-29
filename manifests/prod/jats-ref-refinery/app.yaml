@@ -1,0 +1,22 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: jats-ref-refinery
+  namespace: journal--prod
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/jats-ref-refinery
+  prune: true
+  targetNamespace: journal--prod
+  images:
+  - name: ghcr.io/elifesciences/jats-ref-refinery # {"$imagepolicy": "journal--prod:jats-ref-refinery-stable:name"}
+    newTag: main-57bd8136-20260415.1512 # {"$imagepolicy": "journal--prod:jats-ref-refinery-stable:tag"}
+  postBuild:
+    substitute:
+      env: prod
+      hostname: jats-ref-refinery.prod.elifesciences.org
+      secret_name: jats-ref-refinery-secret
