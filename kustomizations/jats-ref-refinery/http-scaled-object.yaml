@@ -1,0 +1,23 @@
+---
+kind: HTTPScaledObject
+apiVersion: http.keda.sh/v1alpha1
+metadata:
+  name: jats-ref-refinery
+spec:
+  hosts:
+  - "${hostname}"
+  pathPrefixes:
+  - /
+  scaleTargetRef:
+    name: jats-ref-refinery
+    kind: Deployment
+    apiVersion: apps/v1
+    service: jats-ref-refinery-api
+    port: 8000
+  replicas:
+    min: 0
+    max: 10
+  scaledownPeriod: 300
+  scalingMetric:
+    concurrency:
+      targetValue: 2

@@ -1,0 +1,25 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jats-ref-refinery
+  namespace: journal
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt"
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: ${hostname}
+    http:
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: jats-ref-refinery-api-scaler
+              port:
+                number: ${keda_port:=8080}
+  tls:
+  - hosts:
+    - ${hostname}
+    secretName: ${hostname}-tls
