@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jats-ref-refinery-api
+  namespace: journal
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8000
+    protocol: TCP

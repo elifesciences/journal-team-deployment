@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: journal
+
+resources:
+- automations.yaml
+- deployment.yaml
+- service.yaml
+- service-scaler.yaml
+- http-scaled-object.yaml
+- ingress.yaml
+
+labels:
+- includeSelectors: true
+  pairs:
+    app.kubernetes.io/part-of: jats-ref-refinery
+    app.kubernetes.io/instance: jats-ref-refinery-${env}
