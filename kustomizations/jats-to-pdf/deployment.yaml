@@ -7,10 +7,6 @@ metadata:
 spec:
   template:
     spec:
-      securityContext:
-        securityContext:
-          seccompProfile:
-            type: RuntimeDefault
       containers:
       - name: jats-to-pdf
         image: ghcr.io/elifesciences/jats-to-pdf:latest

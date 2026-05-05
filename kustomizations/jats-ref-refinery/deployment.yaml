@@ -7,10 +7,6 @@ metadata:
 spec:
   template:
     spec:
-      securityContext:
-        securityContext:
-          seccompProfile:
-            type: RuntimeDefault
       containers:
       - name: jats-ref-refinery
         image: ghcr.io/elifesciences/jats-ref-refinery:latest
