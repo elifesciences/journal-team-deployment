@@ -131,6 +131,8 @@ spec:
                   epp_url: http://epp-client.epp--prod:3000
                   observer_url: http://prod--observer.elife.internal
                   pubpub_url: https://elife-container.pubpub.org
+                  cache_uri: redis://preview-journal-dragonfly-cache.journal--previews:6379
+                  session_uri: redis://preview-journal-dragonfly-sessions.journal--previews:6379
         - raw: |
             apiVersion: templates.kluctl.io/v1alpha1
             kind: GithubComment
