@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--prod
   images:
   - name: ghcr.io/elifesciences/jats-ref-refinery # {"$imagepolicy": "journal--prod:jats-ref-refinery-stable:name"}
-    newTag: main-f23b3f4b-20260512.1543 # {"$imagepolicy": "journal--prod:jats-ref-refinery-stable:tag"}
+    newTag: main-12aeee17-20260701.0715 # {"$imagepolicy": "journal--prod:jats-ref-refinery-stable:tag"}
   postBuild:
     substitute:
       env: prod
