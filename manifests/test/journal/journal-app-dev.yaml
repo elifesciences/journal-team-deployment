@@ -20,8 +20,8 @@ spec:
     substitute:
       # deployment vars
       env: test
-      instance_name: journal-preview
-      hostname: preview.test.elifesciences.org
+      instance_name: journal-app-dev
+      hostname: journal-dev.test.elifesciences.org
       cert_manager_issuer: "letsencrypt"
       journal_secret_parameters_secret_name: journal-preview-secret-parameters
       api_url: https://api.prod.elifesciences.org
