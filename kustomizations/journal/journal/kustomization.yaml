@@ -11,7 +11,7 @@ resources:
 - automations/preview-policy.yaml
 
 configMapGenerator:
-- name: journal-parameters
+- name: journal-app-parameters
   files:
   - config/parameters.yaml
   - config/era_articles.yaml

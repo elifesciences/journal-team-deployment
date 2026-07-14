@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: journal
+  name: journal-app
   namespace: journal
 spec:
   template:
@@ -75,7 +75,7 @@ spec:
       volumes:
       - name: config-volume
         configMap:
-          name: journal-parameters
+          name: journal-app-parameters
           items:
           - key: parameters.yaml
             path: parameters.yaml

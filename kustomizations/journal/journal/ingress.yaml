@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: journal-web
+  name: journal-app
   annotations:
     cert-manager.io/cluster-issuer: "${cert_manager_issuer}"
 spec:
@@ -14,7 +14,7 @@ spec:
         pathType: ImplementationSpecific
         backend:
           service:
-            name: journal-web
+            name: journal-app
             port:
               number: 80
   tls:
