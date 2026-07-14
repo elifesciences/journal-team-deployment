@@ -1,0 +1,14 @@
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImagePolicy
+metadata:
+  name: journal-app-latest-feature-branch
+spec:
+  imageRepositoryRef:
+    name: journal
+  filterTags:
+    # feature-name-sha-time
+    pattern: '^feature-[a-zA-Z0-9-]+-[a-fA-F0-9]+-(?P<ts>.*)'
+    extract: '$ts'
+  policy:
+    numerical:
+      order: asc
