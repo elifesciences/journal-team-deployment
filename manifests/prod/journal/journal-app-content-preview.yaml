@@ -1,8 +1,8 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: journal-app-dev
-  namespace: journal--test
+  name: journal-app-content-preview
+  namespace: journal--prod
 spec:
   interval: 1m0s
   sourceRef:
@@ -11,19 +11,17 @@ spec:
     namespace: flux-system
   path: ./kustomizations/journal
   prune: true
-  targetNamespace: journal--test
+  targetNamespace: journal--prod
   images:
-    - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--test:journal-app-latest-feature-branch:name"}
-      newTag: feature-testing-the-cluster-imagepolicy-809308750c035a5311a11c4fb165ee43877c2848-20260717.0903 # {"$imagepolicy": "journal--test:journal-app-latest-feature-branch:tag"}
-  nameSuffix: -dev
+    - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--test:journal-app-latest-master:name"}
+      newTag: preview-1956-e41e49128b27087a703ae99c27b3012c7a09ea03-20260708.1307 # {"$imagepolicy": "journal--test:journal-app-latest-master:tag"}
   postBuild:
     substitute:
       # deployment vars
       env: test
-      instance_name: journal-app-dev
-      hostname: journal-dev.test.elifesciences.org
+      instance_name: journal-app-content-preview
+      hostname: journal-content-preview.test.elifesciences.org
       cert_manager_issuer: "letsencrypt"
-      # TODO change this
       journal_secret_parameters_secret_name: journal-preview-secret-parameters
       api_url: https://api.prod.elifesciences.org
       api_url_search_page: https://api.test.elifesciences.org
@@ -31,5 +29,5 @@ spec:
       observer_url: http://prod--observer.elife.internal
       pubpub_url: https://elife-container.pubpub.org
       hubspot_url: https://connect.elifesciences.org
-      cache_uri: redis://app-dev-journal-dragonfly-cache:6379
-      session_uri: redis://app-dev-journal-dragonfly-sessions:6379
+      cache_uri: redis://preview-journal-dragonfly-cache:6379
+      session_uri: redis://preview-journal-dragonfly-sessions:6379
