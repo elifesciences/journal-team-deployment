@@ -17,3 +17,4 @@ spec:
   postBuild:
     substitute:
       env: test
+      instance_name: dragonfly-journal-content-preview

@@ -21,11 +21,10 @@ spec:
       # deployment vars
       env: test
       instance_name: journal-app-dev
-      hostname: journal-dev.test.elifesciences.org
+      hostname: journal-dev.elifesciences.org
       cert_manager_issuer: "letsencrypt"
-      # TODO change this
-      journal_secret_parameters_secret_name: journal-preview-secret-parameters
-      api_url: https://api.prod.elifesciences.org
+      journal_secret_parameters_secret_name: journal-app-dev-secret-parameters
+      api_url: https://api.test.elifesciences.org
       api_url_search_page: https://api.test.elifesciences.org
       epp_url: http://epp-client.epp--prod:3000
       observer_url: http://prod--observer.elife.internal
