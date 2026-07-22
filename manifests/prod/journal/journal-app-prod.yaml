@@ -1,0 +1,34 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: journal-app-prod
+  namespace: journal--prod
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/journal
+  prune: true
+  targetNamespace: journal--prod
+  images:
+    - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--test:journal-app-latest-master:name"}
+      newTag: preview-1956-e41e49128b27087a703ae99c27b3012c7a09ea03-20260708.1307 # {"$imagepolicy": "journal--test:journal-app-latest-master:tag"}
+  nameSuffix: -prod-public
+  postBuild:
+    substitute:
+      # deployment vars
+      env: prod
+      instance_name: journal-app-prod
+      hostname: journal-prod.test.elifesciences.org
+      cert_manager_issuer: "letsencrypt"
+      journal_secret_parameters_secret_name: journal-prod-secret-parameters
+      api_url: https://api.prod.elifesciences.org
+      api_url_search_page: https://api.test.elifesciences.org
+      epp_url: http://epp-client.epp--prod:3000
+      observer_url: http://prod--observer.elife.internal
+      pubpub_url: https://elife-container.pubpub.org
+      hubspot_url: https://connect.elifesciences.org
+      cache_uri: redis://prod-journal-dragonfly-cache:6379
+      session_uri: redis://prod-journal-dragonfly-sessions:6379
