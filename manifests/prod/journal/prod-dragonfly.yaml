@@ -13,7 +13,7 @@ spec:
   prune: true
   targetNamespace: journal--prod
   # avoid name collision
-  namePrefix: prod-journal-
+  namePrefix: prod-
   postBuild:
     substitute:
       env: prod
