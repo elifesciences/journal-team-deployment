@@ -32,5 +32,3 @@ spec:
       hubspot_url: https://connect.elifesciences.org
       cache_uri: redis://prod-journal-dragonfly-cache:6379
       session_uri: redis://prod-journal-dragonfly-sessions:6379
-      journal_sessions_replicas: "2"
-      journal_cache_replicas: "2"
