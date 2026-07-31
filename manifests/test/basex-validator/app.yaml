@@ -15,17 +15,6 @@ spec:
   images:
     - name: ghcr.io/elifesciences/basex-validator # {"$imagepolicy": "journal--test:basex-validator:name"}
       newTag: 20260728102433.0.0-g552551d-30350623605-1 # {"$imagepolicy": "journal--test:basex-validator:tag"}
-  patches:
-    - patch: |
-        apiVersion: networking.k8s.io/v1
-        kind: Ingress
-        metadata:
-          name: basex-validator
-          annotations:
-            traefik.ingress.kubernetes.io/service.serverstransport: basex-validator-transport@kubernetescrd
-      target:
-        kind: Ingress
-        name: basex-validator
   postBuild:
     substitute:
       replicas: "1"

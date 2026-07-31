@@ -6,6 +6,7 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-body-size: 4m
     nginx.ingress.kubernetes.io/proxy-read-timeout: "120"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "120"
+    traefik.ingress.kubernetes.io/service.serverstransport: basex-validator-transport@kubernetescrd
     cert-manager.io/cluster-issuer: "letsencrypt"
 spec:
   ingressClassName: traefik
