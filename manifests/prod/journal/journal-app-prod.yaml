@@ -49,7 +49,8 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: journal-app
+  name: dev-access-prod-public
+  namespace: journal--prod
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt"
     traefik.ingress.kubernetes.io/router.middlewares: traefik-elife-oauth@kubernetescrd
