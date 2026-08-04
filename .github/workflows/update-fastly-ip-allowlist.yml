@@ -1,0 +1,38 @@
+name: Update Fastly IP allowlist
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # daily, 06:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Sync Fastly-managed IP ranges
+        id: sync
+        run: python3 .github/scripts/update_fastly_ip_allowlist.py
+
+      - name: Open PR if ranges changed
+        if: steps.sync.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Update Fastly IP allowlist ranges"
+          title: "Update Fastly IP allowlist ranges"
+          body: |
+            Fastly's published IP ranges (https://api.fastly.com/public-ip-list) changed.
+
+            This PR was opened automatically by the `update-fastly-ip-allowlist` workflow.
+            Review the diff and merge to keep the journal prod IP allowlist in sync.
+          branch: update-fastly-ip-allowlist
+          labels: automated
