@@ -16,6 +16,17 @@ spec:
     - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--prod:journal-app-latest-master:name"}
       newTag: master-fedc16a8e12ef8a95512d0fef3307623762fecf2-20260728.1417 # {"$imagepolicy": "journal--prod:journal-app-latest-master:tag"}
   nameSuffix: -prod-public
+  patches:
+    - patch: |
+        apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          name: journal-app
+          annotations:
+            traefik.ingress.kubernetes.io/router.middlewares: journal-prod-journal-app-ip-allowlist@kubernetescrd
+      target:
+        kind: Ingress
+        name: journal-app
   postBuild:
     substitute:
       # deployment vars
