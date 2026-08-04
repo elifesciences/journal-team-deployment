@@ -10,7 +10,7 @@ parameters:
     oauth2_client_id: journal--${env}
     trusted_hosts:
     - ${hostname}
-    - "[^.]+\.elifesciences\.org"
+    - '[^.]+\.elifesciences\.org'
     - localhost
     cache_control: private, no-cache, no-store, must-revalidate
 
