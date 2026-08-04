@@ -32,7 +32,7 @@ spec:
       # deployment vars
       env: prod
       instance_name: journal-app-prod
-      hostname: journal-prod.test.elifesciences.org
+      hostname: journal-prod.elifesciences.org
       cert_manager_issuer: "letsencrypt"
       journal_secret_parameters_secret_name: journal-prod-secret-parameters
       api_url: https://api.prod.elifesciences.org
@@ -43,3 +43,30 @@ spec:
       hubspot_url: https://connect.elifesciences.org
       cache_uri: redis://prod-journal-dragonfly-cache:6379
       session_uri: redis://prod-journal-dragonfly-sessions:6379
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: journal-app
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt"
+    traefik.ingress.kubernetes.io/router.middlewares: traefik-elife-oauth@kubernetescrd
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: "journal-prod-dev-access.elifesciences.org"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: journal-app-prod-public
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - "journal-prod-dev-access.elifesciences.org"
+      secretName: "journal-prod-dev-access.elifesciences.org-tls"
