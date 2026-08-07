@@ -4,3 +4,4 @@ namespace: journal
 resources:
 - search-source.yaml
 - search-policy-stable.yaml
+- feature-branch-policy.yaml
