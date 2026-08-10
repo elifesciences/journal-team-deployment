@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--test
   images:
     - name: ghcr.io/elifesciences/search
-      newTag: feature-fix-duplication-in-sortByDate-1ce99a90-20260807.1113 # {"$imagepolicy": "journal--test:search-stable:tag"}
+      newTag: master-55ea5c95-20260810.0926 # {"$imagepolicy": "journal--test:search-stable:tag"}
   dependsOn:
     - name: search-queue
     - name: search-queue-watcher-role
