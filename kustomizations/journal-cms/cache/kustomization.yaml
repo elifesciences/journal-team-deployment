@@ -12,6 +12,3 @@ labels:
     app.kubernetes.io/component: journal-cms
     app.kubernetes.io/name: journal-cms-cache
     app.kubernetes.io/instance: ${instance_name:-journal-cms-cache}-${env}
-
-configurations:
-- labelsconfig.yaml

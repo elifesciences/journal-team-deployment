@@ -11,5 +11,3 @@ labels:
   pairs:
     app.kubernetes.io/component: dragonfly-cache
     app.kubernetes.io/instance: ${instance_name:-journal}-${env}
-configurations:
-- labelsconfig.yaml
