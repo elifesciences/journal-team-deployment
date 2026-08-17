@@ -12,19 +12,6 @@ spec:
   path: ./kustomizations/search/opensearch
   prune: true
   targetNamespace: journal--test
-  patches:
-  - target:
-      kind: OpenSearchCluster
-      name: opensearch
-    patch: |
-      - op: add
-        path: /spec/nodePools/0/nodeSelector
-        value:
-          topology.kubernetes.io/zone: us-east-1c
-      - op: add
-        path: /spec/nodePools/1/nodeSelector
-        value:
-          topology.kubernetes.io/zone: us-east-1c
   postBuild:
     substitute:
       # deployment vars

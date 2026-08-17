@@ -65,6 +65,8 @@ spec:
   nodePools:
   - component: managers
     replicas: ${opensearch_manager_replicas:-1}
+    nodeSelector:
+      topology.kubernetes.io/zone: us-east-1c
     resources:
       requests:
         memory: "${opensearch_manager_request_mem:-2938Mi}"
@@ -92,6 +94,8 @@ spec:
           - ReadWriteOnce
   - component: data
     replicas: ${opensearch_data_replicas:-1}
+    nodeSelector:
+      topology.kubernetes.io/zone: us-east-1c
     resources:
       requests:
         memory: "${opensearch_data_request_mem:-5102Mi}"
