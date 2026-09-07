@@ -1,0 +1,48 @@
+parameters:
+    redis_cache: "${cache_uri}"
+    redis_sessions: "${session_uri}"
+    dismissible_info_bars: {}
+
+    session_name: journal
+    oauth2_client_id: journal--${env}
+    trusted_hosts:
+    - ${hostname}
+    - '[^.]+\.elifesciences\.org'
+    - localhost
+    cache_control: private, no-cache, no-store, must-revalidate
+
+    crm_url: https://crm.elifesciences.org/crm/civicrm/
+    crm_api_url: https://crm.elifesciences.org/crm/sites/all/modules/civicrm/extern/rest.php
+
+    side_by_side_view_url: https://lens.elifesciences.org/
+
+    api_url: ${api_url}
+    api_url_public: ${api_url}
+    api_url_search_page: ${api_url_search_page}
+
+    gtm_id: GTM-NJBS9X
+    google_optimize_id: OPT-MK8W6WS
+
+    cb_id: 0a5c50d8-fcf9-47b1-8f4f-1eaadb13941b
+
+    feature_xpub: true
+    xpub_client_id: journal--${env}
+
+    hypothesis_api: https://hypothes.is/api/
+    hypothesis_authority: elifesciences.org
+    hypothesis_client_id: a22cf324-9145-11e6-8cb6-27d92694374e
+
+    google_api_client.config:
+        client_id: '%env(GOOGLE_API_CLIENT_CLIENT_ID)'
+        client_secret: '%env(GOOGLE_API_CLIENT_CLIENT_SECRET)'
+    google_api_client.refresh_token: '%env(GOOGLE_API_CLIENT_REFRESH_TOKEN)'
+    google_api_client.optout_unsubscribe_spreadsheet_id: '%env(GOOGLE_API_CLIENT_OPTOUT_UNSUBSCRIBE_SPREADSHEET_ID)'
+
+    # defaults for URL generation - host
+    router.request_context.host: ${hostname}
+
+    # defaults for URL generation - scheme
+    router.request_context.scheme: https
+
+    subject_rewrites: []
+    calls_to_action: []

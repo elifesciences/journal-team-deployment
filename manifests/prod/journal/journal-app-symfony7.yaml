@@ -9,7 +9,7 @@ spec:
     kind: GitRepository
     name: journal-team-deployment
     namespace: flux-system
-  path: ./kustomizations/journal
+  path: ./kustomizations/journal-symfony7
   prune: true
   targetNamespace: journal--prod
   images:

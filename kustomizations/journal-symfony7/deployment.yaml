@@ -1,0 +1,99 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: journal-app
+  namespace: journal
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
+      initContainers:
+      - name: journal-assets
+        image: ghcr.io/elifesciences/journal:latest
+        args:
+        - bash
+        - '-c'
+        - 'cp -rv /srv/journal/web/* /assets/'
+        volumeMounts:
+        - name: assets-volume
+          mountPath: /assets
+      - name: error-assets
+        image: busybox:latest
+        args:
+        - sh
+        - '-c'
+        - 'cd /assets; wget https://raw.githubusercontent.com/elifesciences/error-pages/approved/public/404.html https://raw.githubusercontent.com/elifesciences/error-pages/approved/public/410.html https://raw.githubusercontent.com/elifesciences/error-pages/approved/public/4xx.html https://raw.githubusercontent.com/elifesciences/error-pages/approved/public/503.html https://raw.githubusercontent.com/elifesciences/error-pages/approved/public/5xx.html'
+        volumeMounts:
+        - name: error-assets-volume
+          mountPath: /assets
+      containers:
+      - name: journal
+        image: ghcr.io/elifesciences/journal:latest
+        ports:
+        - containerPort: 9000
+        readinessProbe:
+          tcpSocket:
+            port: 9000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 10
+          timeoutSeconds: 10
+        volumeMounts:
+        - name: config-volume
+          mountPath: /srv/journal/config/parameters.yaml
+          subPath: parameters.yaml
+        - name: config-volume
+          mountPath: /srv/journal/config/era_articles.yaml
+          subPath: era_articles.yaml
+        - name: secret-parameters
+          mountPath: /srv/journal/config/secret_parameters.yaml
+          subPath: secret_parameters.yaml
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /ping
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 10
+          timeoutSeconds: 10
+        volumeMounts:
+        - name: nginx-config-volume
+          mountPath: /etc/nginx/conf.d/default.conf
+          subPath: nginx-site.conf
+        - name: assets-volume
+          mountPath: /srv/journal/web
+        - name: error-assets-volume
+          mountPath: /srv/error-pages/public/
+      volumes:
+      - name: config-volume
+        configMap:
+          name: journal-app-parameters
+          items:
+          - key: parameters.yaml
+            path: parameters.yaml
+          - key: era_articles.yaml
+            path: era_articles.yaml
+      - name: secret-parameters
+        secret:
+          secretName: ${journal_secret_parameters_secret_name}
+          items:
+          - key: secret_parameters.yaml
+            path: secret_parameters.yaml
+      - name: nginx-config-volume
+        configMap:
+          name: nginx-journal-site-conf
+          items:
+          - key: nginx-site.conf
+            path: nginx-site.conf
+
+      - name: assets-volume
+        emptyDir:
+          sizeLimit: 500Mi
+      - name: error-assets-volume
+        emptyDir:
+          sizeLimit: 50Mi
