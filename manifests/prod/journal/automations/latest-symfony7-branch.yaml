@@ -7,8 +7,8 @@ spec:
   imageRepositoryRef:
     name: journal
   filterTags:
-    # feature-name-sha-time
-    pattern: '^symfony7-[a-zA-Z0-9-]+-[a-fA-F0-9]+-(?P<ts>.*)'
+    # branch-sha-time
+    pattern: '^symfony7-[a-fA-F0-9]+-(?P<ts>.*)'
     extract: '$ts'
   policy:
     numerical:
