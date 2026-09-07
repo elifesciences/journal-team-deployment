@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--prod
   images:
     - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--prod:journal-app-latest-symfony7-branch:name"}
-      newTag: symfony7-1cbb6978850242a7276539b783122de0fea2c809-20260907.1432 # {"$imagepolicy": "journal--prod:journal-app-latest-symfony7-branch:tag"}
+      newTag: symfony7-578594931c437b57528bb3de4ece9dbc485abdc1-20260907.1512 # {"$imagepolicy": "journal--prod:journal-app-latest-symfony7-branch:tag"}
   nameSuffix: -symfony7
   postBuild:
     substitute:
