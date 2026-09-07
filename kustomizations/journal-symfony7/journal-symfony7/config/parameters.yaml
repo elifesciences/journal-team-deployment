@@ -1,4 +1,12 @@
 parameters:
+    api_connect_timeout: 0.5
+    api_timeout: 1
+    api_connect_timeout_slow: 1
+    api_timeout_slow: 3
+    honeypot_field: email_address
+    mustache_stat_props: [size, mtime]
+    preload_links: []
+
     redis_cache: "${cache_uri}"
     redis_sessions: "${session_uri}"
     dismissible_info_bars: {}
