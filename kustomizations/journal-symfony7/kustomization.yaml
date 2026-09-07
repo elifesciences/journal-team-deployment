@@ -3,15 +3,11 @@ kind: Kustomization
 namespace: journal
 
 resources:
-- deployment.yaml
-- service.yaml
-- ingress.yaml
+- journal-symfony7
 
-configMapGenerator:
-- name: journal-app-parameters
-  files:
-  - config/parameters.yaml
-  - config/era_articles.yaml
-- name: nginx-journal-site-conf
-  files:
-  - config/nginx-site.conf
+labels:
+- includeSelectors: true
+  pairs:
+    app.kubernetes.io/part-of: continuum
+    app.kubernetes.io/name: journal
+    app.kubernetes.io/instance: ${instance_name:-journal}-${env}
