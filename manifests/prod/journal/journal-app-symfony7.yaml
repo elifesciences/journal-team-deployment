@@ -1,0 +1,34 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: journal-app-symfony7
+  namespace: journal--prod
+spec:
+  interval: 1m0s
+  sourceRef:
+    kind: GitRepository
+    name: journal-team-deployment
+    namespace: flux-system
+  path: ./kustomizations/journal
+  prune: true
+  targetNamespace: journal--prod
+  images:
+    - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--prod:journal-app-latest-symfony7-branch:name"}
+      newTag: feature-test-and-improve-github-actions-pipeline-39625662f70b2621166141761583fc3661b2f08d-20260727.1507 # {"$imagepolicy": "journal--prod:journal-app-latest-symfony7-branch:tag"}
+  nameSuffix: -symfony7
+  postBuild:
+    substitute:
+      # deployment vars
+      env: prod
+      instance_name: journal-app-symfony7
+      hostname: journal-symfony7.elifesciences.org
+      cert_manager_issuer: "letsencrypt"
+      journal_secret_parameters_secret_name: journal-prod-secret-parameters
+      api_url: https://api.prod.elifesciences.org
+      api_url_search_page: https://api.prod.elifesciences.org
+      epp_url: http://epp-client.epp--prod:3000
+      observer_url: http://prod--observer.elife.internal
+      pubpub_url: https://elife-container.pubpub.org
+      hubspot_url: https://connect.elifesciences.org
+      cache_uri: redis://symfony7-journal-dragonfly-cache:6379
+      session_uri: redis://symfony7-journal-dragonfly-sessions:6379
