@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--prod
   images:
   - name: ghcr.io/elifesciences/jats-to-pdf # {"$imagepolicy": "journal--prod:jats-to-pdf-stable:name"}
-    newTag: main-baf1e6ee-20260914.1425 # {"$imagepolicy": "journal--prod:jats-to-pdf-stable:tag"}
+    newTag: main-3f15063a-20260914.1431 # {"$imagepolicy": "journal--prod:jats-to-pdf-stable:tag"}
   postBuild:
     substitute:
       env: prod
