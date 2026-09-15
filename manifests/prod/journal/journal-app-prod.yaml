@@ -27,6 +27,24 @@ spec:
       target:
         kind: Ingress
         name: journal-app
+    - patch: |
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: journal-app
+        spec:
+          replicas: 4
+          template:
+            spec:
+              containers:
+              - name: journal
+                resources:
+                  requests:
+                    cpu: 500m
+                    memory: 2Gi
+      target:
+        kind: Deployment
+        name: journal-app
   postBuild:
     substitute:
       # deployment vars
