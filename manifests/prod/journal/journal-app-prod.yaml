@@ -23,7 +23,7 @@ spec:
         metadata:
           name: journal-app
           annotations:
-            traefik.ingress.kubernetes.io/router.middlewares: journal-prod-journal-app-ip-allowlist@kubernetescrd
+            traefik.ingress.kubernetes.io/router.middlewares: journal-prod-journal-app-ip-allowlist@kubernetescrd,traefik-ping-fastly@kubernetescrd
       target:
         kind: Ingress
         name: journal-app
