@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 42,
+  "id": 4,
   "links": [],
   "panels": [
     {
@@ -364,7 +364,7 @@
             "uid": "P4169E866C3094E38"
           },
           "editorMode": "builder",
-          "expr": "sum by(code) (rate(traefik_service_requests_total{exported_service=\"journal-prod-journal-app-content-preview-80@kubernetes\"}[$__rate_interval]))",
+          "expr": "sum by(code) (rate(traefik_service_requests_total{exported_service=\"journal-prod-journal-app-prod-public-80@kubernetes\"}[$__rate_interval]))",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
