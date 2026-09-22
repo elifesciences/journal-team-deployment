@@ -22,7 +22,12 @@ spec:
         args:
         - bash
         - '-c'
-        - 'php bin/strip-eligibility-json.php /eligibility/eligibility.json > /assets/eligibility.json'
+        - |
+          if [ -f bin/strip-eligibility-json.php ]; then
+            php bin/strip-eligibility-json.php /eligibility/eligibility.json > /assets/eligibility.json
+          else
+            echo "bin/strip-eligibility-json.php not found in image, skipping"
+          fi
         volumeMounts:
         - name: eligibility-volume
           mountPath: /eligibility
