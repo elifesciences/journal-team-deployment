@@ -3,7 +3,11 @@ kind: ConfigMap
 metadata:
   name: journal-eligibility-role
   namespace: journal
-data: {}
+data:
+  # Hardcoded as a fallback: the FieldExport below didn't populate role_arn
+  # from the Role's status (stuck, seemingly missed its initial watch event).
+  # Remove once FieldExport is confirmed to keep this in sync on its own.
+  role_arn: arn:aws:iam::512686554592:role/elife-journal-eligibility-test
 ---
 apiVersion: services.k8s.aws/v1alpha1
 kind: FieldExport
