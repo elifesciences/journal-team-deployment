@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: journal
 
 resources:
-- ../journal/journal
+- ../journal
 - serviceaccount.yaml
 
 patches:
