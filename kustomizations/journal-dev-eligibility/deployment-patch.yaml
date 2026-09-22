@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: journal-app
+spec:
+  template:
+    spec:
+      serviceAccountName: journal-eligibility
+      initContainers:
+      - name: eligibility-fetch
+        image: amazon/aws-cli:2.17.62
+        args:
+        - s3
+        - cp
+        - "${eligibility_json_s3_uri}"
+        - /eligibility/eligibility.json
+        volumeMounts:
+        - name: eligibility-volume
+          mountPath: /eligibility
+      - name: eligibility-strip
+        image: ghcr.io/elifesciences/journal:latest
+        args:
+        - bash
+        - '-c'
+        - 'php bin/strip-eligibility-json.php /eligibility/eligibility.json > /assets/eligibility.json'
+        volumeMounts:
+        - name: eligibility-volume
+          mountPath: /eligibility
+        - name: assets-volume
+          mountPath: /assets
+      containers:
+      - name: journal
+        volumeMounts:
+        - name: eligibility-volume
+          mountPath: /srv/journal/eligibility.json
+          subPath: eligibility.json
+      volumes:
+      - name: eligibility-volume
+        emptyDir:
+          sizeLimit: 10Mi

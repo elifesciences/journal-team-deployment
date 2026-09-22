@@ -9,14 +9,20 @@ spec:
     kind: GitRepository
     name: journal-team-deployment
     namespace: flux-system
-  path: ./kustomizations/journal
+  path: ./kustomizations/journal-dev-eligibility
   prune: true
   targetNamespace: journal--test
+  dependsOn:
+  - name: journal-eligibility-role
   images:
     - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--test:journal-app-latest-feature-branch:name"}
       newTag: feature-eligibility-tool-d624f3dea5f10f0996e33e6d69a30037903ee6f2-20260921.1740 # {"$imagepolicy": "journal--test:journal-app-latest-feature-branch:tag"}
   nameSuffix: -dev
   postBuild:
+    substituteFrom:
+    # role_arn is retrieved from the configmap
+    - kind: ConfigMap
+      name: journal-eligibility-role
     substitute:
       # deployment vars
       env: test
@@ -30,5 +36,6 @@ spec:
       observer_url: http://prod--observer.elife.internal
       pubpub_url: https://elife-container.pubpub.org
       hubspot_url: https://connect.elifesciences.org
+      eligibility_json_s3_uri: s3://elife-eligibility-tool/eligibility.json
       cache_uri: redis://app-dev-journal-dragonfly-cache:6379
       session_uri: redis://app-dev-journal-dragonfly-sessions:6379
