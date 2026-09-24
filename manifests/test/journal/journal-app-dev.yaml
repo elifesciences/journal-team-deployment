@@ -30,7 +30,7 @@ spec:
       hostname: journal-dev.elifesciences.org
       cert_manager_issuer: "letsencrypt"
       journal_secret_parameters_secret_name: journal-app-dev-secret-parameters
-      api_url: http://10.255.255.1
+      api_url: https://api.test.elifesciences.org
       api_url_search_page: https://api.test.elifesciences.org
       epp_url: http://epp-client.epp--prod:3000
       observer_url: http://prod--observer.elife.internal
