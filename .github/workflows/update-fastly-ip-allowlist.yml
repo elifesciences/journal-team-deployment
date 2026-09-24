@@ -25,7 +25,7 @@ jobs:
 
       - name: Open PR if ranges changed
         if: steps.sync.outputs.changed == 'true'
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           commit-message: "Update Fastly IP allowlist ranges"
           title: "Update Fastly IP allowlist ranges"
