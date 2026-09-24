@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--prod
   images:
     - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--prod:journal-app-latest-master:name"}
-      newTag: master-92908c5b062726aa23ef7a6258347ba37a7a31ba-20260923.1004 # {"$imagepolicy": "journal--prod:journal-app-latest-master:tag"}
+      newTag: master-e314e572a5ca38cbd3215c70cae49c7bb6a8702d-20260924.1052 # {"$imagepolicy": "journal--prod:journal-app-latest-master:tag"}
   nameSuffix: -prod-public
   patches:
     - patch: |
