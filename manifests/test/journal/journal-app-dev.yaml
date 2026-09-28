@@ -16,7 +16,7 @@ spec:
   - name: journal-eligibility-role
   images:
   - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--test:journal-app-latest-feature-branch:name"}
-    newTag: feature-eligibility-tool-8a8290cb0b604c70caaaf43efa7c3ae07d7fb42f-20260928.1352 # {"$imagepolicy": "journal--test:journal-app-latest-feature-branch:tag"}
+    newTag: feature-eligibility-tool-f60d85f133628b9342c069220a610f925f664f44-20260928.1402 # {"$imagepolicy": "journal--test:journal-app-latest-feature-branch:tag"}
   nameSuffix: -dev
   postBuild:
     substituteFrom:
