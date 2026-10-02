@@ -41,10 +41,10 @@ parameters:
     hypothesis_client_id: af8e486c-d495-11e7-8c9b-7ba603c19e52
 
     google_api_client.config:
-        client_id: '%env(GOOGLE_API_CLIENT_CLIENT_ID)'
-        client_secret: '%env(GOOGLE_API_CLIENT_CLIENT_SECRET)'
-    google_api_client.refresh_token: '%env(GOOGLE_API_CLIENT_REFRESH_TOKEN)'
-    google_api_client.optout_unsubscribe_spreadsheet_id: '%env(GOOGLE_API_CLIENT_OPTOUT_UNSUBSCRIBE_SPREADSHEET_ID)'
+        client_id: 547425970615-h51bebdhrhqgbc33r772mma37skld63d.apps.googleusercontent.com
+        client_secret: '%google_api_client_secret%'
+    google_api_client.refresh_token: '%google_api_client_refresh_token%'
+    google_api_client.optout_unsubscribe_spreadsheet_id: '%google_api_client_optout_unsubscribe_spreadsheet_id%'
 
     # defaults for URL generation - host
     router.request_context.host: ${hostname}
