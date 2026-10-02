@@ -28,8 +28,8 @@ parameters:
     api_url_public: ${api_url}
     api_url_search_page: ${api_url_search_page}
 
-    gtm_id: GTM-NJBS9X
-    google_optimize_id: OPT-MK8W6WS
+    gtm_id: GTM-WVM8KG
+    google_optimize_id: OPT-KJGKNCT
 
     cb_id: 0a5c50d8-fcf9-47b1-8f4f-1eaadb13941b
 
