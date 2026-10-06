@@ -11,7 +11,7 @@ spec:
   chart:
     spec:
       chart: pxc-db
-      version: 1.18.0
+      version: 1.20.0
       sourceRef:
         kind: HelmRepository
         name: percona
@@ -22,6 +22,10 @@ spec:
     pause: false
     backup:
       enabled: true
+      # pinned to 8.0 to match pxc.image; chart default is 8.4
+      image:
+        repository: percona/percona-xtrabackup
+        tag: 8.0.35-35.1
       serviceAccountName: journal-cms-database
       storages:
         journal-cms-prod-backups:
@@ -46,6 +50,10 @@ spec:
             type: count
             deleteFromStorage: true
     pxc:
+      # stay on MySQL 8.0; chart 1.20.0 defaults to 8.4 (major upgrade)
+      image:
+        repository: percona/percona-xtradb-cluster
+        tag: 8.0.45-36.1
       nodeSelector:
         kubernetes.io/arch: amd64
         topology.kubernetes.io/zone: us-east-1c
