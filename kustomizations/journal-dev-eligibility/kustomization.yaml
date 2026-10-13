@@ -4,7 +4,6 @@ namespace: journal
 
 resources:
 - ../journal
-- serviceaccount.yaml
 
 patches:
 - path: deployment-patch.yaml
