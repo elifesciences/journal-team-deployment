@@ -1,6 +1,6 @@
 parameters:
-    api_connect_timeout: 1
-    api_timeout: 2
+    api_connect_timeout: 0.5
+    api_timeout: 1.5
     api_connect_timeout_slow: 2
     api_timeout_slow: 3
     honeypot_field: email_address
