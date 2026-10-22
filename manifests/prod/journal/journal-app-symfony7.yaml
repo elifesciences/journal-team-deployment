@@ -65,7 +65,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: dev-access-prod-public-sym7
+  name: dev-access-symfony7
   namespace: journal--prod
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt"
@@ -80,7 +80,7 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: journal-app-prod-public-sym7
+                name: journal-app-symfony7
                 port:
                   number: 80
   tls:
