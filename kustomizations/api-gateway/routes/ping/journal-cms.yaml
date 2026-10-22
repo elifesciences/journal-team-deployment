@@ -12,26 +12,35 @@ spec:
     kind: Gateway
     name: api-gateway
     namespace: journal
+  # Read-only methods: PHP only parses POST bodies (CVE-2026-109618, CVE-2026-109619)
+  # One rule per method, as URLRewrite with replacePrefixMatch allows only a single match per rule
   rules:
   - backendRefs:
     - name: ${journal_cms_service_name}
       namespace: journal
       kind: Service
       port: ${journal_cms_port}
-    # Read-only methods: PHP only parses POST bodies (CVE-2026-109618, CVE-2026-109619)
     matches:
     - path:
         type: PathPrefix
         value: /ping/journal-cms
       method: GET
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          replacePrefixMatch: /ping
+          type: ReplacePrefixMatch
+  - backendRefs:
+    - name: ${journal_cms_service_name}
+      namespace: journal
+      kind: Service
+      port: ${journal_cms_port}
+    matches:
     - path:
         type: PathPrefix
         value: /ping/journal-cms
       method: HEAD
-    - path:
-        type: PathPrefix
-        value: /ping/journal-cms
-      method: OPTIONS
     filters:
     - type: URLRewrite
       urlRewrite:
