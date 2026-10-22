@@ -18,7 +18,17 @@ spec:
       namespace: journal
       kind: Service
       port: ${journal_cms_port}
+    # Read-only methods: PHP only parses POST bodies (CVE-2026-109618, CVE-2026-109619)
     matches:
     - path:
         type: PathPrefix
         value: /podcast-episodes
+      method: GET
+    - path:
+        type: PathPrefix
+        value: /podcast-episodes
+      method: HEAD
+    - path:
+        type: PathPrefix
+        value: /podcast-episodes
+      method: OPTIONS
