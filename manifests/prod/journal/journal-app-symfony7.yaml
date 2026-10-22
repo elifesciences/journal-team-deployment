@@ -33,7 +33,7 @@ spec:
         metadata:
           name: journal-app
         spec:
-          replicas: 2
+          replicas: 5
           template:
             spec:
               containers:
