@@ -18,3 +18,5 @@ spec:
     substitute:
       env: test
       instance_name: dragonfly-journal-content-preview
+      journal_sessions_replicas: "2"
+      journal_cache_replicas: "2"
