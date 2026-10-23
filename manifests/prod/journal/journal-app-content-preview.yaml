@@ -19,7 +19,7 @@ spec:
   postBuild:
     substitute:
       # deployment vars
-      env: test
+      env: prod
       instance_name: journal-app-content-preview
       hostname: journal-content-preview.test.elifesciences.org
       cert_manager_issuer: "letsencrypt"
