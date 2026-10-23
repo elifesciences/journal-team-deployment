@@ -16,6 +16,17 @@ spec:
     - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--prod:journal-app-latest-symfony7-branch:name"}
       newTag: symfony7-157193f01b14160ec996a713ba37cb51e1a9b2c9-20261023.1120 # {"$imagepolicy": "journal--prod:journal-app-latest-symfony7-branch:tag"}
   nameSuffix: -content-preview
+  patches:
+    - patch: |
+        apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          name: journal-app
+          annotations:
+            traefik.ingress.kubernetes.io/router.middlewares: journal-prod-content-preview-basic-auth@kubernetescrd
+      target:
+        kind: Ingress
+        name: journal-app
   postBuild:
     substitute:
       # deployment vars

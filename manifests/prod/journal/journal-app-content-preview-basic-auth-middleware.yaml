@@ -1,0 +1,8 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: content-preview-basic-auth
+  namespace: journal--prod
+spec:
+  basicAuth:
+    secret: journal-app-content-preview-basic-auth
