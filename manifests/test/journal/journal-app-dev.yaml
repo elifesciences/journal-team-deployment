@@ -13,8 +13,8 @@ spec:
   prune: true
   targetNamespace: journal--test
   images:
-    - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--test:journal-app-latest-master:name"}
-      newTag: master-8e8592edb9583f6ed79812d88786baf93c06033c-20261006.1628 # {"$imagepolicy": "journal--test:journal-app-latest-master:tag"}
+    - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--test:journal-app-latest-feature-branch:name"}
+      newTag: master-8e8592edb9583f6ed79812d88786baf93c06033c-20261006.1628 # {"$imagepolicy": "journal--test:journal-app-latest-feature-branch:tag"}
   nameSuffix: -dev
   postBuild:
     substitute:
