@@ -13,8 +13,8 @@ spec:
   prune: true
   targetNamespace: journal--prod
   images:
-    - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--prod:journal-app-latest-feature-branch:name"}
-      newTag: feature-test-the-article-xml-fix-14017e96bfa95ea3fe506fad9300519f17d8474f-20261027.1115 # {"$imagepolicy": "journal--prod:journal-app-latest-feature-branch:tag"}
+    - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--prod:journal-app-latest-symfony7-branch:name"}
+      newTag: feature-test-the-article-xml-fix-14017e96bfa95ea3fe506fad9300519f17d8474f-20261027.1115 # {"$imagepolicy": "journal--prod:journal-app-latest-symfony7-branch:tag"}
   nameSuffix: -content-preview
   patches:
     - patch: |
