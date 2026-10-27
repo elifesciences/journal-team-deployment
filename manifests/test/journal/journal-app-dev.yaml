@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--test
   images:
     - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--test:journal-app-latest-feature-branch:name"}
-      newTag: feature-eligibility-tool-0d241859cabf8d0337d52164ad1f513916b28378-20261020.1339 # {"$imagepolicy": "journal--test:journal-app-latest-feature-branch:tag"}
+      newTag: feature-test-the-article-xml-fix-14017e96bfa95ea3fe506fad9300519f17d8474f-20261027.1115 # {"$imagepolicy": "journal--test:journal-app-latest-feature-branch:tag"}
   nameSuffix: -dev
   postBuild:
     substitute:
