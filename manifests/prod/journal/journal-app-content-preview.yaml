@@ -13,8 +13,8 @@ spec:
   prune: true
   targetNamespace: journal--prod
   images:
-    - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--prod:journal-app-latest-symfony7-branch:name"}
-      newTag: symfony7-74e4b07e53c0cbed37e0c6f245d04bf43dedae5e-20261027.1109 # {"$imagepolicy": "journal--prod:journal-app-latest-symfony7-branch:tag"}
+    - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--prod:journal-app-latest-feature-branch:name"}
+      newTag: symfony7-74e4b07e53c0cbed37e0c6f245d04bf43dedae5e-20261027.1109 # {"$imagepolicy": "journal--prod:journal-app-latest-feature-branch:tag"}
   nameSuffix: -content-preview
   patches:
     - patch: |
