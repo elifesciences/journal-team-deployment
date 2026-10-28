@@ -5,6 +5,7 @@ parameters:
     api_timeout_slow: 3
     honeypot_field: email_address
     mustache_stat_props: [size, mtime]
+    eligibility_json_path: '%kernel.project_dir%/eligibility.json'
     preload_links: []
 
     redis_cache: "${cache_uri}"
