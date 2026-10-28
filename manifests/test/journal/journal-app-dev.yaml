@@ -23,7 +23,7 @@ spec:
         metadata:
           name: journal-app
           annotations:
-            traefik.ingress.kubernetes.io/router.middlewares: journal-app-dev-basic-auth@kubernetescrd
+            traefik.ingress.kubernetes.io/router.middlewares: journal-test-dev-basic-auth@kubernetescrd
       target:
         kind: Ingress
         name: journal-app
