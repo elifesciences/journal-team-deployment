@@ -1,0 +1,8 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: dev-basic-auth
+  namespace: journal--test
+spec:
+  basicAuth:
+    secret: journal-app-dev-basic-auth

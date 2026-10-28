@@ -16,6 +16,17 @@ spec:
     - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--test:journal-app-latest-feature-branch:name"}
       newTag: feature-test-the-article-xml-fix-14017e96bfa95ea3fe506fad9300519f17d8474f-20261027.1115 # {"$imagepolicy": "journal--test:journal-app-latest-feature-branch:tag"}
   nameSuffix: -dev
+  patches:
+    - patch: |
+        apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          name: journal-app
+          annotations:
+            traefik.ingress.kubernetes.io/router.middlewares: journal-app-dev-basic-auth@kubernetescrd
+      target:
+        kind: Ingress
+        name: journal-app
   postBuild:
     substitute:
       # deployment vars
