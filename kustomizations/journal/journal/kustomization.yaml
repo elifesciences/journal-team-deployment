@@ -12,7 +12,6 @@ configMapGenerator:
   files:
   - config/parameters.yaml
   - config/era_articles.yaml
-  - config/config_test.yaml
 - name: nginx-journal-site-conf
   files:
   - config/nginx-site.conf

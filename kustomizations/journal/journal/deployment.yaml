@@ -41,16 +41,13 @@ spec:
           timeoutSeconds: 10
         volumeMounts:
         - name: config-volume
-          mountPath: /srv/journal/app/config/parameters.yml
+          mountPath: /srv/journal/config/parameters.yaml
           subPath: parameters.yaml
         - name: config-volume
-          mountPath: /srv/journal/app/config/era_articles.yml
+          mountPath: /srv/journal/config/era_articles.yaml
           subPath: era_articles.yaml
-        - name: config-volume
-          mountPath: /srv/journal/app/config/config_test.yml
-          subPath: config_test.yaml
         - name: secret-parameters
-          mountPath: /srv/journal/app/config/secret_parameters.yml
+          mountPath: /srv/journal/config/secret_parameters.yaml
           subPath: secret_parameters.yaml
       - name: nginx
         image: nginx:latest
@@ -81,8 +78,6 @@ spec:
             path: parameters.yaml
           - key: era_articles.yaml
             path: era_articles.yaml
-          - key: config_test.yaml
-            path: config_test.yaml
       - name: secret-parameters
         secret:
           secretName: ${journal_secret_parameters_secret_name}

@@ -1,7 +1,13 @@
-imports:
-  - resource: secret_parameters.yml # see external secret
-  - resource: era_articles.yml # see configmap
 parameters:
+    api_connect_timeout: 0.5
+    api_timeout: 1.5
+    api_connect_timeout_slow: 2
+    api_timeout_slow: 3
+    honeypot_field: email_address
+    mustache_stat_props: [size, mtime]
+    eligibility_json_path: '%kernel.project_dir%/eligibility.json'
+    preload_links: []
+
     redis_cache: "${cache_uri}"
     redis_sessions: "${session_uri}"
     dismissible_info_bars: {}
@@ -9,15 +15,13 @@ parameters:
     session_name: journal
     oauth2_client_id: journal--${env}
     trusted_hosts:
-      - ${hostname}
-      - '^(.+\.)?elifesciences.org$'
-      - 'localhost'
-      - '^10\.[0-9]+\.[0-9]+\.[0-9]+$'
-      - '^172\.(16|17|18|19|2[0-9]|30|31)\.[0-9]+\.[0-9]+$'
-      - '^192\.168\.[0-9]+\.[0-9]+$'
+        - ${hostname}
+        - '^(.+\.)?elifesciences.org$'
+        - 'localhost'
+        - '^10\.[0-9]+\.[0-9]+\.[0-9]+$'
+        - '^172\.(16|17|18|19|2[0-9]|30|31)\.[0-9]+\.[0-9]+$'
+        - '^192\.168\.[0-9]+\.[0-9]+$'
     cache_control: private, no-cache, no-store, must-revalidate
-
-    mailer_transport: smtp
 
     crm_url: https://crm.elifesciences.org/crm/civicrm/
     crm_api_url: https://crm.elifesciences.org/crm/sites/all/modules/civicrm/extern/rest.php
@@ -41,10 +45,10 @@ parameters:
     hypothesis_client_id: af8e486c-d495-11e7-8c9b-7ba603c19e52
 
     google_api_client.config:
-        client_id: 547425970615-h51bebdhrhqgbc33r772mma37skld63d.apps.googleusercontent.com
-        client_secret: '%google_api_client_secret%'
-    google_api_client.refresh_token: '%google_api_client_refresh_token%'
-    google_api_client.optout_unsubscribe_spreadsheet_id: '%google_api_client_optout_unsubscribe_spreadsheet_id%'
+        client_id: '%env(GOOGLE_API_CLIENT_CLIENT_ID)%'
+        client_secret: '%env(GOOGLE_API_CLIENT_CLIENT_SECRET)%'
+    google_api_client.refresh_token: '%env(GOOGLE_API_CLIENT_REFRESH_TOKEN)%'
+    google_api_client.optout_unsubscribe_spreadsheet_id: '%env(GOOGLE_API_CLIENT_OPTOUT_UNSUBSCRIBE_SPREADSHEET_ID)%'
 
     # defaults for URL generation - host
     router.request_context.host: ${hostname}
@@ -57,4 +61,4 @@ parameters:
 
     submit_url: https://reviewer.elifesciences.org/login
     submit_url_redirects:
-      - '.*\.elifesciences.org$'
+        - '.*\.elifesciences.org$'
