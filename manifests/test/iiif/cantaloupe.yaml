@@ -17,7 +17,7 @@ spec:
   - name: iiif-role
   images:
   - name: ghcr.io/elifesciences/cantaloupe
-    newTag: 20261029020906.0.0-gc3f5468-40804634811-1-5.0.7 # {"$imagepolicy": "journal--test:cantaloupe-stable:tag"}
+    newTag: 20261029095740.0.0-g747c48b-40853700059-1-5.0.7 # {"$imagepolicy": "journal--test:cantaloupe-stable:tag"}
   - name: ghcr.io/elifesciences/cantaloupe-caddy
     newTag: 20261029095740.0.0-g747c48b-40853700059-1-v2.11.7 # {"$imagepolicy": "journal--test:cantaloupe-caddy-stable:tag"}
   postBuild:
