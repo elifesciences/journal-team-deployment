@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--test
   images:
     - name: ghcr.io/elifesciences/search
-      newTag: feature-pull-api-sdk-from-legacy-branch-6f37492e-20261030.1147 # {"$imagepolicy": "journal--test:search-stable:tag"}
+      newTag: master-5da96fa0-20261022.1132 # {"$imagepolicy": "journal--test:search-stable:tag"}
   dependsOn:
     - name: search-queue
     - name: search-queue-watcher-role
