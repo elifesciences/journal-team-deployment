@@ -12,6 +12,19 @@ spec:
   path: ./kustomizations/search/opensearch
   prune: true
   targetNamespace: journal--prod
+  patches:
+    - patch: |
+        - op: add
+          path: /spec/nodePools/0/labels
+          value:
+            dash0.com/log-level: warn
+        - op: add
+          path: /spec/nodePools/1/labels
+          value:
+            dash0.com/log-level: warn
+      target:
+        kind: OpenSearchCluster
+        name: opensearch
   postBuild:
     substitute:
       # deployment vars
