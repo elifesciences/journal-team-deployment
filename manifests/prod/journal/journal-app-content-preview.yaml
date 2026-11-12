@@ -13,8 +13,8 @@ spec:
   prune: true
   targetNamespace: journal--prod
   images:
-    - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--prod:journal-app-latest-master:name"}
-      newTag: master-436f57c1df4e4f7ed7bfff0747f11be7319a4abb-20261111.1553 # {"$imagepolicy": "journal--prod:journal-app-latest-master:tag"}
+    - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--prod:journal-app-latest-feature-branch:name"}
+      newTag: master-436f57c1df4e4f7ed7bfff0747f11be7319a4abb-20261111.1553 # {"$imagepolicy": "journal--prod:journal-app-latest-feature-branch:tag"}
   nameSuffix: -content-preview
   patches:
     - patch: |
