@@ -14,7 +14,7 @@ spec:
   targetNamespace: journal--test
   images:
     - name: ghcr.io/elifesciences/journal # {"$imagepolicy": "journal--test:journal-app-latest-feature-branch:name"}
-      newTag: feature-test-the-article-xml-fix-14017e96bfa95ea3fe506fad9300519f17d8474f-20261027.1115 # {"$imagepolicy": "journal--test:journal-app-latest-feature-branch:tag"}
+      newTag: feature-bring-recommendations-repo-into-journal-codebase-acc11cb49dbc01f5e3d251be985550eecb5da932-20261112.1258 # {"$imagepolicy": "journal--test:journal-app-latest-feature-branch:tag"}
   nameSuffix: -dev
   patches:
     - patch: |
